@@ -25,7 +25,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <h1>
                     <a class="navbar-brand" href="index.html">
-                        <span>C</span>arserving
+                        <img src="~/Assets/Images/LogoMorii1.png" alt="LogoMorii1" height="50">
                     </a>
                 </h1>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -36,15 +36,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="services.html">Services</a>
-                        </li>
+                        <li>@Html.ActionLink("Về Chúng Tôi", "Index", "VeChungToi", new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Thực Đơn", "ThucDon", "ThucDon", new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Cửa Hàng", "CuaHang", "CuaHang", new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Liên Hệ", "LienHe", "LienHe", new { @class = "nav-link" })</li>
                     </ul>
                     <ul class="navbar-nav search-right mt-lg-0 mt-2">
                         <li class="nav-item mr-3" title="Search">
