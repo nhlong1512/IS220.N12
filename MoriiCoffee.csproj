@@ -94,6 +94,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Client\css\style-starter.css" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Client\images\ab1.jpg" />
+    <Content Include="Assets\Client\images\ab2.jpg" />
+    <Content Include="Assets\Client\images\ab3.jpg" />
+    <Content Include="Assets\Client\images\ab4.jpg" />
+    <Content Include="Assets\Client\images\ab5.jpg" />
+    <Content Include="Assets\Client\images\ab6.jpg" />
+    <Content Include="Assets\Client\images\banner1.jpg" />
+    <Content Include="Assets\Client\images\banner2.jpg" />
+    <Content Include="Assets\Client\images\banner21.jpg" />
+    <Content Include="Assets\Client\images\banner3.jpg" />
+    <Content Include="Assets\Client\images\banner4.jpg" />
+    <Content Include="Assets\Client\images\bg.jpg" />
+    <Content Include="Assets\Client\images\img1.jpg" />
+    <Content Include="Assets\Client\images\img2.jpg" />
+    <Content Include="Assets\Client\images\img3.jpg" />
+    <Content Include="Assets\Client\images\img4.jpg" />
+    <Content Include="Assets\Client\images\team1.jpg" />
+    <Content Include="Assets\Client\images\team2.jpg" />
+    <Content Include="Assets\Client\images\team3.jpg" />
+    <Content Include="Assets\Client\images\team4.jpg" />
+    <Content Include="Assets\Client\js\bootstrap.min.js" />
+    <Content Include="Assets\Client\js\jquery-3.3.1.min.js" />
+    <Content Include="Assets\Client\js\jquery.countup.js" />
+    <Content Include="Assets\Client\js\jquery.magnific-popup.min.js" />
+    <Content Include="Assets\Client\js\jquery.waypoints.min.js" />
+    <Content Include="Assets\Client\js\owl.carousel.js" />
+    <Content Include="Assets\Client\js\theme-change.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -162,6 +191,11 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Client\fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -188,7 +222,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Admin\" />
-    <Folder Include="Assets\Client\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
