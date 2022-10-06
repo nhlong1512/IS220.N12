@@ -212,6 +212,7 @@
     <Content Include="Views\TrangChu\ThucDon.cshtml" />
     <Content Include="Views\TrangChu\CuaHang.cshtml" />
     <Content Include="Views\TrangChu\LienHe.cshtml" />
+    <Content Include="Views\TrangChu\VeChungToi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

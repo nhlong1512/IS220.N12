@@ -15,6 +15,10 @@ namespace MoriiCoffee.Controllers
         {
             return View();
         }
+        public ActionResult VeChungToi()
+        {
+            return View();
+        }
 
         public ActionResult ThucDon()
         {
