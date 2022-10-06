@@ -123,6 +123,8 @@
     <Content Include="Assets\Client\js\jquery.waypoints.min.js" />
     <Content Include="Assets\Client\js\owl.carousel.js" />
     <Content Include="Assets\Client\js\theme-change.js" />
+    <Content Include="Assets\Images\LogoMorii1.png" />
+    <Content Include="Assets\Images\LogoMorii2.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
