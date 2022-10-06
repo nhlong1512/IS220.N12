@@ -13,7 +13,19 @@ namespace MoriiCoffee.Controllers
         // GET: TrangChu
         public ActionResult Index()
         {
-            ViewBag.SoMauTin = db.NguoiDungs.Count();
+            return View();
+        }
+
+        public ActionResult ThucDon()
+        {
+            return View();
+        }
+        public ActionResult CuaHang()
+        {
+            return View();
+        }
+        public ActionResult LienHe()
+        {
             return View();
         }
     }
