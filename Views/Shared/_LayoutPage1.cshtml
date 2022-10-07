@@ -23,11 +23,9 @@
     <header id="site-header" class="fixed-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <h1>
-                    <a class="navbar-brand" href="">
-                        <img src="~/Assets/Images/LogoMorii1.png" alt="LogoMorii1" height="40">
-                    </a>
-                </h1>
+                <a class="navbar-brand" href="Index">
+                    <img src="~/Assets/Images/LogoMorii1.png" alt="LogoMorii1" height="40">
+                </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="fa icon-expand fa-bars"></span>
@@ -36,7 +34,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li>@Html.ActionLink("Về Chúng Tôi", "Index", "VeChungToi", new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Về Chúng Tôi", "VeChungToi", "VeChungToi", new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Thực Đơn", "ThucDon", "ThucDon", new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Cửa Hàng", "CuaHang", "CuaHang", new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Liên Hệ", "LienHe", "LienHe", new { @class = "nav-link" })</li>
@@ -49,8 +47,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="contact.html" class="btn btn-primary d-none d-lg-block btn-style mr-2">
-                                Contact
-                                Us
+                                Đăng nhập
                             </a>
                         </li>
                     </ul>
@@ -115,8 +112,8 @@
                             <div class="row sub-columns">
                                 <div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
                                     <h2>
-                                        <a class="navbar-brand" href="index.html">
-                                            <span>C</span>arserving
+                                        <a class="navbar-brand" href="">
+                                            <img src="~/Assets/Images/LogoMorii1.png" alt="LogoMorii1" height="40">
                                         </a>
                                     </h2>
                                     <!-- if logo is image enable this
@@ -193,24 +190,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="below-section">
-                <div class="container">
-                    <div class="copyright-footer">
-                        <div class="columns text-lg-left">
-                            <p>© 2020 Carserving. All rights reserved | Designed by <a href="https://w3layouts.com">W3layouts</a></p>
-                        </div>
-                        <ul class="columns text-lg-right">
-                            <li>
-                                <a href="#">Privacy Policy</a>
-                            </li>
-                            <li>|</li>
-                            <li>
-                                <a href="#">Terms Of Use</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
