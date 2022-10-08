@@ -18176,6 +18176,7 @@ ul.breadcrumbs-custom-path li a {
     .border-effect a:hover,
     .border-effect span.border-effect:hover {
         background-size: 100% 2px;
+        color: var(--moriiColor);
     }
 
 span.border-effect {
@@ -18197,6 +18198,7 @@ span.border-effect {
 
     span.border-effect:hover {
         background-size: 100% 2px;
+        color: var(--moriiColor);
     }
 
 .custom-width {
@@ -27010,6 +27012,10 @@ html .ui-button.ui-state-disabled:active {
     height: auto;
     border-radius: 8px;
     height: 200px;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    object-fit: cover;
 }
 
 .blog-info {
@@ -27065,5 +27071,8 @@ html .ui-button.ui-state-disabled:active {
     padding: 16px 0 0 0;
 }
 
-.date-post {
+.img-fluid:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
