@@ -17438,7 +17438,7 @@ label.price-label {
 /*--//contact--*/
 /*--/breadcrumb--*/
 .w3l-about-breadcrumb {
-    background: url(../images/banner3.jpg) no-repeat center;
+    background: url(../../Images/MoriiMenu.jpg) no-repeat center;
     background-size: cover;
     position: relative;
     z-index: 0;
@@ -17449,7 +17449,6 @@ label.price-label {
     .w3l-about-breadcrumb h2.title {
         font-size: 34px;
         font-weight: 400;
-        color: #fff;
         padding-top: 60px;
     }
 
@@ -17710,7 +17709,7 @@ ul.breadcrumbs-custom-path li a {
     color: #fff;
     width: 42px;
     height: 42px;
-    background: var(--footer-bg);
+    background: var(--moriiColor);
     padding: 0;
     line-height: 42px;
     transition: 0.5s ease-out;
