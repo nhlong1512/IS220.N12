@@ -2769,6 +2769,14 @@ fieldset:disabled a.btn {
     border-color: var(--moriiColor);
 }
 
+.text-morii{
+    color: var(--moriiColor);
+}
+
+.bg-morii{
+    background-color: var(--moriiColor);
+}
+
     .btn-primary:hover {
         color: #fff;
         background-color: var(--moriiColor);
@@ -14341,10 +14349,6 @@ a.link-style {
     text-transform: capitalize;
 }
 
-    .hny-title.two {
-        color: #fff;
-    }
-
     .hny-title span {
         font-weight: 100;
     }
@@ -16345,7 +16349,7 @@ button.owl-next {
 /*--//bottom-grids--*/
 /*--/middle--*/
 .middle {
-    background: url(../images/banner3.jpg) no-repeat top;
+    background: url(../../Images/BgMiddle2.jpeg) no-repeat top;
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -18127,7 +18131,6 @@ ul.breadcrumbs-custom-path li a {
 }
 
 .section-heading .title {
-    color: #ffffff;
     font-size: 55px;
     line-height: 57px;
     text-transform: uppercase;
@@ -23233,7 +23236,6 @@ h6 {
 }
 
     .popular-menu__content .title a {
-        color: #000;
         text-decoration: none;
     }
 
@@ -23242,7 +23244,6 @@ h6 {
 }
 
     .popular-menu__content .pp__price .label {
-        color: #000;
         font-weight: 500;
     }
 

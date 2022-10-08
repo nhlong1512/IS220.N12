@@ -130,6 +130,9 @@
     <Content Include="Assets\Client\js\jquery.waypoints.min.js" />
     <Content Include="Assets\Client\js\owl.carousel.js" />
     <Content Include="Assets\Client\js\theme-change.js" />
+    <Content Include="Assets\Images\Bg-main-1.jpeg" />
+    <Content Include="Assets\Images\Bg-main-2.jpeg" />
+    <Content Include="Assets\Images\Bg-main-3.jpeg" />
     <Content Include="Assets\Images\LogoMorii1.png" />
     <Content Include="Assets\Images\LogoMorii2.png" />
     <Content Include="Assets\Images\menu-1.png" />
@@ -233,6 +236,7 @@
     <Content Include="Views\TrangChu\CuaHang.cshtml" />
     <Content Include="Views\TrangChu\LienHe.cshtml" />
     <Content Include="Views\TrangChu\VeChungToi.cshtml" />
+    <Content Include="Views\TrangChu\Blog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

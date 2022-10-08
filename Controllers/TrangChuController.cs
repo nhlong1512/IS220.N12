@@ -24,6 +24,10 @@ namespace MoriiCoffee.Controllers
         {
             return View();
         }
+        public ActionResult Blog()
+        {
+            return View();
+        }
         public ActionResult CuaHang()
         {
             return View();
