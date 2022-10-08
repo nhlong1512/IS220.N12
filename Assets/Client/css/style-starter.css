@@ -18050,73 +18050,7 @@ ul.breadcrumbs-custom-path li a {
         transform: translateY(5px);
     }
 }
-/* reset css start */
-html {
-    scroll-behavior: smooth;
-}
 
-body {
-    font-family: "Jost", sans-serif;
-    font-size: 16px;
-    padding: 0;
-    margin: 0;
-    font-weight: 400;
-    position: relative;
-    line-height: 29px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    transition: all 0.3s ease-out 0s;
-}
-
-button {
-    cursor: pointer;
-}
-
-*:focus {
-    outline: none;
-}
-
-button {
-    border: none;
-    font-family: "Jost", sans-serif;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-}
-
-span {
-    font-family: "Jost", sans-serif;
-}
-
-button:focus {
-    outline: none;
-}
-
-a {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-    font-family: "Jost", sans-serif;
-}
-
-    a:hover {
-        text-decoration: none;
-        color: #000;
-    }
-
-table {
-    width: 100%;
-}
-
-p, li, span {
-    color: #a7a7a7;
-    margin-bottom: 0;
-}
-
-/* reset css end */
 /* global css start */
 .nice-select {
     background-color: transparent;
@@ -18180,7 +18114,7 @@ p, li, span {
 
 .section-heading .sub-title {
     color: #ffffff;
-    background: #C7A17A;
+    background: #146d4d;
     font-family: "Jost", sans-serif;
     display: inline-block;
     font-size: 12px;
@@ -19901,7 +19835,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
     margin: 0;
     line-height: 1.4;
-    font-family: "Bebas Neue", cursive;
 }
 
 h2 {
@@ -23302,7 +23235,6 @@ h6 {
     .popular-menu__content .title a {
         color: #000;
         text-decoration: none;
-        font-family: "Bebas Neue", cursive;
     }
 
 .popular-menu__content .pp__price {
@@ -23417,14 +23349,12 @@ h6 {
     }
 
         .popular-menu__list .content .title a {
-            font-family: "Bebas Neue", cursive;
             text-decoration: none;
         }
 
     .popular-menu__list .content .price {
         color: #C7A17A;
         font-size: 25px;
-        font-family: "Bebas Neue", cursive;
     }
 
 .popular-menu__list:hover::after {
@@ -24825,7 +24755,6 @@ h6 {
 }
 
 .blog__post .content .title a {
-    font-family: "Bebas Neue", cursive;
     text-decoration: none;
     color: #010103;
 }
@@ -25285,7 +25214,6 @@ h6 {
     .cafena-navigation h4 a {
         color: #000;
         display: block;
-        font-family: "Bebas Neue", cursive;
     }
 
 @media (max-width: 767px) {
