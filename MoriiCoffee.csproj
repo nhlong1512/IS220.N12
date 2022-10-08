@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Client\css\main.css" />
     <Content Include="Assets\Client\css\style-starter.css" />
     <Content Include="Assets\Client\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\Client\images\ab1.jpg" />
@@ -131,6 +132,12 @@
     <Content Include="Assets\Client\js\theme-change.js" />
     <Content Include="Assets\Images\LogoMorii1.png" />
     <Content Include="Assets\Images\LogoMorii2.png" />
+    <Content Include="Assets\Images\menu-1.png" />
+    <Content Include="Assets\Images\menu-2.png" />
+    <Content Include="Assets\Images\menu-3.png" />
+    <Content Include="Assets\Images\menu-4.png" />
+    <Content Include="Assets\Images\menu-5.png" />
+    <Content Include="Assets\Images\menu-6.png" />
     <Content Include="Assets\Images\MoriiBanner1.jpeg" />
     <Content Include="Assets\Images\MoriiBanner2.jpg" />
     <Content Include="Assets\Images\MoriiBanner3.jpg" />
