@@ -27076,6 +27076,17 @@ html .ui-button.ui-state-disabled:active {
     transform: scale(1.1);
 }
 
+.cauchuyen h2 {
+    font-size:40px;
+}
+
+.cauchuyen p {
+    margin:10px 0 10px 0;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+
 
 
 
