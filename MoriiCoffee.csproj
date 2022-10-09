@@ -183,6 +183,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
+    <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +231,10 @@
     <Content Include="Assets\Client\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\Client\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\Client\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Auth\Views\web.config" />
+    <Content Include="Areas\Auth\Views\Auth\Register.cshtml" />
+    <Content Include="Areas\Auth\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Auth\Views\Auth\ForgotPassword.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -256,6 +262,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Auth\Data\" />
+    <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Assets\Admin\" />
   </ItemGroup>
   <PropertyGroup>
