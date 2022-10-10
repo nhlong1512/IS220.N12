@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Areas",
+    "\\Areas\\Auth",
+    "\\Areas\\Auth\\Controllers",
+    "\\Areas\\Auth\\Views",
+    "\\Areas\\Auth\\Views\\Auth",
+    "\\Views",
+    "\\Views\\TrangChu"
+  ],
+  "SelectedNode": "\\Views\\TrangChu\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}

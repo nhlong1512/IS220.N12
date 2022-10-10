@@ -15,9 +15,19 @@ namespace MoriiCoffee.Models
         [Required]
         public string HoTen { get; set; }
         [Required]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+
         public string Email { get; set; }
         [Required]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$")]
+
         public string Password { get; set; }
+        [NotMapped]
+        [Required]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
+
         public string SDT { get; set; }
         public string Role { get; set; }
         public DateTime? NgDK { get; set; }
