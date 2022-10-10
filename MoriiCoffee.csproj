@@ -156,6 +156,18 @@
     <Content Include="Assets\Images\MoriiFeedback2.jpg" />
     <Content Include="Assets\Images\MoriiFeedback3.jpg" />
     <Content Include="Assets\Images\MoriiFeedback4.jpg" />
+    <Content Include="Assets\Login_Register\css\style.css" />
+    <Content Include="Assets\Login_Register\images\icon.png" />
+    <Content Include="Assets\Login_Register\images\icon2.png" />
+    <Content Include="Assets\Login_Register\images\mail.png" />
+    <Content Include="Assets\Login_Register\images\tick.png" />
+    <Content Include="Assets\Login_Register\images\tip.png" />
+    <Content Include="Assets\Login_Register\images\tip2.png" />
+    <Content Include="Assets\Login_Register\images\tip3.png" />
+    <Content Include="Assets\Login_Register\images\top-key.png" />
+    <Content Include="Assets\Login_Register\images\top-lock.png" />
+    <Content Include="Assets\Login_Register\images\top-note.png" />
+    <Content Include="Assets\Login_Register\w3layouts-License.txt" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -186,6 +198,7 @@
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,6 +266,10 @@
     <Content Include="Views\TrangChu\LienHe.cshtml" />
     <Content Include="Views\TrangChu\VeChungToi.cshtml" />
     <Content Include="Views\TrangChu\Blog.cshtml" />
+    <Content Include="Views\User\DangKy.cshtml" />
+    <Content Include="Views\User\DangNhap.cshtml" />
+    <Content Include="Views\Shared\_LoginRegister.cshtml" />
+    <Content Include="Views\User\QuenMatKhau.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,6 +282,7 @@
     <Folder Include="Areas\Auth\Data\" />
     <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Assets\Admin\" />
+    <Folder Include="Assets\Login_Register\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

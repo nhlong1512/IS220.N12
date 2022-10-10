@@ -69,7 +69,6 @@ D:\VS\MoriiCoffee\bin\System.Web.Webpages.Razor.xml
 D:\VS\MoriiCoffee\bin\System.Web.Helpers.xml
 D:\VS\MoriiCoffee\bin\System.Web.Mvc.xml
 D:\VS\MoriiCoffee\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.csproj.AssemblyReference.cache
 D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.csproj.CoreCompileInputs.cache
 D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.csproj.CopyComplete
 D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.dll
@@ -226,3 +225,4 @@ D:\VS\Clone\IS220.N12\obj\Debug\MoriiCoffee.csproj.CoreCompileInputs.cache
 D:\VS\Clone\IS220.N12\obj\Debug\MoriiCoffee.csproj.CopyComplete
 D:\VS\Clone\IS220.N12\obj\Debug\MoriiCoffee.dll
 D:\VS\Clone\IS220.N12\obj\Debug\MoriiCoffee.pdb
+D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.csproj.AssemblyReference.cache

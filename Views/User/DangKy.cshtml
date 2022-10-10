@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_LoginRegister.cshtml";
+}
+
+<!--/start-login-two-->
+<div class="login-02">
+    <div class="two-login  hvr-float-shadow">
+        <div class="two-login-head">
+            <img src="images/top-note.png" alt="" />
+            <h2>register</h2>
+            <lable></lable>
+        </div>
+        <form>
+            <li>
+                <input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" class=" icon2 user2"></a>
+            </li>
+            <li>
+                <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon2 lock2"></a>
+            </li>
+            <li>
+                <input type="password" value="Confirm Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Confirm Password';}"><a href="#" class=" icon2 lock2"></a>
+            </li>
+            <li>
+                <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}"><a href="#" class=" icon2 mail"></a>
+            </li>
+            <div class="p-container">
+                <label class="checkbox two"><input type="checkbox" name="checkbox" checked><i></i>I agree to the <a href="#">Terms of Servicee</a></label>
+            </div>
+            <div class="submit two">
+                <input type="submit" onclick="myFunction()" value="SIGN UP">
+            </div>
+            <h5>Already a member ?<a href="~/dang-nhap"> Login Here</a></h5>
+        </form>
+    </div>
+</div>
