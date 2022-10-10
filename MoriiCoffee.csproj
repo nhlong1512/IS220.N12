@@ -247,7 +247,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
-    <Content Include="Views\TrangChu\Index.cshtml" />
+    <Content Include="Views\TrangChu\TrangChu.cshtml" />
     <Content Include="Views\TrangChu\ThucDon.cshtml" />
     <Content Include="Views\TrangChu\CuaHang.cshtml" />
     <Content Include="Views\TrangChu\LienHe.cshtml" />

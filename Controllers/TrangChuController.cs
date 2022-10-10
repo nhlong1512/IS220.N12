@@ -11,7 +11,7 @@ namespace MoriiCoffee.Controllers
     {
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         // GET: TrangChu
-        public ActionResult Index()
+        public ActionResult TrangChu()
         {
             return View();
         }
