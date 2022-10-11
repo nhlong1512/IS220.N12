@@ -20,6 +20,7 @@ namespace MoriiCoffee.Models
         public DbSet<ChiTietHD> ChiTietHDs { get; set; }
         public DbSet<CuaHang> CuaHangs { get; set; }
         public DbSet<DatHang> DatHangs { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
 
     }
 }
