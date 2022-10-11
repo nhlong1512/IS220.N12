@@ -26,9 +26,7 @@ namespace MoriiCoffee.Controllers
         }
         public ActionResult Blog()
         {
-            ViewBag.SoBlogsLong = db.Blogs.Count();
-            ViewBag.SoBlogs = db.CuaHangs.Count();
-
+            ViewBag.LongNguyen = db.Blogs.Count();
             return View();
         }
         public ActionResult CuaHang()

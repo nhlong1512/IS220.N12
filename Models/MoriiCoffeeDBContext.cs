@@ -22,5 +22,6 @@ namespace MoriiCoffee.Models
         public DbSet<DatHang> DatHangs { get; set; }
         public DbSet<Blog> Blogs { get; set; }
 
+
     }
 }
