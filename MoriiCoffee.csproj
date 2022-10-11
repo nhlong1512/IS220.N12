@@ -195,6 +195,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -254,6 +256,9 @@
     <Content Include="Areas\Auth\Views\Auth\Register.cshtml" />
     <Content Include="Areas\Auth\Views\Auth\Login.cshtml" />
     <Content Include="Areas\Auth\Views\Auth\ForgotPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -285,6 +290,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Areas\Auth\Data\" />
     <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Assets\Admin\" />

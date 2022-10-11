@@ -32,6 +32,8 @@ namespace MoriiCoffee
                defaults: new { controller = "User", action = "QuenMatKhau", id = UrlParameter.Optional }
            );
 
+            //Config route cho Admin
+
 
             //Route mặc định luôn phải để ở cuối cùng, tránh ghi đè lên các route đã được customize
 
