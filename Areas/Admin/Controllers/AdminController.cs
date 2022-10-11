@@ -17,5 +17,13 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             ViewBag.LongNguyen = db.Blogs.Count();
             return View();
         }
+        public ActionResult Blog()
+        {
+
+            ViewBag.LongNguyen = db.Blogs.Count();
+            return View();
+        }
+
+
     }
 }
