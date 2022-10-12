@@ -309,8 +309,15 @@ span.name-caret {
     text-align: center;
     font-weight: 400;
 }
-.down  a img {
-         border-radius: 50%;
+
+
+.avatar-image {
+	width: 80px;
+	height: 80px;
+}
+
+.down a img {
+      border-radius: 50%;
     -o-border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -8192,3 +8199,12 @@ footer  p a:hover ,.footer p a:hover{
 	}
 }
 /***responsive***/
+
+
+
+
+
+.avatar-image{
+	width:80px;
+	height:80px;
+}
