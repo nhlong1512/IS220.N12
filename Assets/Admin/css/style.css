@@ -4,6 +4,19 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
+
+:root {
+	--morii-color: #146d4d;
+}
+
+.text-morii {
+	color:#146d4d; 
+}
+
+.bg-morii {
+	background-color: #146d4d;
+}
+
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;}
@@ -103,7 +116,7 @@ button#showLeftPush {
     -webkit-transition: all 0.2s ease-out 0s;
     transition: all 0.2s ease-out 0s;
 	border: none;
-    background-color: #F2B33F;
+    background-color: var(--morii-color);
 	outline:none;
     border-radius: 50%;
     height: 40px;
@@ -232,7 +245,7 @@ span.nav-badge {
 span.nav-badge-btm {
     font-size: 12px;
     color: #FFF;
-    background: #F2B33F;
+    background: var(--morii-color);
     position: absolute;
     top: 18%;
     right: 15%;
@@ -863,7 +876,7 @@ ul.dropdown-menu.drp-mnu li {
 }
 .user-name p{
 	font-size:1em;
-	color: #F2B33F;
+	color: var(--morii-color);
 	line-height:1em;
 	font-weight:700;
 }
@@ -1212,7 +1225,7 @@ h2.title1,h3.title1 {
 	margin:2em 0 0 0;
 }
 .demolayout {
-  background:#F2B33F;
+  background:var(--morii-color);
   width: 60px;
   overflow: hidden;
 }
@@ -1476,7 +1489,7 @@ section#tables  p {
     margin-top: 10px;
 }
 .forms button.btn.btn-default {
-    background-color: #F2B33F;
+    background-color: var(--morii-color);
     color: #fff;
     padding: .5em 1.5em;
 	border: none;
@@ -1610,7 +1623,7 @@ button.note-color-btn {
     opacity: 1;
 }
 .validation-grids .btn-primary:hover{
-	 background: #F2B33F !important;
+	 background: var(--morii-color) !important;
 }
 .bottom .btn-primary {
     margin: 0;
@@ -1669,7 +1682,7 @@ form.search-form {
     height: 36px;
 }
 .error-page h3 i.fa {
-    color: #F2B33F;
+    color: var(--morii-color);
 }
 .error-page p {
     letter-spacing: 1px;
@@ -1767,14 +1780,14 @@ form.search-form {
     display:block;
 }
 .forgot a:hover{
-    color: #f2b33f;
+    color: var(--morii-color);
 }
 .login-page input[type="submit"] {
     border: none;
     outline: none;
     cursor: pointer;
     color: #fff;
-    background: #F2B33F;
+    background: var(--morii-color);
     width: 40%;
     padding: .6em 1em;
     font-size: 1em;
@@ -1811,7 +1824,7 @@ form.search-form {
 }
 
 .registration a:hover{
-    color: #f2b33f;
+    color: var(--morii-color);
 }
 .social-btn i {
     color: #fff;
@@ -1929,7 +1942,7 @@ h3.icon-subheading {
 h2.agileits-icons-title,h3.agileits-icons-title {
     text-align: center;
     font-size: 33px;
-    color: #F2B33F;
+    color: var(--morii-color);
 }
 .icons a {
     color: #777;
@@ -2117,7 +2130,7 @@ p.creating {
     outline: none;
     cursor: pointer;
     color: #fff;
-    background: #f2b33f;
+    background: var(--morii-color);
     width: 25%;
     padding: .6em 1em;
     font-size: 1em;
@@ -2198,10 +2211,10 @@ h4.modal-title {
     margin: 0;
 }
 .modal-grids button.btn.btn-primary {
-    background-color: #F2B33F;
+    background-color: var(--morii-color);
     font-size: 1em;
     color: #fff;   
-	border-color: #F2B33F;
+	border-color: var(--morii-color);
 	outline:none;
 	border-radius: 3px;
 }
@@ -2560,7 +2573,7 @@ li.head i.fa {
 }
 .compose-left span {
     float: right;
-    background-color: #F2B33F;
+    background-color: var(--morii-color);
     padding: 3px 10px;
     font-size: .7em;
     border-radius: 4px;
@@ -2623,7 +2636,7 @@ li.head i.fa {
     position: relative;
     overflow: hidden;
 	border-radius: inherit;
-    background: #f2b33f;
+    background: var(--morii-color);
     color: #fff;
 }
 .compose-right .btn.btn-file>input[type='file'] {
@@ -5598,7 +5611,7 @@ span.malorum-pro {
 }
 .profile-top img {
     vertical-align: middle;
-    border: 4px solid #F2B33F;
+    border: 4px solid var(--morii-color);
     border-radius: 63%;
 }
 .profile-top h4 {
@@ -5921,7 +5934,7 @@ i.fa.fa-facebook.profile-icon {
     background-color: #6164C1;
 }
 .widget_1_box .bg-success {
-    background-color: #F2B33F;
+    background-color: var(--morii-color);
 }
 .widget_1_box  .bg-danger {
     background-color: rgba(233, 78, 2, 0.88);
@@ -6137,7 +6150,7 @@ i.icon_13{
 	-o-transition: 0.5s all;
 }
 .activity_box input[type="submit"]:hover{
-	background: #F2B33F;
+	background: var(--morii-color);
 }
 .activity-desc-sub1:after{
 	right:-6%;
@@ -7257,7 +7270,7 @@ h4.asd label {
 		width: 20px;
 	}
 	.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-		background-color: #F2B33F;
+		background-color: var(--morii-color);
 	}
 	.search-box {
 		width: 45%;
