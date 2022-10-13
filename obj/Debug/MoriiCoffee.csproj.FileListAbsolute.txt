@@ -227,4 +227,3 @@ D:\VS\Clone\IS220.N12\obj\Debug\MoriiCoffee.dll
 D:\VS\Clone\IS220.N12\obj\Debug\MoriiCoffee.pdb
 D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.Migrations.Init.resources
 D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.csproj.GenerateResource.cache
-D:\VS\MoriiCoffee\obj\Debug\MoriiCoffee.csproj.AssemblyReference.cache
