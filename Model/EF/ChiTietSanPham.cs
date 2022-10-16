@@ -6,21 +6,22 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CuaHang")]
-    public partial class CuaHang
+    [Table("ChiTietSanPham")]
+    public partial class ChiTietSanPham
     {
         public long ID { get; set; }
 
         [StringLength(250)]
-        public string TenCuaHang { get; set; }
+        public string TenSanPham { get; set; }
 
-        [StringLength(50)]
-        public string SDT { get; set; }
+        public decimal? Gia { get; set; }
 
-        public long? MaQuanLy { get; set; }
+        public decimal? GiaCu { get; set; }
 
-        [StringLength(250)]
-        public string DiaChi { get; set; }
+        [StringLength(10)]
+        public string Size { get; set; }
+
+        public long? MaKM { get; set; }
 
         public bool? Status { get; set; }
 
@@ -39,5 +40,11 @@ namespace Model.EF
 
         [StringLength(50)]
         public string ModifiedBy { get; set; }
+
+        [Column(TypeName = "ntext")]
+        public string MoTaSanPham { get; set; }
+
+        [Column("ChiTietSanPham", TypeName = "ntext")]
+        public string ChiTietSanPham1 { get; set; }
     }
 }

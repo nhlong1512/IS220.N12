@@ -6,9 +6,9 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("QuanLys")]
+    [Table("QuanLy")]
     public partial class QuanLy
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
     }
 }

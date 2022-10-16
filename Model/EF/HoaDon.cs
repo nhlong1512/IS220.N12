@@ -6,19 +6,32 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("HoaDon")]
     public partial class HoaDon
     {
-        [Key]
-        public int MaHD { get; set; }
+        public long ID { get; set; }
 
-        public int MaNV { get; set; }
+        public long? MaNV { get; set; }
 
-        public int MaKH { get; set; }
+        public long? MaKH { get; set; }
 
-        public int MaCH { get; set; }
+        public long? MaCH { get; set; }
 
-        public DateTime NgayHD { get; set; }
+        public decimal? TongTien { get; set; }
 
-        public int TongTien { get; set; }
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        [StringLength(50)]
+        public string ModifiedBy { get; set; }
+
+        public bool? Status { get; set; }
     }
 }

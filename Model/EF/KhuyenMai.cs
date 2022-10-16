@@ -6,12 +6,23 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("KhuyenMai")]
     public partial class KhuyenMai
     {
-        [Key]
-        public int MaKM { get; set; }
+        public long ID { get; set; }
 
-        public int PhanTramKM { get; set; }
+        public int? PhanTramKM { get; set; }
 
+        public bool? Status { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        [StringLength(50)]
+        public string ModifiedBy { get; set; }
     }
 }

@@ -6,29 +6,21 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CuaHang")]
-    public partial class CuaHang
+    [Table("ChiTietHoaDon")]
+    public partial class ChiTietHoaDon
     {
         public long ID { get; set; }
 
-        [StringLength(250)]
-        public string TenCuaHang { get; set; }
+        public long? MaSP { get; set; }
 
-        [StringLength(50)]
-        public string SDT { get; set; }
+        public int? SoLuong { get; set; }
 
-        public long? MaQuanLy { get; set; }
-
-        [StringLength(250)]
-        public string DiaChi { get; set; }
+        public decimal? ThanhTien { get; set; }
 
         public bool? Status { get; set; }
 
         [StringLength(250)]
         public string MetaTitle { get; set; }
-
-        [StringLength(250)]
-        public string UrlImage { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

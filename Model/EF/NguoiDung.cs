@@ -6,29 +6,46 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("NguoiDung")]
     public partial class NguoiDung
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
 
-        [Required]
+        [StringLength(250)]
         public string HoTen { get; set; }
 
-        [Required]
+        [StringLength(250)]
         public string Email { get; set; }
 
-        [Required]
+        [StringLength(32)]
         public string Password { get; set; }
 
-        public string SDT { get; set; }
-
+        [StringLength(250)]
         public string Role { get; set; }
 
-        public DateTime? NgDK { get; set; }
+        [StringLength(50)]
+        public string SDT { get; set; }
 
         public DateTime? NgSinh { get; set; }
 
-        public string GioiTinh { get; set; }
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
 
-        public string UrlAvt { get; set; }
+        public bool? GioiTinh { get; set; }
+
+        [StringLength(250)]
+        public string Urlmage { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        [StringLength(50)]
+        public string ModifiedBy { get; set; }
+
+        public bool? Status { get; set; }
     }
 }

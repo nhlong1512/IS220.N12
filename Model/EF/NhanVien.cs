@@ -6,10 +6,11 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("NhanVien")]
     public partial class NhanVien
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
 
-        public int Luong { get; set; }
+        public decimal? Luong { get; set; }
     }
 }
