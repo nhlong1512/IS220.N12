@@ -12,5 +12,6 @@ namespace Model.EF
         public int MaKM { get; set; }
 
         public int PhanTramKM { get; set; }
+
     }
 }

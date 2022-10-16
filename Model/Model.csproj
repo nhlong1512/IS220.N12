@@ -50,6 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\Blog.cs" />
+    <Compile Include="EF\ChiTietHD.cs" />
+    <Compile Include="EF\ChiTietSP.cs" />
+    <Compile Include="EF\CuaHang.cs" />
+    <Compile Include="EF\C__MigrationHistory.cs" />
+    <Compile Include="EF\DatHang.cs" />
+    <Compile Include="EF\HoaDon.cs" />
+    <Compile Include="EF\KhachHang.cs" />
+    <Compile Include="EF\KhuyenMai.cs" />
+    <Compile Include="EF\MoriiCoffeeDBContext.cs" />
+    <Compile Include="EF\NguoiDung.cs" />
+    <Compile Include="EF\NhanVien.cs" />
+    <Compile Include="EF\QuanLy.cs" />
+    <Compile Include="EF\SanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,7 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dao\" />
-    <Folder Include="EF\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
