@@ -24,5 +24,28 @@ namespace Model.Dao
             return entity.ID;
         }
 
+        //Update người dùng
+        public bool Update(NguoiDung entity)
+        {
+            try
+            {
+                var nguoidung = db.NguoiDungs.Find(entity.ID);
+                nguoidung.HoTen = entity.HoTen;
+                nguoidung.SDT = entity.SDT;
+                nguoidung.NgSinh = entity.NgSinh;
+                nguoidung.GioiTinh = entity.GioiTinh;
+                nguoidung.Urlmage = entity.Urlmage;
+                nguoidung.ModifiedBy = entity.ModifiedBy;
+                nguoidung.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+
+
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }
