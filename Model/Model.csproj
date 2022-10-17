@@ -50,11 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\Blog.cs" />
-    <Compile Include="EF\ChiTietHD.cs" />
-    <Compile Include="EF\ChiTietSP.cs" />
+    <Compile Include="EF\ChiTietHoaDon.cs" />
+    <Compile Include="EF\ChiTietSanPham.cs" />
     <Compile Include="EF\CuaHang.cs" />
-    <Compile Include="EF\C__MigrationHistory.cs" />
     <Compile Include="EF\DatHang.cs" />
     <Compile Include="EF\HoaDon.cs" />
     <Compile Include="EF\KhachHang.cs" />

@@ -8,7 +8,7 @@ namespace Model.EF
     public partial class MoriiCoffeeDBContext : DbContext
     {
         public MoriiCoffeeDBContext()
-            : base("name=MoriiCoffeeDBContext1")
+            : base("name=MoriiCoffeeDBContext")
         {
         }
 

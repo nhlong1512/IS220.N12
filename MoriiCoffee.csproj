@@ -378,24 +378,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202210111800150_Init.cs" />
-    <Compile Include="Migrations\202210111800150_Init.Designer.cs">
-      <DependentUpon>202210111800150_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\ChiTietHD.cs" />
-    <Compile Include="Models\ChiTietSP.cs" />
-    <Compile Include="Models\CuaHang.cs" />
-    <Compile Include="Models\DatHang.cs" />
-    <Compile Include="Models\HoaDon.cs" />
-    <Compile Include="Models\KhachHang.cs" />
-    <Compile Include="Models\KhuyenMai.cs" />
-    <Compile Include="Models\MoriiCoffeeDBContext.cs" />
-    <Compile Include="Models\NguoiDung.cs" />
-    <Compile Include="Models\NhanVien.cs" />
-    <Compile Include="Models\QuanLy.cs" />
-    <Compile Include="Models\SanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -505,11 +487,7 @@
     <Folder Include="Areas\Auth\Data\" />
     <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Assets\Login_Register\js\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202210111800150_Init.resx">
-      <DependentUpon>202210111800150_Init.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Model\Model.csproj">
