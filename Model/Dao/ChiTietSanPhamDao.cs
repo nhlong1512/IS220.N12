@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Dao
 {
-    class ChiTietHDDao
+    class ChiTietSanPhamDao
     {
     }
 }
