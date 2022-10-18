@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\KhachHangDao.cs" />
+    <Compile Include="Dao\NguoiDungDao.cs" />
     <Compile Include="EF\ChiTietHoaDon.cs" />
     <Compile Include="EF\ChiTietSanPham.cs" />
     <Compile Include="EF\CuaHang.cs" />
@@ -68,8 +70,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dao\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

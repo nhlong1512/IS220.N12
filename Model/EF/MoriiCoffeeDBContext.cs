@@ -12,6 +12,7 @@ namespace Model.EF
         {
         }
 
+        public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<ChiTietSanPham> ChiTietSanPhams { get; set; }
         public virtual DbSet<CuaHang> CuaHangs { get; set; }
@@ -27,6 +28,14 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Blog>()
+                .Property(e => e.ModifiedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Blog>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
             modelBuilder.Entity<ChiTietHoaDon>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);

@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.EF;
+
+
+namespace Model.Dao
+{
+    class KhachHangDao
+    {
+        MoriiCoffeeDBContext db = null;
+        public KhachHangDao()
+        {
+            db = new MoriiCoffeeDBContext();
+        }
+
+        
+    }
+}

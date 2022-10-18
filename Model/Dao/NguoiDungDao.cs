@@ -35,14 +35,14 @@ namespace Model.Dao
         {
             try
             {
-                var nguoidung = db.NguoiDungs.Find(entity.ID);
-                nguoidung.HoTen = entity.HoTen;
-                nguoidung.SDT = entity.SDT;
-                nguoidung.NgSinh = entity.NgSinh;
-                nguoidung.GioiTinh = entity.GioiTinh;
-                nguoidung.Urlmage = entity.Urlmage;
-                nguoidung.ModifiedBy = entity.ModifiedBy;
-                nguoidung.ModifiedDate = DateTime.Now;
+                var nd = db.NguoiDungs.Find(entity.ID);
+                nd.HoTen = entity.HoTen;
+                nd.SDT = entity.SDT;
+                nd.NgSinh = entity.NgSinh;
+                nd.GioiTinh = entity.GioiTinh;
+                nd.Urlmage = entity.Urlmage;
+                nd.ModifiedBy = entity.ModifiedBy;
+                nd.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;
 
@@ -59,8 +59,8 @@ namespace Model.Dao
         {
             try
             {
-                var nguoidung = db.NguoiDungs.Find(id);
-                db.NguoiDungs.Remove(nguoidung);
+                var nd = db.NguoiDungs.Find(id);
+                db.NguoiDungs.Remove(nd);
                 db.SaveChanges();
                 return true;
             }
