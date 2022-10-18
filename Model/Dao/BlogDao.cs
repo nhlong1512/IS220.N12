@@ -17,13 +17,13 @@ namespace Model.Dao
             db = new MoriiCoffeeDBContext();
         }
 
-        //Xem chi tiết người dùng
+        //Xem chi tiết Blog
         public Blog ViewDetail(int id)
         {
             return db.Blogs.Find(id);
         }
 
-        //Thêm Người dùng
+        //Thêm Blog
         public long Insert(Blog entity)
         {
             db.Blogs.Add(entity);
@@ -31,7 +31,7 @@ namespace Model.Dao
             return entity.ID;
         }
 
-        //Update người dùng
+        //Update Blog
         public bool Update(Blog entity)
         {
             try
@@ -52,7 +52,7 @@ namespace Model.Dao
             }
         }
 
-        //Xóa người dùng
+        //Xóa Blog
         public bool Delete(int id)
         {
             try
