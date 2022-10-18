@@ -16,6 +16,12 @@ namespace Model.Dao
             db = new MoriiCoffeeDBContext();
         }
 
-        
+        //Xem chi tiết Khách hàng
+        public KhachHang ViewDetail(int id)
+        {
+            return db.KhachHangs.Find(id);
+        }
+
+
     }
 }
