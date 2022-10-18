@@ -24,7 +24,6 @@ namespace Model.EF
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<QuanLy> QuanLies { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
