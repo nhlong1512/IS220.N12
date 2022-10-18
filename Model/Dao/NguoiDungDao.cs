@@ -16,6 +16,12 @@ namespace Model.Dao
             db = new MoriiCoffeeDBContext();
         }
 
+        //Xem chi tiết người dùng
+        public NguoiDung ViewDetail(int id)
+        {
+            return db.NguoiDungs.Find(id);
+        }
+
         //Thêm Người dùng
         public long Insert (NguoiDung entity)
         {
@@ -41,6 +47,22 @@ namespace Model.Dao
                 return true;
 
 
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        //Xóa người dùng
+        public bool Delete(int id)
+        {
+            try
+            {
+                var nguoidung = db.NguoiDungs.Find(id);
+                db.NguoiDungs.Remove(nguoidung);
+                db.SaveChanges();
+                return true;
             }
             catch(Exception ex)
             {
