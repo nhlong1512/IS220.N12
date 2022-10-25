@@ -1,5 +1,4 @@
-﻿using MoriiCoffee.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -10,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using static System.Collections.Specialized.BitVector32;
 using System.Data.Entity.Migrations;
+using Model.EF;
 
 namespace MoriiCoffee.Areas.Auth.Controllers
 {

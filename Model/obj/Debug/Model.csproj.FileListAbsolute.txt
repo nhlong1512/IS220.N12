@@ -9,4 +9,3 @@ D:\VS\IS220.N12\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 D:\VS\IS220.N12\Model\obj\Debug\Model.csproj.CopyComplete
 D:\VS\IS220.N12\Model\obj\Debug\Model.dll
 D:\VS\IS220.N12\Model\obj\Debug\Model.pdb
-D:\VS\IS220.N12\Model\obj\Debug\Model.csproj.AssemblyReference.cache

@@ -50,8 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\BlogDao.cs" />
+    <Compile Include="Dao\ChiTietHoaDonDao.cs" />
+    <Compile Include="Dao\ChiTietSanPhamDao.cs" />
+    <Compile Include="Dao\CuaHangDao.cs" />
+    <Compile Include="Dao\DatHangDao.cs" />
+    <Compile Include="Dao\HoaDonDao.cs" />
     <Compile Include="Dao\KhachHangDao.cs" />
+    <Compile Include="Dao\KhuyenMaiDao.cs" />
     <Compile Include="Dao\NguoiDungDao.cs" />
+    <Compile Include="Dao\NhanVienDao.cs" />
+    <Compile Include="Dao\QuanLyDao.cs" />
+    <Compile Include="Dao\SanPhamDao.cs" />
+    <Compile Include="EF\Blog.cs" />
     <Compile Include="EF\ChiTietHoaDon.cs" />
     <Compile Include="EF\ChiTietSanPham.cs" />
     <Compile Include="EF\CuaHang.cs" />
