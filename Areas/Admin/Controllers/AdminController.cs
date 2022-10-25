@@ -1,9 +1,11 @@
-﻿using Model.EF;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model.Dao;
+using Model.EF;
 
 
 namespace MoriiCoffee.Areas.Admin.Controllers
@@ -11,6 +13,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
+        private Blog bl = new Blog();
         // GET: Admin/Admin
         public ActionResult Dashboard()
         {
@@ -20,8 +23,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         }
         public ActionResult Blog()
         {
-
-            ViewBag.LongNguyen = db.Blogs.Count();
+            
             return View();
         }
 

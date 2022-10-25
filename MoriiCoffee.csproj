@@ -371,7 +371,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -453,7 +453,7 @@
     <Content Include="Assets\Admin\RichEditor\maps\mideast.json" />
     <Content Include="Assets\Admin\RichEditor\maps\risk.json" />
     <Content Include="Assets\Admin\RichEditor\maps\usofa.json" />
-    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

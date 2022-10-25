@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model.Dao
 {
-    class ChiTietHoaDonDao
+    public class ChiTietHoaDonDao
     {
         MoriiCoffeeDBContext db = null;
 

@@ -8,7 +8,7 @@ using Model.EF;
 
 namespace Model.Dao
 {
-    class QuanLyDao
+    public class QuanLyDao
     {
         MoriiCoffeeDBContext db = null;
         public QuanLyDao()

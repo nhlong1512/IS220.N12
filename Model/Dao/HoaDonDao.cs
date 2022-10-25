@@ -8,7 +8,7 @@ using Model.EF;
 
 namespace Model.Dao
 {
-    class HoaDonDao
+    public class HoaDonDao
     {
         MoriiCoffeeDBContext db = null;
 
