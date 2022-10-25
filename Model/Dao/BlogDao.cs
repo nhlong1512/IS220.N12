@@ -26,9 +26,11 @@ namespace Model.Dao
         //Thêm Blog
         public long Insert(Blog entity)
         {
-            db.Blogs.Add(entity);
-            db.SaveChanges();
-            return entity.ID;
+
+                db.Blogs.Add(entity);
+                db.SaveChanges();
+                return entity.ID;
+            
         }
 
         //Update Blog

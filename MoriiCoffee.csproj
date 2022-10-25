@@ -415,7 +415,6 @@
     <Content Include="Areas\Auth\Views\Auth\ForgotPassword.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Blog.cshtml" />
     <Content Include="Assets\Admin\fonts\fontawesome-webfont.eot" />
     <Content Include="Assets\Admin\fonts\fontawesome-webfont.ttf" />
     <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff" />

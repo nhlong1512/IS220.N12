@@ -12,12 +12,15 @@ namespace Model.EF
         public long ID { get; set; }
 
         [StringLength(250)]
+        [Required]
         public string TieuDe { get; set; }
 
         [Column(TypeName = "ntext")]
+        [Required]
         public string MoTa { get; set; }
 
         [Column(TypeName = "ntext")]
+        [Required]
         public string NoiDung { get; set; }
 
         public long? MaND { get; set; }
