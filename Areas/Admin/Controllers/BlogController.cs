@@ -13,27 +13,28 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         // GET: Admin/Blog
         public ActionResult Index()
         {
+
             return View();
         }
 
         public ActionResult Create(Blog blog)
         {
-
             if (ModelState.IsValid)
             {
                 var dao = new BlogDao();
                 long id = dao.Insert(blog);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Create", "Blog");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Thêm thất bại");
+                    ViewBag.LongNguyen ="Theem that bai";
                 }
             }
-            
-                return View("Index");
+            return View();
+
         }
     }
 }
