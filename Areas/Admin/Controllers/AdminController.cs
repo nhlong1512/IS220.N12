@@ -17,8 +17,6 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         // GET: Admin/Admin
         public ActionResult Dashboard()
         {
-
-            ViewBag.LongNguyen = db.Blogs.Count();
             return View();
         }
         public ActionResult Blog()
