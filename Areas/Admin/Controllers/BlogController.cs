@@ -14,11 +14,13 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
+        private NguoiDungDao nguoidungdao = new NguoiDungDao();
         public ActionResult Index()
         {
             var blogs = bldao.ViewAll();
             ViewBag.blogs = blogs;
-
+            var nguoidung = nguoidungdao.ViewDetail(1);
+            ViewBag.nguoidung = nguoidung;
             return View();
         }
 

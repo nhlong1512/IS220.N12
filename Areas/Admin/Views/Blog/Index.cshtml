@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var blogs = ViewBag.blogs;
+    var nguoidung = ViewBag.nguoidung;
 }
 
 <div class="tab-content rounded-bottom">
@@ -11,9 +12,10 @@
             <thead>
                 <tr>
                     <th scope="col">STT</th>
+                    <th scope="col"></th>
                     <th scope="col">Tiêu đề</th>
-                    <th scope="col">Mô tả</th>
-                    <th scope="col">Nội dung</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Ngày đăng</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,9 +26,10 @@
                         ++i;
                         <tr>
                             <th scope="row">@i</th>
+                            <td><img src=@blog.UrlImage width="80" height="80" /></td>
                             <td>@blog.TieuDe</td>
-                            <td>@blog.MoTa</td>
-                            <td>@blog.NoiDung</td>
+                            <td>@nguoidung.HoTen</td>
+                            <td>@blog.CreatedDate</td>
                         </tr>
                     }
                 }
