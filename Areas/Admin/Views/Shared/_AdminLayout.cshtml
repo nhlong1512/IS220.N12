@@ -117,7 +117,7 @@
         </div>
         <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="~/Admin">
                     <svg class="nav-icon">
                         <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-speedometer"></use>
                     </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span>
@@ -437,17 +437,8 @@
                 </ul>
             </div>
             <div class="header-divider"></div>
-            <div class="container-fluid">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb my-0 ms-2">
-                        <li class="breadcrumb-item">
-                            <!-- if breadcrumb is single-->
-                            <span>Home</span>
-                        </li>
-                        <li class="breadcrumb-item active"><span>Dashboard</span></li>
-                    </ol>
-                </nav>
-            </div>
+            @RenderSection("breadcrumb", required: false)
+            
         </header>
         @RenderBody()
         <footer class="footer">
