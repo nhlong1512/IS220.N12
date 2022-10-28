@@ -11,27 +11,21 @@ namespace MoriiCoffee.Areas.Admin.Controllers
     public class BlogController : Controller
     {
         // GET: Admin/Blog
+        private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
+        private Blog bl = new Blog();
+        private BlogDao bldao = new BlogDao();
         public ActionResult Index()
         {
+            var blogs = bldao.ViewAll();
+            ViewBag.blogs = blogs;
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(Blog blog)
         {
-            if (ModelState.IsValid)
-            {
-                var dao = new BlogDao();
-                long id = dao.Insert(blog);
-                if (id > 0)
-                {
-                    return RedirectToAction("Index", "Blog");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Thêm thất bại");
-                }
-            }
+            
             return View();
 
         }

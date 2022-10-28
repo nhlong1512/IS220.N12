@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var blogs = ViewBag.blogs;
+}
+
+<div class="tab-content rounded-bottom">
+    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Nội dung</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var i = 0;
+                    foreach (var blog in blogs)
+                    {
+                        ++i;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@blog.TieuDe</td>
+                            <td>@blog.MoTa</td>
+                            <td>@blog.NoiDung</td>
+                        </tr>
+                    }
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -18,17 +18,9 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         // GET: Admin/Admin
         public ActionResult Dashboard()
         {
-            try
-            {
-                foreach(Blog bl in bldao.ViewAll())
-                {
-                    if (bl.ID == 3) ViewBag.Long = bl.TieuDe;
-                }
-                
-            }catch(Exception ex)
-            {
-                ViewBag.Long = "Falsseeeee";
-            }
+            var blogs = bldao.ViewAll();
+            ViewBag.blogs = blogs;
+            
                 
             return View();
         }
