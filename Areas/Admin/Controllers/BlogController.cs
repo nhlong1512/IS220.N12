@@ -24,10 +24,23 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Create(Blog blog)
         {
-            
+
+            if (ModelState.IsValid)
+            {
+                var id = bldao.Insert(blog);
+                if (id > 0)
+                {
+                    return RedirectToAction("Index", "Blog");
+                }
+                return View("Create");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Thêm thất bại");
+            }
             return View();
 
         }

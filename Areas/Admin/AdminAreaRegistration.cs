@@ -28,6 +28,14 @@ namespace MoriiCoffee.Areas.Admin
                defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional }
            );
 
+            context.MapRoute(
+               name: "BlogCreate",
+               url: "admin/blog/create",
+               defaults: new { controller = "Blog", action = "Create", id = UrlParameter.Optional }
+           );
+
+
+
 
             context.MapRoute(
                 "Admin_default",
