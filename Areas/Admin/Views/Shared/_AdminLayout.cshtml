@@ -58,19 +58,6 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    @*<link rel="apple-touch-icon" sizes="57x57" href="~/Assets/Admin/assets/favicon/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="~/Assets/Admin/assets/favicon/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="~/Assets/Admin/assets/favicon/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="~/Assets/Admin/assets/favicon/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="~/Assets/Admin/assets/favicon/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="~/Assets/Admin/assets/favicon/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="~/Assets/Admin/assets/favicon/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="~/Assets/Admin/assets/favicon/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="~/Assets/Admin/assets/favicon/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="~/Assets/Admin/assets/favicon/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="~/Assets/Admin/assets/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="~/Assets/Admin/assets/favicon/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="~/Assets/Admin/assets/favico*@n/favicon-16x16.png">
     <link rel="manifest" href="~/Assets/Admin/assets/favicon/manifest.json">
     <link rel="icon" type="image/x-icon" href="~/Assets/Images/LogoMorii1.png">
 
@@ -135,19 +122,26 @@
                         <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-speedometer"></use>
                     </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span>
                 </a>
-                <a class="nav-link" href="index.html">
+            <li class="nav-group">
+                <a class="nav-link nav-group-toggle" href="Admin/san-pham">
                     <svg class="nav-icon">
                         <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-mug"></use>
                     </svg> Sản phẩm<span class="badge badge-sm bg-info ms-auto"></span>
                 </a>
+                <ul class="nav-group-items">
+                    <li class="nav-item"><a class="nav-link" href="~/Admin/san-pham"><span class="nav-icon"></span> Danh sách sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="~/Assets/Admin/buttons/button-group.html"><span class="nav-icon"></span> Thêm sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="~/Assets/Admin/buttons/dropdowns.html"><span class="nav-icon"></span> Xóa sản phẩm</a></li>
+                </ul>
+            </li>
             <li class="nav-group">
-                <a class="nav-link nav-group-toggle" href="Admin/Blog/Index">
+                <a class="nav-link nav-group-toggle" href="Admin/Blog">
                     <svg class="nav-icon">
                         <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-newspaper"></use>
                     </svg> Blog<span class="badge badge-sm bg-info ms-auto"></span>
                 </a>
                 <ul class="nav-group-items">
-                    <li class="nav-item"><a class="nav-link" href="~/Admin/Blog/Index"><span class="nav-icon"></span> Danh sách Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="~/Admin/Blog"><span class="nav-icon"></span> Danh sách Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="~/Assets/Admin/buttons/button-group.html"><span class="nav-icon"></span> Thêm Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="~/Assets/Admin/buttons/dropdowns.html"><span class="nav-icon"></span> Xóa Blog</a></li>
                 </ul>
