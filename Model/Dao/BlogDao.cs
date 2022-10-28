@@ -17,6 +17,19 @@ namespace Model.Dao
             db = new MoriiCoffeeDBContext();
         }
 
+
+
+        //Xem tất cả Blog
+        public List<Blog> ViewAll()
+        {
+            List<Blog> blogs = new List<Blog>();
+            var list = db.Blogs.Where(p => p.ID > 0);
+            //Convert từ IqueryTable sang list
+            blogs = new List<Blog>(list);
+            return blogs;
+
+        }
+
         //Xem chi tiết Blog
         public Blog ViewDetail(int id)
         {
