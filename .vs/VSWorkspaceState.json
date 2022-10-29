@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Areas",
+    "\\Areas\\Admin",
     "\\Areas\\Auth",
     "\\Areas\\Auth\\Controllers",
     "\\Areas\\Auth\\Views",
@@ -9,6 +10,6 @@
     "\\Views",
     "\\Views\\TrangChu"
   ],
-  "SelectedNode": "\\Views\\TrangChu\\Index.cshtml",
+  "SelectedNode": "\\Areas\\Admin\\CodeFile1.cs",
   "PreviewInSolutionExplorer": false
 }

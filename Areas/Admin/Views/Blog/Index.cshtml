@@ -1,0 +1,56 @@
+﻿
+
+@section breadcrumb {
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <!-- if breadcrumb is single-->
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Danh sách Blog</span></li>
+            </ol>
+        </nav>
+    </div>
+}
+
+@{
+    ViewBag.Title = "MoriiCoffee";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var blogs = ViewBag.blogs;
+    var nguoidung = ViewBag.nguoidung;
+}
+
+<div class="tab-content rounded-bottom">
+    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col"></th>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Ngày đăng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var i = 0;
+                    foreach (var blog in blogs)
+                    {
+                        ++i;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td><img src=@blog.UrlImage width="80" height="80" /></td>
+                            <td>@blog.TieuDe</td>
+                            <td>@nguoidung.HoTen</td>
+                            <td>@blog.CreatedDate</td>
+                        </tr>
+                    }
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
