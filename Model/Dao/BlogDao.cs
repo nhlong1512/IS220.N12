@@ -40,7 +40,8 @@ namespace Model.Dao
         public long Insert(Blog entity)
         {
 
-                db.Blogs.Add(entity);
+            entity.CreatedDate = DateTime.Now;
+            db.Blogs.Add(entity);
                 db.SaveChanges();
                 return entity.ID;
             
