@@ -77,3 +77,5 @@ D:\VS\IS220.N12\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.csproj.CopyComplete
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.dll
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.pdb
+D:\VS\IS220.N12\bin\CKFinder.dll
+D:\VS\IS220.N12\bin\CKFinder.pdb

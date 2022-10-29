@@ -42,7 +42,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Thêm thất bại");
+
             }
             return View();
 
