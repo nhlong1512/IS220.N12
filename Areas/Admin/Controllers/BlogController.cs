@@ -24,6 +24,9 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
         }
 
+
+        
+        [ValidateInput(false)]
         public ActionResult Create(Blog blog)
         {
 

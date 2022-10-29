@@ -31,6 +31,7 @@
                     <th scope="col">Tiêu đề</th>
                     <th scope="col">Tác giả</th>
                     <th scope="col">Ngày đăng</th>
+                    <th scope="col">Nội dung</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +46,7 @@
                             <td>@blog.TieuDe</td>
                             <td>@nguoidung.HoTen</td>
                             <td>@blog.CreatedDate</td>
+                            <td>@Html.Raw(blog.NoiDung)</td>
                         </tr>
                     }
                 }
