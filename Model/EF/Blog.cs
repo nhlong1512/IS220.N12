@@ -11,8 +11,8 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
-        [StringLength(250)]
         [Required]
+        [StringLength(250)]
         public string TieuDe { get; set; }
 
         [Column(TypeName = "ntext")]
