@@ -1,0 +1,200 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    height: 95vh;
+    margin: -20px 0 50px;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.overlay-container {
+    position: absolute;
+    left: 0%;
+    width: 45%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.overlay {
+    background: #104639;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 62px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.form-container {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+form.form-container {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 45px 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.sign-up-container {
+    left: 30%;
+    width: 45%;
+    z-index: 2;
+}
+
+h1.welcom {
+    align-items: center;
+    font-weight: 100;
+    line-height: 40px;
+    margin: -20px 0 20px;
+}
+
+p.welcom {
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 30px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 0;
+}
+
+button.signin {
+    border-radius: 20px;
+    border: 1px solid #104639;
+    padding: 12px 45px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-color: #ffffff;
+    margin: 50px 0 -76px;
+}
+
+    button.signin:active {
+        transform: scale(0.95);
+    }
+
+.signup {
+    font-weight: bold;
+    font-size: 26px;
+    width: 300px;
+    height: 36px;
+}
+
+.form-sign-up {
+    width: 89%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    background: transparent;
+    color: #000000;
+}
+
+input.form-input {
+    font-size: 14px;
+    background-color: #eee;
+    border: none;
+    padding: 12px 50px 12px 20px;
+    margin: 8px 10px;
+    width: 100%;
+}
+
+a.show-btn {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+    position: absolute;
+    right: 0;
+}
+
+button.signup {
+    border-radius: 20px;
+    border: 1px solid #104639;
+    background-color: #104639;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 13px 60px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    position: center;
+    margin: 36px 0 9px;
+    height:40px;
+    cursor: pointer;    
+}
+
+    button.signup:active {
+        transform: scale(0.95);
+    }
+
+footer {
+    background-color: #104639;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+    margin: 10px 0;
+}
+
+    footer p {
+        margin: 10px 0;
+    }

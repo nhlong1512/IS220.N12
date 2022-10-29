@@ -1,39 +1,71 @@
-﻿
+﻿@model Model.EF.NguoiDung
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link href="~/Assets/Login_Register/css/dangky.css" rel="stylesheet" />
 @{
     ViewBag.Title = "DangKy";
     Layout = "~/Views/Shared/_LoginRegister.cshtml";
 }
 
 <!--/start-login-two-->
-<div class="login-02">
-    <div class="two-login  hvr-float-shadow">
-        <div class="two-login-head">
-            <img src="images/top-note.png" alt="" />
-            <h2>register</h2>
-            <lable></lable>
+<div class="container" id="container">
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1 class="welcom">Morii xin chào</h1>
+                <p class="welcom">Tạo tài khoản và bắt đầu cùng với Morii nào!</p>
+                <p class="welcom">
+                    Nếu đã có tài khoản, hãy đăng nhập vào bên dưới nhé!
+                </p>
+                <button class="signin">Đăng nhập</button>
+            </div>
         </div>
-        <form>
-            <li>
-                <input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" class=" icon2 user2"></a>
-            </li>
-            <li>
-                <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon2 lock2"></a>
-            </li>
-            <li>
-                <input type="password" value="Confirm Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Confirm Password';}"><a href="#" class=" icon2 lock2"></a>
-            </li>
-            <li>
-                <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}"><a href="#" class=" icon2 mail"></a>
-            </li>
-            <div class="p-container">
-                <label class="checkbox two"><input type="checkbox" name="checkbox" checked><i></i>I agree to the <a href="#">Terms of Servicee</a></label>
-            </div>
-            <div class="submit two">
-                <input type="submit" onclick="myFunction()" value="SIGN UP">
-            </div>
-            <h5>Already a member ?<a href="~/dang-nhap"> Login Here</a></h5>
-            <h5>Quay lai trang chu<a href="~/"> MoriiCoffee </a></h5>
+    </div>
 
+    <div class="form-container sign-up-container">
+        <form method="post" action="@Url.Action("DangKy", "User")" class="form-container">
+            @Html.AntiForgeryToken()
+            <p class="signup">Đăng ký tài khoản</p>
+
+            <div class="form-sign-up">
+                <i class="fas fa-user"></i>
+                @Html.TextBoxFor(m => m.HoTen, "", new { @class = "form-control form-input", @placeholder = "Nhập họ và tên" })
+                @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "badge badge-danger" })
+
+            </div>
+
+            <div class="form-sign-up">
+                <i class="fas fa-envelope"></i>
+                @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control form-input", @placeholder = "Nhập Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+                @if (ViewBag.error != null)
+                {
+                    <span class="badge badge-danger">@ViewBag.error</span>
+                }
+            </div>
+
+            <div class="form-sign-up">
+                <i class="fas fa-key"></i>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control form-input", @placeholder = "Nhập mật khẩu" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                <a href="#" class="show-btn"><i class="fas fa-eye"></i></a>
+            </div>
+
+            <div class="form-sign-up">
+                <i class="fas fa-key"></i>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
+                <input type="password"
+                       class="form-input"
+                       placeholder="Xác nhận lại mật khẩu" />
+                <a href="#" class="show-btn"><i class="fas fa-eye"></i></a>
+            </div>
+
+            <button class="signup">Đăng ký</button>
         </form>
     </div>
 </div>
+
+<footer>
+    <p><b>Morii Coffee</b> - <i>Nơi lưu giữ những kỉ niệm</i></p>
+</footer>

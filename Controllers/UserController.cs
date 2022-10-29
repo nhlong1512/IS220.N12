@@ -134,11 +134,11 @@ namespace MoriiCoffee.Controllers
                 _db.SaveChanges();
                 mail.Send(message);
 
-                return View("Login");
+                return View("DangNhap");
             }
             else
             {
-                return View("Login");
+                return View("DangNhap");
             }
 
         }
