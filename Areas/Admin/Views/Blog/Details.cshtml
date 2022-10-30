@@ -22,212 +22,151 @@
 }
 
 
+<style>
+    p {
+        color: #787e92;
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    ._tieude {
+        color: #146D4B;
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: 700;
+        margin-bottom: 20px
+    }
+
+    ._mota {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+</style>
+
+
 <div class="tab-content rounded-bottom">
+
     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-
             <div class="form-horizontal">
-                <h4>Chi Tiết Blog</h4>
-                <hr />
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                <img src=@Model.UrlImage style="" />
-                <h1>@Model.UrlImage</h1>
-                <img src="/Data/Files/305274558_3282709138681794_5982553682992211241_n.jpg"/>
-
-
-                <div class="tab-content rounded-bottom">
-                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-644">
-                        <form>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="urlAnh">Ảnh Blog</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
-                                        <span class="input-group-text" id="basic-addon3">Upload</span>
-                                        <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlImage">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="tieude">Tiêu đề</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="tieude" type="text" name="TieuDe">
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="exampleFormControlTextarea1">Mô tả</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="MoTa"></textarea>
-                                </div>
-
-                            </div>
-                            @*Nội dung*@
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="noidung">Nội dung</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control ckeditor" name="noidung" id="noidung" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary" type="submit" value="Create">Tạo mới</button>
-                        </form>
-                    </div>
-                </div>
-
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+                <section class="w3l-content-6">
+                    <img src=@Model.UrlImage style="width: 100%; height: 500px; object-fit: cover;" />
+                    <div class="container py-lg-4 mt-80 mb-80 cauchuyen">
+                        <h2 class="text-uppercase font-weight-bold _tieude">@Model.TieuDe</h2>
+                        <h3 class="_mota" style="font-size:20px; line-height:20px">@Model.MoTa</h3>
+                        @Html.Raw(Model.NoiDung);
                         </div>
-                    </div>
+                </section>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" }, @class = "ckeditor", name = "PostContent" })
-                            @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
 
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.MaND, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.MaND, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.MaND, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
-
-                @*<div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-default" />
-                        </div>
-                    </div>*@
             </div>
         }
-
-        @*<div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>*@
     </div>
 </div>
 
 
 
 @*<div>
-    <h4>Blog</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TieuDe)
-        </dt>
+        <h4>Blog</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TieuDe)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TieuDe)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TieuDe)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
+            <dd>
+                @Html.DisplayFor(model => model.MoTa)
 
-        </dd>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NoiDung)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MaND)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MaND)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MaND)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MaND)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaTitle)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MetaTitle)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MetaTitle)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MetaTitle)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UrlImage)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.UrlImage)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UrlImage)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UrlImage)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </dd>
 
-    </dl>
-</div>*@
+        </dl>
+    </div>*@
 @*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
