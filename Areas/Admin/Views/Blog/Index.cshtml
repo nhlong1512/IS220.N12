@@ -40,7 +40,7 @@
                     foreach (var blog in blogs)
                     {
                         ++i;
-                        <tr>
+                        <tr id="row+@blog.ID" >
                             <th scope="row">@i</th>
                             <td><img src=@blog.UrlImage width="80" height="80" /></td>
                             <td>
@@ -50,11 +50,10 @@
                             <td>@nguoidung.HoTen</td>
                             <td>@blog.CreatedDate</td>
                             @*<td>@Html.Raw(blog.NoiDung)</td>*@
-                            <td>
+                            <td style="color: blue">
                                 @Html.ActionLink("Xem chi tiết", "Details", new { id = blog.ID }) |
-                                @Html.ActionLink("Sửa", "Update", new { }) |
-                                @Html.ActionLink("Xóa", "Xóa", new { })
-
+                                <a style="cursor:pointer">Sửa</a>|
+                                <a style="cursor:pointer" onclick="handleClick(@blog.ID)">Xóa</a>
                             </td>
                         </tr>
                     }
@@ -63,3 +62,13 @@
         </table>
     </div>
 </div>
+<script>
+
+    function handleClick(id) {
+        console.log("Nguyen")
+        console.log(id);
+    }
+
+
+
+</script>

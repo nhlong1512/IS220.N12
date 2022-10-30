@@ -55,5 +55,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             return View(blog);
         }
+
+        public ActionResult Delete(long id)
+        {
+            return View("Index");
+        }
     }
 }
