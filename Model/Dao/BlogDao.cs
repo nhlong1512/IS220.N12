@@ -31,7 +31,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết Blog
-        public Blog ViewDetail(int id)
+        public Blog ViewDetail(long id)
         {
             return db.Blogs.Find(id);
         }

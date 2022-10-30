@@ -43,15 +43,23 @@
                         <tr>
                             <th scope="row">@i</th>
                             <td><img src=@blog.UrlImage width="80" height="80" /></td>
-                            <td>@blog.TieuDe</td>
+                            <td>
+                                <a>
+                                @Html.ActionLink("/Admin/Blog/Del", "Details", new { id = blog.ID })
+                                @blog.TieuDe
+
+                                </a>
+
+
+
+
+                            </td>
                             <td>@nguoidung.HoTen</td>
                             <td>@blog.CreatedDate</td>
                             <td>@Html.Raw(blog.NoiDung)</td>
                         </tr>
                     }
                 }
-
-
             </tbody>
         </table>
     </div>

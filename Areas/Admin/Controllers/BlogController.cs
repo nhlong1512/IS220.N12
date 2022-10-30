@@ -47,5 +47,13 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
 
         }
+
+
+        public ActionResult Details(long id)
+        {
+            var blog = bldao.ViewDetail(id);
+
+            return View(blog);
+        }
     }
 }
