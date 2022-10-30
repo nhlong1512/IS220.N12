@@ -23,7 +23,7 @@
 
 <div class="tab-content rounded-bottom">
     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
-        <table class="table table-dark table-striped">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">STT</th>
@@ -31,7 +31,7 @@
                     <th scope="col">Tiêu đề</th>
                     <th scope="col">Tác giả</th>
                     <th scope="col">Ngày đăng</th>
-                    <th scope="col">Nội dung</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,24 +40,29 @@
                     foreach (var blog in blogs)
                     {
                         ++i;
-                        <tr>
-                            <th scope="row">@i</th>
-                            <td><img src=@blog.UrlImage width="80" height="80" /></td>
-                            <td>
-                                <a>
-                                @Html.ActionLink("/Admin/Blog/Del", "Details", new { id = blog.ID })
-                                @blog.TieuDe
-
-                                </a>
+                                <tr>
+                                    <th scope="row">@i</th>
+                                    <td><img src=@blog.UrlImage width="80" height="80" /></td>
+                                    <td>
+                                            
+                                            @blog.TieuDe
 
 
 
 
-                            </td>
-                            <td>@nguoidung.HoTen</td>
-                            <td>@blog.CreatedDate</td>
-                            <td>@Html.Raw(blog.NoiDung)</td>
-                        </tr>
+
+                                    </td>
+                                    <td>@nguoidung.HoTen</td>
+                                    <td>@blog.CreatedDate</td>
+                                    @*<td>@Html.Raw(blog.NoiDung)</td>*@
+                                <td>
+                                    @Html.ActionLink("Xem chi tiết", "Details", new { id = blog.ID }) |
+                                    @Html.ActionLink("Sửa", "Update", new { }) |
+                                    @Html.ActionLink("Xóa", "Xóa", new { })
+
+                                </td>
+
+                                </tr>
                     }
                 }
             </tbody>
