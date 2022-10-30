@@ -69,7 +69,7 @@ namespace Model.Dao
         }
 
         //Xóa Blog
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {
