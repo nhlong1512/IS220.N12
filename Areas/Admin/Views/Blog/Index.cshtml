@@ -40,29 +40,23 @@
                     foreach (var blog in blogs)
                     {
                         ++i;
-                                <tr>
-                                    <th scope="row">@i</th>
-                                    <td><img src=@blog.UrlImage width="80" height="80" /></td>
-                                    <td>
-                                            
-                                            @blog.TieuDe
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td><img src=@blog.UrlImage width="80" height="80" /></td>
+                            <td>
 
+                                @blog.TieuDe
+                            </td>
+                            <td>@nguoidung.HoTen</td>
+                            <td>@blog.CreatedDate</td>
+                            @*<td>@Html.Raw(blog.NoiDung)</td>*@
+                            <td>
+                                @Html.ActionLink("Xem chi tiết", "Details", new { id = blog.ID }) |
+                                @Html.ActionLink("Sửa", "Update", new { }) |
+                                @Html.ActionLink("Xóa", "Xóa", new { })
 
-
-
-
-                                    </td>
-                                    <td>@nguoidung.HoTen</td>
-                                    <td>@blog.CreatedDate</td>
-                                    @*<td>@Html.Raw(blog.NoiDung)</td>*@
-                                <td>
-                                    @Html.ActionLink("Xem chi tiết", "Details", new { id = blog.ID }) |
-                                    @Html.ActionLink("Sửa", "Update", new { }) |
-                                    @Html.ActionLink("Xóa", "Xóa", new { })
-
-                                </td>
-
-                                </tr>
+                            </td>
+                        </tr>
                     }
                 }
             </tbody>
