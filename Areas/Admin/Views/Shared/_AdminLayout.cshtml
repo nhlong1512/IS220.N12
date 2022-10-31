@@ -51,6 +51,10 @@
         <script src="~/Assets/Admin/vendors/chart.js/js/chart.min.js"></script>
         <link href="~/Assets/Admin/vendors/simplebar/css/simplebar.css" rel="stylesheet" />
         <script src="~/Assets/Admin/vendors/simplebar/js/simplebar.min.js"></script>*@
+    <script src="~/Scripts/ckfinder/ckfinder.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+
     <base href="./">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,6 +64,10 @@
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <link rel="manifest" href="~/Assets/Admin/assets/favicon/manifest.json">
     <link rel="icon" type="image/x-icon" href="~/Assets/Images/LogoMorii1.png">
+    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.countup.js"></script>
+    <script src="~/Assets/Client/js/jquery.waypoints.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.magnific-popup.min.js"></script>
 
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="~/Assets/Admin/assets/favicon/ms-icon-144x144.png">
@@ -458,6 +466,8 @@
     <script src="~/Assets/Admin/vendors/core-ui/chartjs/js/coreui-chartjs.js"></script>
     <script src="~/Assets/Admin/vendors/core-ui/utils/js/coreui-utils.js"></script>
     <script src="~/Assets/Admin/js/main.js"></script>
+
+    @RenderSection("MoriiAdminJS", false)
 
 </body>
 </html>

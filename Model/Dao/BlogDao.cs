@@ -31,7 +31,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết Blog
-        public Blog ViewDetail(int id)
+        public Blog ViewDetail(long id)
         {
             return db.Blogs.Find(id);
         }
@@ -40,7 +40,8 @@ namespace Model.Dao
         public long Insert(Blog entity)
         {
 
-                db.Blogs.Add(entity);
+            entity.CreatedDate = DateTime.Now;
+            db.Blogs.Add(entity);
                 db.SaveChanges();
                 return entity.ID;
             
@@ -68,7 +69,7 @@ namespace Model.Dao
         }
 
         //Xóa Blog
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {

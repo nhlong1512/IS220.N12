@@ -24,6 +24,9 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
         }
 
+
+        
+        [ValidateInput(false)]
         public ActionResult Create(Blog blog)
         {
 
@@ -39,10 +42,23 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Thêm thất bại");
+
             }
             return View();
 
+        }
+
+
+        public ActionResult Details(long id)
+        {
+            var blog = bldao.ViewDetail(id);
+
+            return View(blog);
+        }
+
+        public ActionResult Delete(long id)
+        {
+            return View("Index");
         }
     }
 }
