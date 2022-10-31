@@ -1,43 +1,61 @@
-﻿
+﻿@model Model.EF.NguoiDung
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link href="~/Assets/Login_Register/css/dangnhap.css" rel="stylesheet" />
 @{
     ViewBag.Title = "DangNhap";
     Layout = "~/Views/Shared/_LoginRegister.cshtml";
 }
 <!--/start-login-one-->
-<div class="login-01">
-    <div class="one-login  hvr-float-shadow">
-        <div class="one-login-head">
-            <img src="images/top-lock.png" alt="" />
-            <h1>LOGIN</h1>
-            <span></span>
-        </div>
-        <form>
-            <li>
-                <input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" class=" icon user"></a>
-            </li>
-            <li>
-                <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon lock"></a>
-            </li>
-            <div class="p-container">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked><i></i>Remember Me</label>
-                <h6><a href="~/quen-mat-khau">Forgot Password ?</a> </h6>
-                <div class="clear"> </div>
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form method="post" action="@Url.Action("DangNhap", "User")" class="form-container">
+            @Html.AntiForgeryToken()
+            <p class="signin">Đăng nhập</p>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
             </div>
-            <div class="submit">
-                <input type="submit" onclick="myFunction()" value="SIGN IN">
+            <span class="signin">hoặc sử dụng tài khoản đăng nhập</span>
+            <div class="form-sign-in">
+                <i class="fas fa-user"></i>
+                @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control form-input", @placeholder = "Tên đăng nhập" })
+                
             </div>
-            <div class="social-icons">
-                <p>Or you can Login with one of the following</p>
-                <ul class="soc_icons2">
-                    <li class="pic"><a href="#"><i class="icon_4"></i></a></li>
-                    <li class="pic"><a href="#"><i class="icon_5"></i></a></li>
-                    <li class="pic"><a href="#"><i class="icon_6"></i></a></li>
-                    <div class="clear"> </div>
-                </ul>
+
+            <div class="form-sign-in">
+                <i class="fas fa-key"></i>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control form-input", @placeholder = "Mật khẩu" })
+                <a href="#" class="show-btn"><i class="fas fa-eye"></i></a>
             </div>
-            <h5>Don't have an account ?<a href="~/dang-ky"> Sign Up </a></h5>
-            <h5>Quay lai trang chu<a href="~/"> MoriiCoffee </a></h5>
+            <div class="remember-password">
+                <input type="checkbox"
+                       name="rememberuser"
+                       id="rememberuser"
+                       value="1" />
+                <label class="check-box" for="rememberuser">Nhớ tài khoản</label>
+            </div>
+            <a class="forget-password" href="/quen-mat-khau">Quên mật khẩu?</a>
+            <button class="signin">Đăng nhập</button>
         </form>
     </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1 class="welcom">Morii xin chào</h1>
+                <p class="welcom">Đăng nhập và bắt đầu cùng với Morii nào!</p>
+                <p class="welcom">
+                    Nếu chưa có tài khoản, hãy đăng ký nhanh vào bên dưới nhé!
+                </p>
+                <a href="/dang-ky">
+                    <button class="signup">Đăng ký</button>
+                </a>
+              
+            </div>
+        </div>
+    </div>
 </div>
-<!--//End-login-form-->
+
+<footer>
+    <p><b>Morii Coffee</b> - <i>Nơi lưu giữ những kỉ niệm</i></p>
+</footer>

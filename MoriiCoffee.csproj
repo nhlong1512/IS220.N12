@@ -1377,6 +1377,8 @@
     <Content Include="Assets\Images\MoriiFeedback2.jpg" />
     <Content Include="Assets\Images\MoriiFeedback3.jpg" />
     <Content Include="Assets\Images\MoriiFeedback4.jpg" />
+    <Content Include="Assets\Login_Register\css\dangky.css" />
+    <Content Include="Assets\Login_Register\css\dangnhap.css" />
     <Content Include="Assets\Login_Register\css\style.css" />
     <Content Include="Assets\Login_Register\images\icon.png" />
     <Content Include="Assets\Login_Register\images\icon2.png" />
