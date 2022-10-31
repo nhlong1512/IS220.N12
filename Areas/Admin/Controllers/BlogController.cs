@@ -48,7 +48,6 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         }
 
-
         public ActionResult Details(long id)
         {
             var blog = bldao.ViewDetail(id);
@@ -60,6 +59,14 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         {
             bldao.Delete(id);
             return RedirectToAction("Index");
+        }
+
+
+
+        public ActionResult Update(long id)
+        {
+            var blog = bldao.ViewDetail(id);
+            return View(blog);
         }
     }
 }
