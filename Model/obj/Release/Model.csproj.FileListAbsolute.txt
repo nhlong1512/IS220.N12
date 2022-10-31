@@ -20,3 +20,4 @@ C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.csproj.CoreCom
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.csproj.CopyComplete
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.dll
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.pdb
+C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache

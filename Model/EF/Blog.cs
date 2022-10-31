@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -13,16 +13,13 @@
 
         [Required]
         [StringLength(250)]
-        [Display(Name = "Tiêu đề")]
         public string TieuDe { get; set; }
 
         [Column(TypeName = "ntext")]
         [Required]
-        [Display(Name ="Mô tả")]
         public string MoTa { get; set; }
 
         [Column(TypeName = "ntext")]
-        [Display(Name = "Nội dung")]
         [Required]
         public string NoiDung { get; set; }
 
@@ -31,7 +28,6 @@
         [StringLength(50)]
         public string ModifiedBy { get; set; }
 
-        [Display (Name = "Trạng thái")]
         public bool? Status { get; set; }
 
         [StringLength(250)]

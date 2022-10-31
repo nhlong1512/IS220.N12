@@ -75,6 +75,7 @@
     <Compile Include="EF\NhanVien.cs" />
     <Compile Include="EF\QuanLy.cs" />
     <Compile Include="EF\SanPham.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
