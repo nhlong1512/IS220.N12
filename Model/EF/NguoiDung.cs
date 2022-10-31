@@ -28,6 +28,7 @@ namespace Model.EF
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
+
         [StringLength(250)]
         public string Role { get; set; }
 
