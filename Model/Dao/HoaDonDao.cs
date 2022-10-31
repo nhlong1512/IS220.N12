@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết HoaDon
-        public HoaDon ViewDetail(int id)
+        public HoaDon ViewDetail(long id)
         {
             return db.HoaDons.Find(id);
         }
@@ -53,7 +53,7 @@ namespace Model.Dao
         }
 
         //Xóa HoaDon
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {
