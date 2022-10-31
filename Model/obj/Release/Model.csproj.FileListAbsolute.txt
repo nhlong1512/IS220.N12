@@ -10,3 +10,27 @@ D:\VS\IS220.N12\Model\obj\Release\Model.csproj.CopyComplete
 D:\VS\IS220.N12\Model\obj\Release\Model.dll
 D:\VS\IS220.N12\Model\obj\Release\Model.pdb
 D:\VS\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\bin\Release\Model.dll.config
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\bin\Release\Model.dll
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\bin\Release\Model.pdb
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\bin\Release\EntityFramework.dll
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\bin\Release\EntityFramework.xml
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\obj\Release\Model.csproj.CopyComplete
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\obj\Release\Model.dll
+D:\OneDrive - Trường ĐH CNTT - University of Information Technology\Me\Học hành\Năm 3\Framework\Đồ án\IS220.N12\Model\obj\Release\Model.pdb
+D:\Me\Learn\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache
+D:\Me\Learn\IS220.N12\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
+D:\Me\Learn\IS220.N12\Model\obj\Release\Model.dll
+D:\Me\Learn\IS220.N12\Model\obj\Release\Model.pdb
+D:\Me\Learn\IS220.N12\Model\bin\Release\Model.dll.config
+D:\Me\Learn\IS220.N12\Model\bin\Release\Model.dll
+D:\Me\Learn\IS220.N12\Model\bin\Release\Model.pdb
+D:\Me\Learn\IS220.N12\Model\bin\Release\EntityFramework.dll
+D:\Me\Learn\IS220.N12\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\Me\Learn\IS220.N12\Model\bin\Release\EntityFramework.xml
+D:\Me\Learn\IS220.N12\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\Me\Learn\IS220.N12\Model\obj\Release\Model.csproj.CopyComplete
