@@ -62,11 +62,28 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         }
 
 
-
+        [ValidateInput(false)]
         public ActionResult Update(long id)
         {
             var blog = bldao.ViewDetail(id);
             return View(blog);
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Update(Blog blog)
+        {
+            var isTrue =  bldao.Update(blog);
+            if(isTrue)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Không lưu được vào CSDL");
+                return View(blog);
+            }
         }
     }
 }
