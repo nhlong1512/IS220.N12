@@ -23,6 +23,12 @@
 
 <div class="tab-content rounded-bottom">
     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+        <a href="~/Admin/Blog/Create">
+        <button class="btn btn-success" style="margin-bottom:20px; padding: 10px; font-size:16px;" type="button">
+        Thêm mới Blog
+        </button>
+
+        </a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -50,38 +56,18 @@
                             <td>@nguoidung.HoTen</td>
                             <td>@blog.CreatedDate</td>
                             @*<td>@Html.Raw(blog.NoiDung)</td>*@
-                        <td>
-                            <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Details/@blog.ID">
-                                <button class="btn btn-info" type="button">Xem chi tiết</button>
-                            </a>
-                            <a style="cursor: pointer; text-decoration: none;"
-                               href="~/Admin/Blog/Update/@blog.ID">
-                                <button class="btn btn-success" type="button">Sửa</button>
-                            </a>
-                            <a style="cursor: pointer; text-decoration: none;"
-                                >
-                                <button class="btn btn-danger" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModalLive">Xóa</button>
-                            </a>
-
-                            
-                            <div class="modal fade" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLiveLabel">Xác nhận xóa</h5>
-                                            <button class="btn-close" type="button" data-coreui-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Bạn có chắc muốn xóa Blog này chứ?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-danger" type="button" onclick="location.href='/Admin/Blog/Delete/@blog.ID'">Xóa</button>
-                                            <button class="btn btn-secondary" type="button" data-coreui-dismiss="modal">Hủy</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
+                            <td>
+                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Details/@blog.ID">
+                                    <button class="btn btn-info" type="button">Xem chi tiết</button>
+                                </a>
+                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Update/@blog.ID">
+                                    <button class="btn btn-success" type="button">Sửa</button>
+                                </a>
+                                <a style="cursor: pointer; text-decoration: none;"
+                                   onclick="if (confirm('Bạn có chắc muốn xóa không')) { location.href='/Admin/Blog/Delete/@blog.ID' }">
+                                    <button class="btn btn-danger" type="button">Xóa</button>
+                                </a>
+                            </td>
                         </tr>
                     }
                 }
