@@ -58,7 +58,8 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult Delete(long id)
         {
-            return View("Index");
+            bldao.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
