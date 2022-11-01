@@ -25,3 +25,4 @@ C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\Newtonsoft.Json.dll
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\System.Diagnostics.DiagnosticSource.dll
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\Newtonsoft.Json.xml
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache

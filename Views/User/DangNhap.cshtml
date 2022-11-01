@@ -1,8 +1,7 @@
 ﻿@model Model.EF.NguoiDung
-
+<link href="~/Assets/Login_Register/css/dangnhap.css" rel="stylesheet" />
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-<link href="~/Assets/Login_Register/css/dangnhap.css" rel="stylesheet" />
 @{
     ViewBag.Title = "DangNhap";
     Layout = "~/Views/Shared/_LoginRegister.cshtml";
@@ -26,8 +25,8 @@
 
             <div class="form-sign-in">
                 <i class="fas fa-key"></i>
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control form-input", @placeholder = "Mật khẩu" })
-                <a href="#" class="show-btn"><i class="fas fa-eye"></i></a>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control password form-input", @placeholder = "Mật khẩu" })
+                <a id="showbtn" class="show-btn "><i class="fas fa-eye iconpw"></i></a>
             </div>
             <div class="remember-password">
                 <input type="checkbox"
@@ -61,6 +60,32 @@
     <p><b>Morii Coffee</b> - <i>Nơi lưu giữ những kỉ niệm</i></p>
     <div class="user123"></div>
 </footer>
+<script>
+    const icon = document.querySelector(".iconpw");
+    const showPw = document.querySelector("#showbtn")
+    const password = document.querySelector(".password")
+    let type = password.getAttribute("type");
+    let isShowpw = false;
+    console.log(type)
+    showPw.addEventListener('click', function () {
+        if (isShowpw == false) {
+            isShowpw = !isShowpw;
+            password.setAttribute("type", "text");
+            icon.classList.toggle("fa-eye-slash");
+        }
+        else {
+            isShowpw = !isShowpw;
+            password.setAttribute("type", "password");
+            icon.classList.toggle("fa-eye-slash");
+        }
+      
+
+
+    })
+
+</script>
+
+
 
 <script type="module" >
     import { GoogleAuthProvider, FacebookAuthProvider  } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
@@ -123,5 +148,7 @@
     function showUserDetails(user) {
         console.log(user);
     }
-   
+
+
 </script>
+

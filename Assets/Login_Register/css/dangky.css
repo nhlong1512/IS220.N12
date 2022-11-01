@@ -118,6 +118,7 @@ button.signin {
     background-color: transparent;
     border-color: #ffffff;
     margin: 50px 0 -76px;
+    cursor:pointer;
 }
 
     button.signin:active {
@@ -136,6 +137,7 @@ button.signin {
     z-index: 2;
     display: flex;
     align-items: center;
+    margin
 }
 
 .form-input {
@@ -148,8 +150,9 @@ input.form-input {
     background-color: #eee;
     border: none;
     padding: 12px 50px 12px 20px;
-    margin: 8px 10px;
+    margin: 8px 10px 8px 14px;
     width: 100%;
+    border-radius: 6px;
 }
 
 a.show-btn {
@@ -159,6 +162,7 @@ a.show-btn {
     margin: 15px 0;
     position: absolute;
     right: 0;
+    cursor: pointer;
 }
 
 button.signup {

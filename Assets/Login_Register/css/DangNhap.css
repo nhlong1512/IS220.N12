@@ -93,17 +93,18 @@ p.signin {
     font-size: 30px;
     margin-bottom: 10px;
 }
-/* a.social {
-  color: #000;
-  font-size: 14px;
-  text-decoration: none;
-  margin: 15px 0px;
-} */
+a.social {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0px;
+    cursor: pointer;
+} 
 
 .social-container {
     margin: 20px 0;
-}
 
+}
     .social-container a {
         border: 2px solid #000000;
         border-radius: 50%;
@@ -116,6 +117,7 @@ p.signin {
         color: #000;
         font-size: 20px;
         text-decoration: none;
+       
     }
 
 span.signin {
@@ -146,6 +148,7 @@ input.form-input {
     padding: 12px 25px;
     margin: 8px 10px;
     width: 100%;
+    border-radius: 6px;
 }
 
 a.show-btn {
@@ -155,6 +158,7 @@ a.show-btn {
     margin: 15px 0;
     position: absolute;
     right: 33px;
+    cursor: pointer;
 }
 
 .remember-password {
@@ -176,6 +180,7 @@ input .remember-password {
     position: relative;
     top: -1px;
     *overflow: hidden;
+    cursor: pointer;
 }
 
 label.check-box {
@@ -205,6 +210,7 @@ button.signin {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    cursor: pointer;
 }
 
     button.signin:active {
@@ -225,7 +231,7 @@ p.welcom {
     font-weight: 100;
     line-height: 40px;
     letter-spacing: 0.5px;
-    margin: 20px 30 30px;
+    margin: 20px 30px;
 }
 
 button.signup {
@@ -240,11 +246,18 @@ button.signup {
     text-transform: uppercase;
     background-color: transparent;
     border-color: #ffffff;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
-    button.signup:active {
-        transform: scale(0.95);
-    }
+
+.rememberuser{
+    cursor: pointer;
+}
+
+button.signup:active {
+    transform: scale(0.95);
+}
 
 footer {
     background-color: #104639;
