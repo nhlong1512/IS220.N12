@@ -156,3 +156,5 @@ C:\Users\DELL\Desktop\Framework\IS220.N12\obj\Release\MoriiCoffee.csproj.CoreCom
 C:\Users\DELL\Desktop\Framework\IS220.N12\obj\Release\MoriiCoffee.csproj.CopyComplete
 C:\Users\DELL\Desktop\Framework\IS220.N12\obj\Release\MoriiCoffee.dll
 C:\Users\DELL\Desktop\Framework\IS220.N12\obj\Release\MoriiCoffee.pdb
+D:\VS\IS220.N12\bin\CKFinder.dll
+D:\VS\IS220.N12\bin\CKFinder.pdb

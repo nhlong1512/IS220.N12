@@ -23,6 +23,12 @@
 
 <div class="tab-content rounded-bottom">
     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+        <a href="~/Admin/Blog/Create">
+        <button class="btn btn-success" style="margin-bottom:20px; padding: 10px; font-size:16px;" type="button">
+        Thêm mới Blog
+        </button>
+
+        </a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -40,7 +46,7 @@
                     foreach (var blog in blogs)
                     {
                         ++i;
-                        <tr id="row+@blog.ID" >
+                        <tr id="row+@blog.ID">
                             <th scope="row">@i</th>
                             <td><img src=@blog.UrlImage width="80" height="80" /></td>
                             <td>
@@ -50,10 +56,17 @@
                             <td>@nguoidung.HoTen</td>
                             <td>@blog.CreatedDate</td>
                             @*<td>@Html.Raw(blog.NoiDung)</td>*@
-                            <td style="color: blue">
-                                @Html.ActionLink("Xem chi tiết", "Details", new { id = blog.ID }) |
-                                <a style="cursor:pointer">Sửa</a>|
-                                <a style="cursor:pointer" onclick="handleClick(@blog.ID)">Xóa</a>
+                            <td>
+                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Details/@blog.ID">
+                                    <button class="btn btn-info" type="button">Xem chi tiết</button>
+                                </a>
+                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Update/@blog.ID">
+                                    <button class="btn btn-success" type="button">Sửa</button>
+                                </a>
+                                <a style="cursor: pointer; text-decoration: none;"
+                                   onclick="if (confirm('Bạn có chắc muốn xóa không')) { location.href='/Admin/Blog/Delete/@blog.ID' }">
+                                    <button class="btn btn-danger" type="button">Xóa</button>
+                                </a>
                             </td>
                         </tr>
                     }
@@ -63,12 +76,5 @@
     </div>
 </div>
 <script>
-
-    function handleClick(id) {
-        console.log("Nguyen")
-        console.log(id);
-    }
-
-
 
 </script>

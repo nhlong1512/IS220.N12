@@ -48,7 +48,6 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         }
 
-
         public ActionResult Details(long id)
         {
             var blog = bldao.ViewDetail(id);
@@ -58,7 +57,33 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult Delete(long id)
         {
-            return View("Index");
+            bldao.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+
+        [ValidateInput(false)]
+        public ActionResult Update(long id)
+        {
+            var blog = bldao.ViewDetail(id);
+            return View(blog);
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Update(Blog blog)
+        {
+            var isTrue =  bldao.Update(blog);
+            if(isTrue)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Không lưu được vào CSDL");
+                return View(blog);
+            }
         }
     }
 }
