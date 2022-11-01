@@ -1,4 +1,5 @@
 ﻿@model Model.EF.NguoiDung
+
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <link href="~/Assets/Login_Register/css/dangnhap.css" rel="stylesheet" />
@@ -13,14 +14,14 @@
             @Html.AntiForgeryToken()
             <p class="signin">Đăng nhập</p>
             <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a id="btnFacebook" class="social "><i class="fab fa-facebook-f"></i></a>
+                <a id="btnGoogle" class="social "><i class="fab fa-google-plus-g"></i></a>
             </div>
             <span class="signin">hoặc sử dụng tài khoản đăng nhập</span>
             <div class="form-sign-in">
                 <i class="fas fa-user"></i>
                 @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control form-input", @placeholder = "Tên đăng nhập" })
-                
+
             </div>
 
             <div class="form-sign-in">
@@ -50,7 +51,7 @@
                 <a href="/dang-ky">
                     <button class="signup">Đăng ký</button>
                 </a>
-              
+
             </div>
         </div>
     </div>
@@ -58,4 +59,69 @@
 
 <footer>
     <p><b>Morii Coffee</b> - <i>Nơi lưu giữ những kỉ niệm</i></p>
+    <div class="user123"></div>
 </footer>
+
+<script type="module" >
+    import { GoogleAuthProvider, FacebookAuthProvider  } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+    import { signInWithPopup, getAuth  } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+ 
+    const firebaseConfig = {
+        apiKey: "AIzaSyBBysSsI4c3kJBlEuBeuNXME1Q25z5cSVI",
+        authDomain: "moriicoffee.firebaseapp.com",
+        projectId: "moriicoffee",
+        storageBucket: "moriicoffee.appspot.com",
+        messagingSenderId: "281244301873",
+        appId: "1:281244301873:web:27334f9f426be81c8f3310",
+        measurementId: "G-N3YF3E150R"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    var fbprovider = new FacebookAuthProvider(app);
+    var ggprovider = new GoogleAuthProvider(app);
+    //let provider = new firebase.auth.GoogleAuthProvider()
+    const btnGoogle = document.querySelector("#btnGoogle");
+    const btnFacebook = document.querySelector("#btnFacebook");
+    btnGoogle.addEventListener('click', GoogleLogin);
+    btnFacebook.addEventListener('click', FacebookLogin);
+
+    function GoogleLogin() {
+        console.log('Login Btn Call')
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                showUserDetails(user);
+                if (user.emailVerified)
+                    window.location.replace("https://localhost:44309");
+
+            })
+    }
+
+    function FacebookLogin() {
+        console.log('Login Btn Call')
+        signInWithPopup(auth, fbprovider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                // The logged-in user info.
+                const user = result.user;
+
+                // This gives a Facebook Access Token. Using it you can access to the Facebook API.
+                const credential = FacebookAuthProvider.credentialFromResult(result);
+                const accessToken = credential.accessToken;
+                showUserDetails(user);
+                if (user.displayName != "")
+                    window.location.replace("https://localhost:44309");
+
+            })
+    }
+    function showUserDetails(user) {
+        console.log(user);
+    }
+   
+</script>

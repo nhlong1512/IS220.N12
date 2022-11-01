@@ -20,4 +20,8 @@ C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.csproj.CoreCom
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.csproj.CopyComplete
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.dll
 C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.pdb
-C:\Users\DELL\Desktop\Framework\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\Firebase.Auth.dll
+C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\Newtonsoft.Json.dll
+C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\System.Diagnostics.DiagnosticSource.dll
+C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\Newtonsoft.Json.xml
+C:\Users\DELL\Desktop\Framework\IS220.N12\Model\bin\Release\System.Diagnostics.DiagnosticSource.xml
