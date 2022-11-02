@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace MoriiCoffee.Areas.Admin.Controllers
 {
@@ -15,13 +16,14 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            var blogs = bldao.ViewAll();
-            ViewBag.blogs = blogs;
-            var nguoidung = nguoidungdao.ViewDetail(1);
+            //var blogs = bldao.ViewAll();
+            //ViewBag.blogs = blogs;
+            //var nguoidung = nguoidungdao.ViewDetail(1);
             ViewBag.nguoidung = nguoidung;
-            return View();
+            var model = bldao.ListAllPaging(page, page);
+            return View(model);
         }
 
 

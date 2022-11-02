@@ -79,3 +79,7 @@ D:\VS\IS220.N12\obj\Release\MoriiCoffee.csproj.CoreCompileInputs.cache
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.csproj.CopyComplete
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.dll
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.pdb
+D:\VS\IS220.N12\bin\PagedList.dll
+D:\VS\IS220.N12\bin\PagedList.Mvc.dll
+D:\VS\IS220.N12\bin\PagedList.xml
+D:\VS\IS220.N12\bin\PagedList.Mvc.xml

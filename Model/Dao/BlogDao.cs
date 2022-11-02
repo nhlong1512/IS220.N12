@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
+using PagedList;
 
 
 namespace Model.Dao
@@ -82,6 +83,13 @@ namespace Model.Dao
             {
                 return false;
             }
+        }
+
+
+        //
+        public IEnumerable<Blog> ListAllPaging(int page, int pageSize)
+        {
+            return db.Blogs.OrderBy(x=>x.ID).ToPagedList(page, pageSize);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+@model PagedList.IPagedList<Model.EF.Blog>
+@using PagedList.Mvc;
 
 @section breadcrumb {
     <div class="container-fluid">
@@ -43,7 +45,7 @@
             <tbody>
                 @{
                     var i = 0;
-                    foreach (var blog in blogs)
+                    foreach (var blog in Model)
                     {
                         ++i;
                         <tr id="row+@blog.ID">
@@ -73,6 +75,7 @@
                 }
             </tbody>
         </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
     </div>
 </div>
 <script>
