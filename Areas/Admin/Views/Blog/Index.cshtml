@@ -16,6 +16,10 @@
     </div>
 }
 
+<style>
+    
+</style>
+
 @{
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -26,9 +30,9 @@
 <div class="tab-content rounded-bottom">
     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
         <a href="~/Admin/Blog/Create">
-        <button class="btn btn-success" style="margin-bottom:20px; padding: 10px; font-size:16px;" type="button">
-        Thêm mới Blog
-        </button>
+            <button class="btn btn-success" style="margin-bottom:20px; padding: 10px; font-size:16px;" type="button">
+                Thêm mới Blog
+            </button>
 
         </a>
         <table class="table table-striped">
@@ -75,8 +79,18 @@
                 }
             </tbody>
         </table>
-        @Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
     </div>
+
 </div>
 <script>
 

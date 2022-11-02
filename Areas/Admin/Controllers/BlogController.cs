@@ -16,7 +16,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(int page = 1, int pageSize = 5)
         {
             //var blogs = bldao.ViewAll();
             //ViewBag.blogs = blogs;
