@@ -1315,6 +1315,7 @@
     <Content Include="Assets\Admin\vendors\chart.js\js\chart.min.js" />
     <Content Include="Assets\Admin\vendors\simplebar\css\simplebar.css" />
     <Content Include="Assets\Admin\vendors\simplebar\js\simplebar.min.js" />
+    <Content Include="Assets\Client\css\custom-profiledropdown.css" />
     <Content Include="Assets\Client\css\main.css" />
     <Content Include="Assets\Client\css\style-starter.css" />
     <Content Include="Assets\Client\fonts\fontawesome-webfont.svg" />

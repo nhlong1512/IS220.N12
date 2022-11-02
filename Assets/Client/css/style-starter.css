@@ -14559,6 +14559,7 @@ header {
     display: grid;
     align-items: center;
     box-shadow: none;
+    grid-template-columns: 14fr 2fr;
 }
 
 .navbar {
