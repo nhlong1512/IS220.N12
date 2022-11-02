@@ -20,9 +20,9 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         {
             //var blogs = bldao.ViewAll();
             //ViewBag.blogs = blogs;
-            //var nguoidung = nguoidungdao.ViewDetail(1);
+            var nguoidung = nguoidungdao.ViewDetail(1);
             ViewBag.nguoidung = nguoidung;
-            var model = bldao.ListAllPaging(page, page);
+            var model = bldao.ListAllPaging(page, pageSize);
             return View(model);
         }
 
