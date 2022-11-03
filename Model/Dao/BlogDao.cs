@@ -87,10 +87,14 @@ namespace Model.Dao
 
 
         //
-        public IEnumerable<Blog> ListAllPaging(int page, int pageSize)
+        public IEnumerable<Blog> ListAllPaging(string searchString, int page, int pageSize)
         {
-
-            return db.Blogs.OrderBy(x=>x.ID).ToPagedList(page, pageSize);
+            IQueryable<Blog> model = db.Blogs;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.TieuDe.Contains(searchString));
+            }
+            return model.OrderByDescending(x=>x.CreatedDate).ToPagedList(page, pageSize);
         }
     }
 }

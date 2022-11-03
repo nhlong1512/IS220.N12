@@ -26,9 +26,93 @@
     var nguoidung = ViewBag.nguoidung;
 }
 @*<link href="~/Assets/Client/css/main.css" rel="stylesheet" />
-<link href="~/Assets/Client/css/custom-profiledropdown.css" rel="stylesheet" />
-<link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />*@
+    <link href="~/Assets/Client/css/custom-profiledropdown.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />*@
+
+
+
+<div class="tab-content rounded-bottom">
+    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+        <a href="~/Admin/Blog/Create">
+            <button class="btn btn-success" style="margin-bottom:20px; padding: 10px; font-size:16px;" type="button">
+                Thêm mới Blog
+            </button>
+        </a>
+        <div class="panel-body">
+            @using (Html.BeginForm("Index", "Blog", FormMethod.Get))
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-md-4">
+                            <input type="text" name="searchString" />
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col"></th>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Ngày đăng</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var i = 0;
+                    foreach (var blog in Model)
+                    {
+                        ++i;
+                        <tr id="row+@blog.ID">
+                            <th scope="row">@i</th>
+                            <td><img src=@blog.UrlImage width="80" height="80" /></td>
+                            <td>
+                                @blog.TieuDe
+                            </td>
+                            <td>@nguoidung.HoTen</td>
+                            <td>@blog.CreatedDate</td>
+                            @*<td>@Html.Raw(blog.NoiDung)</td>*@
+                            <td>
+                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Details/@blog.ID">
+                                    <button class="btn btn-info" type="button">Xem chi tiết</button>
+                                </a>
+                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Update/@blog.ID">
+                                    <button class="btn btn-success" type="button">Sửa</button>
+                                </a>
+                                <a style="cursor: pointer; text-decoration: none;"
+                                   onclick="if (confirm('Bạn có chắc muốn xóa không')) { location.href='/Admin/Blog/Delete/@blog.ID' }">
+                                    <button class="btn btn-danger" type="button">Xóa</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <section class="panel">
+            <div class="panel-body">
+                <div class="pull-right">
+                    <br />
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
 <style>
+    td {
+        vertical-align: initial;
+    }
+
     .pagination li a {
         position: relative;
         display: block;
@@ -78,80 +162,14 @@
         background-color: #2eb85c !important;
         border-color: #2eb85c !important;
     }
-
-
 </style>
-
-
-<div class="tab-content rounded-bottom">
-    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
-        <a href="~/Admin/Blog/Create">
-            <button class="btn btn-success" style="margin-bottom:20px; padding: 10px; font-size:16px;" type="button">
-                Thêm mới Blog
-            </button>
-
-        </a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col"></th>
-                    <th scope="col">Tiêu đề</th>
-                    <th scope="col">Tác giả</th>
-                    <th scope="col">Ngày đăng</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @{
-                    var i = 0;
-                    foreach (var blog in Model)
-                    {
-                        ++i;
-                        <tr id="row+@blog.ID">
-                            <th scope="row">@i</th>
-                            <td><img src=@blog.UrlImage width="80" height="80" /></td>
-                            <td>
-
-                                @blog.TieuDe
-                            </td>
-                            <td>@nguoidung.HoTen</td>
-                            <td>@blog.CreatedDate</td>
-                            @*<td>@Html.Raw(blog.NoiDung)</td>*@
-                            <td>
-                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Details/@blog.ID">
-                                    <button class="btn btn-info" type="button">Xem chi tiết</button>
-                                </a>
-                                <a style="cursor: pointer; text-decoration: none;" href="~/Admin/Blog/Update/@blog.ID">
-                                    <button class="btn btn-success" type="button">Sửa</button>
-                                </a>
-                                <a style="cursor: pointer; text-decoration: none;"
-                                   onclick="if (confirm('Bạn có chắc muốn xóa không')) { location.href='/Admin/Blog/Delete/@blog.ID' }">
-                                    <button class="btn btn-danger" type="button">Xóa</button>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-        <section class="panel">
-            <div class="panel-body">
-                <div class="pull-right">
-                    <br />
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                </div>
-            </div>
-        </section>
-    </div>
-
-</div>
 
 <script>
     $(document).ready(function () {
-        $(".PagedList-skipToNext > a").text("Next");
-        $(".PagedList-skipToPrevious > a").text("Previous")
+        $(".PagedList-skipToNext > a").text("Sau");
+        $(".PagedList-skipToPrevious > a").text("Trước")
         console.log($(".pagination > .active > a").text())
         //Xử lý nếu trang đang ở 1 thì sẽ disabled nút previous
     });
 </script>
+

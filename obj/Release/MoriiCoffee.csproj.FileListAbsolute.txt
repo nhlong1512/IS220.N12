@@ -56,6 +56,8 @@ D:\VS\IS220.N12\bin\EntityFramework.SqlServer.dll
 D:\VS\IS220.N12\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\VS\IS220.N12\bin\Microsoft.Web.Infrastructure.dll
 D:\VS\IS220.N12\bin\Model.dll
+D:\VS\IS220.N12\bin\PagedList.dll
+D:\VS\IS220.N12\bin\PagedList.Mvc.dll
 D:\VS\IS220.N12\bin\System.Web.Helpers.dll
 D:\VS\IS220.N12\bin\System.Web.Mvc.dll
 D:\VS\IS220.N12\bin\System.Web.Razor.dll
@@ -67,6 +69,8 @@ D:\VS\IS220.N12\bin\Model.dll.config
 D:\VS\IS220.N12\bin\CKFinder.pdb
 D:\VS\IS220.N12\bin\EntityFramework.xml
 D:\VS\IS220.N12\bin\EntityFramework.SqlServer.xml
+D:\VS\IS220.N12\bin\PagedList.xml
+D:\VS\IS220.N12\bin\PagedList.Mvc.xml
 D:\VS\IS220.N12\bin\System.Web.Razor.xml
 D:\VS\IS220.N12\bin\System.Web.Webpages.xml
 D:\VS\IS220.N12\bin\System.Web.Webpages.Deployment.xml
@@ -79,7 +83,3 @@ D:\VS\IS220.N12\obj\Release\MoriiCoffee.csproj.CoreCompileInputs.cache
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.csproj.CopyComplete
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.dll
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.pdb
-D:\VS\IS220.N12\bin\PagedList.dll
-D:\VS\IS220.N12\bin\PagedList.Mvc.dll
-D:\VS\IS220.N12\bin\PagedList.xml
-D:\VS\IS220.N12\bin\PagedList.Mvc.xml
