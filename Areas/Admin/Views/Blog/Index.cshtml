@@ -38,13 +38,14 @@
                 Thêm mới Blog
             </button>
         </a>
+        @*Search*@
         <div class="panel-body">
             @using (Html.BeginForm("Index", "Blog", FormMethod.Get))
             {
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="col-md-4">
-                            <input type="text" name="searchString" />
+                            <input type="text" value="@ViewBag.SearchString" name="searchString" />
                         </div>
                         <div class="col-md-4">
                             <button type="submit">Tìm kiếm</button>
@@ -100,7 +101,7 @@
             <div class="panel-body">
                 <div class="pull-right">
                     <br />
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
                 </div>
             </div>
         </section>

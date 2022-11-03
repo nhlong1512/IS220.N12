@@ -23,6 +23,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             var nguoidung = nguoidungdao.ViewDetail(1);
             ViewBag.nguoidung = nguoidung;
             var model = bldao.ListAllPaging(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
             return View(model);
         }
 
