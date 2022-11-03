@@ -14,9 +14,14 @@ namespace MoriiCoffee.Areas.Admin.Controllers
     {
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private Blog bl = new Blog();
+        private BlogDao bldao = new BlogDao();
         // GET: Admin/Admin
         public ActionResult Dashboard()
         {
+            var blogs = bldao.ViewAll();
+            ViewBag.blogs = blogs;
+            
+                
             return View();
         }
         public ActionResult Blog()
