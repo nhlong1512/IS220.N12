@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var blogs = ViewBag.blogs;
 }
 <!-- about breadcrumb -->
 
@@ -18,3 +19,138 @@
     </div>
 </section>
 <!-- //about breadcrumb -->
+<!--List Blog-->
+<section class="features-4">
+    <div class="features4-block py-5">
+        <div class="container py-lg-4">
+            <div class="title-content text-center mb-lg-5 mt-4">
+                <h3 class="hny-title text-morii">Morii Blog</h3>
+                <p class="fea-para">Mỗi tách cà phê, mỗi câu chuyện</p>
+            </div>
+            <div class="row features4-grids text-left mt-lg-4">
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        <a href="#">
+                            <img class="img-fluid" src="~/Assets/Images/MoriiBlog1.jpeg" />
+                        </a>
+                        <div class="blog-content">
+                            <p class="date-post">15/09/2022</p>
+                            <h3 class="blog-content-title">
+                                CÁCH NHẬN BIẾT HƯƠNG VỊ CÀ PHÊ ROBUSTA NGUYÊN CHẤT DỄ DÀNG NHẤT
+                            </h3>
+                            <p class="blog-content-detail">
+                                Cùng Arabica, Robusta cũng là loại cà phê nổi tiếng được sử dụng phổ biến ở Việt Nam và nhiều nước khác trên thế giới. Với nhiều đặc điểm riêng, không quá khó để có thể nhận ra hương vị của loại cà phê trứ danh này.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        <a href="#">
+                            <img class="img-fluid" src="~/Assets/Images/MoriiBlog2.jpeg" />
+                        </a>
+                        <div class="blog-content">
+                            <p class="date-post">14/02/2022</p>
+                            <h3 class="blog-content-title">
+                                LỄ TÌNH NHÂN, CÙNG CRUSH ĐI ĐÂU?
+                            </h3>
+                            <p class="blog-content-detail">
+                                Tadaaaa, hết Tết thì Valentine đầy yêu thương lại đang đến rồi nè. Lễ tình nhân, dẫn crush đi quán nào? Nhất định phải cùng người ấy đến Nhà hẹn hò để giữ nhiệt, vun đắp tình cảm nha!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        <a href="#">
+                            <img class="img-fluid" src="~/Assets/Images/MoriiBlog3.jpg" />
+                        </a>
+                        <div class="blog-content">
+                            <p class="date-post">15/09/2022</p>
+                            <h3 class="blog-content-title">
+                                8 LỢI ÍCH BẤT NGỜ CỦA CÀ PHÊ COLD BREW
+                            </h3>
+                            <p class="blog-content-detail">
+                                Cold brew là thức uống rất được yêu thích trong thời gian gần đây. Không chỉ có hương thơm đặc trưng và vị lôi cuốn, nó còn có nhiều lợi ích cho sức khỏe. Cùng The Coffee House tìm hiểu 8 lợi ích nổi bật của loại cà phê lạnh siêu hot này.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        <a href="#">
+                            <img class="img-fluid" src="~/Assets/Images/MoriiBlog4.jpg" />
+                        </a>
+                        <div class="blog-content">
+                            <p class="date-post">15/09/2022</p>
+                            <h3 class="blog-content-title">
+                                CÁCH PHA CÀ PHÊ PHIN THƠM NGON TRÒN VỊ
+                            </h3>
+                            <p class="blog-content-detail">
+                                Có nhiều cách để pha một ly cà phê ngon, nhưng đối với nhiều người Việt giây phút đợi chờ những giọt cà phê rơi từ chiếc phin đã trở thành nét văn hóa ăn sâu trong tiềm thức. Để tạo nên một ly cà phê phin chuẩn vị, không chỉ cần sự tinh tế trong cách chọn loại cà phê mà còn cả sự tỉ mỉ trong từng bước pha.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        <a href="#">
+                            <img class="img-fluid" src="~/Assets/Images/MoriiBlog5.jpg" />
+                        </a>
+                        <div class="blog-content">
+                            <p class="date-post">15/09/2022</p>
+                            <h3 class="blog-content-title">
+                                TẠI SAO CÀ PHÊ CÓ VỊ CHUA?
+                            </h3>
+                            <p class="blog-content-detail">
+                                Nhiều người khi uống cà phê cảm thấy có vị chua thường e ngại rằng cà phê hỏng, kém chất lượng hay gặp các vấn đề trong quá trình pha chế và bảo quản. Tuy nhiên, điều này chưa chính xác. Cả hương vị của Arabica hay Robusta nguyên chất, trải qua quá trình chế biến, rang xay đều có vị chua nhẹ. Vậy nên, cà phê có vị chua chua, vẫn giữ được hương thơm đặc trưng vốn có của nó thì bạn có thể yên tâm đó không phải là cà phê hỏng. The Coffee House sẽ chỉ ra những lý do khiến cà phê có vị chua tự nhiên.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        <a href="#">
+                            <img class="img-fluid" src="~/Assets/Images/MoriiBlog6.jpg" />
+                        </a>
+                        <div class="blog-content">
+                            <p class="date-post">15/09/2022</p>
+                            <h3 class="blog-content-title">
+                                MẸO CHỐNG VÀ CHỮA SAY CÀ PHÊ
+                            </h3>
+                            <p class="blog-content-detail">
+                                Các triệu chứng thường gặp khi bị say cà phê đó là xót ruột, người cảm thấy nôn nao, dạ dày cồn cào, choáng váng, mệt mỏi, khát nước... đây được xem là các dấu hiệu nhẹ. Trong trường hợp say cà phê nặng sẽ có các biểu hiện như: cơ thể nóng lên, tim đập nhanh, tức ngực, buồn nôn, tay run, lòng bàn tay tiết nhiều mồ hôi, đau đầu, khó tập trung và suy nghĩ,...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Test-->
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        @{
+                            var i = 0;
+                            foreach (var blog in blogs)
+                            {
+                                ++i;
+                                <a href="#">
+                                    <img src=@blog.UrlImage width="80" height="80" />
+                                </a>
+                                <div class="blog-content">
+                                    <p class="date-post">@blogs.CreateDate</p>
+                                    <h3 class="blog-content-title">
+                                        @blogs.TieuDe
+                                    </h3>
+                                    <p class="blog-content-detail">
+                                        @blogs.MoTa
+                                    </p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
