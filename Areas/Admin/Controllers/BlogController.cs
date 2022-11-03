@@ -16,14 +16,21 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
-        public ActionResult Index(int page = 1, int pageSize = 5)
+        public ActionResult Index(int? page)
         {
-            var blogs = bldao.ViewAll();
-            ViewBag.blogs = blogs;
+            //var blogs = bldao.ViewAll();
+            //ViewBag.blogs = blogs;
             var nguoidung = nguoidungdao.ViewDetail(1);
             ViewBag.nguoidung = nguoidung;
+
+            if (page == null) page = 1;
+            var dsblogs = (from l in db.Blogs select l).OrderBy(x => x.ID);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
             //var model = bldao.ListAllPaging(page, pageSize);
-            return View();
+            return View(dsblogs.ToPagedList(pageNumber, pageSize));
         }
 
 

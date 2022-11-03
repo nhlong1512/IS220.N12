@@ -18,4 +18,3 @@ D:\VS\IS220.N12\Model\bin\Release\PagedList.dll
 D:\VS\IS220.N12\Model\bin\Release\PagedList.Mvc.dll
 D:\VS\IS220.N12\Model\bin\Release\PagedList.xml
 D:\VS\IS220.N12\Model\bin\Release\PagedList.Mvc.xml
-D:\VS\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache

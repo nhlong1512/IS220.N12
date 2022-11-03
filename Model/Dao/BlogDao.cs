@@ -83,12 +83,13 @@ namespace Model.Dao
             {
                 return false;
             }
-        }
+        }   
 
 
         //
         public IEnumerable<Blog> ListAllPaging(int page, int pageSize)
         {
+
             return db.Blogs.OrderBy(x=>x.ID).ToPagedList(page, pageSize);
         }
     }
