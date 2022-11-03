@@ -34,11 +34,16 @@
         display: block;
         padding: var(--cui-pagination-padding-y) var(--cui-pagination-padding-x);
         font-size: var(--cui-pagination-font-size);
-        color: var(--cui-pagination-color);
+        color: black;
         text-decoration: none;
         background-color: var(--cui-pagination-bg);
         border: var(--cui-pagination-border-width) solid var(--cui-pagination-border-color);
         transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .pagination li :hover {
+        background-color: #2eb85c;
+        color: white;
     }
 
     .pagination {
@@ -70,13 +75,10 @@
     .active > a {
         z-index: 3;
         color: var(--cui-pagination-active-color) !important;
-        background-color: var(--cui-pagination-active-bg) !important;
-        border-color: var(--cui-pagination-active-border-color) !important;
+        background-color: #2eb85c !important;
+        border-color: #2eb85c !important;
     }
 
-    .PagedList-skipToPrevious{
-
-    }
 
 </style>
 
