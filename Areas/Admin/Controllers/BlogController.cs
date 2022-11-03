@@ -18,12 +18,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         public ActionResult Index(int page = 1, int pageSize = 5)
         {
-            //var blogs = bldao.ViewAll();
-            //ViewBag.blogs = blogs;
+            var blogs = bldao.ViewAll();
+            ViewBag.blogs = blogs;
             var nguoidung = nguoidungdao.ViewDetail(1);
             ViewBag.nguoidung = nguoidung;
-            var model = bldao.ListAllPaging(page, pageSize);
-            return View(model);
+            //var model = bldao.ListAllPaging(page, pageSize);
+            return View();
         }
 
 
