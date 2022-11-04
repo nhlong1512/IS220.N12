@@ -2450,6 +2450,7 @@
     <Compile Include="Areas\Admin\CodeFile1.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -2563,6 +2564,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Areas\Auth\Data\" />
     <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Assets\Login_Register\js\" />
