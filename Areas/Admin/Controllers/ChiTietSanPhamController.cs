@@ -68,6 +68,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Update(long id)
         {
+            ViewBag.sanpham = spdao.ViewAll();
             var ctsp = ctspdao.ViewDetail(id);
             return View(ctsp);
         }

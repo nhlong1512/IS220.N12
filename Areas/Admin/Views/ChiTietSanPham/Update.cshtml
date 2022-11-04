@@ -48,7 +48,15 @@
                                             @{
                                                 foreach (var sp in sanpham)
                                                 {
-                                                    <option class="selectedPhanLoai" value="@sp.ID">@sp.PhanLoai</option>
+                                                    if (Model.MaPhanLoai == sp.ID)
+                                                    {
+                                                        <option selected class="selectedPhanLoai" value="@sp.ID">@sp.PhanLoai</option>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <option class="selectedPhanLoai" value="@sp.ID">@sp.PhanLoai</option>
+                                                    }
                                                 }
                                             }
                                         </select>
@@ -60,37 +68,30 @@
                                 <div class="col-sm-10">
                                     <div class="input-group" onclick="BrowserSever()" style="cursor: pointer;">
                                         <span class="input-group-text" id="basic-addon3">Upload</span>
-                                        <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlImage">
+                                        <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlImage" value=@Model.UrlImage>
                                     </div>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="col-sm-2 col-form-label" for="tieude">Tên sản phẩm</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="tieude" type="text" name="TenSanPham">
+                                    <input class="form-control" id="tieude" type="text" name="TenSanPham" value=@Model.TenSanPham>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="col-sm-2 col-form-label" for="tieude">Giá</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="tieude" type="text" name="Gia">
+                                    <input class="form-control" id="tieude" type="text" name="Gia" value=@Model.Gia>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="col-sm-2 col-form-label" for="exampleFormControlTextarea1">Mô tả sản phẩm</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="MoTaSanPham"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="MoTaSanPham">@Model.MoTaSanPham</textarea>
                                 </div>
 
                             </div>
-                            @*Nội dung*@
-                            @*<div class="input-group mb-3">
-                                    <label class="col-sm-2 col-form-label" for="noidung">Nội dung</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control ckeditor" name="noidung" id="noidung" rows="3"></textarea>
-                                    </div>
-                                </div>*@
-                            <button class="btn btn-success" type="submit" value="Create">Tạo mới</button>
+                            <button class="btn btn-success" type="submit" value="Update">Chỉnh sửa</button>
                         </form>
                     </div>
                 </div>

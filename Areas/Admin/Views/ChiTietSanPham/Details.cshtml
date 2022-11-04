@@ -21,28 +21,41 @@
     </div>
 }
 
-
 <style>
-    p {
-        color: #787e92;
+    .product {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        padding-bottom: 20px;
+        /*border-bottom: 0.5px solid #ccc !important;*/
+    }
+
+    .imgProduct {
+        display: flex;
+    }
+
+    .contentProduct {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .moTaDiv {
+        margin-top: 20px;
+    }
+
+    .moTa {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .moTaP {
         font-size: 18px;
-        line-height: 20px;
+        font-weight: 400;
     }
 
-    ._tieude {
-        color: #146D4B;
-        font-size: 40px;
-        line-height: 56px;
-        font-weight: 700;
-        margin-bottom: 20px
-    }
-
-    ._mota {
-        font-size: 20px;
-        margin-bottom: 12px;
-    }
 </style>
-<h1>Long</h1>
+
 
 <div class="tab-content rounded-bottom">
     <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
@@ -52,16 +65,27 @@
             <div class="form-horizontal">
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <section class="w3l-content-6">
-                    <img src=@Model.UrlImage style="width: 100%; height: 500px; object-fit: cover;" />
-                    <div class="container py-lg-4 mt-80 mb-80 cauchuyen">
-                        <h2 class="text-uppercase font-weight-bold _tieude">@Model.TenSanPham</h2>
-                        <h3 class="_mota" style="font-size:20px; line-height:20px">@Model.MoTaSanPham</h3>
-                        
+                <div class="container">
+                    <div class="product">
+                        <div class="imgProduct">
+                            <img src=@Model.UrlImage style="width:500px; height: 500px;" />
+                        </div>
+                        <div class="contentProduct">
+                            <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
+                                @Model.TenSanPham
+                            </h3>
+                            <p style="font-size: 24px; font-weight: 700;">@Model.Gia Đ</p>
+                        </div>
                     </div>
-                </section>
+                    <div class="moTaDiv">
+                        <h3 class="moTa">Mô tả sản phẩm</h3>
+                        <p class="moTaP">@Model.MoTaSanPham</p>
+                    </div>
+                </div>
             </div>
         }
     </div>
 </div>
+
+
 
