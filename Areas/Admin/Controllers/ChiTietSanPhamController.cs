@@ -49,7 +49,44 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             }
             return View("Create");
+        }
 
+        public ActionResult Details(long id)
+        {
+            var ctsp = ctspdao.ViewDetail(id);
+
+            return View(ctsp);
+        }
+
+        public ActionResult Delete(long id)
+        {
+            ctspdao.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+
+        [ValidateInput(false)]
+        public ActionResult Update(long id)
+        {
+            var ctsp = ctspdao.ViewDetail(id);
+            return View(ctsp);
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Update(ChiTietSanPham ctsp)
+        {
+            var isTrue = ctspdao.Update(ctsp);
+            if (isTrue)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Không lưu được vào CSDL");
+                return View(ctsp);
+            }
         }
     }
 }
