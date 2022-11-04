@@ -2451,7 +2451,6 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietSanPhamController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -2526,8 +2525,6 @@
     <Content Include="Areas\Admin\Views\Blog\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\Update.cshtml" />
-    <Content Include="Areas\Admin\Views\SanPham\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\SanPham\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietSanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietSanPham\Create.cshtml" />
     <None Include="packages.config" />

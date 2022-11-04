@@ -22,6 +22,7 @@ namespace MoriiCoffee.Areas.Admin
                defaults: new { controller = "Admin", action = "Dashboard", id = UrlParameter.Optional }
            );
 
+            //Cấu hình định tuyến cho Admin/Blog
             context.MapRoute(
                name: "Blog",
                url: "admin/blog",
@@ -34,9 +35,23 @@ namespace MoriiCoffee.Areas.Admin
                defaults: new { controller = "Blog", action = "Create", id = UrlParameter.Optional }
            );
 
+            //Cấu hình định tuyến cho Sản phẩm
+            context.MapRoute(
+               name: "ChiTietSanPham",
+               url: "admin/san-pham",
+               defaults: new { controller = "ChiTietSanPham", action = "Index", id = UrlParameter.Optional }
+           );
+
+            context.MapRoute(
+              name: "ChiTietSanPhamCreate",
+              url: "admin/san-pham/create",
+              defaults: new { controller = "ChiTietSanPham", action = "Create", id = UrlParameter.Optional }
+          );
 
 
 
+
+            //Luôn để cái default này ở cuối, để ở trên sẽ lỗi
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
