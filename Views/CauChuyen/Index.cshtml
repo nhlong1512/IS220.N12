@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Câu Chuyện</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Trang Chủ</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Câu Chuyện </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<!-- /content-6-->
+<section class="w3l-content-6">
+    <div class="container py-lg-4 mt-80 mb-80 cauchuyen">
+        <h2 class="text-uppercase text-morii font-weight-bold mb-20">Câu Chuyện</h2>
+        <p>
+            Câu chuyện Cộng bắt đầu vào năm 2007.
+            Cửa hàng đầu tiên là một tiệm giải khát nhỏ trên con phố cà phê lâu đời tại Hà Nội
+            – phố Triệu Việt Vương.
+        </p>
+        <p>
+            <img class="w-100" src="~/Assets/Images/MoriiChuyen1.jpg" />
+            <img class="w-100" src="~/Assets/Images/MoriiChuyen2.jpg" />
+        </p>
+        <p class="text-center">
+            <span>< Tư liệu: Sinh hoạt cà phê tại Cộng xưa ></span>
+        </p>
+        <p>
+            Cộng đơn giản được lấy cảm hứng từ chữ cái đầu tiên trong
+            câu Quốc hiệu: CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM
+        </p>
+        <p>
+            Sứ mệnh của chúng tôi là khơi dậy trí tưởng tượng và mang
+            đến cho khách hàng những trải nghiệm cảm xúc khác biệt về Việt Nam.
+            Chúng tôi đang không ngừng sáng tạo với mục tiêu là tiến xa hơn để
+            mang Cộng đến với thế giới; lan toả và truyền cảm hứng bằng trái tim
+            của mỗi thành viên.
+        </p>
+        <p>
+            <img class="w-100" src="~/Assets/Images/MoriiChuyen3.jpeg" />
+            <img class="w-100" src="~/Assets/Images/MoriiChuyen4.jpeg" />
+            <img class="w-100" src="~/Assets/Images/MoriiChuyen5.jpeg" />
+        </p>
+        <p class="text-center">
+            <span>< Rich's Caption Image ></span>
+        </p>
+    </div>
+</section>
+<!-- //content-6-->
+<!-- team -->
+<!-- Template JavaScript -->
+<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+<script src="~/Assets/Client/js/theme-change.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+      $('.navbar-toggler').click(function () {
+        $('body').toggleClass('noscroll');
+      })
+    });
+</script>
+<!-- disable body scroll which navbar is in active -->
+<!--/MENU-JS-->
+<script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+</script>
+<!--//MENU-JS-->

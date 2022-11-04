@@ -32,7 +32,12 @@ namespace MoriiCoffee
                defaults: new { controller = "User", action = "QuenMatKhau", id = UrlParameter.Optional }
            );
 
-            //Config route cho Admin
+            //Config route cho Câu chuyện
+            routes.MapRoute(
+               name: "CauChuyen",
+               url: "cau-chuyen",
+               defaults: new { controller = "CauChuyen", action = "Index", id = UrlParameter.Optional }
+           );
 
 
             //Route mặc định luôn phải để ở cuối cùng, tránh ghi đè lên các route đã được customize
