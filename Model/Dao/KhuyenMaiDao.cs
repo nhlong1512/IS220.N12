@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PagedList;
 using Model.EF;
 
 
@@ -17,6 +18,21 @@ namespace Model.Dao
             db = new MoriiCoffeeDBContext();
         }
 
+        //Xem tất cả KhuyenMai
+        public List<KhuyenMai> ViewAll()
+        {
+            List<KhuyenMai> nds = new List<KhuyenMai>();
+            if (db.KhuyenMais.Count() == 0)
+            {
+                return nds;
+            }
+            var list = db.KhuyenMais.Where(p => p.ID > 0);
+            //Convert từ IqueryTable sang list
+            nds = new List<KhuyenMai>(list);
+            return nds;
+
+        }
+
         //Xem chi tiết KhuyenMai
         public KhuyenMai ViewDetail(int id)
         {
@@ -26,6 +42,7 @@ namespace Model.Dao
         //Thêm KhuyenMai
         public long Insert(KhuyenMai entity)
         {
+            entity.CreatedDate = DateTime.Now;
             db.KhuyenMais.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -64,5 +81,7 @@ namespace Model.Dao
                 return false;
             }
         }
+
+        //
     }
 }
