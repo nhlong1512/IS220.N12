@@ -24,11 +24,14 @@ namespace Model.Dao
         public List<Blog> ViewAll()
         {
             List<Blog> blogs = new List<Blog>();
+            if(db.Blogs.Count() == 0)
+            {
+                return blogs;
+            }
             var list = db.Blogs.Where(p => p.ID > 0);
             //Convert từ IqueryTable sang list
             blogs = new List<Blog>(list);
             return blogs;
-
         }
 
         //Xem chi tiết Blog

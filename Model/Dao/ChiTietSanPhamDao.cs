@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
+using PagedList;
 
 
 namespace Model.Dao
@@ -17,7 +18,22 @@ namespace Model.Dao
             db = new MoriiCoffeeDBContext();
         }
 
-        //Xem chi tiết chi tiết sản phẩm
+        //Xem tất cả ChiTietSanPham
+        public List<ChiTietSanPham> ViewAll()
+        {
+            List<ChiTietSanPham> chitietsps = new List<ChiTietSanPham>();
+            if (db.ChiTietSanPhams.Count() == 0)
+            {
+                return chitietsps;
+            }
+            var list = db.ChiTietSanPhams.Where(p => p.ID > 0);
+            //Convert từ IqueryTable sang list
+            chitietsps = new List<ChiTietSanPham>(list);
+            return chitietsps;
+
+        }
+
+        //Xem chi tiết SanPham
         public ChiTietSanPham ViewDetail(int id)
         {
             return db.ChiTietSanPhams.Find(id);
@@ -26,6 +42,7 @@ namespace Model.Dao
         //Thêm Chi tiết sản phẩm
         public long Insert(ChiTietSanPham entity)
         {
+            entity.CreatedDate = DateTime.Now;
             db.ChiTietSanPhams.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -71,5 +88,18 @@ namespace Model.Dao
                 return false;
             }
         }
+
+
+        //
+        public IEnumerable<ChiTietSanPham> ListAllPaging(string searchString, int page, int pageSize)
+        {
+            IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.TenSanPham.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
     }
 }

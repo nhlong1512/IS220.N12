@@ -18,18 +18,18 @@ namespace Model.Dao
             db = new MoriiCoffeeDBContext();
         }
 
-        //Xem tất cả Blog
-        public List<Blog> ViewAll()
+        //Xem tất cả SanPham
+        public List<SanPham> ViewAll()
         {
-            List<Blog> blogs = new List<Blog>();
-            if(db.Blogs.Count() == 0)
+            List<SanPham> sanphams = new List<SanPham>();
+            if(db.SanPhams.Count() == 0)
             {
-                return blogs;
+                return sanphams;
             }
-            var list = db.Blogs.Where(p => p.ID > 0);
+            var list = db.SanPhams.Where(p => p.ID > 0);
             //Convert từ IqueryTable sang list
-            blogs = new List<Blog>(list);
-            return blogs;
+            sanphams = new List<SanPham>(list);
+            return sanphams;
 
         }
 
