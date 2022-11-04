@@ -53,6 +53,12 @@ namespace MoriiCoffee.Areas.Admin
               url: "admin/san-pham/details/{id}",
               defaults: new { controller = "ChiTietSanPham", action = "Details", id = UrlParameter.Optional }
           );
+            context.MapRoute(
+              name: "ChiTietSanPhamDelete",
+              url: "admin/san-pham/delete/{id}",
+              defaults: new { controller = "ChiTietSanPham", action = "Delete", id = UrlParameter.Optional }
+          );
+
 
 
 
