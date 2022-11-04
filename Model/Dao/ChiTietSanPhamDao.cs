@@ -34,7 +34,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết SanPham
-        public ChiTietSanPham ViewDetail(int id)
+        public ChiTietSanPham ViewDetail(long id)
         {
             return db.ChiTietSanPhams.Find(id);
         }
@@ -74,7 +74,7 @@ namespace Model.Dao
         }
 
         //Xóa ChiTietSanPham
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {

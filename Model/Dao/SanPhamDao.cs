@@ -34,7 +34,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết SanPham
-        public SanPham ViewDetail(int id)
+        public SanPham ViewDetail(long id)
         {
             return db.SanPhams.Find(id);
         }
@@ -69,7 +69,7 @@ namespace Model.Dao
 
         
         //Xóa SanPham
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {

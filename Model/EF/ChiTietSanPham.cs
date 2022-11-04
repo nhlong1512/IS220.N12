@@ -11,10 +11,11 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
+        [Required]
         [StringLength(250)]
         public string TenSanPham { get; set; }
 
-        public decimal? Gia { get; set; }
+        public decimal Gia { get; set; }
 
         public decimal? GiaCu { get; set; }
 
@@ -46,5 +47,7 @@ namespace Model.EF
 
         [Column("ChiTietSanPham", TypeName = "ntext")]
         public string ChiTietSanPham1 { get; set; }
+
+        public long MaPhanLoai { get; set; }
     }
 }

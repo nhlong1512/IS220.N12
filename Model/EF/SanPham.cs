@@ -11,6 +11,7 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string PhanLoai { get; set; }
 
