@@ -34,7 +34,7 @@
         </a>
         @*Search*@
         <div class="panel-body">
-            @using (Html.BeginForm("Index", "SanPham", FormMethod.Get))
+            @using (Html.BeginForm("Index", "ChiTietSanPham", FormMethod.Get))
             {
                 <div class="col-md-4" style="display: flex; gap: 10px; white-space: nowrap; margin-bottom: 20px;">
                     <input value="@ViewBag.SearchString" name="searchString" class="form-control" id="exampleDataList" list="datalistOptions" placeholder="Nhập nội dung tìm kiếm...">
