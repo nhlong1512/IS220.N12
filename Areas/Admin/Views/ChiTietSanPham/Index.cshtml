@@ -16,8 +16,6 @@
     </div>
 }
 
-<style>
-</style>
 
 @{
     ViewBag.Title = "MoriiCoffee";
@@ -51,7 +49,7 @@
                     <th scope="col">Phân loại</th>
                     <th scope="col">Ngày đăng</th>
                     <th scope="col">Giá</th>
-                    <th scope="col">Số lượng</th>
+                    @*<th scope="col">Số lượng</th>*@
                     <th></th>
                 </tr>
             </thead>
@@ -64,10 +62,18 @@
                             <td>
                                 @sanpham.TenSanPham
                             </td>
-                            <td>Phân loại</td>
+                                @{
+                                foreach(var sp in sanphams)
+                {
+                    if(sp.ID == sanpham.MaPhanLoai)
+                    {
+                                           <td>@sp.PhanLoai</td>
+                    }
+                }
+                            }
                             <td>@sanpham.CreatedDate</td>
                             <td>@sanpham.Gia</td>
-                            <td>Số lượng</td>
+                            @*<td>Số lượng</td>*@
                             @*<td>@Html.Raw(sanpham.NoiDung)</td>*@
                             <td>
                                 <a style="cursor: pointer; text-decoration: none;" href="~/Admin/sanpham/Details/@sanpham.ID">

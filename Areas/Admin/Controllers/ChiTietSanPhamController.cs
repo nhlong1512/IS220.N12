@@ -22,6 +22,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         {
             //var blogs = bldao.ViewAll();
             //ViewBag.blogs = blogs;
+            ViewBag.sanphams = spdao.ViewAll();
             var model = ctspdao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
             return View(model);
