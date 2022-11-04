@@ -6,6 +6,16 @@
     var ctsps = ViewBag.ctsps;
 }
 
+<style>
+    .w3-services-grids .causes-grid-info{
+        box-shadow:none;
+    }
+
+    .w3-services-grids .causes-grid-info :hover {
+        cursor:pointer;
+    }
+</style>
+
 <!-- about breadcrumb -->
 <section class="w3l-about-breadcrumb position-relative text-center">
     <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
@@ -30,19 +40,18 @@
                 foreach (var sp in ctsps)
                 {
                     <div class="col-lg-4 col-md-6 causes-grid">
-                        <div class="causes-grid-info">
-                            <a href="blog-single.html"><img src=@sp.UrlImage width="360" height="360" alt=""></a>
-                            <a href="#" class="cause-title-wrap">
-                                <h4 class="cause-title">
-                                    @sp.TenSanPham
-                                </h4>
-                            </a>
-                            <p class="card-text mb-0">
-                                @sp.Gia
-                            </p>
+                                    <div class="causes-grid-info">
+                                        <a href="blog-single.html"><img src=@sp.UrlImage width="360" height="360" alt=""></a>
+                                        <a href="#" class="cause-title-wrap">
+                                            <h4 class="cause-title">
+                                                @sp.TenSanPham
+                                            </h4>
+                                        </a>
+                                        <p class="card-text mb-0" style="font-size: 20px">
+                                            @sp.Gia đ
+                                        </p>
 
-                            <a href="services.html" class="btn btn-style btn-primary mt-4">Xem chi tiết</a>
-                        </div>
+                                    </div>
                     </div>
                 }
             }
@@ -65,6 +74,11 @@
 <!-- disable body scroll which navbar is in active -->
 <!--/MENU-JS-->
 <script>
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     $(window).on("scroll", function () {
       var scroll = $(window).scrollTop();
 
