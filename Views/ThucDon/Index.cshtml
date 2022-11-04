@@ -7,13 +7,13 @@
 }
 
 <style>
-    .w3-services-grids .causes-grid-info{
-        box-shadow:none;
+    .w3-services-grids .causes-grid-info {
+        box-shadow: none;
     }
 
-    .w3-services-grids .causes-grid-info :hover {
-        cursor:pointer;
-    }
+        .w3-services-grids .causes-grid-info :hover {
+            cursor: pointer;
+        }
 </style>
 
 <!-- about breadcrumb -->
@@ -33,26 +33,29 @@
 <div class="w3-services py-5">
     <div class="container py-lg-4">
         <div class="title-content text-left mb-lg-5 mb-4">
-            <h3 class="hny-title">Tất cả sản phẩm</h3>
+            <h3 class="hny-title text-morii">Tất cả sản phẩm</h3>
         </div>
         <div class="row w3-services-grids">
             @{
                 foreach (var sp in ctsps)
                 {
+                    <a href="~/thuc-don/details/@sp.ID">
+            
                     <div class="col-lg-4 col-md-6 causes-grid">
-                                    <div class="causes-grid-info">
-                                        <a href="blog-single.html"><img src=@sp.UrlImage width="360" height="360" alt=""></a>
-                                        <a href="#" class="cause-title-wrap">
-                                            <h4 class="cause-title">
-                                                @sp.TenSanPham
-                                            </h4>
-                                        </a>
-                                        <p class="card-text mb-0" style="font-size: 20px">
-                                            @sp.Gia đ
-                                        </p>
+                        <div class="causes-grid-info">
+                            <a href="~/thuc-don/details/@sp.ID"><img src=@sp.UrlImage width="360" height="360" alt=""></a>
+                            <a href="~/thuc-don/details/@sp.ID" class="cause-title-wrap">
+                                <h4 class="cause-title">
+                                    @sp.TenSanPham
+                                </h4>
+                            </a>
+                            <p class="card-text mb-0" style="font-size: 20px">
+                                @sp.Gia đ
+                            </p>
 
-                                    </div>
+                        </div>
                     </div>
+            </a>
                 }
             }
 
@@ -66,9 +69,9 @@
 <!-- disable body scroll which navbar is in active -->
 <script>
     $(function () {
-      $('.navbar-toggler').click(function () {
-        $('body').toggleClass('noscroll');
-      })
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
     });
 </script>
 <!-- disable body scroll which navbar is in active -->
@@ -80,28 +83,28 @@
     }
 
     $(window).on("scroll", function () {
-      var scroll = $(window).scrollTop();
+        var scroll = $(window).scrollTop();
 
-      if (scroll >= 80) {
-        $("#site-header").addClass("nav-fixed");
-      } else {
-        $("#site-header").removeClass("nav-fixed");
-      }
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
     });
 
     //Main navigation Active Class Add Remove
     $(".navbar-toggler").on("click", function () {
-      $("header").toggleClass("active");
+        $("header").toggleClass("active");
     });
     $(document).on("ready", function () {
-      if ($(window).width() > 991) {
-        $("header").removeClass("active");
-      }
-      $(window).on("resize", function () {
         if ($(window).width() > 991) {
-          $("header").removeClass("active");
+            $("header").removeClass("active");
         }
-      });
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
     });
 </script>
 <!--//MENU-JS-->

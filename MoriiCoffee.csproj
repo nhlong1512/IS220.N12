@@ -1418,10 +1418,13 @@
     <Content Include="Data\Files\299272524_10160186387472959_410055917868008853_n.jpg" />
     <Content Include="Data\Files\305274558_3282709138681794_5982553682992211241_n.jpg" />
     <Content Include="Data\Files\305456825_3282719215347453_7494630175998853872_n.jpg" />
+    <Content Include="Data\Files\americano-nong.jpg" />
     <Content Include="Data\Files\Bg-main-1.jpeg" />
     <Content Include="Data\Files\Bg-main-2.jpeg" />
     <Content Include="Data\Files\Bg-main-3.jpeg" />
     <Content Include="Data\Files\Capture.PNG" />
+    <Content Include="Data\Files\caramel-macchiato_830x550.jpg" />
+    <Content Include="Data\Files\latte.jpg" />
     <Content Include="Data\Files\menu-1.png" />
     <Content Include="Data\Files\menu-2.png" />
     <Content Include="Data\Files\menu-3.png" />
@@ -2562,6 +2565,7 @@
     <Content Include="Scripts\ckfinder\userfiles\.htaccess" />
     <Content Include="Views\CauChuyen\Index.cshtml" />
     <Content Include="Views\ThucDon\Index.cshtml" />
+    <Content Include="Views\ThucDon\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

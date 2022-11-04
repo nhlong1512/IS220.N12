@@ -21,9 +21,15 @@ namespace MoriiCoffee.Controllers
         {
             ViewBag.sanphams = spdao.ViewAll();
             ViewBag.ctsps = ctspdao.ViewAll();
-
             return View();
         }
-        
+
+        public ActionResult Details(long id)
+        {
+            var ctsp = ctspdao.ViewDetail(id);
+
+            return View(ctsp);
+        }
+
     }
 }

@@ -46,6 +46,11 @@ namespace MoriiCoffee
                defaults: new { controller = "ThucDon", action = "Index", id = UrlParameter.Optional }
            );
 
+            routes.MapRoute(
+               name: "ThucDonDetails",
+               url: "thuc-don/details/{id}",
+               defaults: new { controller = "ThucDon", action = "Details", id = UrlParameter.Optional }
+           );
 
             //Route mặc định luôn phải để ở cuối cùng, tránh ghi đè lên các route đã được customize
 
