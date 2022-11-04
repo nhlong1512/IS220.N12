@@ -2454,6 +2454,7 @@
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
     <Compile Include="Controllers\CauChuyenController.cs" />
+    <Compile Include="Controllers\ThucDonController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2547,7 +2548,6 @@
     <Content Include="Views\TrangChu\ThucDon.cshtml" />
     <Content Include="Views\TrangChu\CuaHang.cshtml" />
     <Content Include="Views\TrangChu\LienHe.cshtml" />
-    <Content Include="Views\TrangChu\VeChungToi.cshtml" />
     <Content Include="Views\TrangChu\Blog.cshtml" />
     <Content Include="Views\User\DangKy.cshtml" />
     <Content Include="Views\User\DangNhap.cshtml" />
@@ -2561,6 +2561,7 @@
     <Content Include="Scripts\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\ckfinder\userfiles\.htaccess" />
     <Content Include="Views\CauChuyen\Index.cshtml" />
+    <Content Include="Views\ThucDon\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
