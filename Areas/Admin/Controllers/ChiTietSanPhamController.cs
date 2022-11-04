@@ -34,6 +34,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             ViewBag.sanpham = spdao.ViewAll();
             if (ModelState.IsValid)
             {
+                ctsp.Status = true;
                 var id = ctspdao.Insert(ctsp);
 
                 if (id > 0)
