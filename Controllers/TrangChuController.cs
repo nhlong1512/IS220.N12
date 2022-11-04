@@ -1,4 +1,5 @@
-﻿using Model.EF;
+﻿using Model.Dao;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,16 @@ namespace MoriiCoffee.Controllers
     public class TrangChuController : Controller
     {
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
+        private SanPham sp = new SanPham();
+        private SanPhamDao spdao = new SanPhamDao();
+        private NguoiDungDao nguoidungdao = new NguoiDungDao();
+        private ChiTietSanPham ctsp = new ChiTietSanPham();
+        private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
         // GET: TrangChu
         public ActionResult TrangChu()
         {
+            ViewBag.sanphams = spdao.ViewAll();
+            ViewBag.ctsps = ctspdao.ViewAll();
             return View();
         }
         public ActionResult VeChungToi()

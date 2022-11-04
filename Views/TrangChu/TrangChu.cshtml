@@ -2,7 +2,11 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var sanphams = ViewBag.sanphams;
+    var ctsps = ViewBag.ctsps;
 }
+
+
 
 
 <!-- main-slider -->
@@ -77,7 +81,6 @@
     </div>
 </section>
 <!-- //banner-slider-->
-
 <!--Section Menu-->
 
 <section class="popular-menu__area popular-menu__area--2 dark-bg position-relative pt-80 pb-80">
@@ -95,90 +98,36 @@
             <div class="col-xl-12">
                 <div class="pm-list-wrapper">
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
-                            <div class="popular-menu__list">
-                                <div class="thumb">
-                                    <img src="~/Assets/Images/menu-1.png" />
+                        @{
+                            var i = 0;
+                            foreach (var sp in ctsps)
+                            {
+                                ++i;
+                                <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
+                                    <div class="popular-menu__list">
+                                        <div class="thumb">
+                                            <img src=@sp.UrlImage width="86" height="86" style="border-radius:100%" />
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="title border-effect">
+                                                <a href="#" >@sp.TenSanPham</a>
+                                            </h3>
+                                            <span class="price">@sp.Gia</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <h3 class="title border-effect">
-                                        <a href="#">Americano Rosted GRED</a>
-                                    </h3>
-                                    <span class="price">$12.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
-                            <div class="popular-menu__list">
-                                <div class="thumb">
-                                    <img src="~/Assets/Images/menu-2.png" />
-                                </div>
-                                <div class="content">
-                                    <h3 class="title border-effect">
-                                        <a href="#">Americano Rosted GRED</a>
-                                    </h3>
-                                    <span class="price">$12.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
-                            <div class="popular-menu__list">
-                                <div class="thumb">
-                                    <img src="~/Assets/Images/menu-3.png" />
-                                </div>
-                                <div class="content">
-                                    <h3 class="title border-effect">
-                                        <a href="#">Americano Rosted GRED</a>
-                                    </h3>
-                                    <span class="price">$12.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
-                            <div class="popular-menu__list">
-                                <div class="thumb">
-                                    <img src="~/Assets/Images/menu-4.png" />
-                                </div>
-                                <div class="content">
-                                    <h3 class="title border-effect">
-                                        <a href="#">Americano Rosted GRED</a>
-                                    </h3>
-                                    <span class="price">$12.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
-                            <div class="popular-menu__list">
-                                <div class="thumb">
-                                    <img src="~/Assets/Images/menu-5.png" />
-                                </div>
-                                <div class="content">
-                                    <h3 class="title border-effect">
-                                        <a href="#">Americano Rosted GRED</a>
-                                    </h3>
-                                    <span class="price">$12.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 l-item mt-30">
-                            <div class="popular-menu__list">
-                                <div class="thumb">
-                                    <img src="~/Assets/Images/menu-6.png" />
-                                </div>
-                                <div class="content">
-                                    <h3 class="title border-effect">
-                                        <a href="#">Americano Rosted GRED</a>
-                                    </h3>
-                                    <span class="price">$12.00</span>
-                                </div>
-                            </div>
-                        </div>
+                                if (i == 6)
+                                {
+                                    break;
+                                }
+                            }
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </section>
 
 <!-- /Morii Blog, Morii Chuyện -->
@@ -291,7 +240,6 @@
     </div>
 </section>
 <!--//features-4 -->
-
 <!-- middle -->
 <div class="middle py-5">
     <div class="container py-xl-5 py-lg-3">
