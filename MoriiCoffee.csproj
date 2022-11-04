@@ -2527,6 +2527,7 @@
     <Content Include="Areas\Admin\Views\Blog\Update.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietSanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietSanPham\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietSanPham\Details.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,0 +1,67 @@
+﻿@model Model.EF.ChiTietSanPham
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section breadcrumb {
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <!-- if breadcrumb is single-->
+                    <span>Sản phẩm</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Chi tiết Sản phẩm</span></li>
+            </ol>
+        </nav>
+    </div>
+}
+
+
+<style>
+    p {
+        color: #787e92;
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    ._tieude {
+        color: #146D4B;
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: 700;
+        margin-bottom: 20px
+    }
+
+    ._mota {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+</style>
+<h1>Long</h1>
+
+<div class="tab-content rounded-bottom">
+    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <section class="w3l-content-6">
+                    <img src=@Model.UrlImage style="width: 100%; height: 500px; object-fit: cover;" />
+                    <div class="container py-lg-4 mt-80 mb-80 cauchuyen">
+                        <h2 class="text-uppercase font-weight-bold _tieude">@Model.TenSanPham</h2>
+                        <h3 class="_mota" style="font-size:20px; line-height:20px">@Model.</h3>
+                        @Html.Raw(Model.MoTaSanPham)
+                    </div>
+                </section>
+            </div>
+        }
+    </div>
+</div>
+
