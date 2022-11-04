@@ -11,10 +11,13 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
-        [StringLength(250)]
+        [StringLength(50)]
         public string PhanLoai { get; set; }
 
         public bool? Status { get; set; }
+
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -25,8 +28,5 @@ namespace Model.EF
 
         [StringLength(50)]
         public string ModifiedBy { get; set; }
-
-        [StringLength(250)]
-        public string MetaTitle { get; set; }
     }
 }
