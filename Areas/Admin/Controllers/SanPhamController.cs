@@ -11,18 +11,19 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 {
     public class SanPhamController : Controller
     {
-        // GET: Admin/Blog
+        // GET: Admin/SanPham
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
-        private Blog bl = new Blog();
-        private BlogDao bldao = new BlogDao();
+        private SanPham sp = new SanPham();
+        private SanPhamDao spdao = new SanPhamDao();
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
+        private ChiTietSanPham ctsp = new ChiTietSanPham();
+        private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
+
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             //var blogs = bldao.ViewAll();
             //ViewBag.blogs = blogs;
-            var nguoidung = nguoidungdao.ViewDetail(1);
-            ViewBag.nguoidung = nguoidung;
-            var model = bldao.ListAllPaging(searchString, page, pageSize);
+            var model = ctspdao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
             return View(model);
         }
