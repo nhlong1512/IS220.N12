@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var sanphams = ViewBag.sanphams;
     var ctsps = ViewBag.ctsps;
+
+    var session = ViewBag.session;
 }
 
 
@@ -82,6 +84,8 @@
 </section>
 <!-- //banner-slider-->
 <!--Section Menu-->
+@*<h1>ID --> @session.UserID</h1>
+<h1>email --> @session.UserName</h1>*@
 
 <section class="popular-menu__area popular-menu__area--2 dark-bg position-relative pt-80 pb-80">
     <div class="container">
