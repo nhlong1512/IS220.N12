@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace MoriiCoffee.Controllers
 {
-    public class BlogController : Controller
+    public class BlogTrangChuController : Controller
     {
-        // GET: Blog
+        // GET: BlogTrangChu
         public ActionResult Index()
         {
             return View();
