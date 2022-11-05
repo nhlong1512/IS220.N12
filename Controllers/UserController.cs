@@ -10,7 +10,8 @@ using System.Web.Mvc;
 using static System.Collections.Specialized.BitVector32;
 using System.Data.Entity.Migrations;
 using Model.EF;
-
+using MoriiCoffee.Common;
+using Model.Dao;
 
 namespace MoriiCoffee.Controllers
 {
@@ -22,6 +23,8 @@ namespace MoriiCoffee.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DangKy(NguoiDung _user)
@@ -54,6 +57,8 @@ namespace MoriiCoffee.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DangNhap(string email, string password)
@@ -61,16 +66,29 @@ namespace MoriiCoffee.Controllers
             if (ModelState.IsValid)
             {
 
+                //var f_password = GetMD5(password);
+                //var data = _db.NguoiDungs.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var nddao = new NguoiDungDao();
+                var data = _db.NguoiDungs.Where(s => s.Email.Equals(email) && s.Password.Equals(password)).ToList();
 
-                var f_password = GetMD5(password);
-                var data = _db.NguoiDungs.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
                 {
+                    //TinCode
                     //add session
-                    Session["FullName"] = data.FirstOrDefault().HoTen;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["idUser"] = data.FirstOrDefault().ID;
-                    return RedirectToAction("TrangChu", "TrangChu", new { area = "" });
+                    //Session["FullName"] = data.FirstOrDefault().HoTen;
+                    //Session["Email"] = data.FirstOrDefault().Email;
+                    //Session["idUser"] = data.FirstOrDefault().ID;
+                    //return RedirectToAction("TrangChu", "TrangChu", new { area = "" });
+
+                    //LongCode
+                    var nd = nddao.ViewDetailEmail(email);
+                    var userSession = new UserLogin();
+                    userSession.UserName = nd.Email;
+                    userSession.UserID = nd.ID;
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                    return RedirectToAction("Index", "TrangChu");
+
+
                 }
                 else
                 {

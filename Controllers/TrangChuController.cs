@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MoriiCoffee.Controllers
 {
-    public class TrangChuController : Controller
+    public class TrangChuController : BaseController
     {
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private SanPham sp = new SanPham();

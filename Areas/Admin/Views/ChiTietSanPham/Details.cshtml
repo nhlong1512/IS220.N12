@@ -8,20 +8,69 @@
     var ctsps = ViewBag.ctsps;
 }
 
+<style>
 
-@*@section breadcrumb {
+    .breadcrumb {
+        --cui-breadcrumb-padding-x: 0 !important;
+        --cui-breadcrumb-padding-y: 0 !important;
+        --cui-breadcrumb-margin-bottom: 1rem !important;
+        --cui-breadcrumb-bg: unset !important;
+        --cui-breadcrumb-border-radius: !important;
+        --cui-breadcrumb-divider-color: #8a93a2 !important;
+        --cui-breadcrumb-item-padding-x: 0.5rem !important;
+        --cui-breadcrumb-item-active-color: #8a93a2 !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        padding: var(--cui-breadcrumb-padding-y) var(--cui-breadcrumb-padding-x) !important;
+        margin-bottom: var(--cui-breadcrumb-margin-bottom) !important;
+        font-size: var(--cui-breadcrumb-font-size) !important;
+        list-style: none !important;
+        background-color: var(--cui-breadcrumb-bg) !important;
+        border-radius: var(--cui-breadcrumb-border-radius) !important;
+    }
+
+    html:not([dir=rtl]) .breadcrumb-item + .breadcrumb-item {
+        padding-left: var(--cui-breadcrumb-item-padding-x) !important;
+    }
+
+    *[dir=rtl] .breadcrumb-item + .breadcrumb-item {
+        padding-right: var(--cui-breadcrumb-item-padding-x) !important;
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        color: var(--cui-breadcrumb-divider-color) !important;
+    }
+
+    html:not([dir=rtl]) .breadcrumb-item + .breadcrumb-item::before {
+        float: left !important;
+        padding-right: var(--cui-breadcrumb-item-padding-x) !important;
+        content: var(--cui-breadcrumb-divider, "/") !important;
+    }
+
+    *[dir=rtl] .breadcrumb-item + .breadcrumb-item::before {
+        float: right !important;
+        padding-left: var(--cui-breadcrumb-item-padding-x) !important;
+        content: var(--cui-breadcrumb-divider-flipped, "/") !important;
+    }
+
+    .breadcrumb-item.active {
+        color: var(--cui-breadcrumb-item-active-color) !important;
+    }
+</style>
+
+
+@section breadcrumb {
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb my-0 ms-2">
                 <li class="breadcrumb-item">
- if breadcrumb is single
-<span>Sản phẩm</span>
+                    <span>Sản phẩm</span>
                 </li>
                 <li class="breadcrumb-item active"><span>Chi tiết Sản phẩm</span></li>
             </ol>
         </nav>
     </div>
-}*@
+}
 
 <link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />
 <link href="~/Assets/Client/css/custom-profiledropdown.css" rel="stylesheet" />

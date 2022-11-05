@@ -33,10 +33,17 @@ namespace Model.Dao
 
         }
 
-        //Xem chi tiết người dùng
+        //Xem chi tiết người dùng thông qua ID
         public NguoiDung ViewDetail(int id)
         {
             return db.NguoiDungs.Find(id);
+        }
+
+        //Xem chi tiết người dùng thông qua userName
+
+        public NguoiDung ViewDetailEmail(string email)
+        {
+            return db.NguoiDungs.SingleOrDefault(x => x.Email == email);
         }
 
         //Thêm Người dùng
