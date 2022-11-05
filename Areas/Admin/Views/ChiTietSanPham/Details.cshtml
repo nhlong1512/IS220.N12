@@ -1,25 +1,31 @@
 ﻿@model Model.EF.ChiTietSanPham
 
 
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var ctsps = ViewBag.ctsps;
 }
 
 
-@section breadcrumb {
+@*@section breadcrumb {
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb my-0 ms-2">
                 <li class="breadcrumb-item">
-                    <!-- if breadcrumb is single-->
-                    <span>Sản phẩm</span>
+ if breadcrumb is single
+<span>Sản phẩm</span>
                 </li>
                 <li class="breadcrumb-item active"><span>Chi tiết Sản phẩm</span></li>
             </ol>
         </nav>
     </div>
-}
+}*@
+
+<link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />
+<link href="~/Assets/Client/css/custom-profiledropdown.css" rel="stylesheet" />
+<script src="~/Assets/Client/js/bootstrap.min.js"></script>
 
 <style>
     .product {
@@ -54,6 +60,26 @@
         font-weight: 400;
     }
 
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+        align-items: initial;
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #146d4d !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important;
+    }
 </style>
 
 
@@ -63,29 +89,83 @@
         {
             @Html.AntiForgeryToken()
             <div class="form-horizontal">
+                <div class="form-horizontal">
 
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="container">
-                    <div class="product">
-                        <div class="imgProduct">
-                            <img src=@Model.UrlImage style="width:500px; height: 500px;" />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="container">
+                        <div class="product">
+                            <div class="imgProduct">
+                                <img src=@Model.UrlImage style="width:500px; height: 500px;" />
+                            </div>
+                            <div class="contentProduct">
+                                <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
+                                    @Model.TenSanPham
+                                </h3>
+                                <p style="font-size: 24px; font-weight: 700;">
+                                    @{
+                                        var t = @Model.Gia;
+                                        t = t / 1000;
+
+                                    }
+                                    @t.000 đ
+                                </p>
+                            </div>
                         </div>
-                        <div class="contentProduct">
-                            <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
-                                @Model.TenSanPham
-                            </h3>
-                            <p style="font-size: 24px; font-weight: 700;">@Model.Gia Đ</p>
+                        <hr class="style10">
+                        <div class="moTaDiv">
+                            <h3 class="moTa">Mô tả sản phẩm</h3>
+                            <p class="moTaP">@Model.MoTaSanPham</p>
+
                         </div>
-                    </div>
-                    <div class="moTaDiv">
-                        <h3 class="moTa">Mô tả sản phẩm</h3>
-                        <p class="moTaP">@Model.MoTaSanPham</p>
+                        <div class="moTaDiv">
+                            <hr class="style10">
+                            <h3 class="moTa">Sản phẩm liên quan</h3>
+                        </div>
+
+
+                        <div class="row w3-services-grids">
+                            @{
+                                var i = 0;
+                                foreach (var sp in ctsps)
+                                {
+                                    if (sp.ID == Model.ID)
+                                    {
+                                        continue;
+                                    }
+                                    ++i;
+                                    <a href="~/admin/san-pham/details/@sp.ID" style="width:auto!important; padding:0!important">
+                                        <div class="col-lg-2 col-md-3 causes-grid">
+                                            <div>
+                                                <a href="~/admin/san-pham/details/@sp.ID"><img src=@sp.UrlImage alt="@sp.TenSanPham" height="120"></a>
+                                                <a href="~/admin/san-pham/details/@sp.ID" class="cause-title-wrap">
+                                                    <h4 class="cause-title splienquan-h4 text-morii">
+                                                        @sp.TenSanPham
+                                                    </h4>
+                                                </a>
+                                                <p class="card-text mb-0 splienquan-p" style="font-size: 20px">
+                                                    @{
+                                                        var b = sp.Gia;
+                                                        b = b / 1000;
+
+                                                    }
+                                                    @b.000 đ
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                    if (i == 6)
+                                    {
+                                        return;
+                                    }
+                                }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
-
 
 

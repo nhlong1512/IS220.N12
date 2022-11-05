@@ -72,7 +72,14 @@
                                 }
                             }
                             <td>@sanpham.CreatedDate</td>
-                            <td>@sanpham.Gia</td>
+                            <td>
+                                @{
+                                    var b = sanpham.Gia;
+                                    b = b / 1000;
+
+                                }
+                                @b.000 đ
+                            </td>
                             @{
 
                                 if (@sanpham.Status ??  false)
