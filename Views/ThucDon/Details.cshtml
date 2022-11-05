@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var ctsps = ViewBag.ctsps;
 }
 
 
@@ -41,7 +42,7 @@
     }
 
     .moTaDiv {
-        margin-top: 20px;
+        margin: 20px 0;
     }
 
     .moTa {
@@ -53,7 +54,30 @@
     .moTaP {
         font-size: 18px;
         font-weight: 400;
+        margin-bottom:20px;
     }
+
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+         align-items: initial; 
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #146d4d !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important; 
+    }
+
 </style>
 
 <div class="w3-services py-5">
@@ -73,12 +97,49 @@
                             <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
                                 @Model.TenSanPham
                             </h3>
-                            <p style="font-size: 24px; font-weight: 700;">@Model.Gia Đ</p>
+                            <p style="font-size: 24px; font-weight: 700;">@Model.Gia đ</p>
                         </div>
                     </div>
+                    <hr class="style10">
                     <div class="moTaDiv">
                         <h3 class="moTa">Mô tả sản phẩm</h3>
                         <p class="moTaP">@Model.MoTaSanPham</p>
+
+                    </div>
+                    <div class="moTaDiv">
+                        <hr class="style10">
+                        <h3 class="moTa">Sản phẩm liên quan</h3>
+                        <p class="moTaP">@Model.MoTaSanPham</p>
+                    </div>
+
+
+                    <div class="row w3-services-grids">
+                        @{
+                            foreach (var sp in ctsps)
+                            {
+                                if(sp.ID == Model.ID)
+                                {
+                                    continue;
+                                }
+                                <a href="~/thuc-don/details/@sp.ID">
+
+                                    <div class="col-lg-2 col-md-3 causes-grid">
+                                        <div>
+                                            <a href="~/thuc-don/details/@sp.ID"><img src=@sp.UrlImage alt="@sp.TenSanPham" height="120"></a>
+                                            <a href="~/thuc-don/details/@sp.ID" class="cause-title-wrap">
+                                                <h4 class="cause-title splienquan-h4 text-morii">
+                                                    @sp.TenSanPham
+                                                </h4>
+                                            </a>
+                                            <p class="card-text mb-0 splienquan-p" style="font-size: 20px">
+                                                @sp.Gia đ
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
                     </div>
                 </div>
             </div>

@@ -40,22 +40,22 @@
                 foreach (var sp in ctsps)
                 {
                     <a href="~/thuc-don/details/@sp.ID">
-            
-                    <div class="col-lg-4 col-md-6 causes-grid">
-                        <div class="causes-grid-info">
-                            <a href="~/thuc-don/details/@sp.ID"><img src=@sp.UrlImage width="360" height="360" alt=""></a>
-                            <a href="~/thuc-don/details/@sp.ID" class="cause-title-wrap">
-                                <h4 class="cause-title">
-                                    @sp.TenSanPham
-                                </h4>
-                            </a>
-                            <p class="card-text mb-0" style="font-size: 20px">
-                                @sp.Gia đ
-                            </p>
 
+                        <div class="col-lg-4 col-md-6 causes-grid">
+                            <div class="causes-grid-info">
+                                <a href="~/thuc-don/details/@sp.ID"><img src=@sp.UrlImage width="360" height="360" alt=""></a>
+                                <a href="~/thuc-don/details/@sp.ID" class="cause-title-wrap">
+                                    <h4 class="cause-title">
+                                        @sp.TenSanPham
+                                    </h4>
+                                </a>
+                                <p class="card-text mb-0" style="font-size: 20px">
+                                    @sp.Gia đ
+                                </p>
+
+                            </div>
                         </div>
-                    </div>
-            </a>
+                    </a>
                 }
             }
 

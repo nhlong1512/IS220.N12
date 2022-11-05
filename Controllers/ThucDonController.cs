@@ -27,6 +27,7 @@ namespace MoriiCoffee.Controllers
         public ActionResult Details(long id)
         {
             var ctsp = ctspdao.ViewDetail(id);
+            ViewBag.ctsps = ctspdao.ViewAll();
 
             return View(ctsp);
         }
