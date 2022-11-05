@@ -2456,7 +2456,10 @@
     <Compile Include="Areas\Admin\Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CauChuyenController.cs" />
+    <Compile Include="Controllers\CuaHangController.cs" />
+    <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\ThucDonController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -2547,11 +2550,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
-    <Content Include="Views\TrangChu\TrangChu.cshtml" />
-    <Content Include="Views\TrangChu\ThucDon.cshtml" />
-    <Content Include="Views\TrangChu\CuaHang.cshtml" />
-    <Content Include="Views\TrangChu\LienHe.cshtml" />
-    <Content Include="Views\TrangChu\Blog.cshtml" />
+    <Content Include="Views\TrangChu\Index.cshtml" />
     <Content Include="Views\User\DangKy.cshtml" />
     <Content Include="Views\User\DangNhap.cshtml" />
     <Content Include="Views\Shared\_LoginRegister.cshtml" />
@@ -2566,6 +2565,9 @@
     <Content Include="Views\CauChuyen\Index.cshtml" />
     <Content Include="Views\ThucDon\Index.cshtml" />
     <Content Include="Views\ThucDon\Details.cshtml" />
+    <Content Include="Views\CuaHang\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

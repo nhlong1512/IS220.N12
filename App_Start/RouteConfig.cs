@@ -14,6 +14,7 @@ namespace MoriiCoffee
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
+            //Config route cho UserController
             routes.MapRoute(
                 name: "DangNhap",
                 url: "dang-nhap",
@@ -30,6 +31,13 @@ namespace MoriiCoffee
                name: "QuenMatKhau",
                url: "quen-mat-khau",
                defaults: new { controller = "User", action = "QuenMatKhau", id = UrlParameter.Optional }
+           );
+
+            //Config route cho Trang chủ
+            routes.MapRoute(
+               name: "TrangChu",
+               url: "",
+               defaults: new { controller = "TrangChu", action = "Index", id = UrlParameter.Optional }
            );
 
             //Config route cho Câu chuyện
@@ -50,6 +58,20 @@ namespace MoriiCoffee
                name: "ThucDonDetails",
                url: "thuc-don/details/{id}",
                defaults: new { controller = "ThucDon", action = "Details", id = UrlParameter.Optional }
+           );
+
+            //Config Route cho Cửa hàng
+            routes.MapRoute(
+               name: "CuaHang",
+               url: "cua-hang",
+               defaults: new { controller = "CuaHang", action = "Index", id = UrlParameter.Optional }
+           );
+
+            //Config Route cho Liên Hệ 
+            routes.MapRoute(
+               name: "LienHe",
+               url: "lien-he",
+               defaults: new { controller = "LienHe", action = "Index", id = UrlParameter.Optional }
            );
 
             //Route mặc định luôn phải để ở cuối cùng, tránh ghi đè lên các route đã được customize

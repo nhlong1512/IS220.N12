@@ -18,33 +18,12 @@ namespace MoriiCoffee.Controllers
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
         // GET: TrangChu
-        public ActionResult TrangChu()
+        public ActionResult Index()
         {
             ViewBag.sanphams = spdao.ViewAll();
             ViewBag.ctsps = ctspdao.ViewAll();
             return View();
         }
-        public ActionResult VeChungToi()
-        {
-            return View();
-        }
-
-        public ActionResult ThucDon()
-        {
-            return View();
-        }
-        public ActionResult Blog()
-        {
-            ViewBag.LongNguyen = db.Blogs.Count();
-            return View();
-        }
-        public ActionResult CuaHang()
-        {
-            return View();
-        }
-        public ActionResult LienHe()
-        {
-            return View();
-        }
+        
     }
 }
