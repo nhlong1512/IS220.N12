@@ -1,5 +1,4 @@
 ﻿
-@model List<Model.EF.NguoiDung>
 
 @{
     var session = ViewBag.session;
@@ -11,24 +10,24 @@
     <title>Morii Coffee</title>
     <link rel="morii icon" href="~/Assets/Images/LogoMorii1.png" type="image/x-icon" />
     <link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />
-    <link href="~/Assets/Client/css/custom-profiledropdown.css" rel="stylesheet" />
-    <a href="~/Assets/Client/fonts/fontawesome-webfont.eot"></a>
-    <a href="~/Assets/Client/fonts/fontawesome-webfont.ttf"></a>
-    <a href="~/Assets/Client/fonts/fontawesome-webfont.woff"></a>
-    <a href="~/Assets/Client/fonts/fontawesome-webfont.woff2"></a>
-    <a href="~/Assets/Client/fonts/FontAwesome.otf"></a>
-    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
-    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Assets/Client/js/jquery.countup.js"></script>
-    <script src="~/Assets/Client/js/jquery.waypoints.min.js"></script>
-    <script src="~/Assets/Client/js/jquery.magnific-popup.min.js"></script>
+    @*<a href="~/Assets/Client/fonts/fontawesome-webfont.eot"></a>
+        <a href="~/Assets/Client/fonts/fontawesome-webfont.ttf"></a>
+        <a href="~/Assets/Client/fonts/fontawesome-webfont.woff"></a>
+        <a href="~/Assets/Client/fonts/fontawesome-webfont.woff2"></a>
+        <a href="~/Assets/Client/fonts/FontAwesome.otf"></a>*@
+    @*<script src="~/Assets/Client/js/bootstrap.min.js"></script>*@
+
+    @*<script src="~/Assets/Client/js/jquery.countup.js"></script>
+        <script src="~/Assets/Client/js/jquery.waypoints.min.js"></script>
+        <script src="~/Assets/Client/js/jquery.magnific-popup.min.js"></script>*@
     <script src="~/Assets/Client/js/owl.carousel.js"></script>
     <script src="~/Assets/Client/js/theme-change.js"></script>
-<style>
-    .header {
-        grid-template-columns: none !important;
-    }
-</style>
+
+    <style>
+        .header {
+            grid-template-columns: none !important;
+        }
+    </style>
 </head>
 
 
@@ -66,46 +65,30 @@
                         </a>
                     </ul>
                     @*@RenderSection("isLogin", required:false)*@
-                    <ul class="navbar-nav search-right mt-lg-0 mt-2">
-                        <li class="nav-item mr-3" title="Search">
-                            <a href="#search" class="btn search-search" style=" display: flex; justify-content: center; align-items: center; ">
-                                <span class="fa fa-search" aria-hidden="true"></span>
-                            </a>
-                        </li>
+                <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                    <li class="nav-item mr-3" title="Search">
+                        <a href="#search" class="btn search-search" style=" display: flex; justify-content: center; align-items: center; ">
+                            <span class="fa fa-search" aria-hidden="true"></span>
+                        </a>
+                    </li>
 
-                        @{
-                            if (session == null)
-                            {
-                                <li class="nav-item">
-                                    <a href="~/dang-nhap" class="btn btn-primary d-none d-lg-block btn-style mr-2">
-                                        Đăng nhập
-                                    </a>
-                                </li>
-                            }
-                            else
-                            {
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbar-list-4">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                <a class="dropdown-item" href="#">Dashboard</a>
-                                                <a class="dropdown-item" href="#">Edit Profile</a>
-                                                <a class="dropdown-item" href="#">Log Out</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            }
+                    @{
+                        if (session == null)
+                        {
+                            <li class="nav-item">
+                                <a href="~/dang-nhap" class="btn btn-primary d-none d-lg-block btn-style mr-2">
+                                    Đăng nhập
+                                </a>
+                            </li>
                         }
+                        else
+                        {
+
+                        }
+                    }
 
 
-                    </ul>
+                </ul>
                     <!-- //toggle switch for light and dark theme -->
                     <!-- search popup -->
                     <div id="search" class="pop-overlay">
@@ -143,17 +126,6 @@
             </nav>
 
         </div>
-        @*<div class="profile">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
-                </a>
-
-                <ul class="dropdown-menu profile-dropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action two</a></li>
-                    <li><a class="dropdown-item" href="#">Action three</a></li>
-                </ul>
-            </div>*@
     </header>
     <!--/header-->
     <div>
@@ -190,9 +162,9 @@
                                         </a>
                                     </h2>
                                     <!-- if logo is image enable this
-                                                          <a class="navbar-brand" href="#index.html">
-                                                              <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-                                                          </a> -->
+                                  <a class="navbar-brand" href="#index.html">
+                                      <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                                  </a> -->
                                     <p class="pr-lg-4">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                         Consequuntur hic odio voluptatem tenetur consequatur.Lorem ipsum dolor sit amet
@@ -290,6 +262,9 @@
                 }
             </script>
             <!-- /move top -->
+            <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+            <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+            <script src="~/Assets/Admin/vendors/core-ui/coreui/js/coreui.bundle.min.js"></script>
 
         </section>
     </footer>
