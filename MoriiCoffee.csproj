@@ -1448,6 +1448,7 @@
     <Content Include="Data\Files\MoriiFeedback2.jpg" />
     <Content Include="Data\Files\MoriiFeedback3.jpg" />
     <Content Include="Data\Files\MoriiFeedback4.jpg" />
+    <Content Include="Data\Files\noAvt.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2565,7 +2566,7 @@
     <Content Include="Views\CuaHang\Index.cshtml" />
     <Content Include="Views\LienHe\Index.cshtml" />
     <Content Include="Views\BlogTrangChu\Index.cshtml" />
-    <Content Include="Views\Shared\UserDropdown.cshtml" />
+    <Content Include="Views\Shared\_UserDropdown.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -2,7 +2,7 @@
 
 @{
     var session = ViewBag.session;
-    var nd = ViewBag.nd;
+    var nd = ViewBag.ndd;
 }
 <html>
 <head>
@@ -201,7 +201,21 @@
                             <ul class="header-nav ms-3">
                                 <li class="nav-item dropdown" style="margin-bottom: 6px; margin-top: 6px;">
                                     <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <div class="avatar avatar-md"><img class="avatar-img" src="~/Assets/Images/MoriiFeedback4.jpg" alt="user@email.com"></div>
+                                        @if (string.IsNullOrEmpty(nd.Urlmage))
+                                        {
+                                            <div class="avatar avatar-md">
+                                                <img class="avatar-img"
+                                                     src="~/Data/Files/noAvt2.png" alt="user@email.com">
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="avatar avatar-md">
+                                                <img class="avatar-img"
+                                                     src="@nd.Urlmage" alt="user@email.com">
+                                            </div>
+                                        }
+
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end pt-0">
                                         <div class="dropdown-header bg-light py-2 account-dropdown-header">
@@ -217,7 +231,7 @@
                                         </a><a class="dropdown-item" href="#">
                                             <svg class="icon me-2">
                                                 <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-task"></use>
-                                            </svg> Tasks<
+                                            </svg> Tasks
                                         </a><a class="dropdown-item" href="#">
                                             <svg class="icon me-2">
                                                 <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-comment-square"></use>

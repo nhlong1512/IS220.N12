@@ -14,17 +14,13 @@ namespace MoriiCoffee.Controllers
         // GET: LayoutClient
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
-        private NguoiDung nd = new NguoiDung();
         public ActionResult GetData()
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             ViewBag.session = session;
-            if(session.UserID != null)
-            {
-                var nd = nddao.ViewDetail(session.UserID);
+            var nd = nddao.ViewDetail(2);
                 ViewBag.nd = nd;
-            }
-            return View();
+                return View();
         }
     }
 }

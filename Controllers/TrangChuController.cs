@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MoriiCoffee.Controllers
 {
-    public class TrangChuController : Controller
+    public class TrangChuController : BaseController
     {
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private SanPham sp = new SanPham();
@@ -21,7 +21,11 @@ namespace MoriiCoffee.Controllers
         // GET: TrangChu
         public ActionResult Index()
         {
-            ViewBag.session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+                    ViewBag.session = session;
+                    var nd = nguoidungdao.ViewDetailEmail(session.UserName);
+                    ViewBag.ndd = nd;
+            
             ViewBag.sanphams = spdao.ViewAll();
             ViewBag.ctsps = ctspdao.ViewAll();
             return View();
