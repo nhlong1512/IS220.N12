@@ -1,0 +1,176 @@
+﻿@*<link rel="stylesheet" href="~/Assets/Admin/~/Assets/Admin/vendors/simplebar/css/simplebar.css">
+        <link rel="stylesheet" href="~/Assets/Admin/css/~/Assets/Admin/vendors/simplebar.css">
+    <link href="~/Assets/Admin/css/style.css" rel="stylesheet">*@
+
+@{ 
+    var session = ViewBag.session;
+    var nd = ViewBag.nd;
+}
+<style>
+    .avatar-img {
+        border-radius: 100%;
+        width: 52px;
+    }
+
+    .fw-semibold {
+        font-weight: 600 !important;
+    }
+
+    .bg-light {
+        --cui-bg-opacity: 1;
+        background-color: rgba(235, 237, 239, var(--cui-bg-opacity)) !important;
+    }
+
+    a.dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 4px 16px !important;
+        color: #4f5d73;
+        font-weight: 400;
+        clear: both;
+        text-align: inherit;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .icon:not(.icon-c-s):not(.icon-custom-size) {
+        width: 1rem;
+        height: 1rem;
+        font-size: 1rem;
+    }
+
+    .icon {
+        display: inline-block;
+        color: inherit;
+        text-align: center;
+        vertical-align: -0.125rem;
+        fill: currentColor;
+    }
+
+    .nav-link {
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    }
+
+    .dropdown-menu-end {
+        --cui-position: end;
+    }
+
+    .navbar-expand-lg .navbar-nav .dropdown-menu:before {
+        display: none
+    }
+
+    .dropdown-menu {
+        --cui-dropdown-min-width: 10rem;
+        --cui-dropdown-padding-x: 0;
+        --cui-dropdown-padding-y: 0.5rem;
+        --cui-dropdown-spacer: 0.125rem;
+        --cui-dropdown-font-size: 1rem;
+        --cui-dropdown-color: rgba(44, 56, 74, 0.95);
+        --cui-dropdown-bg: #fff;
+        --cui-dropdown-border-color: var(--cui-border-color-translucent);
+        --cui-dropdown-border-radius: 0.375rem;
+        --cui-dropdown-border-width: 1px;
+        --cui-dropdown-inner-border-radius: calc(0.375rem - 1px);
+        --cui-dropdown-divider-bg: var(--cui-border-color-translucent);
+        --cui-dropdown-divider-margin-y: 0.5rem;
+        --cui-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 21, 0.15);
+        --cui-dropdown-link-color: #4f5d73;
+        --cui-dropdown-link-hover-color: #475468;
+        --cui-dropdown-link-hover-bg: #d8dbe0;
+        --cui-dropdown-link-active-color: rgba(255, 255, 255, 0.87);
+        --cui-dropdown-link-active-bg: #321fdb;
+        --cui-dropdown-link-disabled-color: #9da5b1;
+        --cui-dropdown-item-padding-x: 1rem;
+        --cui-dropdown-item-padding-y: 0.25rem;
+        --cui-dropdown-header-color: #8a93a2;
+        --cui-dropdown-header-padding-x: 1rem;
+        --cui-dropdown-header-padding-y: 0.5rem;
+        position: absolute;
+        z-index: 1000;
+        display: none;
+        min-width: var(--cui-dropdown-min-width);
+        padding: var(--cui-dropdown-padding-y) var(--cui-dropdown-padding-x);
+        margin: 0;
+        font-size: var(--cui-dropdown-font-size);
+        color: var(--cui-dropdown-color);
+        text-align: left;
+        list-style: none;
+        background-color: var(--cui-dropdown-bg);
+        background-clip: padding-box;
+        border: var(--cui-dropdown-border-width) solid var(--cui-dropdown-border-color);
+        border-radius: var(--cui-dropdown-border-radius);
+    }
+
+    .dropdown-header {
+        display: block;
+        padding: var(--cui-dropdown-header-padding-y) var(--cui-dropdown-header-padding-x);
+        margin-bottom: 0;
+        font-size: 0.875rem;
+        color: var(--cui-dropdown-header-color);
+        white-space: nowrap;
+    }
+
+    .account-dropdown-header {
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0.375rem;
+    }
+</style>
+
+<ul class="header-nav ms-3">
+    <li class="nav-item dropdown" style="margin-bottom: 6px; margin-top: 6px;">
+        <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar avatar-md"><img class="avatar-img" src="~/Assets/Images/MoriiFeedback4.jpg" alt="user@email.com"></div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end pt-0">
+            <div class="dropdown-header bg-light py-2 account-dropdown-header">
+                <div class="fw-semibold">Account</div>
+            </div><a class="dropdown-item" href="#">
+                      <svg class="icon me-2">
+                          <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-bell"></use>
+                      </svg> Updates 
+            </a><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-envelope-open"></use>
+                </svg> Messages
+            </a><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-task"></use>
+                </svg> Tasks<
+            </a><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-comment-square"></use>
+                </svg> Comments
+            </a>
+            <div class="dropdown-header bg-light py-2">
+                <div class="fw-semibold">Settings</div>
+            </div><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-user"></use>
+                </svg> Profile
+            </a><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-settings"></use>
+                </svg> Settings
+            </a><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-credit-card"></use>
+                </svg> Payments
+            </a><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-file"></use>
+                </svg> Projects
+            </a>
+            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-lock-locked"></use>
+                </svg> Lock Account
+            </a><a class="dropdown-item" href="#">
+                <svg class="icon me-2">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-account-logout"></use>
+                </svg> Logout
+            </a>
+        </div>
+    </li>
+</ul>

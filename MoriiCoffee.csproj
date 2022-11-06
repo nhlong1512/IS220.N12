@@ -2565,6 +2565,7 @@
     <Content Include="Views\CuaHang\Index.cshtml" />
     <Content Include="Views\LienHe\Index.cshtml" />
     <Content Include="Views\BlogTrangChu\Index.cshtml" />
+    <Content Include="Views\Shared\UserDropdown.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
