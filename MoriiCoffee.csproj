@@ -2462,6 +2462,7 @@
     <Compile Include="Controllers\BlogTrangChuController.cs" />
     <Compile Include="Controllers\CauChuyenController.cs" />
     <Compile Include="Controllers\CuaHangController.cs" />
+    <Compile Include="Controllers\LayoutClientController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\ThucDonController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -2586,6 +2587,7 @@
     <Folder Include="Assets\Login_Register\js\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\LayoutClient\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Model\Model.csproj">

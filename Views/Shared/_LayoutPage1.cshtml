@@ -1,5 +1,9 @@
 ﻿
 @model List<Model.EF.NguoiDung>
+
+@{
+    var session = ViewBag.session;
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -52,18 +56,20 @@
                         <li class="nav-link">LIÊN HỆ</li>
                         </a>
                     </ul>
-                    <ul class="navbar-nav search-right mt-lg-0 mt-2">
-                        <li class="nav-item mr-3" title="Search">
-                            <a href="#search" class="btn search-search">
-                                <span class="fa fa-search" aria-hidden="true"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="~/dang-nhap" class="btn btn-primary d-none d-lg-block btn-style mr-2">
-                                Đăng nhập
-                            </a>
-                        </li>
-                    </ul><!-- //toggle switch for light and dark theme -->
+                    @*@RenderSection("isLogin", required:false)*@
+                <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                    <li class="nav-item mr-3" title="Search">
+                        <a href="#search" class="btn search-search" style=" display: flex; justify-content: center; align-items: center; ">
+                            <span class="fa fa-search" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/dang-nhap" class="btn btn-primary d-none d-lg-block btn-style mr-2">
+                            Đăng nhập @session.UserID @session.UserName
+                        </a>
+                    </li>
+                </ul>
+                    <!-- //toggle switch for light and dark theme -->
                     <!-- search popup -->
                     <div id="search" class="pop-overlay">
                         <div class="popup">
@@ -77,6 +83,7 @@
 
                     <!-- /search popup -->
                 </div>
+                
 
 
 

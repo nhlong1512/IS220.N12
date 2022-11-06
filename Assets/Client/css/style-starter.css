@@ -12153,11 +12153,13 @@ a.text-dark:focus {
 }
 
 .fa-angle-left:before {
-    content: "";
+    /*content: "";*/
+    content: "<";
 }
 
 .fa-angle-right:before {
-    content: "";
+    /*content: "";*/
+    content: ">";
 }
 
 .fa-angle-up:before {
