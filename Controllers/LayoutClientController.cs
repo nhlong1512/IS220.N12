@@ -17,9 +17,7 @@ namespace MoriiCoffee.Controllers
         public ActionResult GetData()
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
-            ViewBag.session = session;
-            var nd = nddao.ViewDetail(2);
-                ViewBag.nd = nd;
+            var nd = nddao.ViewDetail(session.UserID);
                 return View();
         }
     }
