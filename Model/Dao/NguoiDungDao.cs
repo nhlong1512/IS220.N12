@@ -34,7 +34,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết người dùng thông qua ID
-        public NguoiDung ViewDetail(int id)
+        public NguoiDung ViewDetail(long id)
         {
             return db.NguoiDungs.Find(id);
         }
