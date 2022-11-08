@@ -54,7 +54,7 @@
     .moTaP {
         font-size: 18px;
         font-weight: 400;
-        margin-bottom:20px;
+        margin-bottom: 20px;
     }
 
     hr.style10 {
@@ -63,7 +63,7 @@
     }
 
     .w3-services-grids {
-         align-items: initial; 
+        align-items: initial;
     }
 
     .splienquan-h4 {
@@ -75,9 +75,8 @@
     }
 
     .splienquan-p {
-        font-size: 18px !important; 
+        font-size: 18px !important;
     }
-
 </style>
 
 <div class="w3-services py-5">
@@ -124,7 +123,7 @@
                         @{
                             foreach (var sp in ctsps)
                             {
-                                if(sp.ID == Model.ID)
+                                if (sp.ID == Model.ID)
                                 {
                                     continue;
                                 }
@@ -162,3 +161,49 @@
 
 
 
+
+
+
+
+<!-- //contact-form -->
+<!-- Template JavaScript -->
+<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+<script src="~/Assets/Client/js/theme-change.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- disable body scroll which navbar is in active -->
+<!--/MENU-JS-->
+
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!--//MENU-JS-->

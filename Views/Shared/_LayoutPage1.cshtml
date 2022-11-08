@@ -204,7 +204,7 @@
                                             {
                                                 <div class="avatar avatar-md">
                                                     <img class="avatar-img"
-                                                         src="~/Data/Files/noAvt2.png" alt="user@email.com">
+                                                         src="/Data/Files/noAvt2.png" alt="user@email.com">
                                                 </div>
                                             }
                                             else
@@ -236,8 +236,7 @@
                                                 </svg> Đơn Mua
                                             </a>
                                             <a class="dropdown-item" id="dangXuatID" 
-                                               @*@this.Url.Action("DangXuat", "User", new { @hrefLocation = '~/cau-chuyen' })*@
-                                              
+                                              href="/dang-xuat"
                                                >
                                                 <svg class="icon me-2">
                                                     <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-account-logout"></use>
@@ -425,19 +424,17 @@
                 }
 
             </script>
-            <script>
+            <!--<script>
                 $(document).ready(function () {
                     $("#dangXuatID").click(function () {
                         console.log(window.location.href);
                         var hrefL = window.location.href;
-                        @this.Url.Action("DangXuat", "User", new { @hrefLocation = UrlParameter.Optional })
-                    });
+                        console.log(hrefL);-->
+                        @*@this.Url.Action("DangXuat", "User", new { @hrefLocation = hrefL })*@
+                    <!--});
                 });
-            </script>
+            </script>-->
             <!-- /move top -->
-            <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-            <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-            <script src="~/Assets/Admin/vendors/core-ui/coreui/js/coreui.bundle.min.js"></script>
 
         </section>
     </footer>
