@@ -18,6 +18,8 @@ namespace MoriiCoffee.Controllers
     public class UserController : Controller
     {
         private MoriiCoffeeDBContext _db = new MoriiCoffeeDBContext();
+        private NguoiDungDao nddao = new NguoiDungDao();
+        private NguoiDung nd = new NguoiDung();
         // GET: User
         public ActionResult DangKy()
         {
@@ -27,26 +29,34 @@ namespace MoriiCoffee.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DangKy(NguoiDung _user)
+        public ActionResult DangKy(NguoiDung user)
         {
             if (ModelState.IsValid)
             {
-                var check = _db.NguoiDungs.FirstOrDefault(s => s.Email == _user.Email);
-                if (check == null)
+                //var nd = _db.NguoiDungs.FirstOrDefault(s => s.Email == _user.Email);
+                var nd = nddao.ViewDetailEmail(user.Email);
+
+                if (nd == null)
                 {
-                    _user.Password = GetMD5(_user.Password);
-                    _db.Configuration.ValidateOnSaveEnabled = false;
-                    _db.NguoiDungs.Add(_user);
-                    _db.SaveChanges();
-                    return RedirectToAction("DangNhap");
+                    user.Password = GetMD5(user.Password);
+                    user.ConfirmPassword = user.Password;
+                    user.Status = true;
+                    user.Role = "Khách hàng";
+                    var id = nddao.Insert(user);
+                    if(id >= 0)
+                    {
+                        return RedirectToAction("DangNhap");
+
+                    }else
+                    {
+                        ViewBag.error = "Đăng nhập thất bại";
+                    }
                 }
                 else
                 {
                     ViewBag.error = "Email already exists";
                     return View();
                 }
-
-
             }
             return View();
 
@@ -66,10 +76,9 @@ namespace MoriiCoffee.Controllers
             if (ModelState.IsValid)
             {
 
-                //var f_password = GetMD5(password);
-                //var data = _db.NguoiDungs.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var f_password = GetMD5(password);
+                var data = _db.NguoiDungs.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 var nddao = new NguoiDungDao();
-                var data = _db.NguoiDungs.Where(s => s.Email.Equals(email) && s.Password.Equals(password)).ToList();
 
                 if (data.Count() > 0)
                 {

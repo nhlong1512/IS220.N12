@@ -51,6 +51,7 @@ namespace Model.Dao
         {
             entity.CreatedDate = DateTime.Now;
             db.NguoiDungs.Add(entity);
+            db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
             return entity.ID;
         }
