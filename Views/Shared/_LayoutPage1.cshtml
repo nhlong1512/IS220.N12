@@ -140,7 +140,6 @@
             border-top-left-radius: 0.375rem;
             border-top-right-radius: 0.375rem;
         }
-
     </style>
 </head>
 
@@ -179,73 +178,77 @@
                         </a>
                     </ul>
                     @*@RenderSection("isLogin", required:false)*@
-                <ul class="navbar-nav search-right mt-lg-0 mt-2">
-                    <li class="nav-item mr-3" title="Search">
-                        <a href="#search" class="btn search-search" style=" display: flex; justify-content: center; align-items: center; ">
-                            <span class="fa fa-search" aria-hidden="true"></span>
-                        </a>
-                    </li>
+                    <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                        <li class="nav-item mr-3" title="Search">
+                            <a href="#search" class="btn search-search" style=" display: flex; justify-content: center; align-items: center; ">
+                                <span class="fa fa-search" aria-hidden="true"></span>
+                            </a>
+                        </li>
 
-                    @{
-                        if (session == null)
-                        {
-                            <li class="nav-item">
-                                <a href="~/dang-nhap" class="btn btn-primary d-none d-lg-block btn-style mr-2">
-                                    Đăng nhập
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            @*@RenderPage("_UserDropdown.cshtml")*@
-                            <ul class="header-nav ms-3">
-                                <li class="nav-item dropdown" style="margin-bottom: 6px; margin-top: 6px;">
-                                    <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                        @if (string.IsNullOrEmpty(nd.Urlmage))
-                                        {
-                                            <div class="avatar avatar-md">
-                                                <img class="avatar-img"
-                                                     src="~/Data/Files/noAvt2.png" alt="user@email.com">
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="avatar avatar-md">
-                                                <img class="avatar-img"
-                                                     src="@nd.Urlmage" alt="user@email.com">
-                                            </div>
-                                        }
-
+                        @{
+                            if (session == null)
+                            {
+                                <li class="nav-item">
+                                    <a href="~/dang-nhap" class="btn btn-primary d-none d-lg-block btn-style mr-2">
+                                        Đăng nhập
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-end pt-0" style="margin-top: 10px;">
-                                        <div class="dropdown-header bg-light py-2" style="border-top-left-radius: 6px; border-top-right-radius: 6px;">
-                                            <div class="fw-semibold" style="font-size:18px;">@nd.HoTen</div>
-                                        </div><a class="dropdown-item" href="#">
-                                            <svg class="icon me-2">
-                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-user"></use>
-                                            </svg> Tài Khoản Của Tôi
-                                        </a><a class="dropdown-item" href="#">
-                                            <svg class="icon me-2">
-                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-lock-unlocked"></use>
-                                            </svg> Đổi Mật Khẩu
-                                        </a><a class="dropdown-item" href="#">
-                                            <svg class="icon me-2">
-                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-credit-card"></use>
-                                            </svg> Đơn Mua
-                                        </a><a class="dropdown-item" href="#">
-    <svg class="icon me-2">
-        <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-account-logout"></use>
-    </svg>   Đăng Xuất
-</a>
-                                    </div>
                                 </li>
-                            </ul>
+                            }
+                            else
+                            {
+                                @*@RenderPage("_UserDropdown.cshtml")*@
+                                <ul class="header-nav ms-3">
+                                    <li class="nav-item dropdown" style="margin-bottom: 6px; margin-top: 6px;">
+                                        <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                            @if (string.IsNullOrEmpty(nd.Urlmage))
+                                            {
+                                                <div class="avatar avatar-md">
+                                                    <img class="avatar-img"
+                                                         src="~/Data/Files/noAvt2.png" alt="user@email.com">
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="avatar avatar-md">
+                                                    <img class="avatar-img"
+                                                         src="@nd.Urlmage" alt="user@email.com">
+                                                </div>
+                                            }
 
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end pt-0" style="margin-top: 10px;">
+                                            <div class="dropdown-header bg-light py-2" style="border-top-left-radius: 6px; border-top-right-radius: 6px;">
+                                                <div class="fw-semibold" style="font-size:18px;">@nd.HoTen</div>
+                                            </div>
+                                            <a class="dropdown-item" href="#">
+                                                <svg class="icon me-2">
+                                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-user"></use>
+                                                </svg> Tài Khoản Của Tôi
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <svg class="icon me-2">
+                                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-lock-unlocked"></use>
+                                                </svg> Đổi Mật Khẩu
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <svg class="icon me-2">
+                                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-credit-card"></use>
+                                                </svg> Đơn Mua
+                                            </a>
+                                            <a class="dropdown-item" href="/dang-xuat">
+                                                <svg class="icon me-2">
+                                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-account-logout"></use>
+                                                </svg>   Đăng Xuất
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            }
                         }
-                    }
 
 
-                </ul>
+                    </ul>
                     <!-- //toggle switch for light and dark theme -->
                     <!-- search popup -->
                     <div id="search" class="pop-overlay">

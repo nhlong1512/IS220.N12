@@ -101,8 +101,15 @@ namespace MoriiCoffee.Controllers
 
         public ActionResult DangXuat()
         {
-            Session.Clear();//remove session
-            return RedirectToAction("Login");
+            //TinCode
+            //Session.Clear();//remove session
+            //return RedirectToAction("Login");
+
+
+            //LongCode
+            Session[CommonConstants.USER_SESSION] = null;
+            return Redirect("/");
+
         }
 
         public static string GetMD5(string str)

@@ -28,6 +28,13 @@ namespace MoriiCoffee
             );
 
             routes.MapRoute(
+                name: "DangXuat",
+                url: "dang-xuat",
+                defaults: new { controller = "User", action = "DangXuat", id = UrlParameter.Optional }
+            );
+
+
+            routes.MapRoute(
                name: "QuenMatKhau",
                url: "quen-mat-khau",
                defaults: new { controller = "User", action = "QuenMatKhau", id = UrlParameter.Optional }

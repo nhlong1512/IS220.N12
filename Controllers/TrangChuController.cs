@@ -3,6 +3,7 @@ using Model.EF;
 using MoriiCoffee.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace MoriiCoffee.Controllers
 {
-    public class TrangChuController : BaseController
+    public class TrangChuController : Controller
     {
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private SanPham sp = new SanPham();
@@ -19,15 +20,27 @@ namespace MoriiCoffee.Controllers
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
         // GET: TrangChu
+
         public ActionResult Index()
         {
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (ModelState.IsValid)
+            {
+                var session = new UserLogin();
+                session = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+                if (!(session is null))
+                {
                     ViewBag.session = session;
                     var nd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = nd;
-            
-            ViewBag.sanphams = spdao.ViewAll();
-            ViewBag.ctsps = ctspdao.ViewAll();
+                }
+
+
+                ViewBag.sanphams = spdao.ViewAll();
+                ViewBag.ctsps = ctspdao.ViewAll();
+            }
+
+                
             return View();
         }
         
