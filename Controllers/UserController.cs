@@ -99,7 +99,7 @@ namespace MoriiCoffee.Controllers
             return View();
         }
 
-        public ActionResult DangXuat()
+        public ActionResult DangXuat(string hrefLocation)
         {
             //TinCode
             //Session.Clear();//remove session
@@ -108,7 +108,7 @@ namespace MoriiCoffee.Controllers
 
             //LongCode
             Session[CommonConstants.USER_SESSION] = null;
-            return Redirect("/");
+            return Redirect(hrefLocation);
 
         }
 

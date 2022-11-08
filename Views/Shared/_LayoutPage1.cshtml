@@ -235,10 +235,13 @@
                                                     <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-credit-card"></use>
                                                 </svg> Đơn Mua
                                             </a>
-                                            <a class="dropdown-item" href="/dang-xuat">
+                                            <a class="dropdown-item" id="dangXuatID" 
+                                               @*@this.Url.Action("DangXuat", "User", new { @hrefLocation = '~/cau-chuyen' })*@
+                                              
+                                               >
                                                 <svg class="icon me-2">
                                                     <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-account-logout"></use>
-                                                </svg>   Đăng Xuất
+                                                </svg>  Đăng Xuất
                                             </a>
                                         </div>
                                     </li>
@@ -420,6 +423,16 @@
                     document.body.scrollTop = 0;
                     document.documentElement.scrollTop = 0;
                 }
+
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#dangXuatID").click(function () {
+                        console.log(window.location.href);
+                        var hrefL = window.location.href;
+                        @this.Url.Action("DangXuat", "User", new { @hrefLocation = UrlParameter.Optional })
+                    });
+                });
             </script>
             <!-- /move top -->
             <script src="~/Scripts/bootstrap.bundle.min.js"></script>
