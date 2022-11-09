@@ -1,4 +1,5 @@
-﻿<link rel="preconnect" href="https://fonts.googleapis.com">
+﻿@model Model.EF.NguoiDung
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <title>MoriiCoffee</title>
@@ -223,9 +224,8 @@
 
         text-align: center;
         color: #000000;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         margin: 0;
-        
     }
 
     .descDangKy {
@@ -262,6 +262,7 @@
         font-size: 17px;
         line-height: 20px;
         text-decoration: none; /* remove underline from anchors */
+        text-align: center;
     }
 
 
@@ -310,56 +311,64 @@
 </style>
 
 
-<div class="login-wrap">
-    <div class="login-html">
-        <a style="display: flex; justify-content: center; align-items: center; margin-bottom:20px;">
-            <img style="height:40px;" src="~/Assets/Images/LogoMorii1.png" />
-        </a>
-        <h1 class="titleDangKy">Đăng nhập vào Morii</h1>
-        <p class="descDangKy"></p>
-        <div class="login-form">
-            <div class="sign-up-htm">
+@using (Html.BeginForm())
+{
 
-                <div class="group">
-                    <input id="pass" type="text" class="input" placeholder="Email">
-                </div>
-                <div class="group">
-                    <input id="pass" type="password" class="input" data-type="password" placeholder="Mật Khẩu">
-                </div>
-                <div class="group" id="checkSavePassword">
-                    <input id="check" type="checkbox" class="check" checked="checked">
-                    <label for="check"></span> Lưu mật khẩu</label>
-                </div>
+    @Html.AntiForgeryToken()
 
-                <div class="group">
-                    <input type="submit" class="button" id="buttonDangKy" value="ĐĂNG NHẬP">
-                </div>
-                <div class="hr"></div>
+<div class="form-horizontal">
+    <div class="login-wrap">
+        <div class="login-html">
+            <a style="display: flex; justify-content: center; align-items: center; margin-bottom:20px;">
+                <img style="height:40px;" src="~/Assets/Images/LogoMorii1.png" />
+            </a>
+            <h1 class="titleDangKy">Đăng nhập vào Morii</h1>
+            <p class="descDangKy"></p>
+            <div class="login-form">
+                <div class="sign-up-htm">
 
-                <div class="social-login">
-                    <a href="#" class="fb btn-social">
-                        <i class="fa fa-facebook fa-fw"></i> Tiếp tục với Facebook
-                    </a>
-                    <a href="#" class="google btn-social">
-                        <i class="fa fa-google fa-fw">
-                        </i> Tiếp tục với Google+
-                    </a>
-                </div>
-                <div class="foot-lnk">
-                    <h2 style="font-size:16px; line-height:20px; margin:0;">
-                        Chưa có tài khoản?
-                        <span>
-                            <a href="/dang-ky">
-                                Đăng ký
-                            </a>
-                        </span>
-                    </h2>
+                    <div class="group">
+                        <input id="Email" name="Email" type="text" class="input" placeholder="Email">
+                    </div>
+                    <div class="group">
+                        <input id="Password" name="Password"  type="password" class="input" data-type="password" placeholder="Mật Khẩu">
+                    </div>
+                    <div class="group" id="checkSavePassword">
+                        <input id="check" type="checkbox" class="check" checked="checked">
+                        <label for="check">Lưu mật khẩu</label>
+                    </div>
+
+                    <div class="group">
+                        <button type="submit" value="DangNhap" class="button" id="buttonDangKy">ĐĂNG NHẬP</button>
+                    </div>
+                    <div class="hr"></div>
+
+                    <div class="social-login">
+                        <a href="#" class="fb btn-social">
+                            <i class="fa fa-facebook fa-fw"></i> Tiếp tục với Facebook
+                        </a>
+                        <a href="#" class="google btn-social">
+                            <i class="fa fa-google fa-fw">
+                            </i> Tiếp tục với Google+
+                        </a>
+                    </div>
+                    <div class="foot-lnk">
+                        <h2 style="font-size:16px; line-height:20px; margin:0;">
+                            Chưa có tài khoản?
+                            <span>
+                                <a href="/dang-ky">
+                                    Đăng ký
+                                </a>
+                            </span>
+                        </h2>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 </div>
+}
 
-<script>
 
-</script>
+        

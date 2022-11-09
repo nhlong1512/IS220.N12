@@ -1,4 +1,5 @@
-﻿
+﻿@model Model.EF.NguoiDung
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -7,6 +8,72 @@
 <title>MoriiCoffee</title>
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="~/Assets/Images/LogoMorii1.png" type="image/x-icon" />
+
+
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <div class="login-wrap">
+        <div class="login-html">
+            <a style="display: flex; justify-content: center; align-items: center; margin-bottom:20px;">
+                <img style="height:40px;" src="~/Assets/Images/LogoMorii1.png" />
+            </a>
+            <h1 class="titleDangKy">Đăng ký tài khoản Morii</h1>
+            <p class="descDangKy"></p>
+            <div class="login-form">
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <input id="HoTen" name="HoTen" type="text" class="input" placeholder="Nhập Họ Tên Của Bạn">
+                    </div>
+                    <div class="group">
+                        <input id="Email" name="Email" type="text" class="input" placeholder="Nhập Email Của Bạn">
+                    </div>
+                    <div class="group">
+                        <input id="Password" name="Password" type="password" class="input" data-type="password" placeholder="Nhập Mật Khẩu Của Bạn">
+                    </div>
+                    <div class="group">
+                        <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="input" data-type="password" placeholder="Xác Nhận Mật Khẩu Của Bạn">
+                    </div>
+
+                    <div class="group">
+                        <button id="buttonDangKy" value="DangKy" type="submit" class="button">ĐĂNG KÝ</button>
+                        <!--<input type="submit"--> @*onmouseenter="onMouseOverDangKy()"*@ <!--class="button" id="buttonDangKy" value="ĐĂNG KÝ">-->
+                    </div>
+                    <div class="hr"></div>
+                    <div class="social-login">
+                        <a href="#" class="fb btn-social">
+                            <i class="fa fa-facebook fa-fw"></i> Tiếp tục với Facebook
+                        </a>
+                        <a href="#" class="google btn-social">
+                            <i class="fa fa-google fa-fw">
+                            </i> Tiếp tục với Google+
+                        </a>
+                    </div>
+                    <div class="foot-lnk">
+                        <h2 style="font-size:16px; line-height:20px; margin:0;">
+                            Đã có tài khoản?
+                            <span>
+                                <a href="/dang-nhap">
+                                    Đăng Nhập
+                                </a>
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+</div>
+}
+
 
 
 <style>
@@ -45,7 +112,6 @@
         /*min-height: 670px;*/
         position: relative;
         /*background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;*/
-
         box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
     }
 
@@ -69,7 +135,6 @@
             backface-visibility: hidden;
             transition: all .4s linear;
         }*/
-
         .login-html .sign-in,
         .login-html .sign-up,
         .login-form .group .check {
@@ -213,41 +278,31 @@
         font-weight: 700;
         transition: all 100ms linear 0.1s;
     }
-
     /*.buttonDangKy-hover {
             transform: translate(calc(100% + 100px));
             right: calc(100% + 200px);
         }*/
-
     .titleDangKy {
         font-weight: 800;
         font-size: 36px;
         line-height: 49px;
         /* identical to box height */
-
         text-align: center;
         color: #000000;
         /*text-transform: uppercase;*/
         margin: 0;
     }
 
-
-
     .descDangKy {
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
         /* identical to box height */
-
         text-align: center;
         color: #000000;
         margin: 0 0 40px 0;
     }
-
-
-
     /* style inputs and link buttons */
-
     .btn-social {
         width: 100%;
         padding: 12px;
@@ -260,8 +315,6 @@
         line-height: 20px;
         text-decoration: none; /* remove underline from anchors */
     }
-
-
     /* add appropriate colors to fb, twitter and google buttons */
     .fb {
         background-color: #3B5998;
@@ -272,13 +325,8 @@
         background-color: #dd4b39;
         color: white;
     }
-
-
     /* Two-column layout */
-
     /* Clear floats after the columns */
-
-
     /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
     @@media screen and (max-width: 650px) {
         .col {
@@ -299,73 +347,4 @@
     .social-login {
         margin-bottom: 32px;
     }
-</style>
-
-<div class="login-wrap">
-    <div class="login-html">
-        <a style="display: flex; justify-content: center; align-items: center; margin-bottom:20px;">
-            <img style="height:40px;" src="~/Assets/Images/LogoMorii1.png"/>
-        </a>
-        <h1 class="titleDangKy">Đăng ký tài khoản Morii</h1>
-        <p class="descDangKy"></p>
-        <div class="login-form">
-            <div class="sign-up-htm">
-                <div class="group">
-                    <input id="user" type="text" class="input" placeholder="Nhập Họ Tên Của Bạn">
-                </div>
-                <div class="group">
-                    <input id="pass" type="text" class="input" placeholder="Nhập Email Của Bạn">
-                </div>
-                <div class="group">
-                    <input id="pass" type="password" class="input" data-type="password" placeholder="Nhập Mật Khẩu Của Bạn">
-                </div>
-                <div class="group">
-                    <input id="pass" type="password" class="input" data-type="password" placeholder="Xác Nhận Mật Khẩu Của Bạn">
-                </div>
-
-                <div class="group" ">
-                    <input type="submit" @*onmouseenter="onMouseOverDangKy()"*@ class="button" id="buttonDangKy" value="ĐĂNG KÝ">
-                </div>
-                <div class="hr"></div>
-
-                <div class="social-login">
-                    <a href="#" class="fb btn-social">
-                        <i class="fa fa-facebook fa-fw"></i> Tiếp tục với Facebook
-                    </a>
-                    <a href="#" class="google btn-social">
-                        <i class="fa fa-google fa-fw">
-                        </i> Tiếp tục với Google+
-                    </a>
-                </div>
-                <div class="foot-lnk">
-                    <h2 style="font-size:16px; line-height:20px; margin:0;">
-                        Đã có tài khoản?
-                        <span>
-                            <a href="/dang-nhap">
-                                Đăng Nhập
-                            </a>
-                        </span>
-                    </h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    //function onMouseOverDangKy() {
-    //    console.log("Nguyễn Hữu Long")
-    //    var button = document.getElementById('buttonDangKy');
-    //    console.log(button);
-    //    if (button.classList.contains("buttonDangKy-hover")) {
-    //        button.classList.remove("buttonDangKy-hover");
-    //    } else {
-    //        button.classList.add("buttonDangKy-hover");
-    //    }
-    //}
-
-
-</script>
-<style>
 </style>
