@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="~/Assets/Images/LogoMorii1.png" type="image/x-icon" />
 
+@{ 
+    var err = ViewBag.err;
+}
 
 
 
@@ -40,6 +43,7 @@
                     <div class="group">
                         <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="input" data-type="password" placeholder="Xác Nhận Mật Khẩu Của Bạn">
                     </div>
+                    <p>@err</p>
 
                     <div class="group">
                         <button id="buttonDangKy" value="DangKy" type="submit" class="button">ĐĂNG KÝ</button>
@@ -314,6 +318,7 @@
         font-size: 17px;
         line-height: 20px;
         text-decoration: none; /* remove underline from anchors */
+        text-align: center;
     }
     /* add appropriate colors to fb, twitter and google buttons */
     .fb {

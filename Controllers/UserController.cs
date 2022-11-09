@@ -31,15 +31,17 @@ namespace MoriiCoffee.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DangKy(NguoiDung user)
         {
+            var err = "";
             if (ModelState.IsValid)
             {
                 //var nd = _db.NguoiDungs.FirstOrDefault(s => s.Email == _user.Email);
                 var nd = nddao.ViewDetailEmail(user.Email);
+                
 
                 if (nd == null)
                 {
                     user.Password = GetMD5(user.Password);
-                    user.ConfirmPassword = user.Password;
+                    user.ConfirmPassword = user.ConfirmPassword;
                     user.Status = true;
                     user.Role = "Khách hàng";
                     var id = nddao.Insert(user);
@@ -49,15 +51,18 @@ namespace MoriiCoffee.Controllers
 
                     }else
                     {
-                        ViewBag.error = "Đăng nhập thất bại";
+                        
                     }
                 }
                 else
                 {
-                    ViewBag.error = "Email already exists";
-                    return View();
+                    err += "Email đã tồn tại. ";
+                    ViewBag.err = err;
+                    return View("DangKy");
                 }
             }
+            err += 
+            
             return View();
 
 

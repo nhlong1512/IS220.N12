@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -11,21 +11,22 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
+        [Required(ErrorMessage ="Vui lòng nhập Họ tên. ")]
         [StringLength(250)]
         public string HoTen { get; set; }
 
-        [Required]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+        [Required(ErrorMessage ="Vui lòng nhập Email. ")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage ="Email không hợp lệ. ")]
         [StringLength(250)]
         public string Email { get; set; }
 
-        [Required]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$")]
+        [Required(ErrorMessage ="Vui lòng nhập Mật khẩu. ")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$", ErrorMessage ="Mật khẩu không hợp lệ. ")]
         [StringLength(32)]
         public string Password { get; set; }
         [NotMapped]
-        [Required]
-        [Compare("Password")]
+        [Required(ErrorMessage ="Vui lòng xác nhận lại Mật khẩu.")]
+        [Compare("Password", ErrorMessage ="Mật khẩu xác nhận không hợp lệ. ")]
         public string ConfirmPassword { get; set; }
 
 
