@@ -16,12 +16,14 @@
         public string HoTen { get; set; }
 
         [Required(ErrorMessage ="Vui lòng nhập Email. ")]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage ="Email không hợp lệ. ")]
+        //[RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage ="Email không hợp lệ. ")]
+        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Email không hợp lệ. ")]
         [StringLength(250)]
         public string Email { get; set; }
 
         [Required(ErrorMessage ="Vui lòng nhập Mật khẩu. ")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$", ErrorMessage ="Mật khẩu không hợp lệ. ")]
+        //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$", ErrorMessage ="Mật khẩu không hợp lệ. ")]
+        [RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$", ErrorMessage ="Mật khẩu không hợp lệ. ")]
         [StringLength(32/*, MinimumLength = 8, ErrorMessage ="Độ dài mật khẩu ít nhất 8 kí tự. "*/)]
         public string Password { get; set; }
         [NotMapped]
