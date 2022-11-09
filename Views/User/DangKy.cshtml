@@ -2,6 +2,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 <style>
     body {
         color: #6a6f8c;
@@ -203,7 +205,14 @@
         color: #fff;
         cursor: pointer;
         margin-bottom: 40px;
+        font-weight: 700;
+        transition: all 100ms linear 0.1s;
     }
+
+    /*.buttonDangKy-hover {
+            transform: translate(calc(100% + 100px));
+            right: calc(100% + 200px);
+        }*/
 
     .titleDangKy {
         font-weight: 800;
@@ -216,6 +225,8 @@
         text-transform: uppercase;
         margin: 0;
     }
+
+
 
     .descDangKy {
         font-weight: 400;
@@ -248,13 +259,14 @@
                     <input id="pass" type="password" class="input" data-type="password" placeholder="Xác Nhận Mật Khẩu Của Bạn">
                 </div>
 
-                <div class="group">
-                    <input type="submit" class="button" id="buttonDangKy" value="ĐĂNG KÝ">
+                <div class="group" ">
+                    <input type="submit" @*onmouseenter="onMouseOverDangKy()"*@ class="button" id="buttonDangKy" value="ĐĂNG KÝ">
                 </div>
                 <div class="hr"></div>
 
                 <div class="social login">
-
+                    <StyledFirebaseAuth uiConfig={uiConfig}
+                                        firebaseAuth={firebase.auth()} />
                 </div>
                 <div class="foot-lnk">
                     <h2 style="font-size:16px; line-height:20px; margin:0;">
@@ -270,3 +282,21 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    //function onMouseOverDangKy() {
+    //    console.log("Nguyễn Hữu Long")
+    //    var button = document.getElementById('buttonDangKy');
+    //    console.log(button);
+    //    if (button.classList.contains("buttonDangKy-hover")) {
+    //        button.classList.remove("buttonDangKy-hover");
+    //    } else {
+    //        button.classList.add("buttonDangKy-hover");
+    //    }
+    //}
+
+
+</script>
+<style>
+</style>

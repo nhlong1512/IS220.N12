@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Firebase.Functions</name>
+    </assembly>
+    <members>
+        <member name="T:Firebase.Functions.FirebaseFunctions">
+            <summary>
+            FirebaseFunctions
+            </summary>
+        </member>
+        <member name="M:Firebase.Functions.FirebaseFunctions.#ctor(System.String,Firebase.Functions.FirebaseFunctionsOptions)">
+            <summary>
+            Creates an instance of <see cref="T:Firebase.Functions.FirebaseFunctions"/> class.
+            </summary>
+            <param name="uri"> Google cloud functions url. E.g. 'your-application.cloudfunctions.net'. </param>
+            <param name="options"> Optional settings. </param>
+        </member>
+        <member name="P:Firebase.Functions.FirebaseFunctions.Options">
+            <summary>
+            Gets the <see cref="T:Firebase.Functions.FirebaseFunctionsOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Firebase.Functions.FirebaseFunctions.Uri">
+            <summary>
+            Gets the google function uri.
+            </summary>
+        </member>
+        <member name="M:Firebase.Functions.FirebaseFunctions.GetHttpsCallable(System.String)">
+            <summary>
+            GetHttpsCallable
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Firebase.Functions.FirebaseFunctionsOptions">
+            <summary>
+            FirebaseFunctionsOptions
+            </summary>
+        </member>
+        <member name="M:Firebase.Functions.FirebaseFunctionsOptions.#ctor">
+            <summary>
+            FirebaseFunctionsOptions
+            </summary>
+        </member>
+        <member name="P:Firebase.Functions.FirebaseFunctionsOptions.AuthTokenAsyncFactory">
+            <summary>
+            Gets or sets the method for retrieving auth tokens. Default is null.
+            </summary>
+        </member>
+        <member name="P:Firebase.Functions.FirebaseFunctionsOptions.HttpClientTimeout">
+            <summary>
+            Timeout of the HttpClient. Default is 100s.
+            </summary>
+        </member>
+        <member name="P:Firebase.Functions.FirebaseFunctionsOptions.JsonSerializerSettings">
+            <summary>
+            Gets or sets the json serializer settings.
+            </summary>
+        </member>
+        <member name="T:Firebase.Functions.HttpClientFactory">
+            <summary>
+            HttpClientFactory
+            </summary>
+        </member>
+        <member name="M:Firebase.Functions.HttpClientFactory.CreateHttpClientAsync(Firebase.Functions.FirebaseFunctions)">
+            <summary>
+            Creates a new <see cref="T:System.Net.Http.HttpClient"/> with authentication header when <see cref="T:Firebase.Functions.FirebaseFunctions"/> is specified.
+            </summary>
+            <param name="firebaseFunctions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Firebase.Functions.HttpsCallableReference">
+            <summary>
+            HttpsCallableReference
+            </summary>
+        </member>
+        <member name="M:Firebase.Functions.HttpsCallableReference.#ctor(Firebase.Functions.FirebaseFunctions,System.String)">
+            <summary>
+            HttpsCallableReference
+            </summary>
+            <param name="firebaseFunctions"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Firebase.Functions.HttpsCallableReference.CallAsync">
+            <summary>
+            CallAsync
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Firebase.Functions.HttpsCallableReference.CallAsync(System.Object)">
+            <summary>
+            CallAsync
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Firebase.Functions.HttpsCallableReference.CallAsync``1">
+            <summary>
+            CallAsync
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Firebase.Functions.HttpsCallableReference.CallAsync``1(System.Object)">
+            <summary>
+            CallAsync
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Firebase.Functions.HttpsCallableReference.CreateHttpContent(System.Object)">
+            <summary>
+            CreateHttpContent
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Firebase.Functions.HttpsCallableReference.FirebaseData">
+            <summary>
+            FirebaseData
+            </summary>
+        </member>
+        <member name="M:Firebase.Functions.HttpsCallableReference.FirebaseData.#ctor(System.Object)">
+            <summary>
+            FirebaseData
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Firebase.Functions.HttpsCallableReference.FirebaseData.Data">
+            <summary>
+            Data
+            </summary>
+        </member>
+        <member name="T:Firebase.Functions.HttpsCallableReference.FirebaseResult">
+            <summary>
+            FirebaseResult
+            </summary>
+        </member>
+        <member name="P:Firebase.Functions.HttpsCallableReference.FirebaseResult.Result">
+            <summary>
+            Result
+            </summary>
+        </member>
+    </members>
+</doc>
