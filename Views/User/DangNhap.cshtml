@@ -1,4 +1,8 @@
 ﻿@model Model.EF.NguoiDung
+
+@{ 
+    var err = ViewBag.err;
+}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -331,11 +335,15 @@
                         <input id="Email" name="Email" type="text" class="input" placeholder="Email">
                     </div>
                     <div class="group">
-                        <input id="Password" name="Password"  type="password" class="input" data-type="password" placeholder="Mật Khẩu">
+                        <input id="Password" name="Password" type="password" class="input" data-type="password" placeholder="Mật Khẩu">
                     </div>
                     <div class="group" id="checkSavePassword">
                         <input id="check" type="checkbox" class="check" checked="checked">
                         <label for="check">Lưu mật khẩu</label>
+                    </div>
+
+                    <div class="group" style="max-width: 409px;">
+                        <div class="" style="color: #dc3545 !important" role="alert">@err</div>
                     </div>
 
                     <div class="group">

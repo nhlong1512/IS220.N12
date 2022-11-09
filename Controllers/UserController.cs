@@ -36,7 +36,7 @@ namespace MoriiCoffee.Controllers
             {
                 //var nd = _db.NguoiDungs.FirstOrDefault(s => s.Email == _user.Email);
                 var nd = nddao.ViewDetailEmail(user.Email);
-                
+
 
                 if (nd == null)
                 {
@@ -45,11 +45,12 @@ namespace MoriiCoffee.Controllers
                     user.Status = true;
                     user.Role = "Khách hàng";
                     var id = nddao.Insert(user);
-                    if(id >= 0)
+                    if (id >= 0)
                     {
                         return RedirectToAction("DangNhap");
 
-                    }else
+                    }
+                    else
                     {
                         err += "Thêm thất bại. ";
                     }
@@ -73,8 +74,8 @@ namespace MoriiCoffee.Controllers
                 return View();
             }
 
-            
-            
+
+
             return View();
 
 
@@ -90,9 +91,24 @@ namespace MoriiCoffee.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DangNhap(string email, string password)
         {
+            var err = "";
+
+            if (email == "" || password == "")
+            {
+                if (email == "")
+                {
+                    err += "Vui lòng nhập Email. ";
+                }
+                if (password == "")
+                {
+                    err += "Vui lòng nhập Mật khẩu. ";
+                }
+                ViewBag.err = err;
+                return View();
+            }
+
             if (ModelState.IsValid)
             {
-
                 var f_password = GetMD5(password);
                 var data = _db.NguoiDungs.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 var nddao = new NguoiDungDao();
@@ -113,16 +129,26 @@ namespace MoriiCoffee.Controllers
                     userSession.UserID = nd.ID;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
                     return RedirectToAction("Index", "TrangChu");
-
-
                 }
                 else
                 {
-                    ViewBag.error = "Login failed";
-                    return RedirectToAction("DangNhap");
+                    err += "Tài khoản hoặc mật khẩu không chính xác. ";
+                    ViewBag.err = err;
+                    return View("DangNhap");
                 }
             }
-            return View();
+            else
+            {
+                var list = ModelState.ToDictionary(x => x.Key, y => y.Value.Errors.Select(x => x.ErrorMessage).ToArray())
+                  .Where(m => m.Value.Count() > 0);
+                foreach (var itm in list)
+                {
+                    err += string.Concat(string.Join(",", itm.Value.ToArray()), "");
+                }
+                ViewBag.err = err;
+                return View();
+            }
+
         }
 
         public ActionResult DangXuat()
