@@ -83,18 +83,18 @@
         text-transform: uppercase;
     }
 
-        .login-html .tab {
-            font-size: 22px;
-            margin-bottom: 20px;
-            display: inline-block;
-            border-bottom: 2px solid transparent;
-        }
+    .login-html .tab {
+        font-size: 22px;
+        margin-bottom: 20px;
+        display: inline-block;
+        border-bottom: 2px solid transparent;
+    }
 
-        .login-html .sign-in:checked + .tab,
-        .login-html .sign-up:checked + .tab {
-            color: #1161ee;
-            border-color: #1161ee;
-        }
+    .login-html .sign-in:checked + .tab,
+    .login-html .sign-up:checked + .tab {
+        color: #1161ee;
+        border-color: #1161ee;
+    }
 
     .login-form {
         position: relative;
@@ -210,7 +210,7 @@
         color: #fff;
         cursor: pointer;
         margin-bottom: 40px;
-        font-weight:700;
+        font-weight: 700;
     }
 
     .titleDangKy {
@@ -237,8 +237,72 @@
     }
 
     #checkSavePassword {
-        display:flex;
+        display: flex;
         align-items: center;
+    }
+
+
+
+
+    /* style the container */
+
+    /* style inputs and link buttons */
+
+    .btn-social {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        margin: 5px 0;
+        opacity: 0.85;
+        display: inline-block;
+        font-size: 17px;
+        line-height: 20px;
+        text-decoration: none; /* remove underline from anchors */
+    }
+
+
+    /* add appropriate colors to fb, twitter and google buttons */
+    .fb {
+        background-color: #3B5998;
+        color: white;
+    }
+
+    .twitter {
+        background-color: #55ACEE;
+        color: white;
+    }
+
+    .google {
+        background-color: #dd4b39;
+        color: white;
+    }
+
+
+    /* Two-column layout */
+
+    /* Clear floats after the columns */
+
+
+    /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+    @@media screen and (max-width: 650px) {
+        .col {
+            width: 100%;
+            margin-top: 0;
+        }
+        /* hide the vertical line */
+        .vl {
+            display: none;
+        }
+        /* show the hidden text on small screens */
+        .hide-md-lg {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .social-login {
+        margin-bottom: 40px;
     }
 </style>
 
@@ -258,7 +322,7 @@
                 </div>
                 <div class="group" id="checkSavePassword">
                     <input id="check" type="checkbox" class="check" checked="checked">
-                    <label for="check"></span> Keep me Signed in</label>
+                    <label for="check"></span> Lưu mật khẩu</label>
                 </div>
 
                 <div class="group">
@@ -266,12 +330,18 @@
                 </div>
                 <div class="hr"></div>
 
-                <div class="social login">
-
+                <div class="social-login">
+                    <a href="#" class="fb btn-social">
+                        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                    </a>
+                    <a href="#" class="google btn-social">
+                        <i class="fa fa-google fa-fw">
+                        </i> Login with Google+
+                    </a>
                 </div>
                 <div class="foot-lnk">
                     <h2 style="font-size:16px; line-height:20px; margin:0;">
-                        Chưa có tài khoản? 
+                        Chưa có tài khoản?
                         <span>
                             <a href="~/dang-ky">
                                 Đăng ký

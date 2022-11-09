@@ -238,6 +238,62 @@
         color: #000000;
         margin: 0 0 40px 0;
     }
+
+
+
+    /* style inputs and link buttons */
+
+    .btn-social {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        margin: 5px 0;
+        opacity: 0.85;
+        display: inline-block;
+        font-size: 17px;
+        line-height: 20px;
+        text-decoration: none; /* remove underline from anchors */
+    }
+
+
+    /* add appropriate colors to fb, twitter and google buttons */
+    .fb {
+        background-color: #3B5998;
+        color: white;
+    }
+
+    .google {
+        background-color: #dd4b39;
+        color: white;
+    }
+
+
+    /* Two-column layout */
+
+    /* Clear floats after the columns */
+
+
+    /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+    @@media screen and (max-width: 650px) {
+        .col {
+            width: 100%;
+            margin-top: 0;
+        }
+        /* hide the vertical line */
+        .vl {
+            display: none;
+        }
+        /* show the hidden text on small screens */
+        .hide-md-lg {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .social-login {
+        margin-bottom: 40px;
+    }
 </style>
 
 <div class="login-wrap">
@@ -264,9 +320,14 @@
                 </div>
                 <div class="hr"></div>
 
-                <div class="social login">
-                    <StyledFirebaseAuth uiConfig={uiConfig}
-                                        firebaseAuth={firebase.auth()} />
+                <div class="social-login">
+                    <a href="#" class="fb btn-social">
+                        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                    </a>
+                    <a href="#" class="google btn-social">
+                        <i class="fa fa-google fa-fw">
+                        </i> Login with Google+
+                    </a>
                 </div>
                 <div class="foot-lnk">
                     <h2 style="font-size:16px; line-height:20px; margin:0;">

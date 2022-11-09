@@ -83,9 +83,7 @@ D:\VS\IS220.N12\obj\Release\MoriiCoffee.csproj.CoreCompileInputs.cache
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.csproj.CopyComplete
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.dll
 D:\VS\IS220.N12\obj\Release\MoriiCoffee.pdb
-D:\VS\IS220.N12\bin\Firebase.Functions.dll
 D:\VS\IS220.N12\bin\Newtonsoft.Json.dll
 D:\VS\IS220.N12\bin\System.Diagnostics.DiagnosticSource.dll
-D:\VS\IS220.N12\bin\Firebase.Functions.xml
 D:\VS\IS220.N12\bin\Newtonsoft.Json.xml
 D:\VS\IS220.N12\bin\System.Diagnostics.DiagnosticSource.xml
