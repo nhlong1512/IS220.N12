@@ -87,11 +87,8 @@ form.form-container {
 }
 
 p.signin {
-    font-weight: bold;
-    width: 200px;
-    height: 15px;
+    font-weight: 700;
     font-size: 30px;
-    margin-bottom: 10px;
 }
 a.social {
     color: #000;
@@ -186,8 +183,6 @@ input .remember-password {
 label.check-box {
     display: block;
     font-size: 14px;
-    padding-left: 10px;
-    text-indent: -15px;
     margin-left: 20px;
 }
 
@@ -221,17 +216,20 @@ button.signin {
     width: 50%;
     z-index: 2;
 }
-
 h1.welcom {
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin: 0px 0 20px 0;
 }
 
 p.welcom {
-    font-size: 15px;
-    font-weight: 100;
-    line-height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
     letter-spacing: 0.5px;
-    margin: 20px 30px;
+    margin: 0px 0 20px 0;
 }
 
 button.signup {
@@ -269,7 +267,6 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
-    margin: 10px 0;
 }
 
     footer p {

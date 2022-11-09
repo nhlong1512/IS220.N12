@@ -92,16 +92,17 @@ form.form-container {
 }
 
 h1.welcom {
-    align-items: center;
-    font-weight: 100;
-    line-height: 40px;
-    margin: -20px 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 0;
 }
 
 p.welcom {
-    font-size: 15px;
-    font-weight: 100;
-    line-height: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
     letter-spacing: 0.5px;
     margin: 20px 0 0;
 }
@@ -196,9 +197,11 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
-    margin: 10px 0;
 }
 
     footer p {
         margin: 10px 0;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 24px;
     }
