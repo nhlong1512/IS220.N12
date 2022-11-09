@@ -22,10 +22,10 @@
 
         [Required(ErrorMessage ="Vui lòng nhập Mật khẩu. ")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$", ErrorMessage ="Mật khẩu không hợp lệ. ")]
-        [StringLength(32)]
+        [StringLength(32/*, MinimumLength = 8, ErrorMessage ="Độ dài mật khẩu ít nhất 8 kí tự. "*/)]
         public string Password { get; set; }
         [NotMapped]
-        [Required(ErrorMessage ="Vui lòng xác nhận lại Mật khẩu.")]
+        [Required(ErrorMessage ="Vui lòng xác nhận Mật khẩu. ")]
         [Compare("Password", ErrorMessage ="Mật khẩu xác nhận không hợp lệ. ")]
         public string ConfirmPassword { get; set; }
 

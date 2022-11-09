@@ -51,17 +51,29 @@ namespace MoriiCoffee.Controllers
 
                     }else
                     {
-                        
+                        err += "Thêm thất bại. ";
                     }
                 }
                 else
                 {
                     err += "Email đã tồn tại. ";
                     ViewBag.err = err;
-                    return View("DangKy");
+                    return View();
                 }
             }
-            err += 
+            else
+            {
+                var list = ModelState.ToDictionary(x => x.Key, y => y.Value.Errors.Select(x => x.ErrorMessage).ToArray())
+                  .Where(m => m.Value.Count() > 0);
+                foreach (var itm in list)
+                {
+                    err += string.Concat(string.Join(",", itm.Value.ToArray()), "");
+                }
+                ViewBag.err = err;
+                return View();
+            }
+
+            
             
             return View();
 
