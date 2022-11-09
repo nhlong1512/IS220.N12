@@ -50,8 +50,7 @@
                     
 
                     <div class="group">
-                        <button id="buttonDangKy" value="DangKy" type="submit" class="button">ĐĂNG KÝ</button>
-                        <!--<input type="submit"--> @*onmouseenter="onMouseOverDangKy()"*@ <!--class="button" id="buttonDangKy" value="ĐĂNG KÝ">-->
+                        <button id="buttonDangKy" @*onmouseenter="onMouseOverDangKy()"*@ value="DangKy" type="submit" class="button">ĐĂNG KÝ</button>
                     </div>
                     <div class="hr"></div>
                     <div class="social-login">
@@ -272,6 +271,7 @@
         color: #fff;
         cursor: pointer;
         margin-bottom: 32px;
+        /*width: 200px;*/
         font-weight: 700;
         transition: all 100ms linear 0.1s;
     }
@@ -279,6 +279,7 @@
             transform: translate(calc(100% + 100px));
             right: calc(100% + 200px);
         }*/
+
     .titleDangKy {
         font-weight: 800;
         font-size: 36px;
@@ -346,3 +347,17 @@
         margin-bottom: 32px;
     }
 </style>
+
+
+<script>
+    //function onMouseOverDangKy() {
+    //    console.log("Nguyễn Hữu Long")
+    //    var button = document.getElementById('buttonDangKy');
+    //    console.log(button);
+    //    if (button.classList.contains("buttonDangKy-hover")) {
+    //        button.classList.remove("buttonDangKy-hover");
+    //    } else {
+    //        button.classList.add("buttonDangKy-hover");
+    //    }
+    //}
+</script>
