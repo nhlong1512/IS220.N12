@@ -1,10 +1,18 @@
-﻿<style>
+﻿<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
     body {
-        margin: 140px;
-        /*margin: auto;*/
         color: #6a6f8c;
         background: #c8c8c8;
-        font: 600 16px/18px 'Open Sans',sans-serif;
+        font: 600 16px/18px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     *, :after, :before {
@@ -27,9 +35,7 @@
     }
 
     .login-wrap {
-        width: 100%;
         margin: auto;
-        max-width: 525px;
         /*min-height: 670px;*/
         position: relative;
         /*background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;*/
@@ -41,11 +47,11 @@
         /*width: 100%;
         height: 100%;*/
         /*position: absolute;*/
-        padding: 90px 70px 50px 70px;
-        background: rgba(40,57,101,.9);
-        /*background: #fff;*/
+        padding: 68px 80px 80px 80px;
+        /*        background: rgba(40,57,101,.9);*/
+        background: #fff;
     }
-/*
+        /*
         .login-html .sign-in-htm,
         .login-html .sign-up-htm {
             top: 0;
@@ -61,14 +67,21 @@
         .login-html .sign-in,
         .login-html .sign-up,
         .login-form .group .check {
-            display: none;
+            display: block;
+            margin: 0 5px 0 0;
+            background: #146d4d;
         }
 
-        .login-html .tab,
-        .login-form .group .label,
-        .login-form .group .button {
-            text-transform: uppercase;
-        }
+    input[type=checkbox]:checked {
+        background-color: #146d4d !important;
+        color: #ffffff !important;
+    }
+
+    .login-html .tab,
+    .login-form .group .label,
+    .login-form .group .button {
+        text-transform: uppercase;
+    }
 
         .login-html .tab {
             font-size: 22px;
@@ -79,34 +92,36 @@
 
         .login-html .sign-in:checked + .tab,
         .login-html .sign-up:checked + .tab {
-            color: #fff;
+            color: #1161ee;
             border-color: #1161ee;
         }
 
     .login-form {
-        min-height: 345px;
         position: relative;
         perspective: 1000px;
         transform-style: preserve-3d;
     }
 
         .login-form .group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
             .login-form .group .label,
             .login-form .group .input,
             .login-form .group .button {
                 width: 100%;
-                color: #fff;
                 display: block;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 500;
+                color: #595959;
             }
 
             .login-form .group .input,
             .login-form .group .button {
-                border: none;
+                border: 1px solid #CFCFCF;
                 padding: 15px 20px;
-                border-radius: 25px;
+                border-radius: 8px;
                 background: rgba(255,255,255,.1);
             }
 
@@ -125,8 +140,8 @@
             }
 
             .login-form .group label .icon {
-                width: 15px;
-                height: 15px;
+                width: 16px;
+                height: 16px;
                 border-radius: 2px;
                 position: relative;
                 display: inline-block;
@@ -157,11 +172,11 @@
                 }
 
             .login-form .group .check:checked + label {
-                color: #fff;
+                color: #000;
             }
 
                 .login-form .group .check:checked + label .icon {
-                    background: #1161ee;
+                    background: #146d4d;
                 }
 
                     .login-form .group .check:checked + label .icon:before {
@@ -181,69 +196,90 @@
     }
 
     .hr {
-        height: 2px;
-        margin: 40px;
-        background: rgba(255,255,255,.2);
+        height: 1px;
+        margin: 28px 0 32px 0;
+        background: #CFCFCF;
     }
 
     .foot-lnk {
         text-align: center;
     }
+
+    #buttonDangKy {
+        background-color: #146d4d;
+        color: #fff;
+        cursor: pointer;
+        margin-bottom: 40px;
+        font-weight:700;
+    }
+
+    .titleDangKy {
+        font-weight: 800;
+        font-size: 36px;
+        line-height: 49px;
+        /* identical to box height */
+
+        text-align: center;
+        color: #000000;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .descDangKy {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        /* identical to box height */
+
+        text-align: center;
+        color: #000000;
+        margin: 0 0 40px 0;
+    }
+
+    #checkSavePassword {
+        display:flex;
+        align-items: center;
+    }
 </style>
+
 
 <div class="login-wrap">
     <div class="login-html">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+        <h1 class="titleDangKy">Đăng nhập vào Morii</h1>
+        <p class="descDangKy"></p>
         <div class="login-form">
-            <div class="sign-in-htm">
+            <div class="sign-up-htm">
+
                 <div class="group">
-                    <label for="user" class="label">Username</label>
-                    <input id="user" type="text" class="input">
+                    <input id="pass" type="text" class="input" placeholder="Email">
                 </div>
                 <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input id="pass" type="password" class="input" data-type="password">
+                    <input id="pass" type="password" class="input" data-type="password" placeholder="Mật Khẩu">
                 </div>
-                <div class="group">
-                    <input id="check" type="checkbox" class="check" checked style="display:none">
-                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                <div class="group" id="checkSavePassword">
+                    <input id="check" type="checkbox" class="check" checked="checked">
+                    <label for="check"></span> Keep me Signed in</label>
                 </div>
+
                 <div class="group">
-                    <input type="submit" class="button" value="Sign In">
+                    <input type="submit" class="button" id="buttonDangKy" value="ĐĂNG NHẬP">
                 </div>
                 <div class="hr"></div>
-                <div class="foot-lnk">
-                    <a href="#forgot">Forgot Password?</a>
+
+                <div class="social login">
+
                 </div>
                 <div class="foot-lnk">
-                    <a href="~/dang-ky">Create account</a>
+                    <h2 style="font-size:16px; line-height:20px; margin:0;">
+                        Chưa có tài khoản? 
+                        <span>
+                            <a href="~/dang-ky">
+                                Đăng ký
+                            </a>
+                        </span>
+                    </h2>
                 </div>
             </div>
-            @*<div class="sign-up-htm">
-                <div class="group">
-                    <label for="user" class="label">Username</label>
-                    <input id="user" type="text" class="input">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Repeat Password</label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Email Address</label>
-                    <input id="pass" type="text" class="input">
-                </div>
-                <div class="group">
-                    <input type="submit" class="button" value="Sign Up">
-                </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <label for="tab-1">Already Member?</a>
-                </div>
-            </div>*@
         </div>
     </div>
 </div>
