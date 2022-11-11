@@ -196,17 +196,17 @@ namespace MoriiCoffee.Controllers
                 fb.AccessToken = accessToken;
                 dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
                 string email = me.email;
-                string userEmail = me.email;
                 string firstname = me.first_name;
                 string middlename = me.middle_name;
                 string lastname = me.last_name;
                 var user = new NguoiDung();
                 user.Email = email;
                 user.Status = true;
-                user.HoTen = firstname + " " + middlename+ " " + lastname;
+                user.HoTen = lastname + " " + middlename+ " " + firstname;
                 user.CreatedDate = DateTime.Now;
                 user.Password = "FaceBookLogin2022!";
                 user.ConfirmPassword = "FaceBookLogin2022!";
+                user.Role = "Khách hàng";
                 var resultInsert = nddao.InsertForFacebook(user);
                 if(resultInsert > 0)
                 {
