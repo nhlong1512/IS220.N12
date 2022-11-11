@@ -89,3 +89,8 @@ D:\VS\IS220.N12\bin\Newtonsoft.Json.xml
 D:\VS\IS220.N12\bin\System.Diagnostics.DiagnosticSource.xml
 D:\VS\IS220.N12\bin\Facebook.dll
 D:\VS\IS220.N12\bin\Facebook.xml
+D:\VS\IS220.N12\bin\Microsoft.Owin.dll
+D:\VS\IS220.N12\bin\Microsoft.Owin.Security.dll
+D:\VS\IS220.N12\bin\Owin.dll
+D:\VS\IS220.N12\bin\Microsoft.Owin.xml
+D:\VS\IS220.N12\bin\Microsoft.Owin.Security.xml

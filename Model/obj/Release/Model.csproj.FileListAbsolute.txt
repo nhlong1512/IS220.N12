@@ -20,4 +20,9 @@ D:\VS\IS220.N12\Model\obj\Release\Model.dll
 D:\VS\IS220.N12\Model\obj\Release\Model.pdb
 D:\VS\IS220.N12\Model\bin\Release\Facebook.dll
 D:\VS\IS220.N12\Model\bin\Release\Facebook.xml
+D:\VS\IS220.N12\Model\bin\Release\Microsoft.Owin.dll
+D:\VS\IS220.N12\Model\bin\Release\Microsoft.Owin.Security.dll
+D:\VS\IS220.N12\Model\bin\Release\Owin.dll
+D:\VS\IS220.N12\Model\bin\Release\Microsoft.Owin.xml
+D:\VS\IS220.N12\Model\bin\Release\Microsoft.Owin.Security.xml
 D:\VS\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache

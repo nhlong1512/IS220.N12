@@ -60,7 +60,7 @@
                             <a href="~/User/LoginFacebook" class="fb btn-social" id="signUpWithFacebook">
                                 <i class="fa fa-facebook fa-fw"></i> Tiếp tục với Facebook
                             </a>
-                            <a href="#" class="google btn-social" id="signUpWithGoogle">
+                            <a href="https://accounts.google.com/signin/oauth/error?authError=Cg9pbnZhbGlkX3JlcXVlc3QS3gEKWW91IGNhbid0IHNpZ24gaW4gdG8gdGhpcyBhcHAgYmVjYXVzZSBpdCBkb2Vzbid0IGNvbXBseSB3aXRoIEdvb2dsZSdzIE9BdXRoIDIuMCBwb2xpY3kgZm9yIGtlZXBpbmcgYXBwcyBzZWN1cmUuCgpZb3UgY2FuIGxldCB0aGUgYXBwIGRldmVsb3BlciBrbm93IHRoYXQgdGhpcyBhcHAgZG9lc24ndCBjb21wbHkgd2l0aCBvbmUgb3IgbW9yZSBHb29nbGUgdmFsaWRhdGlvbiBydWxlcy4KICAaWWh0dHBzOi8vZGV2ZWxvcGVycy5nb29nbGUuY29tL2lkZW50aXR5L3Byb3RvY29scy9vYXV0aDIvcG9saWNpZXMjc2VjdXJlLXJlc3BvbnNlLWhhbmRsaW5nIJADKh0KDHJlZGlyZWN0X3VyaRINPHJlZGlyZWN0dXJsPg%3D%3D&client_id=%3CClientID" class="google btn-social" id="signUpWithGoogle">
                                 <i class="fa fa-google fa-fw">
                                 </i> Tiếp tục với Google+
                             </a>
@@ -96,6 +96,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin:0;
+        height:100%;
     }
 
         body > form {
@@ -421,7 +423,7 @@
     //                window.location.replace("https://localhost:44309");
     //        })
     //}
-    //function showUserDetails(user) {
-    //    alert(user);
-    //}
+    function showUserDetails(user) {
+        console.log(user);
+    }
 </script>

@@ -31,7 +31,7 @@ namespace MoriiCoffee.Controllers
                 uriBuilder.Query = null;
                 uriBuilder.Fragment = null;
                 uriBuilder.Path = Url.Action("FacebookCallback");
-                return uriBuilder.Uri; 
+                return uriBuilder.Uri;
             }
         }
         // GET: User
@@ -165,6 +165,7 @@ namespace MoriiCoffee.Controllers
 
         }
 
+        //Login Facebook
         public ActionResult LoginFacebook()
         {
             var fb = new FacebookClient();
@@ -179,6 +180,71 @@ namespace MoriiCoffee.Controllers
             return Redirect(loginUrl.AbsoluteUri);
         }
 
+        //public ActionResult LoginGoogle()
+        //{
+        //    var fb = new GoogleClient();
+        //    var loginUrl = fb.GetLoginUrl(new
+        //    {
+        //        client_id = ConfigurationManager.AppSettings["FbAppId"],
+        //        client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+        //        redirect_uri = RedirectUri.AbsoluteUri,
+        //        response_type = "code",
+        //        scope = "email",
+        //    });
+        //    return Redirect(loginUrl.AbsoluteUri);
+        //}
+
+        ////Login Google
+        ////ClientID: 362865066330-vh0r90jvklie69u8q3daegoj9kmn5jn2.apps.googleusercontent.com
+        ////ClientSecret: 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
+        //public Action LoginGoogle()
+        //{
+        //    try
+        //    {
+        //        var url = Request.Url.Query;
+        //        if (url != "")
+        //        {
+        //            string queryString = url.ToString();
+        //            char[] delimiterChars = { '=' };
+        //            string[] words = queryString.Split(delimiterChars);
+        //            string code = words[1];
+        //            if (code != null)
+        //            {
+        //                //get the access token
+        //                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("https://accounts.google.com/o/oauth2/token");
+        //                webRequest.Method = "POST";
+        //                Parameters = "code=" + code + "&client_id=" + client_id + "&client_secret=" + client_sceret + "&redirect_uri=" + redirect_url + "&grant_type=authorization_code";
+        //                byte[] byteArray = Encoding.UTF8.GetBytes(Parameters);
+        //                webRequest.ContentType = "application/x-www-form-urlencoded";
+        //                webRequest.ContentLength = byteArray.Length;
+        //                Stream postStream = webRequest.GetRequestStream();
+        //                // Add the post data to the web request
+        //                postStream.Write(byteArray, 0, byteArray.Length);
+        //                postStream.Close();
+        //                WebResponse response = webRequest.GetResponse();
+        //                postStream = response.GetResponseStream();
+        //                StreamReader reader = new StreamReader(postStream);
+        //                string responseFromServer = reader.ReadToEnd();
+        //                GoogleAccessToken serStatus = JsonConvert.DeserializeObject<GoogleAccessToken>(responseFromServer);
+        //                if (serStatus != null)
+        //                {
+        //                    string accessToken = string.Empty;
+        //                    accessToken = serStatus.access_token;
+        //                    Session["Token"] = accessToken;
+        //                    if (!string.IsNullOrEmpty(accessToken))
+        //                    {
+        //                        //call get user information function with access token as parameter
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //}
+
         public ActionResult FacebookCallback(string code)
         {
             var fb = new FacebookClient();
@@ -188,7 +254,7 @@ namespace MoriiCoffee.Controllers
                 client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
                 redirect_uri = RedirectUri.AbsoluteUri,
                 code = code
-            }); 
+            });
 
             var accessToken = result.access_token;
             if (!string.IsNullOrEmpty(accessToken))
@@ -206,24 +272,24 @@ namespace MoriiCoffee.Controllers
                 var user = new NguoiDung();
                 user.Email = email;
                 user.Status = true;
-                user.HoTen = lastname + " " + middlename+ " " + firstname;
+                user.HoTen = lastname + " " + middlename + " " + firstname;
                 user.CreatedDate = DateTime.Now;
                 user.Password = "FaceBookLogin2022!";
                 user.ConfirmPassword = "FaceBookLogin2022!";
                 user.Role = "Khách hàng";
                 user.Urlmage = urlImage;
                 //user.SDT = phone;
-                if(gender == "male")
+                if (gender == "male")
                 {
                     user.GioiTinh = true;
                 }
-                if(gender == "female")
+                if (gender == "female")
                 {
                     user.GioiTinh = false;
                 }
                 //user.NgSinh = DateTime.Parse(birthday);
                 var resultInsert = nddao.InsertForFacebook(user);
-                if(resultInsert > 0)
+                if (resultInsert > 0)
                 {
                     var userSession = new UserLogin();
                     userSession.UserName = user.Email;
@@ -304,5 +370,7 @@ namespace MoriiCoffee.Controllers
             }
 
         }
+
+
     }
 }
