@@ -194,11 +194,13 @@ namespace MoriiCoffee.Controllers
             if (!string.IsNullOrEmpty(accessToken))
             {
                 fb.AccessToken = accessToken;
-                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
+                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email,picture");
                 string email = me.email;
                 string firstname = me.first_name;
                 string middlename = me.middle_name;
                 string lastname = me.last_name;
+                //string birthday = me.user_birthday;
+                string urlImage = me.picture.data.url;
                 var user = new NguoiDung();
                 user.Email = email;
                 user.Status = true;
@@ -207,6 +209,8 @@ namespace MoriiCoffee.Controllers
                 user.Password = "FaceBookLogin2022!";
                 user.ConfirmPassword = "FaceBookLogin2022!";
                 user.Role = "Khách hàng";
+                user.Urlmage = urlImage;
+                //user.NgSinh = DateTime.Parse(birthday);
                 var resultInsert = nddao.InsertForFacebook(user);
                 if(resultInsert > 0)
                 {
