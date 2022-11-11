@@ -402,8 +402,8 @@
                 // The signed-in user info.
                 const user = result.user;
                 showUserDetails(user);
-                if (user.emailVerified)
-                    window.location.replace("https://localhost:44309");
+                //if (user.emailVerified)
+                //    window.location.replace("https://localhost:44309/dang-ky");
             })
     }
     function FacebookLogin() {
@@ -422,6 +422,6 @@
             })
     }
     function showUserDetails(user) {
-        console.log(user);
+        alert(user);
     }
 </script>

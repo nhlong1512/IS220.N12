@@ -12,6 +12,8 @@ using System.Data.Entity.Migrations;
 using Model.EF;
 using MoriiCoffee.Common;
 using Model.Dao;
+using Facebook;
+using System.Configuration;
 
 namespace MoriiCoffee.Controllers
 {
@@ -20,6 +22,18 @@ namespace MoriiCoffee.Controllers
         private MoriiCoffeeDBContext _db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
         private NguoiDung nd = new NguoiDung();
+
+        private Uri RedirectUri
+        {
+            get
+            {
+                var uriBuilder = new UriBuilder(Request.Url);
+                uriBuilder.Query = null;
+                uriBuilder.Fragment = null;
+                uriBuilder.Path = Url.Action("FacebookCallback");
+                return uriBuilder.Uri; 
+            }
+        }
         // GET: User
         public ActionResult DangKy()
         {
@@ -149,6 +163,20 @@ namespace MoriiCoffee.Controllers
                 return View();
             }
 
+        }
+
+        public ActionResult LoginFacebook()
+        {
+            var fb = new FacebookClient();
+            var loginUrl = fb.GetLoginUrl(new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                response_type = "code",
+                scope = "email",
+            });
+            return Redirect(loginUrl.AbsoluteUri);
         }
 
         public ActionResult DangXuat()
