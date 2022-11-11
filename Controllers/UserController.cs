@@ -221,7 +221,7 @@ namespace MoriiCoffee.Controllers
                 {
                     user.GioiTinh = false;
                 }
-                ////user.NgSinh = DateTime.Parse(birthday);
+                //user.NgSinh = DateTime.Parse(birthday);
                 var resultInsert = nddao.InsertForFacebook(user);
                 if(resultInsert > 0)
                 {
