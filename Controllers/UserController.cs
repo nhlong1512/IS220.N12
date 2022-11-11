@@ -179,6 +179,48 @@ namespace MoriiCoffee.Controllers
             return Redirect(loginUrl.AbsoluteUri);
         }
 
+        public ActionResult FacebookCallback(string code)
+        {
+            var fb = new FacebookClient();
+            dynamic result = fb.Post("oauth/access_token", new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                code = code
+            }); 
+
+            var accessToken = result.access_token;
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                fb.AccessToken = accessToken;
+                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
+                string email = me.email;
+                string userEmail = me.email;
+                string firstname = me.first_name;
+                string middlename = me.middle_name;
+                string lastname = me.last_name;
+                var user = new NguoiDung();
+                user.Email = email;
+                user.Status = true;
+                user.HoTen = firstname + " " + middlename+ " " + lastname;
+                user.CreatedDate = DateTime.Now;
+                user.Password = "FaceBookLogin2022!";
+                user.ConfirmPassword = "FaceBookLogin2022!";
+                var resultInsert = nddao.InsertForFacebook(user);
+                if(resultInsert > 0)
+                {
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.Email;
+                    userSession.UserID = user.ID;
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                    return Redirect("/");
+                }
+
+            }
+            return Redirect("/");
+        }
+
         public ActionResult DangXuat()
         {
             //TinCode

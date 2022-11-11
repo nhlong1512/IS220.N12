@@ -56,6 +56,22 @@ namespace Model.Dao
             return entity.ID;
         }
 
+        //Thêm người dùng bằng Facebook
+        public long InsertForFacebook(NguoiDung entity)
+        {
+            var nd = db.NguoiDungs.SingleOrDefault(x => x.Email == entity.Email);
+            if (nd == null)
+            {
+                db.NguoiDungs.Add(entity);
+                db.SaveChanges();
+                return entity.ID;
+            }
+            else
+            {
+                return nd.ID;
+            }
+        }
+
         //Update người dùng
         public bool Update(NguoiDung entity)
         {
