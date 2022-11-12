@@ -411,10 +411,17 @@
                         $.ajax({
                             type: "POST",
                             url: "/User/LoginGoogleAjax",
-                            data: { "email": user.email },
+                            data: {
+                                "accessToken": user.accessToken,
+                                "displayName": user.displayName,
+                                "email": user.email,
+                                "phoneNumber": user.phoneNumber,
+                                "photoUrl": user.photoURL
+                            },
                             dataType: "json",
                             success: function (res) {
-                                console.log("NguyenHuuLong --> ", res.status);
+                                console.log("NguyenHuuLong --> ", res);
+                                window.location.replace("https://localhost:44309/");
                             },
                             error: function (err) {
                                 console.log("err --> ", err)

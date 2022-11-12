@@ -246,11 +246,39 @@ namespace MoriiCoffee.Controllers
         //}
 
         [HttpPost]
-        public JsonResult LoginGoogleAjax (string email)
+        public JsonResult LoginGoogleAjax (string accessToken, string displayName, string email, string phoneNumber, string photoUrl)
         {
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                var user = new NguoiDung();
+                user.Email = email;
+                user.Status = true;
+                user.HoTen = displayName;
+                user.CreatedDate = DateTime.Now;
+                user.Password = "GoogleLogin2022!";
+                user.ConfirmPassword = "GoogleLogin2022!";
+                user.Role = "Khách hàng";
+                user.Urlmage = photoUrl;
+                user.SDT = phoneNumber;
+                var resultInsert = nddao.InsertForGoogle(user);
+                if (resultInsert > 0)
+                {
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.Email;
+                    userSession.UserID = user.ID;
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                }
+            }
+            
+            
             return Json(new
             {
-                status = true
+                status = true,
+                accescToken = accessToken,
+                displayName = displayName,
+                email = email,
+                phoneNumber = phoneNumber,
+                photoUrl = photoUrl,
             }); 
         }
 

@@ -72,6 +72,22 @@ namespace Model.Dao
             }
         }
 
+        //Thêm người dùng bằng Google
+        public long InsertForGoogle(NguoiDung entity)
+        {
+            var nd = db.NguoiDungs.SingleOrDefault(x => x.Email == entity.Email);
+            if (nd == null)
+            {
+                db.NguoiDungs.Add(entity);
+                db.SaveChanges();
+                return entity.ID;
+            }
+            else
+            {
+                return nd.ID;
+            }
+        }
+
         //Update người dùng
         public bool Update(NguoiDung entity)
         {
