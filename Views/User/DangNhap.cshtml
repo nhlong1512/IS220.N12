@@ -402,9 +402,6 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         var ggprovider = new GoogleAuthProvider(app);
-        //let provider = new firebase.auth.GoogleAuthProvider()
-        //const btnGoogle = $("#signUpWithGoogle");
-        //btnGoogle.addEventListener('click', GoogleLogin);
         $("#signInWithGoogle").click(
             function GoogleLogin() {
                 console.log('Login Btn Call')
@@ -416,8 +413,6 @@
                         // The signed-in user info.
                         const user = result.user;
                         showUserDetails(user);
-                        //if (user.emailVerified)
-                        //    window.location.replace("https://localhost:44309/dang-ky");
                         console.log(user.email);
                         $.ajax({
                             type: "POST",

@@ -391,9 +391,6 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         var ggprovider = new GoogleAuthProvider(app);
-        //let provider = new firebase.auth.GoogleAuthProvider()
-        //const btnGoogle = $("#signUpWithGoogle");
-        //btnGoogle.addEventListener('click', GoogleLogin);
         $("#signUpWithGoogle").click(
             function GoogleLogin() {
                 console.log('Login Btn Call')
