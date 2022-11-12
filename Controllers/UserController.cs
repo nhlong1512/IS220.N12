@@ -245,6 +245,15 @@ namespace MoriiCoffee.Controllers
         //    }
         //}
 
+        [HttpPost]
+        public JsonResult LoginGoogleAjax (string email)
+        {
+            return Json(new
+            {
+                status = true
+            }); 
+        }
+
         public ActionResult FacebookCallback(string code)
         {
             var fb = new FacebookClient();
@@ -361,7 +370,6 @@ namespace MoriiCoffee.Controllers
                 _db.NguoiDungs.AddOrUpdate(user);
                 _db.SaveChanges();
                 mail.Send(message);
-
                 return View("DangNhap");
             }
             else

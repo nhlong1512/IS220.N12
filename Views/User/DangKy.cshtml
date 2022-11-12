@@ -8,9 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
 <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <title>MoriiCoffee</title>
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="~/Assets/Images/LogoMorii1.png" type="image/x-icon" />
+
 
 @{
     var err = ViewBag.err;
@@ -60,7 +62,7 @@
                             <a href="~/User/LoginFacebook" class="fb btn-social" id="signUpWithFacebook">
                                 <i class="fa fa-facebook fa-fw"></i> Tiếp tục với Facebook
                             </a>
-                            <a href="https://accounts.google.com/signin/oauth/error?authError=Cg9pbnZhbGlkX3JlcXVlc3QS3gEKWW91IGNhbid0IHNpZ24gaW4gdG8gdGhpcyBhcHAgYmVjYXVzZSBpdCBkb2Vzbid0IGNvbXBseSB3aXRoIEdvb2dsZSdzIE9BdXRoIDIuMCBwb2xpY3kgZm9yIGtlZXBpbmcgYXBwcyBzZWN1cmUuCgpZb3UgY2FuIGxldCB0aGUgYXBwIGRldmVsb3BlciBrbm93IHRoYXQgdGhpcyBhcHAgZG9lc24ndCBjb21wbHkgd2l0aCBvbmUgb3IgbW9yZSBHb29nbGUgdmFsaWRhdGlvbiBydWxlcy4KICAaWWh0dHBzOi8vZGV2ZWxvcGVycy5nb29nbGUuY29tL2lkZW50aXR5L3Byb3RvY29scy9vYXV0aDIvcG9saWNpZXMjc2VjdXJlLXJlc3BvbnNlLWhhbmRsaW5nIJADKh0KDHJlZGlyZWN0X3VyaRINPHJlZGlyZWN0dXJsPg%3D%3D&client_id=%3CClientID" class="google btn-social" id="signUpWithGoogle">
+                            <a href="#" class="google btn-social" id="signUpWithGoogle">
                                 <i class="fa fa-google fa-fw">
                                 </i> Tiếp tục với Google+
                             </a>
@@ -96,8 +98,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin:0;
-        height:100%;
+        margin: 0;
+        height: 100%;
     }
 
         body > form {
@@ -372,9 +374,60 @@
 
 
 <script type="module">
-    //import { GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-    //import { signInWithPopup, getAuth } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
-    //import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+    import { GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+    import { signInWithPopup, getAuth } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+
+    $(document).ready(function () {
+        const firebaseConfig = {
+            apiKey: "AIzaSyBBysSsI4c3kJBlEuBeuNXME1Q25z5cSVI",
+            authDomain: "moriicoffee.firebaseapp.com",
+            projectId: "moriicoffee",
+            storageBucket: "moriicoffee.appspot.com",
+            messagingSenderId: "281244301873",
+            appId: "1:281244301873:web:27334f9f426be81c8f3310",
+            measurementId: "G-N3YF3E150R"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        var ggprovider = new GoogleAuthProvider(app);
+        //let provider = new firebase.auth.GoogleAuthProvider()
+        //const btnGoogle = $("#signUpWithGoogle");
+        //btnGoogle.addEventListener('click', GoogleLogin);
+        $("#signUpWithGoogle").click(
+            function GoogleLogin() {
+                console.log('Login Btn Call')
+                signInWithPopup(auth, ggprovider)
+                    .then((result) => {
+                        // This gives you a Google Access Token. You can use it to access the Google API.
+                        const credential = GoogleAuthProvider.credentialFromResult(result);
+                        const token = credential.accessToken;
+                        // The signed-in user info.
+                        const user = result.user;
+                        showUserDetails(user);
+                        //if (user.emailVerified)
+                        //    window.location.replace("https://localhost:44309/dang-ky");
+                        console.log(user.email);
+                        $.ajax({
+                            type: "POST",
+                            url: "/User/LoginGoogleAjax",
+                            data: { "email": user.email },
+                            dataType: "json",
+                            success: function (res) {
+                                console.log("NguyenHuuLong --> ", res.status);
+                            },
+                            error: function (err) {
+                                console.log("err --> ", err)
+                            },
+                        });
+                    })
+            }
+        )
+
+        function showUserDetails(user) {
+            console.log(user);
+        }
+    });
 
     //const firebaseConfig = {
     //    apiKey: "AIzaSyBBysSsI4c3kJBlEuBeuNXME1Q25z5cSVI",
@@ -408,22 +461,9 @@
     //            //    window.location.replace("https://localhost:44309/dang-ky");
     //        })
     //}
-    //function FacebookLogin() {
-    //    console.log('Login Btn Call')
-    //    signInWithPopup(auth, fbprovider)
-    //        .then((result) => {
-    //            // This gives you a Google Access Token. You can use it to access the Google API.
-    //            // The logged-in user info.
-    //            const user = result.user;
-    //            // This gives a Facebook Access Token. Using it you can access to the Facebook API.
-    //            const credential = FacebookAuthProvider.credentialFromResult(result);
-    //            const accessToken = credential.accessToken;
-    //            showUserDetails(user);
-    //            if (user.displayName != "")
-    //                window.location.replace("https://localhost:44309");
-    //        })
+
+    //function showUserDetails(user) {
+    //    console.log(user);
     //}
-    function showUserDetails(user) {
-        console.log(user);
-    }
+
 </script>
