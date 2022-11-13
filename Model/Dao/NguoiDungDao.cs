@@ -98,9 +98,12 @@ namespace Model.Dao
                 nd.SDT = entity.SDT;
                 nd.NgSinh = entity.NgSinh;
                 nd.GioiTinh = entity.GioiTinh;
+                //nd.Password = entity.Password;
+                nd.Status = entity.Status;
                 nd.Urlmage = entity.Urlmage;
                 nd.ModifiedBy = entity.ModifiedBy;
                 nd.ModifiedDate = DateTime.Now;
+                db.Configuration.ValidateOnSaveEnabled = false;
                 db.SaveChanges();
                 return true;
             }

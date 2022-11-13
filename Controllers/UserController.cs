@@ -416,6 +416,45 @@ namespace MoriiCoffee.Controllers
 
         public ActionResult ResetPassword()
         {
+            var nd = nddao.ViewDetailEmail(emailForgotPassword);
+            ViewBag.nd = nd;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(NguoiDung user)
+        {
+            var err = "";
+            var ndd = nddao.ViewDetailEmail(emailForgotPassword);
+            if (ModelState.IsValid)
+            {
+                //var nd = _db.NguoiDungs.FirstOrDefault(s => s.Email == _user.Email);
+
+
+                ndd.Password = GetMD5(user.Password);
+                ndd.ConfirmPassword = GetMD5(user.ConfirmPassword);
+                var update = nddao.Update(ndd);
+                if (update == true) 
+                {
+                    return Redirect("~/dang-nhap");
+                }
+                else
+                {
+                    return View();
+                }
+
+            }
+            else
+            {
+                var list = ModelState.ToDictionary(x => x.Key, y => y.Value.Errors.Select(x => x.ErrorMessage).ToArray())
+                  .Where(m => m.Value.Count() > 0);
+                foreach (var itm in list)
+                {
+                    err += string.Concat(string.Join(",", itm.Value.ToArray()), "");
+                }
+                ViewBag.err = err;
+                return View();
+            }
             return View();
         }
 
