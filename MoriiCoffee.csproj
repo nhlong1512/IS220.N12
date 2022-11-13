@@ -2717,6 +2717,7 @@
     <Content Include="Views\BlogTrangChu\Index.cshtml" />
     <Content Include="Views\Shared\_UserDropdown.cshtml" />
     <Content Include="Views\User\DangXuat.cshtml" />
+    <Content Include="Views\User\ValidationCode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,352 @@
+﻿
+@model Model.EF.NguoiDung
+
+
+<link href="~/Assets/Login_Register/css/dangnhap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<title>MoriiCoffee</title>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="~/Assets/Images/LogoMorii1.png" type="image/x-icon" />
+
+
+@{
+    var err = ViewBag.err;
+}
+
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="login-wrap">
+            <div class="login-html">
+                <a style="display: flex; justify-content: center; align-items: center; margin-bottom:20px;">
+                    <img style="height:40px;" src="~/Assets/Images/LogoMorii1.png" />
+                </a>
+                <h1 class="titleDangKy">Xác minh mật khẩu</h1>
+                <p class="descDangKy">
+                    Chúng tôi đã gửi mã xác minh vào Email của bạn. 
+                    <span id="guiLaiCode" >
+                        Gửi lại
+                    </span>
+                </p>
+                <div class="login-form">
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <input id="Email" name="Email" type="text" class="input" placeholder="Nhập mã xác minh">
+                        </div>
+
+                        <div class="group" style="max-width: 450px;">
+                            <div class="" style="color: #dc3545 !important" role="alert">@err</div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="login-form" style="min-height: auto;">
+                    <div class="group">
+                        <button id="buttonDangKy" @*onmouseenter="onMouseOverDangKy()"*@ value="DangKy" type="submit" class="button" style="margin-bottom: 0">XÁC MINH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    </div>
+}
+
+
+
+<style>
+
+    #guiLaiCode {
+        color: #146d4d; 
+        font-weight:700;
+    }
+
+    #guiLaiCode:hover {
+        text-decoration:underline;
+    }
+
+    body {
+        color: #6a6f8c;
+        background: #c8c8c8;
+        font: 600 16px/18px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        height: 100%;
+    }
+
+        body > form {
+            margin: 0;
+        }
+
+    *, :after, :before {
+        box-sizing: border-box
+    }
+
+    .clearfix:after, .clearfix:before {
+        content: '';
+        display: table
+    }
+
+    .clearfix:after {
+        clear: both;
+        display: block
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none
+    }
+
+    .login-wrap {
+        margin: auto;
+        /*min-height: 670px;*/
+        position: relative;
+        /*background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;*/
+        box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    }
+
+    .login-html {
+        padding: 40px 80px 40px 80px;
+        background: #fff;
+        min-width: 600px;
+    }
+
+        .login-html .sign-in,
+        .login-html .sign-up,
+        .login-form .group .check {
+            display: none;
+        }
+
+        .login-html .tab,
+        .login-form .group .label,
+        .login-form .group .button {
+            text-transform: uppercase;
+        }
+
+        .login-html .tab {
+            font-size: 22px;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+        }
+
+        .login-html .sign-in:checked + .tab,
+        .login-html .sign-up:checked + .tab {
+            color: #1161ee;
+            border-color: #1161ee;
+        }
+
+    .login-form {
+        min-height: 300px;
+        position: relative;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+        .login-form .group {
+            margin-bottom: 10px;
+        }
+
+            .login-form .group .label,
+            .login-form .group .input,
+            .login-form .group .button {
+                width: 100%;
+                display: block;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 500;
+                color: #595959;
+            }
+
+            .login-form .group .input,
+            .login-form .group .button {
+                border: 1px solid #CFCFCF;
+                padding: 15px 20px;
+                border-radius: 8px;
+                background: rgba(255,255,255,.1);
+            }
+
+            .login-form .group input[data-type="password"] {
+                text-security: circle;
+                -webkit-text-security: circle;
+            }
+
+            .login-form .group .label {
+                color: #aaa;
+                font-size: 12px;
+            }
+
+            .login-form .group .button {
+                background: #1161ee;
+            }
+
+            .login-form .group label .icon {
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                position: relative;
+                display: inline-block;
+                background: rgba(255,255,255,.1);
+            }
+
+                .login-form .group label .icon:before,
+                .login-form .group label .icon:after {
+                    content: '';
+                    width: 10px;
+                    height: 2px;
+                    background: #fff;
+                    position: absolute;
+                    transition: all .2s ease-in-out 0s;
+                }
+
+                .login-form .group label .icon:before {
+                    left: 3px;
+                    width: 5px;
+                    bottom: 6px;
+                    transform: scale(0) rotate(0);
+                }
+
+                .login-form .group label .icon:after {
+                    top: 6px;
+                    right: 0;
+                    transform: scale(0) rotate(0);
+                }
+
+            .login-form .group .check:checked + label {
+                color: #fff;
+            }
+
+                .login-form .group .check:checked + label .icon {
+                    background: #1161ee;
+                }
+
+                    .login-form .group .check:checked + label .icon:before {
+                        transform: scale(1) rotate(45deg);
+                    }
+
+                    .login-form .group .check:checked + label .icon:after {
+                        transform: scale(1) rotate(-45deg);
+                    }
+
+    .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
+        transform: rotate(0);
+    }
+
+    .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+        transform: rotate(0);
+    }
+
+    .hr {
+        height: 1px;
+        margin: 0 0 20px 0;
+        background: #CFCFCF;
+    }
+
+    .foot-lnk {
+        text-align: center;
+    }
+
+    #buttonDangKy {
+        background-color: #146d4d;
+        color: #fff;
+        cursor: pointer;
+        margin-bottom: 32px;
+        /*width: 200px;*/
+        font-weight: 700;
+        transition: all 100ms linear 0.1s;
+    }
+    /*.buttonDangKy-hover {
+            transform: translate(calc(100% + 100px));
+            right: calc(100% + 200px);
+        }*/
+
+    .titleDangKy {
+        font-weight: 800;
+        font-size: 36px;
+        line-height: 49px;
+        /* identical to box height */
+        text-align: center;
+        color: #000000;
+        /*text-transform: uppercase;*/
+        margin: 0;
+    }
+
+    .descDangKy {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height */
+        text-align: center;
+        color: #000000;
+        margin: 6px 0 20px 0;
+    }
+    /* style inputs and link buttons */
+    .btn-social {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        margin: 5px 0;
+        opacity: 0.85;
+        display: inline-block;
+        font-size: 17px;
+        line-height: 20px;
+        text-decoration: none; /* remove underline from anchors */
+        text-align: center;
+    }
+    /* add appropriate colors to fb, twitter and google buttons */
+    .fb {
+        background-color: #3B5998;
+        color: white;
+    }
+
+    .google {
+        background-color: #dd4b39;
+        color: white;
+    }
+    /* Two-column layout */
+    /* Clear floats after the columns */
+    /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+    @@media screen and (max-width: 650px) {
+        .col {
+            width: 100%;
+            margin-top: 0;
+        }
+        /* hide the vertical line */
+        .vl {
+            display: none;
+        }
+        /* show the hidden text on small screens */
+        .hide-md-lg {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .social-login {
+        margin-bottom: 32px;
+    }
+
+    #dangNhapClick:hover {
+        text-decoration: underline;
+    }
+</style>

@@ -40,6 +40,14 @@ namespace MoriiCoffee
                defaults: new { controller = "User", action = "QuenMatKhau", id = UrlParameter.Optional }
            );
 
+            routes.MapRoute(
+               name: "ValidationCode",
+               url: "xac-minh",
+               defaults: new { controller = "User", action = "ValidationCode", id = UrlParameter.Optional }
+           );
+
+
+
             //Config route cho Trang chủ
             routes.MapRoute(
                name: "TrangChu",

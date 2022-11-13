@@ -179,109 +179,7 @@ namespace MoriiCoffee.Controllers
             });
             return Redirect(loginUrl.AbsoluteUri);
         }
-
-        //public ActionResult LoginGoogle()
-        //{
-        //    var fb = new GoogleClient();
-        //    var loginUrl = fb.GetLoginUrl(new
-        //    {
-        //        client_id = ConfigurationManager.AppSettings["FbAppId"],
-        //        client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
-        //        redirect_uri = RedirectUri.AbsoluteUri,
-        //        response_type = "code",
-        //        scope = "email",
-        //    });
-        //    return Redirect(loginUrl.AbsoluteUri);
-        //}
-
-        ////Login Google
-        ////ClientID: 362865066330-vh0r90jvklie69u8q3daegoj9kmn5jn2.apps.googleusercontent.com
-        ////ClientSecret: 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
-        //public Action LoginGoogle()
-        //{
-        //    try
-        //    {
-        //        var url = Request.Url.Query;
-        //        if (url != "")
-        //        {
-        //            string queryString = url.ToString();
-        //            char[] delimiterChars = { '=' };
-        //            string[] words = queryString.Split(delimiterChars);
-        //            string code = words[1];
-        //            if (code != null)
-        //            {
-        //                //get the access token
-        //                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("https://accounts.google.com/o/oauth2/token");
-        //                webRequest.Method = "POST";
-        //                Parameters = "code=" + code + "&client_id=" + client_id + "&client_secret=" + client_sceret + "&redirect_uri=" + redirect_url + "&grant_type=authorization_code";
-        //                byte[] byteArray = Encoding.UTF8.GetBytes(Parameters);
-        //                webRequest.ContentType = "application/x-www-form-urlencoded";
-        //                webRequest.ContentLength = byteArray.Length;
-        //                Stream postStream = webRequest.GetRequestStream();
-        //                // Add the post data to the web request
-        //                postStream.Write(byteArray, 0, byteArray.Length);
-        //                postStream.Close();
-        //                WebResponse response = webRequest.GetResponse();
-        //                postStream = response.GetResponseStream();
-        //                StreamReader reader = new StreamReader(postStream);
-        //                string responseFromServer = reader.ReadToEnd();
-        //                GoogleAccessToken serStatus = JsonConvert.DeserializeObject<GoogleAccessToken>(responseFromServer);
-        //                if (serStatus != null)
-        //                {
-        //                    string accessToken = string.Empty;
-        //                    accessToken = serStatus.access_token;
-        //                    Session["Token"] = accessToken;
-        //                    if (!string.IsNullOrEmpty(accessToken))
-        //                    {
-        //                        //call get user information function with access token as parameter
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //}
-
-        [HttpPost]
-        public JsonResult LoginGoogleAjax (string accessToken, string displayName, string email, string phoneNumber, string photoUrl)
-        {
-            if (!string.IsNullOrEmpty(accessToken))
-            {
-                var user = new NguoiDung();
-                user.Email = email;
-                user.Status = true;
-                user.HoTen = displayName;
-                user.CreatedDate = DateTime.Now;
-                user.Password = "GoogleLogin2022!";
-                user.ConfirmPassword = "GoogleLogin2022!";
-                user.Role = "Khách hàng";
-                user.Urlmage = photoUrl;
-                user.SDT = phoneNumber;
-                var resultInsert = nddao.InsertForGoogle(user);
-                if (resultInsert > 0)
-                {
-                    var userSession = new UserLogin();
-                    userSession.UserName = user.Email;
-                    userSession.UserID = user.ID;
-                    Session.Add(CommonConstants.USER_SESSION, userSession);
-                }
-            }
-            
-            
-            return Json(new
-            {
-                status = true,
-                accescToken = accessToken,
-                displayName = displayName,
-                email = email,
-                phoneNumber = phoneNumber,
-                photoUrl = photoUrl,
-            }); 
-        }
-
+        
         public ActionResult FacebookCallback(string code)
         {
             var fb = new FacebookClient();
@@ -339,6 +237,45 @@ namespace MoriiCoffee.Controllers
             return Redirect("/");
         }
 
+
+        [HttpPost]
+        public JsonResult LoginGoogleAjax(string accessToken, string displayName, string email, string phoneNumber, string photoUrl)
+        {
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                var user = new NguoiDung();
+                user.Email = email;
+                user.Status = true;
+                user.HoTen = displayName;
+                user.CreatedDate = DateTime.Now;
+                user.Password = "GoogleLogin2022!";
+                user.ConfirmPassword = "GoogleLogin2022!";
+                user.Role = "Khách hàng";
+                user.Urlmage = photoUrl;
+                user.SDT = phoneNumber;
+                var resultInsert = nddao.InsertForGoogle(user);
+                if (resultInsert > 0)
+                {
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.Email;
+                    userSession.UserID = user.ID;
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                }
+            }
+
+
+            return Json(new
+            {
+                status = true,
+                accescToken = accessToken,
+                displayName = displayName,
+                email = email,
+                phoneNumber = phoneNumber,
+                photoUrl = photoUrl,
+            });
+        }
+
+
         public ActionResult DangXuat()
         {
             //TinCode
@@ -372,6 +309,7 @@ namespace MoriiCoffee.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult QuenMatKhau(string Email)
         {
@@ -407,6 +345,10 @@ namespace MoriiCoffee.Controllers
 
         }
 
+        public ActionResult ValidationCode ()
+        {
+            return View();
+        }
 
     }
 }
