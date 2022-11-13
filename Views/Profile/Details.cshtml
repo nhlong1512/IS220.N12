@@ -1,13 +1,179 @@
-﻿@model Model.EF.NguoiDung
-
-@{ 
-    var nd = ViewBag.nd;
-
+﻿
+@model Model.EF.ChiTietSanPham
+@{
+    ViewBag.Title = "MoriiCoffee";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var nd = ViewBag.ndd;
 }
-<div>
-    <h4>NguoiDung</h4>
-    <hr />
-    <h3>@nd.Email</h3>
-    <h3>@nd.HoTen</h3>
 
+
+
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Tài Khoản CỦa Tôi</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Người Dùng</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Tài Khoản Của Tôi </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+
+
+<div class="w3-services py-5">
+    <div class="container py-lg-4">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+
+                <div class="container">
+                    <h2>@nd.Email</h2>
+                    <h2>@nd.HoTen</h2>
+
+                    @*<div class="product">
+            <div class="imgProduct">
+                <img src=@Model.UrlImage style="width:500px; height: 500px;" />
+            </div>
+            <div class="contentProduct">
+                <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
+                    @Model.TenSanPham
+                </h3>
+                <p style="font-size: 24px; font-weight: 700;">
+                    @{
+                        var t = @Model.Gia;
+                        t = t / 1000;
+
+                    }
+                    @t.000 đ
+                </p>
+            </div>
+        </div>
+        <hr class="style10">
+        <div class="moTaDiv">
+            <h3 class="moTa">Mô tả sản phẩm</h3>
+            <p class="moTaP">@Model.MoTaSanPham</p>
+
+        </div>
+        <div class="moTaDiv">
+            <hr class="style10">
+            <h3 class="moTa">Sản phẩm liên quan</h3>
+            <p class="moTaP">@Model.MoTaSanPham</p>
+        </div>*@
+
+
+
+                </div>
+            </div>
+        }
+
+    </div>
 </div>
+
+
+<style>
+    .product {
+        display: flex;
+        /*flex-direction:column;*/
+        gap: 30px;
+        padding-bottom: 20px;
+        /*border-bottom: 0.5px solid #ccc !important;*/
+    }
+
+    .imgProduct {
+        display: flex;
+    }
+
+    .contentProduct {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .moTaDiv {
+        margin: 20px 0;
+    }
+
+    .moTa {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .moTaP {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+        align-items: initial;
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #146d4d !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important;
+    }
+</style>
+
+
+
+
+<!-- //contact-form -->
+<!-- Template JavaScript -->
+<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+<script src="~/Assets/Client/js/theme-change.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- disable body scroll which navbar is in active -->
+<!--/MENU-JS-->
+
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!--//MENU-JS-->

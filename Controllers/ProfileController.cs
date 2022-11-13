@@ -30,7 +30,7 @@ namespace MoriiCoffee.Controllers
                 {
                     ViewBag.session = session;
                     var nd = nguoidungdao.ViewDetailEmail(session.UserName);
-                    ViewBag.nd = nd;
+                    ViewBag.ndd = nd;
                 }
 
             }
