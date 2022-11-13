@@ -6,14 +6,17 @@
     var nd = ViewBag.ndd;
 }
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
 <!-- about breadcrumb -->
 <section class="w3l-about-breadcrumb position-relative text-center">
     <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
         <div class="container py-lg-5 py-3">
-            <h2 class="title text-morii">Tài Khoản CỦa Tôi</h2>
+            <h2 class="title text-morii">Tài Khoản Của Tôi</h2>
             <ul class="breadcrumbs-custom-path mt-2">
                 <li><a href="Index">Người Dùng</a></li>
                 <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Tài Khoản Của Tôi </li>
@@ -27,56 +30,74 @@
 
 <div class="w3-services py-5">
     <div class="container py-lg-4">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
             <div class="form-horizontal">
 
                 <div class="container">
-                    <h2>@nd.Email</h2>
-                    <h2>@nd.HoTen</h2>
+                    <div class="profile-header">
+                        <div class="profile-header-left">
+                            <div class="img-header">
+                                <img src="@nd.Urlmage" style="width: 218px; border-radius: 100%;" />
+                            </div>
+                            <div>
+                                <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Profile</h3>
+                                <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Update your photo and personal details.</p>
+                            </div>
+                        </div>
+                        <a class="button-profile-save">
+                            <button>
+                                Save
+                            </button>
+                        </a>
+                    </div>
 
-                    @*<div class="product">
-            <div class="imgProduct">
-                <img src=@Model.UrlImage style="width:500px; height: 500px;" />
-            </div>
-            <div class="contentProduct">
-                <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
-                    @Model.TenSanPham
-                </h3>
-                <p style="font-size: 24px; font-weight: 700;">
-                    @{
-                        var t = @Model.Gia;
-                        t = t / 1000;
-
-                    }
-                    @t.000 đ
-                </p>
-            </div>
-        </div>
-        <hr class="style10">
-        <div class="moTaDiv">
-            <h3 class="moTa">Mô tả sản phẩm</h3>
-            <p class="moTaP">@Model.MoTaSanPham</p>
-
-        </div>
-        <div class="moTaDiv">
-            <hr class="style10">
-            <h3 class="moTa">Sản phẩm liên quan</h3>
-            <p class="moTaP">@Model.MoTaSanPham</p>
-        </div>*@
+                    <hr class="style10">
 
 
 
                 </div>
             </div>
-        }
 
     </div>
 </div>
 
 
 <style>
+    .profile-header{
+        display:flex;
+        justify-content:space-between;
+
+    }
+
+    .profile-header-left{
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            /* identical to box height */
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border:none;
+        }
+
+
     .product {
         display: flex;
         /*flex-direction:column;*/
