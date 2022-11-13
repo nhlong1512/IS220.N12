@@ -321,7 +321,7 @@ namespace MoriiCoffee.Controllers
                 var mail = new SmtpClient("smtp.gmail.com", 587)
                 {
                     //moriicoffeee@gmail.com@!!
-                    Credentials = new NetworkCredential("moriicoffeee@gmail.com", "moriicoffeee@gmail.com@!!"),
+                    Credentials = new NetworkCredential("moriicoffeee@gmail.com", "sasdyaredyhjonoo"),
                     EnableSsl = true,
                 };
 
