@@ -318,6 +318,15 @@
     .social-login {
         margin-bottom: 32px;
     }
+
+    #dangKyClick:hover {
+        text-decoration: underline;
+    }
+
+    #quenMatKhauClick:hover {
+        text-decoration: underline;
+    }
+
 </style>
 
 
@@ -366,15 +375,20 @@
                                 </i> Tiếp tục với Google+
                             </a>
                         </div>
-                        <div class="foot-lnk">
+                        <div class="foot-lnk" style="display:flex; justify-content:space-between">
                             <h2 style="font-size:16px; line-height:20px; margin:0;">
                                 Chưa có tài khoản?
                                 <span>
-                                    <a href="/dang-ky">
+                                    <a href="/dang-ky" id="dangKyClick">
                                         Đăng ký
                                     </a>
                                 </span>
                             </h2>
+                            <a style="font-size:16px; line-height:20px; margin:0;" href="/quen-mat-khau">
+                                <h2 style="font-size:16px; line-height:20px; margin:0;" id="quenMatKhauClick">
+                                    Quên mật khẩu
+                                </h2>
+                            </a>
                         </div>
                     </div>
                 </div>
