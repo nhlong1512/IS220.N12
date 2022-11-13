@@ -25,7 +25,7 @@ namespace MoriiCoffee.Controllers
         private NguoiDung nd = new NguoiDung();
         public static string randomValidationCode;
         public static string emailForgotPassword;
-
+        public static string msgSuccessSend;
         private Uri RedirectUri
         {
             get
@@ -182,7 +182,7 @@ namespace MoriiCoffee.Controllers
             });
             return Redirect(loginUrl.AbsoluteUri);
         }
-        
+
         public ActionResult FacebookCallback(string code)
         {
             var fb = new FacebookClient();
@@ -338,7 +338,7 @@ namespace MoriiCoffee.Controllers
                 string s = x.ToString("000000");
                 randomValidationCode = s;
                 message.Body = "Mã xác minh của bạn là: " + s;
-                
+
                 mail.Send(message);
                 emailForgotPassword = Email;
 
@@ -354,16 +354,55 @@ namespace MoriiCoffee.Controllers
 
         }
 
+        //[HttpPost]
+        public ActionResult GuiLaiMaXacMinh()
+        {
+            var Email = emailForgotPassword;
+            var mail = new SmtpClient("smtp.gmail.com", 587)
+            {
+                //moriicoffeee@gmail.com@!!
+                Credentials = new NetworkCredential("moriicoffeee@gmail.com", "sasdyaredyhjonoo"),
+                EnableSsl = true,
+            };
+
+            var message = new MailMessage();
+            message.From = new MailAddress("moriicoffee@gmail.com");
+            message.To.Add(new MailAddress(Email));
+            message.Subject = "XÁC MINH MẬT KHẨU";
+
+            //random 6 digits
+            Random r = new Random();
+            var x = r.Next(0, 1000000);
+            string s = x.ToString("000000");
+            randomValidationCode = s;
+            message.Body = "Mã xác minh của bạn là: " + s;
+
+            mail.Send(message);
+            var msg = "Chúng tôi đã gửi lại mã xác minh cho bạn. ";
+            msgSuccessSend = msg;
+
+            return RedirectToAction("ValidationCode", "User");
+
+        }
+
         public ActionResult ValidationCode()
         {
+            if (!string.IsNullOrEmpty(msgSuccessSend))
+            {
+                ViewBag.msg = msgSuccessSend;
+            }
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ValidationCode (string code)
+        public ActionResult ValidationCode(string code)
         {
-            if(code == randomValidationCode)
+            if (!string.IsNullOrEmpty(msgSuccessSend))
+            {
+                ViewBag.msg = msgSuccessSend;
+            }
+            if (code == randomValidationCode)
             {
                 return RedirectToAction("ResetPassword", "User");
             }

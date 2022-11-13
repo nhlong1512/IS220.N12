@@ -17,6 +17,7 @@
 
 @{
     var err = ViewBag.err;
+    var msg = ViewBag.msg;
 }
 
 
@@ -35,11 +36,16 @@
                 </a>
                 <h1 class="titleDangKy">Xác minh mật khẩu</h1>
                 <p class="descDangKy">
-                    Chúng tôi đã gửi mã xác minh vào Email của bạn. 
-                    <span id="guiLaiCode" >
-                        Gửi lại
+                    Chúng tôi đã gửi mã xác minh vào Email của bạn.
+                    <span id="guiLaiCode">
+                        <a href="~/User/GuiLaiMaXacMinh">
+                            Gửi lại
+                        </a>
                     </span>
                 </p>
+                <div class="group" style="max-width: 450px;">
+                    <div class="" style="color: #155724 !important; font-weight:700; margin-bottom:20px;" role="alert">@msg</div>
+                </div>
                 <div class="login-form">
                     <div class="sign-up-htm">
                         <div class="group">
@@ -72,6 +78,7 @@
     input[type=number] {
         -moz-appearance: textfield;
     }
+
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -79,13 +86,13 @@
     }
 
     #guiLaiCode {
-        color: #146d4d; 
-        font-weight:700;
+        color: #146d4d;
+        font-weight: 700;
     }
 
-    #guiLaiCode:hover {
-        text-decoration:underline;
-    }
+        #guiLaiCode:hover {
+            text-decoration: underline;
+        }
 
     body {
         color: #6a6f8c;
