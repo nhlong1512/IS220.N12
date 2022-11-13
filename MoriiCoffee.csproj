@@ -2611,6 +2611,7 @@
     <Compile Include="Controllers\CuaHangController.cs" />
     <Compile Include="Controllers\LayoutClientController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ThucDonController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -2719,6 +2720,7 @@
     <Content Include="Views\User\DangXuat.cshtml" />
     <Content Include="Views\User\ValidationCode.cshtml" />
     <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\Profile\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

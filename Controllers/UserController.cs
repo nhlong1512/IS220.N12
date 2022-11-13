@@ -320,7 +320,8 @@ namespace MoriiCoffee.Controllers
                 ViewBag.ThongBao = "Đã gửi email thành công!, vui lòng kiểm tra lại email.";
                 var mail = new SmtpClient("smtp.gmail.com", 587)
                 {
-                    Credentials = new NetworkCredential("moriicoffeee@gmail.com", "cvxruiagevrkfnmz"),
+                    //moriicoffeee@gmail.com@!!
+                    Credentials = new NetworkCredential("moriicoffeee@gmail.com", "moriicoffeee@gmail.com@!!"),
                     EnableSsl = true,
                 };
 
@@ -336,6 +337,7 @@ namespace MoriiCoffee.Controllers
                 _db.NguoiDungs.AddOrUpdate(user);
                 _db.SaveChanges();
                 mail.Send(message);
+
                 return View("DangNhap");
             }
             else
@@ -354,5 +356,7 @@ namespace MoriiCoffee.Controllers
         {
             return View();
         }
+
+
     }
 }

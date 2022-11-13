@@ -52,6 +52,12 @@ namespace MoriiCoffee
                defaults: new { controller = "User", action = "ResetPassword", id = UrlParameter.Optional }
            );
 
+            //Config Route cho UserProfile
+            routes.MapRoute(
+               name: "ProfileDetails",
+               url: "profile/details/{id}",
+               defaults: new { controller = "Profile", action = "Details", id = UrlParameter.Optional }
+           );
 
 
             //Config route cho Trang chủ
