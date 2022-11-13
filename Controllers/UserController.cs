@@ -23,6 +23,8 @@ namespace MoriiCoffee.Controllers
         private MoriiCoffeeDBContext _db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
         private NguoiDung nd = new NguoiDung();
+        public static string randomValidationCode;
+        public static string emailForgotPassword;
 
         private Uri RedirectUri
         {
@@ -334,9 +336,11 @@ namespace MoriiCoffee.Controllers
                 Random r = new Random();
                 var x = r.Next(0, 1000000);
                 string s = x.ToString("000000");
+                randomValidationCode = s;
                 message.Body = "Mã xác minh của bạn là: " + s;
                 
                 mail.Send(message);
+                emailForgotPassword = Email;
 
                 return RedirectToAction("ValidationCode", "User");
             }
@@ -350,9 +354,25 @@ namespace MoriiCoffee.Controllers
 
         }
 
-        public ActionResult ValidationCode ()
+        public ActionResult ValidationCode()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ValidationCode (string code)
+        {
+            if(code == randomValidationCode)
+            {
+                return RedirectToAction("ResetPassword", "User");
+            }
+            else
+            {
+                var err = "Mã xác minh không chính xác. ";
+                ViewBag.err = err;
+                return View();
+            }
         }
 
         public ActionResult ResetPassword()

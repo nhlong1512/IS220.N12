@@ -43,7 +43,7 @@
                 <div class="login-form">
                     <div class="sign-up-htm">
                         <div class="group">
-                            <input id="Email" name="Email" type="text" class="input" placeholder="Nhập Mã Xác Minh">
+                            <input id="code" name="code" type="number" class="input" placeholder="Nhập Mã Xác Minh">
                         </div>
 
                         <div class="group" style="max-width: 450px;">
@@ -69,6 +69,14 @@
 
 
 <style>
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
     #guiLaiCode {
         color: #146d4d; 
