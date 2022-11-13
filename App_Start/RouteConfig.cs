@@ -46,6 +46,12 @@ namespace MoriiCoffee
                defaults: new { controller = "User", action = "ValidationCode", id = UrlParameter.Optional }
            );
 
+            routes.MapRoute(
+               name: "ResetPassword",
+               url: "dat-lai-mat-khau",
+               defaults: new { controller = "User", action = "ResetPassword", id = UrlParameter.Optional }
+           );
+
 
 
             //Config route cho Trang chủ
