@@ -14,6 +14,7 @@ using MoriiCoffee.Common;
 using Model.Dao;
 using Facebook;
 using System.Configuration;
+using System.Web.Routing;
 
 namespace MoriiCoffee.Controllers
 {
@@ -313,11 +314,9 @@ namespace MoriiCoffee.Controllers
         [HttpPost]
         public ActionResult QuenMatKhau(string Email)
         {
-            string email1 = Email;
-            var user = _db.NguoiDungs.FirstOrDefault(n => n.Email == email1);
+            var user = _db.NguoiDungs.FirstOrDefault(n => n.Email == Email);
             if (user != null)
             {
-                ViewBag.ThongBao = "Đã gửi email thành công!, vui lòng kiểm tra lại email.";
                 var mail = new SmtpClient("smtp.gmail.com", 587)
                 {
                     //moriicoffeee@gmail.com@!!
@@ -326,23 +325,27 @@ namespace MoriiCoffee.Controllers
                 };
 
                 var message = new MailMessage();
-                message.From = new MailAddress("moriicoffeee@gmail.com");
+                message.From = new MailAddress("moriicoffee@gmail.com");
                 //message.ReplyToList.Add("trantrongtin01012002@gmail.com");
                 message.To.Add(new MailAddress(user.Email));
-                message.Subject = "Thông báo về thay đổi mk";
-                string mk = "Abc12345678@";
-                message.Body = "MK la: " + mk;
-                user.Password = GetMD5(mk);
-                _db.Configuration.ValidateOnSaveEnabled = false;
-                _db.NguoiDungs.AddOrUpdate(user);
-                _db.SaveChanges();
+                message.Subject = "XÁC MINH MẬT KHẨU";
+
+                //random 6 digits
+                Random r = new Random();
+                var x = r.Next(0, 1000000);
+                string s = x.ToString("000000");
+                message.Body = "Mã xác minh của bạn là: " + s;
+                
                 mail.Send(message);
 
-                return View("DangNhap");
+                return RedirectToAction("ValidationCode", "User");
             }
+            //Email không có trong DB
             else
             {
-                return View("DangNhap");
+                var err = "Email người dùng không tồn tại. ";
+                ViewBag.err = err;
+                return View();
             }
 
         }
