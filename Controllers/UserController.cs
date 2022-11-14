@@ -422,6 +422,7 @@ namespace MoriiCoffee.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(NguoiDung user)
         {
             var err = "";
@@ -433,15 +434,29 @@ namespace MoriiCoffee.Controllers
 
                 ndd.Password = GetMD5(user.Password);
                 ndd.ConfirmPassword = GetMD5(user.ConfirmPassword);
-                var update = nddao.Update(ndd);
-                if (update == true) 
-                {
-                    return Redirect("~/dang-nhap");
-                }
-                else
-                {
-                    return View();
-                }
+
+
+                var nddd = _db.NguoiDungs.Find(ndd.ID);
+                nddd.HoTen = ndd.HoTen;
+                nddd.SDT = ndd.SDT;
+                nddd.NgSinh = ndd.NgSinh;
+                nddd.GioiTinh = ndd.GioiTinh;
+                nddd.Password = ndd.Password;
+                nddd.Status = ndd.Status;
+                nddd.Urlmage = ndd.Urlmage;
+                nddd.ModifiedBy = ndd.ModifiedBy;
+                nddd.ModifiedDate = DateTime.Now;
+                _db.Configuration.ValidateOnSaveEnabled = false;
+                _db.SaveChanges();
+                //var update = nddao.Update(ndd);
+                //if (update == true) 
+                //{
+                return Redirect("~/dang-nhap");
+                //}
+                //else
+                //{
+                //    return View();
+                //}
 
             }
             else
