@@ -28,6 +28,9 @@
 <!-- //about breadcrumb -->
 
 
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -42,19 +45,37 @@
                     <form>
                         <div class="profile-header">
                             <div class="profile-header-left">
-
+                                
                                 <div class="img-header">
                                     @{
                                         if (string.IsNullOrEmpty(Model.Urlmage))
                                         {
-                                            <img src="/Data/Files/noAvt2.png" style="width: 218px; border-radius: 100%;" />
+                                            <label for="urlAnh" class="img-header-avt">
+                                                <img id="avt-link" src="/Data/Files/noAvt2.png" style="width: 218px; border-radius: 100%;" />
+                                            </label>
+                                            <div style="display:none" class="img-header-avt">
+                                                <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
+                                                    <span class="input-group-text" id="basic-addon3">Upload</span>
+                                                    <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlmage" value="@Model.Urlmage">
+                                                </div>
+                                            </div>
                                         }
                                         else
                                         {
-                                            <img src="@Model.Urlmage" style="width: 218px; border-radius: 100%;" />
+                                            <label for="urlAnh" class="img-header-avt">
+                                                <img id="avt-link" src="@Model.Urlmage" style="width: 218px; height:218px; border-radius: 100%;" />
+                                            </label>
+                                            <div style="display:none" class="img-header-avt">
+                                                <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
+                                                    <span class="input-group-text" id="basic-addon3">Upload</span>
+                                                    <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlmage" value="@Model.Urlmage">
+                                                </div>
+                                            </div>
                                         }
                                     }
                                 </div>
+                               
+                                
                                 <div>
                                     <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Thông Tin Cá Nhân</h3>
                                     <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Cập nhật ảnh và thông tin cá nhân của bạn.</p>
@@ -125,6 +146,10 @@
 }
 
 <style>
+
+    .img-header-avt:hover {
+        cursor:pointer
+    }
 
     .form-check-label {
         padding: 0.5rem 1rem;
@@ -280,3 +305,24 @@
     });
 </script>
 <!--//MENU-JS-->
+
+<script>
+    //Handle thêm CKEDITOR
+    CKEDITOR.replace("ckeditor");
+
+    //Handle thêm CKFINDER
+    function BrowserSever() {
+        var finder = new CKFinder();
+        finder.selectActionFunction = GanUrl;
+        finder.popup();
+    }
+
+    function GanUrl(url) {
+        console.log(url);
+        localStorage.urlAvt = url;
+        //history.go(0);
+        $("#avt-link").attr("src", localStorage.getItem('urlAvt'));
+        $("#urlAnh").val(url);
+    }
+
+</script>
