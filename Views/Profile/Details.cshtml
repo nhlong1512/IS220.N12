@@ -95,7 +95,8 @@
                         <div class="form-group row">
                             <label for="birthLabel" class="col-sm-2 col-form-label col-form-label-lg">Ngày Sinh</label>
                             <div class="col-sm-10">
-                                <input type="date" class="form-control form-control-lg" id="birthLabel" value="@nd.NgSinh">
+                                @*<input type="date" class="form-control form-control-lg" id="birthLabel" value="@nd.NgSinh">*@
+                                <input type="date" class="form-control form-control-lg" id="birthLabel" value="@string.Format("{0:yyyy-MM-dd}", nd.NgSinh)" />
                             </div>
                         </div>
                     </div>
