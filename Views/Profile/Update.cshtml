@@ -1,143 +1,262 @@
 ﻿@model Model.EF.NguoiDung
 
+@{
+    ViewBag.Title = "MoriiCoffee";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var nd = ViewBag.ndd;
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Tài Khoản Của Tôi</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Người Dùng</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Tài Khoản Của Tôi </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>NguoiDung</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+        <div class="w3-services py-5">
+            <div class="container py-lg-4">
+                <div class="form-horizontal">
+
+                    <div class="container">
+                        <form>
+                            <div class="profile-header">
+                                <div class="profile-header-left">
+                                    <div class="img-header">
+                                        <img src="@Model.Urlmage" style="width: 218px; border-radius: 100%;" />
+                                    </div>
+                                    <div>
+                                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Thông Tin Cá Nhân</h3>
+                                        <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Cập nhật ảnh và thông tin cá nhân của bạn.</p>
+                                    </div>
+                                </div>
+                                <a class="button-profile-save">
+                                    <button>
+                                        Save
+                                    </button>
+                                </a>
+
+                            </div>
+                            <div class="form-detail" style="margin-top: 80px;">
+                                <div class="form-group row">
+                                    <label for="hoTenLabel" class="col-sm-2 col-form-label col-form-label-lg">Họ Tên</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" id="hoTenLabel" value="@Model.HoTen">
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="emailLabel" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control form-control-lg" id="hoTenLabel" placeholder="@Model.Email" readonly>
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="phoneLabel" class="col-sm-2 col-form-label col-form-label-lg">SĐT</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control form-control-lg" id="phoneLabel" value="@Model.SDT">
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="genderLabel" class="col-sm-2 col-form-label col-form-label-lg">Giới Tính</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="inlineRadio1" value="@Model.GioiTinh" name="GioiTinh" @(Model.GioiTinh == true ? "checked=\"checked\"" : "") />
+                                            <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="inlineRadio2" value="@Model.GioiTinh" name="GioiTinh" @(!Model.GioiTinh == true ? "checked=\"checked\"" : "") />
+                                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="birthLabel" class="col-sm-2 col-form-label col-form-label-lg">Ngày Sinh</label>
+                                    <div class="col-sm-10">
+                                        @*<input type="date" class="form-control form-control-lg" id="birthLabel" value="@nd.NgSinh">*@
+                                        <input type="date" class="form-control form-control-lg" id="birthLabel" value="@string.Format("{0:yyyy-MM-dd}", Model.NgSinh)" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgSinh, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgSinh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgSinh, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MetaTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MetaTitle, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MetaTitle, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GioiTinh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Urlmage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Urlmage, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Urlmage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifiedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifiedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifiedDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifiedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<style>
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+
+    .product {
+        display: flex;
+        /*flex-direction:column;*/
+        gap: 30px;
+        padding-bottom: 20px;
+        /*border-bottom: 0.5px solid #ccc !important;*/
+    }
+
+    .imgProduct {
+        display: flex;
+    }
+
+    .contentProduct {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .moTaDiv {
+        margin: 20px 0;
+    }
+
+    .moTa {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .moTaP {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+        align-items: initial;
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #146d4d !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important;
+    }
+</style>
+
+
+
+
+<!-- //contact-form -->
+<!-- Template JavaScript -->
+<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+<script src="~/Assets/Client/js/theme-change.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- disable body scroll which navbar is in active -->
+<!--/MENU-JS-->
+
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!--//MENU-JS-->
