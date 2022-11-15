@@ -30,78 +30,90 @@
 {
     @Html.AntiForgeryToken()
 
-        <div class="w3-services py-5">
-            <div class="container py-lg-4">
-                <div class="form-horizontal">
 
-                    <div class="container">
-                        <form>
-                            <div class="profile-header">
-                                <div class="profile-header-left">
-                                    <div class="img-header">
-                                        <img src="@Model.Urlmage" style="width: 218px; border-radius: 100%;" />
-                                    </div>
-                                    <div>
-                                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Thông Tin Cá Nhân</h3>
-                                        <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Cập nhật ảnh và thông tin cá nhân của bạn.</p>
-                                    </div>
-                                </div>
-                                <a class="button-profile-save">
-                                    <button>
-                                        Save
-                                    </button>
-                                </a>
 
-                            </div>
-                            <div class="form-detail" style="margin-top: 80px;">
-                                <div class="form-group row">
-                                    <label for="hoTenLabel" class="col-sm-2 col-form-label col-form-label-lg">Họ Tên</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-lg" id="hoTenLabel" value="@Model.HoTen">
-                                    </div>
+    <div class="w3-services py-5">
+        <div class="container py-lg-4">
+            <div class="form-horizontal">
+
+                <div class="container">
+                    <form>
+                        <div class="profile-header">
+                            <div class="profile-header-left">
+
+                                <div class="img-header">
+                                    @{
+                                        if (string.IsNullOrEmpty(Model.Urlmage))
+                                        {
+                                            <img src="/Data/Files/noAvt2.png" style="width: 218px; border-radius: 100%;" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Model.Urlmage" style="width: 218px; border-radius: 100%;" />
+                                        }
+                                    }
                                 </div>
-                                <hr class="style10">
-                                <div class="form-group row">
-                                    <label for="emailLabel" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control form-control-lg" id="hoTenLabel" placeholder="@Model.Email" readonly>
-                                    </div>
-                                </div>
-                                <hr class="style10">
-                                <div class="form-group row">
-                                    <label for="phoneLabel" class="col-sm-2 col-form-label col-form-label-lg">SĐT</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control form-control-lg" id="phoneLabel" value="@Model.SDT">
-                                    </div>
-                                </div>
-                                <hr class="style10">
-                                <div class="form-group row">
-                                    <label for="genderLabel" class="col-sm-2 col-form-label col-form-label-lg">Giới Tính</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="inlineRadio1" value="@Model.GioiTinh" name="GioiTinh" @(Model.GioiTinh == true ? "checked=\"checked\"" : "") />
-                                            <label class="form-check-label" for="inlineRadio1">Nam</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="inlineRadio2" value="@Model.GioiTinh" name="GioiTinh" @(!Model.GioiTinh == true ? "checked=\"checked\"" : "") />
-                                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="style10">
-                                <div class="form-group row">
-                                    <label for="birthLabel" class="col-sm-2 col-form-label col-form-label-lg">Ngày Sinh</label>
-                                    <div class="col-sm-10">
-                                        @*<input type="date" class="form-control form-control-lg" id="birthLabel" value="@nd.NgSinh">*@
-                                        <input type="date" class="form-control form-control-lg" id="birthLabel" value="@string.Format("{0:yyyy-MM-dd}", Model.NgSinh)" />
-                                    </div>
+                                <div>
+                                    <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Thông Tin Cá Nhân</h3>
+                                    <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Cập nhật ảnh và thông tin cá nhân của bạn.</p>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <a class="button-profile-save">
+                                <button type="submit">
+                                    Save
+                                </button>
+                            </a>
+
+                        </div>
+                        <div class="form-detail" style="margin-top: 80px;">
+                            <div class="form-group row">
+                                <label for="hoTenLabel" class="col-sm-2 col-form-label col-form-label-lg">Họ Tên</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-lg" id="hoTenLabel" value="@Model.HoTen" name="HoTen">
+                                </div>
+                            </div>
+                            <hr class="style10">
+                            <div class="form-group row">
+                                <label for="emailLabel" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control form-control-lg" id="hoTenLabel" placeholder="@Model.Email" readonly>
+                                </div>
+                            </div>
+                            <hr class="style10">
+                            <div class="form-group row">
+                                <label for="phoneLabel" class="col-sm-2 col-form-label col-form-label-lg">SĐT</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control form-control-lg" id="phoneLabel" value="@Model.SDT" name="SDT">
+                                </div>
+                            </div>
+                            <hr class="style10">
+                            <div class="form-group row">
+                                <label for="genderLabel" class="col-sm-2 col-form-label col-form-label-lg">Giới Tính</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="inlineRadio1" value="@Model.GioiTinh" name="GioiTinh" @(Model.GioiTinh == true ? "checked=\"checked\"" : "") />
+                                        <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="inlineRadio2" value="@Model.GioiTinh" name="GioiTinh" @(!Model.GioiTinh == true ? "checked=\"checked\"" : "") />
+                                        <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="style10">
+                            <div class="form-group row">
+                                <label for="birthLabel" class="col-sm-2 col-form-label col-form-label-lg">Ngày Sinh</label>
+                                <div class="col-sm-10">
+                                    @*<input type="date" class="form-control form-control-lg" id="birthLabel" value="@nd.NgSinh">*@
+                                    <input type="date" class="form-control form-control-lg" id="birthLabel" value="@string.Format("{0:yyyy-MM-dd}", Model.NgSinh)" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 }
 
 <style>
