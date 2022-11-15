@@ -62,6 +62,10 @@ namespace MoriiCoffee.Controllers
 
             }
             var nd = nguoidungdao.ViewDetail(id);
+            if (nd.GioiTinh == null)
+            {
+                nd.GioiTinh = true;
+            }
             return View(nd);
         }
 
@@ -86,12 +90,12 @@ namespace MoriiCoffee.Controllers
             var isTrue = nguoidungdao.Update(nd);
             if (isTrue)
             {
-                return View(nd);
+                return RedirectToAction("Update", "Profile");
             }
             else
             {
                 ModelState.AddModelError("", "Không lưu được vào CSDL");
-                return View(nd);
+                return RedirectToAction("Update", "Profile");
             }
             
         }
