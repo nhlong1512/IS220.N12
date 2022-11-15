@@ -2721,6 +2721,7 @@
     <Content Include="Views\User\ValidationCode.cshtml" />
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
+    <Content Include="Views\Profile\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

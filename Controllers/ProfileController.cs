@@ -21,23 +21,6 @@ namespace MoriiCoffee.Controllers
 
         public ActionResult Details(long id)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    var session = new UserLogin();
-            //    session = (UserLogin)Session[CommonConstants.USER_SESSION];
-
-            //    if (!(session is null))
-            //    {
-            //        ViewBag.session = session;
-            //        var nd = nguoidungdao.ViewDetailEmail(session.UserName);
-            //        if(nd.GioiTinh is null)
-            //        {
-            //            nd.GioiTinh = true;
-            //        }
-            //        ViewBag.ndd = nd;
-            //    }
-
-            //}
             if (ModelState.IsValid)
             {
                 var session = new UserLogin();
@@ -59,6 +42,58 @@ namespace MoriiCoffee.Controllers
 
             return View(nd);
 
+        }
+
+
+        [ValidateInput(false)]
+        public ActionResult Update(long id)
+        {
+            if (ModelState.IsValid)
+            {
+                var session = new UserLogin();
+                session = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+                if (!(session is null))
+                {
+                    ViewBag.session = session;
+                    var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
+                    ViewBag.ndd = ndd;
+                }
+
+            }
+            var nd = nguoidungdao.ViewDetail(id);
+            return View(nd);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Update(NguoiDung nd)
+        {
+            if (ModelState.IsValid)
+            {
+                var session = new UserLogin();
+                session = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+                if (!(session is null))
+                {
+                    ViewBag.session = session;
+                    var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
+                    ViewBag.ndd = ndd;
+                }
+
+            }
+
+            var isTrue = nguoidungdao.Update(nd);
+            if (isTrue)
+            {
+                return View(nd);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Không lưu được vào CSDL");
+                return View(nd);
+            }
+            
         }
     }
 }
