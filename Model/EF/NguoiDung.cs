@@ -38,6 +38,8 @@
         [StringLength(50)]
         public string SDT { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? NgSinh { get; set; }
 
         [StringLength(250)]
