@@ -65,6 +65,12 @@ namespace MoriiCoffee
               defaults: new { controller = "Profile", action = "Update", id = UrlParameter.Optional }
           );
 
+            routes.MapRoute(
+             name: "ProfileDoiMatKhau",
+             url: "profile/doi-mat-khau/{id}",
+             defaults: new { controller = "Profile", action = "DoiMatKhau", id = UrlParameter.Optional }
+         );
+
 
             //Config route cho Trang chủ
             routes.MapRoute(

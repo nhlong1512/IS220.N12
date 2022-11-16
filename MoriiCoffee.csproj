@@ -2722,6 +2722,7 @@
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
     <Content Include="Views\Profile\Update.cshtml" />
+    <Content Include="Views\Profile\DoiMatKhau.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
