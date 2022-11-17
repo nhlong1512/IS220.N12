@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using MoriiCoffee.Controllers;
+using MoriiCoffee.Common;
 
 namespace MoriiCoffee.Areas.Admin.Controllers
 {
@@ -20,6 +22,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             //var blogs = bldao.ViewAll();
             //ViewBag.blogs = blogs;
             ViewBag.sanphams = spdao.ViewAll();
@@ -31,6 +39,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Create(ChiTietSanPham ctsp)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             ViewBag.sanpham = spdao.ViewAll();
             if (ModelState.IsValid)
             {
@@ -53,6 +67,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult Details(long id)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             var ctsp = ctspdao.ViewDetail(id);
             ViewBag.ctsps = ctspdao.ViewAll();
             return View(ctsp);
@@ -60,6 +80,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult Delete(long id)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             ctspdao.Delete(id);
             return RedirectToAction("Index");
         }
@@ -68,6 +94,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Update(long id)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             ViewBag.sanpham = spdao.ViewAll();
             var ctsp = ctspdao.ViewDetail(id);
             return View(ctsp);
@@ -78,6 +110,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Update(ChiTietSanPham ctsp)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             var isTrue = ctspdao.Update(ctsp);
             if (isTrue)
             {

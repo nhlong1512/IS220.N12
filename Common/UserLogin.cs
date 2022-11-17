@@ -10,7 +10,5 @@ namespace MoriiCoffee.Common
     {
         public long? UserID { get; set; }
         public string UserName { get; set; }
-
-
     }
 }

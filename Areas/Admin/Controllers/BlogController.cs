@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using MoriiCoffee.Controllers;
+using MoriiCoffee.Common;
 
 namespace MoriiCoffee.Areas.Admin.Controllers
 {
@@ -18,6 +20,11 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
             //var blogs = bldao.ViewAll();
             //ViewBag.blogs = blogs;
             var nguoidung = nguoidungdao.ViewDetail(1);
@@ -32,6 +39,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Create(Blog blog)
         {
+
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
 
             if (ModelState.IsValid)
             {
@@ -53,6 +66,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult Details(long id)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             var blog = bldao.ViewDetail(id);
 
             return View(blog);
@@ -60,6 +79,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult Delete(long id)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             bldao.Delete(id);
             return RedirectToAction("Index");
         }
@@ -68,6 +93,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Update(long id)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             var blog = bldao.ViewDetail(id);
             return View(blog);
         }
@@ -77,6 +108,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Update(Blog blog)
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+
             var isTrue =  bldao.Update(blog);
             if(isTrue)
             {
