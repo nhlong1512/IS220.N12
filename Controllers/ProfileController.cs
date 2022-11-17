@@ -37,7 +37,7 @@ namespace MoriiCoffee.Controllers
 
             }
             var nd = nguoidungdao.ViewDetail(id);
-            if(nd.GioiTinh == null)
+            if (nd.GioiTinh == null)
             {
                 nd.GioiTinh = true;
             }
@@ -99,7 +99,7 @@ namespace MoriiCoffee.Controllers
                 ModelState.AddModelError("", "Không lưu được vào CSDL");
                 return RedirectToAction("Update", "Profile");
             }
-            
+
         }
 
 
@@ -129,31 +129,80 @@ namespace MoriiCoffee.Controllers
 
 
         [HttpPost]
-        public JsonResult QuenMatKhau(long id, string oldPassword, string newPassword, string confirmNewPassword)
+        public JsonResult DoiMatKhau(long id, string oldPassword, string newPassword, string confirmNewPassword)
         {
+            var session = new UserLogin();
+            session = (UserLogin)Session[CommonConstants.USER_SESSION];
 
-            if (ModelState.IsValid)
+            if (!(session is null))
             {
-                var session = new UserLogin();
-                session = (UserLogin)Session[CommonConstants.USER_SESSION];
+                ViewBag.session = session;
+                var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = ndd;
+            }
 
-                if (!(session is null))
+
+            var msg = "Thất bại";
+            var err = "";
+            var nd = nguoidungdao.ViewDetail(id);
+
+            if (string.IsNullOrEmpty(oldPassword))
+            {
+                err += "Vui lòng nhập mật khẩu cũ. ";
+            }
+
+            //Check nếu không hợp lệ sẽ bỏ tất cả vào err
+            if (!ModelState.IsValid)
+            {
+                var list = ModelState.ToDictionary(x => x.Key, y => y.Value.Errors.Select(x => x.ErrorMessage).ToArray())
+                  .Where(m => m.Value.Count() > 0);
+                foreach (var itm in list)
                 {
-                    ViewBag.session = session;
-                    var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
-                    ViewBag.ndd = ndd;
+                    err += string.Concat(string.Join(",", itm.Value.ToArray()), "");
                 }
             }
-            var msg = "Thất bại";
-            var nd = nguoidungdao.ViewDetail(id);
-            if(nd.Password == GetMD5(oldPassword))
+            //Và check nếu hợp lệ
+            if (ModelState.IsValid)
             {
-                msg = "Thành công";
+                //Check nếu mật khẩu cũ không chính xác
+                if (!(nd.Password == GetMD5(oldPassword)))
+                {
+                    err += "Mật khẩu cũ không chính xác. ";
+                }
+                else
+                {
+                    nd.Password = GetMD5(newPassword);
+                    nd.ConfirmPassword = GetMD5(confirmNewPassword);
+
+
+                    var nddd = db.NguoiDungs.Find(nd.ID);
+                    nddd.HoTen = nd.HoTen;
+                    nddd.SDT = nd.SDT;
+                    nddd.NgSinh = nd.NgSinh;
+                    nddd.GioiTinh = nd.GioiTinh;
+                    nddd.Password = nd.Password;
+                    nddd.Status = nd.Status;
+                    nddd.Urlmage = nd.Urlmage;
+                    nddd.ModifiedBy = nd.ModifiedBy;
+                    nddd.ModifiedDate = DateTime.Now;
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.SaveChanges();
+                }
+        
+                //else
+                //{
+                //    msg = "Thành công";
+                //    return Json(new
+                //    {
+                //        status = true,
+                //        msg = msg
+                //    });
+                //}
             }
             return Json(new
             {
                 status = true,
-                msg = msg
+                err = err
             });
         }
 
