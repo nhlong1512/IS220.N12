@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -171,24 +172,56 @@ namespace MoriiCoffee.Controllers
                 }
                 else
                 {
-                    nd.Password = GetMD5(newPassword);
-                    nd.ConfirmPassword = GetMD5(confirmNewPassword);
+                    var isValid = true;
+                    if (newPassword == "")
+                    {
+                        err += "Vui lòng nhập mật khẩu mới. ";
+                        isValid = false;
+                    }
+                    string strRegex = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$";
+                    Regex re = new Regex(strRegex);
+                    if (!re.IsMatch(newPassword))
+                    {
+                        err += "Mật khẩu mới không hợp lệ. ";
+                        isValid = false;
+                    }
+
+                    if (confirmNewPassword == "")
+                    {
+                        err += "Vui lòng xác nhận mật khẩu mới. ";
+                        isValid = false;
+                    }
+                    if (newPassword != confirmNewPassword)
+                    {
+                        err += "Mật khẩu xác nhận không hợp lệ. ";
+                        isValid = false;
+                    }
+
+                    //If isValid. Update NewPassword
+                    if (isValid)
+                    {
+                        nd.Password = GetMD5(newPassword);
+                        nd.ConfirmPassword = GetMD5(confirmNewPassword);
 
 
-                    var nddd = db.NguoiDungs.Find(nd.ID);
-                    nddd.HoTen = nd.HoTen;
-                    nddd.SDT = nd.SDT;
-                    nddd.NgSinh = nd.NgSinh;
-                    nddd.GioiTinh = nd.GioiTinh;
-                    nddd.Password = nd.Password;
-                    nddd.Status = nd.Status;
-                    nddd.Urlmage = nd.Urlmage;
-                    nddd.ModifiedBy = nd.ModifiedBy;
-                    nddd.ModifiedDate = DateTime.Now;
-                    db.Configuration.ValidateOnSaveEnabled = false;
-                    db.SaveChanges();
+                        var nddd = db.NguoiDungs.Find(nd.ID);
+                        nddd.HoTen = nd.HoTen;
+                        nddd.SDT = nd.SDT;
+                        nddd.NgSinh = nd.NgSinh;
+                        nddd.GioiTinh = nd.GioiTinh;
+                        nddd.Password = nd.Password;
+                        nddd.Status = nd.Status;
+                        nddd.Urlmage = nd.Urlmage;
+                        nddd.ModifiedBy = nd.ModifiedBy;
+                        nddd.ModifiedDate = DateTime.Now;
+                        db.Configuration.ValidateOnSaveEnabled = false;
+                        db.SaveChanges();
+
+                    }
+
+
                 }
-        
+
                 //else
                 //{
                 //    msg = "Thành công";
