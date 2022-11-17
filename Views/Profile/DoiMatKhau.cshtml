@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
 <!-- about breadcrumb -->
@@ -50,35 +51,35 @@
                                     <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Vui lòng không bao giờ chia sẻ hoặc cung cấp mật khẩu của bạn.</p>
                                 </div>
                             </div>
-                            <a class="button-profile-save">
-                                <button type="submit">
+                            <h2>@Model.ID</h2>
+                            <a class="button-profile-save" id="doiMatKhauButton" data-id="@Model.ID">
+                                <button @*type="submit"*@>
                                     Save
                                 </button>
                             </a>
-
                         </div>
                         <div class="form-detail" style="margin-top: 80px;">
                             <div class="form-group row">
                                 <label for="matKhauCuLabel" class="col-sm-3 col-form-label col-form-label-lg">Mật Khẩu Cũ</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control form-control-lg" id="matKhauCuLabel" value="NguyenHuuLong" name="">
+                                    <input type="password" class="form-control form-control-lg" id="matKhauCuLabel" placeholder="••••••••••••" name="">
                                 </div>
                             </div>
                             <hr class="style10">
                             <div class="form-group row">
                                 <label for="matKhauMoiLabel" class="col-sm-3 col-form-label col-form-label-lg">Mật Khẩu Mới</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control form-control-lg" id="matKhauMoiLabel" value="NguyenHuuLong" name="">
+                                    <input type="password" class="form-control form-control-lg" id="matKhauMoiLabel" placeholder="••••••••••••" name="">
                                 </div>
                             </div>
                             <hr class="style10">
                             <div class="form-group row">
                                 <label for="xacNhanMatKhauMoiLabel" class="col-sm-3 col-form-label col-form-label-lg">Xác Nhận Mật Khẩu Mới</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control form-control-lg" id="xacNhanMatKhauMoiLabel" value="NguyenHuuLong" name="">
+                                    <input type="password" class="form-control form-control-lg" id="xacNhanMatKhauMoiLabel" placeholder="••••••••••••" name="">
                                 </div>
                             </div>
-                            
+
                         </div>
                     </form>
                 </div>
@@ -203,11 +204,74 @@
 </style>
 
 
+<script>
+    $(document).ready(function () {
+        $("#doiMatKhauButton").on('click',
+            function DoiMatKhau(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                console.log(id);
+
+                var oldPassword = $('#matKhauCuLabel').val();
+                var newPassword = $('#matKhauMoiLabel').val();
+                var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
+
+                console.log('Old Password ->>', oldPassword);
+                console.log('New Password ->>', newPassword);
+                console.log('Confirm New Password ->>', confirmNewPassword);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Profile/DoiMatKhau",
+                    data: {
+                        id: id,
+                        oldPassword: oldPassword,
+                        newPassword: newPassword,
+                        confirmNewPassword: confirmNewPassword
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        console.log("NguyenHuuLong --> ", res.msg);
+                        window.location.replace("https://localhost:44309/");
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                    },
+                });
+
+            }
+            //function DoiMatKhau() {
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "/Profile/DoiMatKhau",
+            //        data: {
+            //            "accessToken": user.accessToken,
+            //            "displayName": user.displayName,
+            //            "email": user.email,
+            //            "phoneNumber": user.phoneNumber,
+            //            "photoUrl": user.photoURL
+            //        },
+            //        dataType: "json",
+            //        success: function (res) {
+            //            console.log("NguyenHuuLong --> ", res);
+            //            window.location.replace("https://localhost:44309/");
+            //        },
+            //        error: function (err) {
+            //            console.log("err --> ", err)
+            //        },
+            //    });
+
+            //}
+            //console.log($('#doiMatKhauButton').val());
+        )
+    });
+</script>
+
 
 
 <!-- //contact-form -->
 <!-- Template JavaScript -->
-<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+@*<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>*@
 <script src="~/Assets/Client/js/theme-change.js"></script>
 <!-- disable body scroll which navbar is in active -->
 <script>
@@ -247,24 +311,3 @@
     });
 </script>
 <!--//MENU-JS-->
-
-<script>
-    //Handle thêm CKEDITOR
-    CKEDITOR.replace("ckeditor");
-
-    //Handle thêm CKFINDER
-    function BrowserSever() {
-        var finder = new CKFinder();
-        finder.selectActionFunction = GanUrl;
-        finder.popup();
-    }
-
-    function GanUrl(url) {
-        console.log(url);
-        localStorage.urlAvt = url;
-        //history.go(0);
-        $("#avt-link").attr("src", localStorage.getItem('urlAvt'));
-        $("#urlAnh").val(url);
-    }
-
-</script>
