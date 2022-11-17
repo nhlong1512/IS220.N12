@@ -142,15 +142,9 @@ namespace MoriiCoffee.Controllers
                 ViewBag.ndd = ndd;
             }
 
-
-            var msg = "Thất bại";
             var err = "";
             var nd = nguoidungdao.ViewDetail(id);
-
-            if (string.IsNullOrEmpty(oldPassword))
-            {
-                err += "Vui lòng nhập mật khẩu cũ. ";
-            }
+            var isValid = true;
 
             //Check nếu không hợp lệ sẽ bỏ tất cả vào err
             if (!ModelState.IsValid)
@@ -165,75 +159,77 @@ namespace MoriiCoffee.Controllers
             //Và check nếu hợp lệ
             if (ModelState.IsValid)
             {
-                //Check nếu mật khẩu cũ không chính xác
-                if (!(nd.Password == GetMD5(oldPassword)))
+
+                if (string.IsNullOrEmpty(oldPassword))
                 {
-                    err += "Mật khẩu cũ không chính xác. ";
+                    isValid = false;
+                    err += "Vui lòng nhập mật khẩu cũ. ";
                 }
                 else
                 {
-                    var isValid = true;
-                    if (newPassword == "")
+                    if (!(nd.Password == GetMD5(oldPassword)))
                     {
-                        err += "Vui lòng nhập mật khẩu mới. ";
                         isValid = false;
+                        err += "Mật khẩu cũ không chính xác. ";
                     }
-                    string strRegex = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$";
-                    Regex re = new Regex(strRegex);
-                    if (!re.IsMatch(newPassword))
-                    {
-                        err += "Mật khẩu mới không hợp lệ. ";
-                        isValid = false;
-                    }
+                }
+                
+                if (newPassword == "")
+                {
+                    isValid = false;
+                    err += "Vui lòng nhập mật khẩu mới. ";
+                }
+                else
+                {
 
-                    if (confirmNewPassword == "")
-                    {
-                        err += "Vui lòng xác nhận mật khẩu mới. ";
-                        isValid = false;
-                    }
+                string strRegex = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$";
+                Regex re = new Regex(strRegex);
+                if (!re.IsMatch(newPassword))
+                {
+                    isValid = false;
+                    err += "Mật khẩu mới không hợp lệ. ";
+                }
+                }
+
+                if (confirmNewPassword == "")
+                {
+                    isValid = false;
+                    err += "Vui lòng xác nhận mật khẩu mới. ";
+                }
+                else
+                {
+
                     if (newPassword != confirmNewPassword)
                     {
-                        err += "Mật khẩu xác nhận không hợp lệ. ";
                         isValid = false;
+                        err += "Mật khẩu xác nhận không hợp lệ. ";
                     }
+                }
 
-                    //If isValid. Update NewPassword
-                    if (isValid)
-                    {
-                        nd.Password = GetMD5(newPassword);
-                        nd.ConfirmPassword = GetMD5(confirmNewPassword);
-
-
-                        var nddd = db.NguoiDungs.Find(nd.ID);
-                        nddd.HoTen = nd.HoTen;
-                        nddd.SDT = nd.SDT;
-                        nddd.NgSinh = nd.NgSinh;
-                        nddd.GioiTinh = nd.GioiTinh;
-                        nddd.Password = nd.Password;
-                        nddd.Status = nd.Status;
-                        nddd.Urlmage = nd.Urlmage;
-                        nddd.ModifiedBy = nd.ModifiedBy;
-                        nddd.ModifiedDate = DateTime.Now;
-                        db.Configuration.ValidateOnSaveEnabled = false;
-                        db.SaveChanges();
-
-                    }
-
+                //If isValid. Update NewPassword
+                if (isValid)
+                {
+                    nd.Password = GetMD5(newPassword);
+                    nd.ConfirmPassword = GetMD5(confirmNewPassword);
+                    var nddd = db.NguoiDungs.Find(nd.ID);
+                    nddd.HoTen = nd.HoTen;
+                    nddd.SDT = nd.SDT;
+                    nddd.NgSinh = nd.NgSinh;
+                    nddd.GioiTinh = nd.GioiTinh;
+                    nddd.Password = nd.Password;
+                    nddd.Status = nd.Status;
+                    nddd.Urlmage = nd.Urlmage;
+                    nddd.ModifiedBy = nd.ModifiedBy;
+                    nddd.ModifiedDate = DateTime.Now;
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.SaveChanges();
 
                 }
 
-                //else
-                //{
-                //    msg = "Thành công";
-                //    return Json(new
-                //    {
-                //        status = true,
-                //        msg = msg
-                //    });
-                //}
             }
             return Json(new
             {
+                isValid = isValid,
                 status = true,
                 err = err
             });
