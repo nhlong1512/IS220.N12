@@ -23,61 +23,7 @@
 </section>
 <!-- //about breadcrumb -->
 
-<style>
-    .product {
-        display: flex;
-        /*flex-direction:column;*/
-        gap: 30px;
-        padding-bottom: 20px;
-        /*border-bottom: 0.5px solid #ccc !important;*/
-    }
 
-    .imgProduct {
-        display: flex;
-    }
-
-    .contentProduct {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .moTaDiv {
-        margin: 20px 0;
-    }
-
-    .moTa {
-        font-size: 30px;
-        font-weight: 500;
-        margin-bottom: 16px;
-    }
-
-    .moTaP {
-        font-size: 18px;
-        font-weight: 400;
-        margin-bottom: 20px;
-    }
-
-    hr.style10 {
-        border-top: 1px dotted #8c8b8b;
-        border-bottom: 1px dotted #fff;
-    }
-
-    .w3-services-grids {
-        align-items: initial;
-    }
-
-    .splienquan-h4 {
-        font-size: 20px !important;
-        margin: 10px 0 0 0 !important;
-        line-height: 27px !important;
-        font-weight: 500 !important;
-        color: #146d4d !important;
-    }
-
-    .splienquan-p {
-        font-size: 18px !important;
-    }
-</style>
 
 <div class="w3-services py-5">
     <div class="container py-lg-4">
@@ -114,33 +60,44 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="wrapChonTopping">
+                                <p class="titleChonTopping">Chọn Topping</p>
+                                <div class="listTopping">
+                                    <div class="topping" id="">
+                                        Trân châu đen + 10.000 đ
+                                    </div>
+                                    <div class="topping" id="">
+                                        Machiato + 10.000 đ
+                                    </div>
+                                    <div class="topping" id="">
+                                        Trân châu trắng + 10.000 đ
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wrapThemGioHang">
+                                <button class="buttonThemGioHang">
+                                    Thêm Vào Giỏ Hàng
+                                </button>
+                            </div>
                         </div>
                         <style>
-                            .wrapChonSize {
-                                
-                            }
-
-                            .titleChonSize {
-                                margin: 40px 0 15px 0;
-                                color: #000 !important;
-                                font-size: 18px;
-                            }
-
-                            .listSize{
+                            .wrapThemGioHang{
                                 display: flex;
                             }
-
-                            .size {
-                                padding: 10px 15px ;
-                                background: #fff;
-                                border-radius: 5px;
+                            .buttonThemGioHang {
+                                width: 100%;
+                                font-weight:600;
+                                padding: 10px;
+                                margin: 30px 0 15px 0;
+                                background-color: #146d4d;
+                                color: #fff;
+                                font-size: 20px;
+                                line-height: 30px;
+                                /* identical to box height */
                                 text-align: center;
-                                cursor: pointer;
-                                color: #666666;
-                                display: inline-flex;
-                                align-items: center;
-                                border: 1px solid rgba(0, 0, 0, 0.15);
-                                margin: 0 15px 0 0;
+                                border-radius: 20px;
+                                border:none;
                             }
                         </style>
 
@@ -198,6 +155,114 @@
     </div>
 </div>
 
+<style>
+    .product {
+        display: flex;
+        /*flex-direction:column;*/
+        gap: 30px;
+        padding-bottom: 20px;
+        /*border-bottom: 0.5px solid #ccc !important;*/
+    }
+
+    .imgProduct {
+        display: flex;
+    }
+
+    .contentProduct {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .moTaDiv {
+        margin: 20px 0;
+    }
+
+    .moTa {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .moTaP {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+        align-items: initial;
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #146d4d !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important;
+    }
+
+    .wrapChonSize {
+    }
+
+    .titleChonSize {
+        margin: 40px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listSize {
+        display: flex;
+    }
+
+    .size {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 0 0;
+    }
+
+    .wrapChonTopping {
+    }
+
+    .titleChonTopping {
+        margin: 40px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listTopping {
+        display: flex;
+        flex-wrap:wrap;
+    }
+
+    .topping {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 15px 0;
+    }
+</style>
 
 
 
