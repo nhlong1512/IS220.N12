@@ -120,6 +120,12 @@ namespace MoriiCoffee
                defaults: new { controller = "LienHe", action = "Index", id = UrlParameter.Optional }
            );
 
+            //Config Route cho Giỏ Hàng
+            routes.MapRoute(
+              name: "GioHang",
+              url: "gio-hang",
+              defaults: new { controller = "GioHang", action = "Index", id = UrlParameter.Optional }
+          );
             //Route mặc định luôn phải để ở cuối cùng, tránh ghi đè lên các route đã được customize
 
             routes.MapRoute(
