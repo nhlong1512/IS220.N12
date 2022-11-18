@@ -282,13 +282,18 @@
                 @{
                     if (session != null)
                     {
-                                <div class="mode-container" style="display:flex; justify-content:center; align-items:center;">
-                                    <a to="/cartDetail">
-                                        <svg id="icon-cart" style="width: 40px; height: 40px;" class="cart-fff">
-                                            <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cart"></use>
-                                        </svg>
-                                    </a>
-                                </div>
+                        <div class="mode-container" style="display:flex; justify-content:center; align-items:center;">
+                            <a to="/cartDetail">
+                                <svg id="icon-cart" style="width: 40px; height: 40px;" class="cart-fff">
+                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cart"></use>
+                                </svg>
+                            </a>
+
+                        </div>
+                        <div class="top_menu_unseen">
+                            0
+                        </div>
+
                     }
                 }
 
@@ -498,5 +503,24 @@
 
     .cart-morii {
         color: #146d4d;
+    }
+
+    .top_menu_unseen {
+        background-color: #146d4d;
+        border-radius: 12px;
+        vertical-align: top;
+        position: absolute;
+        top: 5px;
+        right: -18px;
+        width: 24px;
+        height: 24px;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        line-height: 0;
+        border: 1px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
