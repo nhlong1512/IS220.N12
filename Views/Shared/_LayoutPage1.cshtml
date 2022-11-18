@@ -10,16 +10,6 @@
     <title>Morii Coffee</title>
     <link rel="morii icon" href="~/Assets/Images/LogoMorii1.png" type="image/x-icon" />
     <link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />
-    @*<a href="~/Assets/Client/fonts/fontawesome-webfont.eot"></a>
-        <a href="~/Assets/Client/fonts/fontawesome-webfont.ttf"></a>
-        <a href="~/Assets/Client/fonts/fontawesome-webfont.woff"></a>
-        <a href="~/Assets/Client/fonts/fontawesome-webfont.woff2"></a>
-        <a href="~/Assets/Client/fonts/FontAwesome.otf"></a>*@
-    @*<script src="~/Assets/Client/js/bootstrap.min.js"></script>*@
-
-    @*<script src="~/Assets/Client/js/jquery.countup.js"></script>
-        <script src="~/Assets/Client/js/jquery.waypoints.min.js"></script>
-        <script src="~/Assets/Client/js/jquery.magnific-popup.min.js"></script>*@
     <script src="~/Assets/Client/js/owl.carousel.js"></script>
     <script src="~/Assets/Client/js/theme-change.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -279,34 +269,17 @@
 
 
 
-                @{
-                    if (session != null)
-                    {
-                        <div class="mode-container" style="display:flex; justify-content:center; align-items:center;">
-                            <a href="/gio-hang">
-                                <svg id="icon-cart" style="width: 40px; height: 40px;" class="cart-fff">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cart"></use>
-                                </svg>
-                            </a>
+                <div class="mode-container" style="display:flex; justify-content:center; align-items:center;">
+                    <a href="/gio-hang">
+                        <svg id="icon-cart" style="width: 40px; height: 40px;" class="cart-fff">
+                            <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cart"></use>
+                        </svg>
+                    </a>
 
-                        </div>
-                        <div class="top_menu_unseen">
-                            3
-                        </div>
-
-                    }
-                }
-
-                <!-- toggle switch for light and dark theme -->
-                @*@if(nd.ID > 0){
-        <div class="mode-container" style="display:flex; justify-content:center; align-items:center;">
-            <a to="/cartDetail">
-                <svg class="" style="width: 40px; height:40px; color:#fff;">
-                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cart"></use>
-                </svg>
-            </a>
-        </div>
-            }*@
+                </div>
+                <div class="top_menu_unseen">
+                    3
+                </div>
 
 
             </nav>
@@ -497,7 +470,7 @@
 </script>
 
 <style>
-    .cart-fff{
+    .cart-fff {
         color: #fff;
     }
 
