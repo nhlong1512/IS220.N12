@@ -93,6 +93,8 @@ namespace MoriiCoffee.Controllers
             var isTrue = nguoidungdao.Update(nd);
             if (isTrue)
             {
+                var msg = "Cập nhật thông tin thành công. ";
+                ViewBag.msg = msg;
                 return RedirectToAction("Update", "Profile");
             }
             else
