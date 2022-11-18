@@ -224,6 +224,7 @@
                                                 </div>
                                             }
 
+
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end pt-0" style="margin-top: 10px;">
                                             <div class="dropdown-header bg-light py-2" style="border-top-left-radius: 6px; border-top-right-radius: 6px;">
@@ -255,6 +256,8 @@
                                 </ul>
 
                             }
+
+
                         }
 
 
@@ -276,23 +279,31 @@
 
 
 
-
+                @{
+                    if (session != null)
+                    {
+                                <div class="mode-container" style="display:flex; justify-content:center; align-items:center;">
+                                    <a to="/cartDetail">
+                                        <svg id="icon-cart" style="width: 40px; height: 40px;" class="cart-fff">
+                                            <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cart"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                    }
+                }
 
                 <!-- toggle switch for light and dark theme -->
+                @*@if(nd.ID > 0){
+        <div class="mode-container" style="display:flex; justify-content:center; align-items:center;">
+            <a to="/cartDetail">
+                <svg class="" style="width: 40px; height:40px; color:#fff;">
+                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cart"></use>
+                </svg>
+            </a>
+        </div>
+            }*@
 
-                <div class="mobile-position">
-                    <nav class="navigation">
-                        <div class="theme-switch-wrapper">
-                            <label class="theme-switch" for="checkbox">
-                                <input type="checkbox" id="checkbox">
-                                <div class="mode-container">
-                                    <i class="gg-sun"></i>
-                                    <i class="gg-moon"></i>
-                                </div>
-                            </label>
-                        </div>
-                    </nav>
-                </div>
+
             </nav>
 
         </div>
@@ -444,7 +455,6 @@
             </script>-->
             <!-- /move top -->
             <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-            <script src="~/Scripts/bootstrap.bundle.min.js"></script>
             <script src="~/Assets/Admin/vendors/core-ui/coreui/js/coreui.bundle.min.js"></script>
 
         </section>
@@ -452,3 +462,41 @@
     <!--//footer-66 -->
 </body>
 </html>
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+            $('#icon-cart').addClass("cart-morii");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+            $('#icon-cart').removeClass("cart-morii");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+
+<style>
+    .cart-fff{
+        color: #fff;
+    }
+
+    .cart-morii {
+        color: #146d4d;
+    }
+</style>
