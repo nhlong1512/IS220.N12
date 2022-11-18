@@ -27,373 +27,456 @@
 </section>
 <!-- //about breadcrumb -->
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <div class="w3-services py-5">
-        <div class="container" style="padding:24px 0;">
-            <div class="form-horizontal">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Giỏ Hàng</h3>
+<div class="w3-services py-5">
+    <div class="container" style="padding:24px 0;">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Giỏ Hàng</h3>
+                    <hr class="style-10" />
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Sản Phẩm</th>
+                                <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
+                                <th scope="col" style="text-align: center; padding-right: 30px; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
+                                <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
+                                    <div class="img-product-wrap">
+                                        <img class="img-product" src="/Data/Files/latte.jpg" />
+                                    </div>
+                                    <div class="product-details">
+                                        <div>
+                                            <h3 class="product-title">
+                                                Latte
+                                            </h3>
+                                            <p class="product-note">
+                                                Trân Châu Đen, Macchiato
+                                            </p>
+
+                                        </div>
+                                        <p class="product-price">
+                                            29.000 đ
+                                        </p>
+                                    </div>
+                                </th>
+                                <td>
+                                    <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+
+                                        <button class="button-quantity">-</button>
+                                        <input class="quantity-product" type="number" value="1" readonly />
+                                        <button class="button-quantity">+</button>
+                                    </div>
+
+                                </td>
+                                <td style="padding-right: 30px;">
+                                    <p class="total-price">29.000 đ</p>
+                                </td>
+                                <td>
+                                    <a style="display:flex; justify-content:center;">
+                                        <img src="~/Data/Files/deleteIcon.png" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
+                                    <div class="img-product-wrap">
+                                        <img class="img-product" src="/Data/Files/latte.jpg" />
+                                    </div>
+                                    <div class="product-details">
+                                        <div>
+                                            <h3 class="product-title">
+                                                Latte
+                                            </h3>
+                                            <p class="product-note">
+                                                Trân Châu Đen, Macchiato
+                                            </p>
+
+                                        </div>
+                                        <p class="product-price">
+                                            29.000 đ
+                                        </p>
+                                    </div>
+                                </th>
+                                <td>
+                                    <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+
+                                        <button class="button-quantity">-</button>
+                                        <input class="quantity-product" type="number" value="1" readonly />
+                                        <button class="button-quantity">+</button>
+                                    </div>
+
+                                </td>
+                                <td style="padding-right: 30px;">
+                                    <p class="total-price">29.000 đ</p>
+                                </td>
+                                <td>
+                                    <a style="display:flex; justify-content:center;">
+                                        <img src="~/Data/Files/deleteIcon.png" />
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
+                                    <div class="img-product-wrap">
+                                        <img class="img-product" src="/Data/Files/latte.jpg" />
+                                    </div>
+                                    <div class="product-details">
+                                        <div>
+                                            <h3 class="product-title">
+                                                Latte
+                                            </h3>
+                                            <p class="product-note">
+                                                Trân Châu Đen, Macchiato
+                                            </p>
+
+                                        </div>
+                                        <p class="product-price">
+                                            29.000 đ
+                                        </p>
+                                    </div>
+                                </th>
+                                <td>
+                                    <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+
+                                        <button class="button-quantity">-</button>
+                                        <input class="quantity-product" type="number" value="1" readonly />
+                                        <button class="button-quantity">+</button>
+                                    </div>
+
+                                </td>
+                                <td style="padding-right: 30px;">
+                                    <p class="total-price">29.000 đ</p>
+                                </td>
+                                <td>
+                                    <a style="display:flex; justify-content:center;">
+                                        <img src="~/Data/Files/deleteIcon.png" />
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    <div id="wrap-order-summary">
+                        <h3 class="order-summary-title">TỔNG ĐƠN</h3>
                         <hr class="style-10" />
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Sản Phẩm</th>
-                                    <th scope="col" style="text-align:center;">Số Lượng</th>
-                                    <th scope="col" style="text-align:center; padding-right: 30px;">Giá</th>
-                                    <th scope="col" style="text-align:center;"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
+                        <div style="margin-bottom: 100px;">
+                            <div class="wrap-sub-total">
+                                <p class="sub-total">TỔNG TIỀN HÀNG</p>
+                                <p class="sub-total" style="font-weight:600;">87.000 đ</p>
+                            </div>
+                            <div class="wrap-giamgia">
+                                <p class="sub-total">GIẢM GIÁ</p>
+                                <p class="sub-total" style="font-weight:600;">__</p>
+                            </div>
+                        </div>
 
-                                            </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
 
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
+                        <style>
+                            
 
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a>
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
 
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
 
-                                            </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                        </style>
 
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
 
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a>
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
-
-                                            </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
-
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a>
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-sm-4">
-                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">ORDER SUMMARY</h3>
+                        <hr class="style-10" />
+                        <div>
+                            <div class="wrap-estimated-total">
+                                <p class="sub-total">TỔNG SỐ TIỀN </p>
+                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">87.000 đ</p>
+                            </div>
+                        </div>
+                        <button class="button-checkout">
+                            CHECKOUT
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-}
 
-<style>
+    <style>
 
-    .img-product {
-        width: 100px;
-        height: 100px;
-        border-radius: 15px;
-        margin-right: 20px;
-    }
+        #wrap-order-summary {
+            padding: 24px;
+            margin-left: 60px;
+        }
 
-    .product-details {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-    }
+        .order-summary-title {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 29px;
+            margin-bottom: 14px;
+        }
 
-    .product-title {
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 26px;
-    }
+        .wrap-sub-total {
+            display: flex;
+            margin-top: 20px;
+            justify-content: space-between;
+            margin-bottom: 48px;
+        }
 
-    .product-note {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20px;
-        margin-bottom: 16px;
-    }
+        .wrap-giamgia {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .product-price {
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 20px;
-        color: #146d4d;
-    }
+        .wrap-estimated-total {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .quantity-product {
-        width: 50px;
-        height: 33px;
-        border: 2px solid #CFCFCF;
-        text-align: center;
-        margin: 0 13px;
-    }
+        .sub-total {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            color: #000;
+        }
 
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    .button-quantity {
-        background-color: transparent;
-        border: none;
-        font-weight: 400;
-        font-size: 36px;
-        line-height: 36px;
-    }
-
-    .total-price {
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 20px;
-        text-align: center;
-        color: #146d4d;
-    }
-
-    .img-header-avt:hover {
-        cursor: pointer
-    }
-
-    .form-check-label {
-        padding: 0.5rem 1rem;
-        font-size: 1.25rem;
-        line-height: 1.5;
-    }
-
-    .form-check-input {
-        padding: 7px;
-        width: 100%;
-        height: 2em;
-    }
-
-    button, input, select, label, li {
-        -webkit-appearance: button;
-    }
-
-    .form-group {
-        margin: 30px 0 30px 0;
-    }
-
-    .profile-header {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .profile-header-left {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .img-header {
-        margin-right: 50px;
-    }
-
-    .button-profile-save {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-        .button-profile-save > button {
+        .button-checkout {
+            margin-top: 36px;
+            border: none;
+            background-color: #146d4d;
+            border-radius: 15px;
+            padding: 16px;
+            width: 100%;
+            font-style: normal;
             font-weight: 600;
             font-size: 18px;
             line-height: 22px;
-            background-color: #146d4d;
-            padding: 14px;
-            text-align: center;
             color: #FFFFFF;
+        }
+
+        #wrap-order-summary {
+            background-color: #F5F5F6;
+            border-radius: 15px;
+        }
+
+        .img-product {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            margin-right: 20px;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 26px;
+        }
+
+        .product-note {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 16px;
+        }
+
+        .product-price {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;
+            color: #146d4d;
+        }
+
+        .quantity-product {
+            width: 50px;
+            height: 33px;
+            border: 2px solid #CFCFCF;
+            text-align: center;
+            margin: 0 13px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .button-quantity {
+            background-color: transparent;
             border: none;
-            border-radius: 8px;
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 36px;
         }
 
+        .total-price {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            color: #146d4d;
+        }
 
+        .img-header-avt:hover {
+            cursor: pointer
+        }
 
-    hr.style10 {
-        border-top: 0.5px dotted #E5E5E5;
-        border-bottom: 1px dotted #fff;
-    }
-</style>
+        .form-check-label {
+            padding: 0.5rem 1rem;
+            font-size: 1.25rem;
+            line-height: 1.5;
+        }
 
+        .form-check-input {
+            padding: 7px;
+            width: 100%;
+            height: 2em;
+        }
 
-<script>
-    $(document).ready(function () {
-        $("#doiMatKhauButton").on('click',
-            function DoiMatKhau(e) {
-                e.preventDefault();
-                //Clear $(".message-error") and $('.message-success')
-                $(".message-error").empty();
-                $('.message-success').empty();
+        button, input, select, label, li {
+            -webkit-appearance: button;
+        }
 
-                var id = $(this).data('id');
+        .form-group {
+            margin: 30px 0 30px 0;
+        }
 
-                var oldPassword = $('#matKhauCuLabel').val();
-                var newPassword = $('#matKhauMoiLabel').val();
-                var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+        }
 
-                console.log('Old Password ->>', oldPassword);
-                console.log('New Password ->>', newPassword);
-                console.log('Confirm New Password ->>', confirmNewPassword);
+        .profile-header-left {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-                $.ajax({
-                    type: "POST",
-                    url: "/Profile/DoiMatKhau",
-                    data: {
-                        id: id,
-                        oldPassword: oldPassword,
-                        newPassword: newPassword,
-                        confirmNewPassword: confirmNewPassword
-                    },
-                    dataType: "json",
-                    success: function (res) {
-                        console.log("NguyenHuuLong --> ", res.msg);
-                        console.log("NguyenHuuLong --> err", res.err);
-                        if (res.isValid) {
-                            $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                        }
-                        if (res.err) {
-                            $(".message-error").append(res.err);
-                        }
-                        //window.location.replace("https://localhost:44309/");
-                    },
-                    error: function (err) {
-                        console.log("err --> ", err);
-                        console.log("err ->>", err.err);
-                    },
-                });
+        .img-header {
+            margin-right: 50px;
+        }
 
+        .button-profile-save {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .button-profile-save > button {
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 22px;
+                background-color: #146d4d;
+                padding: 14px;
+                text-align: center;
+                color: #FFFFFF;
+                border: none;
+                border-radius: 8px;
             }
-        )
-    });
-</script>
 
 
 
-<script>
-    $(function () {
-        $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
-        })
-    });
-</script>
-
-<script>
-    $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= 80) {
-            $("#site-header").addClass("nav-fixed");
-        } else {
-            $("#site-header").removeClass("nav-fixed");
+        hr.style10 {
+            border-top: 0.5px dotted #E5E5E5;
+            border-bottom: 1px dotted #fff;
         }
-    });
+    </style>
 
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-        if ($(window).width() > 991) {
-            $("header").removeClass("active");
-        }
-        $(window).on("resize", function () {
+
+    <script>
+        $(document).ready(function () {
+            $("#doiMatKhauButton").on('click',
+                function DoiMatKhau(e) {
+                    e.preventDefault();
+                    //Clear $(".message-error") and $('.message-success')
+                    $(".message-error").empty();
+                    $('.message-success').empty();
+
+                    var id = $(this).data('id');
+
+                    var oldPassword = $('#matKhauCuLabel').val();
+                    var newPassword = $('#matKhauMoiLabel').val();
+                    var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
+
+                    console.log('Old Password ->>', oldPassword);
+                    console.log('New Password ->>', newPassword);
+                    console.log('Confirm New Password ->>', confirmNewPassword);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Profile/DoiMatKhau",
+                        data: {
+                            id: id,
+                            oldPassword: oldPassword,
+                            newPassword: newPassword,
+                            confirmNewPassword: confirmNewPassword
+                        },
+                        dataType: "json",
+                        success: function (res) {
+                            console.log("NguyenHuuLong --> ", res.msg);
+                            console.log("NguyenHuuLong --> err", res.err);
+                            if (res.isValid) {
+                                $('.message-success').append("Thay đổi mật khẩu thành công. ");
+                            }
+                            if (res.err) {
+                                $(".message-error").append(res.err);
+                            }
+                            //window.location.replace("https://localhost:44309/");
+                        },
+                        error: function (err) {
+                            console.log("err --> ", err);
+                            console.log("err ->>", err.err);
+                        },
+                    });
+
+                }
+            )
+        });
+    </script>
+
+
+
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
             if ($(window).width() > 991) {
                 $("header").removeClass("active");
             }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
         });
-    });
-</script>
-<!--//MENU-JS-->
+    </script>
+    <!--//MENU-JS-->

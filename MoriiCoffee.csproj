@@ -1572,6 +1572,7 @@
     <Content Include="Data\Files\Bg-main-3.jpeg" />
     <Content Include="Data\Files\Capture.PNG" />
     <Content Include="Data\Files\caramel-macchiato_830x550.jpg" />
+    <Content Include="Data\Files\deleteIcon.png" />
     <Content Include="Data\Files\latte.jpg" />
     <Content Include="Data\Files\menu-1.png" />
     <Content Include="Data\Files\menu-2.png" />
