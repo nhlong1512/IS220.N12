@@ -19,10 +19,7 @@ namespace Model.EF
 
         public decimal? GiaCu { get; set; }
 
-        [StringLength(10)]
-        public string Size { get; set; }
-
-        public long? MaKM { get; set; }
+        public bool? Size { get; set; }
 
         public bool? Status { get; set; }
 
@@ -48,6 +45,6 @@ namespace Model.EF
         [Column("ChiTietSanPham", TypeName = "ntext")]
         public string ChiTietSanPham1 { get; set; }
 
-        public long MaPhanLoai { get; set; }
+        public long? MaPhanLoai { get; set; }
     }
 }

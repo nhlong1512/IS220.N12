@@ -58,7 +58,6 @@ namespace Model.Dao
                 ctsp.Gia = entity.Gia;
                 ctsp.GiaCu = entity.GiaCu;
                 ctsp.Size = entity.Size;
-                ctsp.MaKM = entity.MaKM;
                 ctsp.UrlImage = entity.UrlImage;
                 ctsp.MoTaSanPham = entity.MoTaSanPham;
                 ctsp.ChiTietSanPham1 = entity.ChiTietSanPham1;

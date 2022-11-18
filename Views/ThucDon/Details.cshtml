@@ -100,11 +100,50 @@
                                 @{
                                     var t = @Model.Gia;
                                     t = t / 1000;
-
                                 }
                                 @t.000 đ
                             </p>
+                            <div class="wrapChonSize">
+                                <p class="titleChonSize">Chọn Size</p>
+                                <div class="listSize">
+                                    <div class="size" id="sizeVua">
+                                        Vừa
+                                    </div>
+                                    <div class="size" id="sizeLon">
+                                        Lớn + 5.000 đ
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <style>
+                            .wrapChonSize {
+                                
+                            }
+
+                            .titleChonSize {
+                                margin: 40px 0 15px 0;
+                                color: #000 !important;
+                                font-size: 18px;
+                            }
+
+                            .listSize{
+                                display: flex;
+                            }
+
+                            .size {
+                                padding: 10px 15px ;
+                                background: #fff;
+                                border-radius: 5px;
+                                text-align: center;
+                                cursor: pointer;
+                                color: #666666;
+                                display: inline-flex;
+                                align-items: center;
+                                border: 1px solid rgba(0, 0, 0, 0.15);
+                                margin: 0 15px 0 0;
+                            }
+                        </style>
+
                     </div>
                     <hr class="style10">
                     <div class="moTaDiv">

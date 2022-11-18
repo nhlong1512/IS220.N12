@@ -56,10 +56,6 @@ namespace Model.EF
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<ChiTietSanPham>()
-                .Property(e => e.Size)
-                .IsFixedLength();
-
-            modelBuilder.Entity<ChiTietSanPham>()
                 .Property(e => e.CreatedBy)
                 .IsUnicode(false);
 
