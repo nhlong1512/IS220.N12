@@ -49,28 +49,30 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th style="">
-                                        <p class="maDonDat" style="">
+                                    <th>
+                                        <p class="maDonDat">
                                             #123456
                                         </p>
                                     </th>
+
+
                                     <td>
-                                        <p class="ngayDat" style="">
+                                        <p class="pDonDat">
                                             15/12/2022
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="totalPrice" style="">
+                                        <p class="pDonDat">
                                             117.000 đ
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="statusDat" id="activeColor" style="">
+                                        <p class="pDonDat activeColor">
                                             Đã Giao
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="thanhToanDat" style="">
+                                        <p class="pDonDat">
                                             Tiền Mặt
                                         </p>
                                     </td>
@@ -82,28 +84,30 @@
                                 </tr>
 
                                 <tr>
-                                    <th style="">
-                                        <p class="maDonDat" style="">
+                                    <th>
+                                        <p class="maDonDat">
                                             #123456
                                         </p>
                                     </th>
+
+
                                     <td>
-                                        <p class="ngayDat" style="">
+                                        <p class="pDonDat">
                                             15/12/2022
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="totalPrice" style="">
+                                        <p class="pDonDat">
                                             117.000 đ
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="statusDat" id="activeColor" style="">
-                                            Đã Giao
+                                        <p class="pDonDat cancelledColor">
+                                            Đã Hủy
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="thanhToanDat" style="">
+                                        <p class="pDonDat">
                                             Tiền Mặt
                                         </p>
                                     </td>
@@ -115,29 +119,31 @@
                                 </tr>
 
                                 <tr>
-                                    <th style="">
-                                        <p class="maDonDat" style="">
+                                    <th>
+                                        <p class="maDonDat">
                                             #123456
                                         </p>
                                     </th>
+
+
                                     <td>
-                                        <p class="ngayDat" style="">
+                                        <p class="pDonDat">
                                             15/12/2022
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="totalPrice" style="">
+                                        <p class="pDonDat">
                                             117.000 đ
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="statusDat" id="activeColor" style="">
-                                            Đã Giao
+                                        <p class="pDonDat inProgressColor">
+                                            Đang Giao
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="thanhToanDat" style="">
-                                            Tiền Mặt
+                                        <p class="pDonDat">
+                                            Ví Điện Tử
                                         </p>
                                     </td>
                                     <td>
@@ -146,6 +152,8 @@
                                         </a>
                                     </td>
                                 </tr>
+
+
 
                             </tbody>
                         </table>
@@ -156,6 +164,33 @@
     </div>
 
     <style>
+
+        .maDonDat {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+            color: #1976D2;
+        }
+
+        .pDonDat {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+            color: #000000;
+        }
+
+        .activeColor {
+            color: #009D34 !important;
+        }
+
+
+        .cancelledColor {
+            color: #FF0000 !important;
+        }
+
+        .inProgressColor {
+            color: #FFC107 !important;
+        }
 
         #wrap-order-summary {
             padding: 24px;
