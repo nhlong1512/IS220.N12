@@ -2733,6 +2733,7 @@
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\GioHang\GiaoHang.cshtml" />
     <Content Include="Views\Profile\DonDat.cshtml" />
+    <Content Include="Views\Profile\ChiTietDonDat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

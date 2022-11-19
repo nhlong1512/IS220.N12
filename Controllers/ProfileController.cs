@@ -273,5 +273,26 @@ namespace MoriiCoffee.Controllers
            
             return View();
         }
+
+
+        [ValidateInput(false)]
+        public ActionResult ChiTietDonDat()
+        {
+            if (ModelState.IsValid)
+            {
+                var session = new UserLogin();
+                session = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+                if (!(session is null))
+                {
+                    ViewBag.session = session;
+                    var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
+                    ViewBag.ndd = ndd;
+                }
+
+            }
+
+            return View();
+        }
     }
 }
