@@ -2731,7 +2731,7 @@
     <Content Include="Views\Profile\DoiMatKhau.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\GioHang\GiaoHang.cshtml" />
-    <Content Include="Views\Profile\DonMua.cshtml" />
+    <Content Include="Views\Profile\DonDat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -255,7 +255,7 @@ namespace MoriiCoffee.Controllers
 
 
         [ValidateInput(false)]
-        public ActionResult DonMua()
+        public ActionResult DonDat()
         {
             if (ModelState.IsValid)
             {
