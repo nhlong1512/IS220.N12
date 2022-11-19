@@ -251,35 +251,27 @@ namespace MoriiCoffee.Controllers
             }
             return byte2String;
         }
-        //[HttpPost]
-        //[ValidateInput(false)]
-        //public ActionResult DoiMatKhau(NguoiDung nd)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var session = new UserLogin();
-        //        session = (UserLogin)Session[CommonConstants.USER_SESSION];
 
-        //        if (!(session is null))
-        //        {
-        //            ViewBag.session = session;
-        //            var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
-        //            ViewBag.ndd = ndd;
-        //        }
 
-        //    }
 
-        //    var isTrue = nguoidungdao.Update(nd);
-        //    if (isTrue)
-        //    {
-        //        return RedirectToAction("DoiMatKhau", "Profile");
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError("", "Không lưu được vào CSDL");
-        //        return RedirectToAction("DoiMatKhau", "Profile");
-        //    }
+        [ValidateInput(false)]
+        public ActionResult DonMua()
+        {
+            if (ModelState.IsValid)
+            {
+                var session = new UserLogin();
+                session = (UserLogin)Session[CommonConstants.USER_SESSION];
 
-        //}
+                if (!(session is null))
+                {
+                    ViewBag.session = session;
+                    var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
+                    ViewBag.ndd = ndd;
+                }
+
+            }
+           
+            return View();
+        }
     }
 }

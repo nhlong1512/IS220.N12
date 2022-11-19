@@ -1572,6 +1572,8 @@
     <Content Include="Data\Files\Bg-main-3.jpeg" />
     <Content Include="Data\Files\Capture.PNG" />
     <Content Include="Data\Files\caramel-macchiato_830x550.jpg" />
+    <Content Include="Data\Files\COD-png.png" />
+    <Content Include="Data\Files\COD-svg.svg" />
     <Content Include="Data\Files\deleteIcon.png" />
     <Content Include="Data\Files\latte.jpg" />
     <Content Include="Data\Files\menu-1.png" />
@@ -1580,6 +1582,7 @@
     <Content Include="Data\Files\menu-4.png" />
     <Content Include="Data\Files\menu-5.png" />
     <Content Include="Data\Files\menu-6.png" />
+    <Content Include="Data\Files\Momo-png.png" />
     <Content Include="Data\Files\MoriiBanner1.jpeg" />
     <Content Include="Data\Files\MoriiBanner2.jpg" />
     <Content Include="Data\Files\MoriiBanner3.jpg" />
@@ -1599,6 +1602,7 @@
     <Content Include="Data\Files\MoriiFeedback4.jpg" />
     <Content Include="Data\Files\noAvt.png" />
     <Content Include="Data\Files\noAvt2.png" />
+    <Content Include="Data\Files\Paypal-svg.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2727,6 +2731,7 @@
     <Content Include="Views\Profile\DoiMatKhau.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\GioHang\GiaoHang.cshtml" />
+    <Content Include="Views\Profile\DonMua.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
