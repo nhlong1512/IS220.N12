@@ -1,4 +1,3 @@
-D:\VS\IS220.N12\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
 D:\VS\IS220.N12\Model\bin\Release\Model.dll.config
 D:\VS\IS220.N12\Model\bin\Release\Model.dll
 D:\VS\IS220.N12\Model\bin\Release\Model.pdb
@@ -22,7 +21,8 @@ D:\VS\IS220.N12\Model\bin\Release\Newtonsoft.Json.xml
 D:\VS\IS220.N12\Model\bin\Release\PagedList.xml
 D:\VS\IS220.N12\Model\bin\Release\PagedList.Mvc.xml
 D:\VS\IS220.N12\Model\bin\Release\System.Diagnostics.DiagnosticSource.xml
+D:\VS\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache
+D:\VS\IS220.N12\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
 D:\VS\IS220.N12\Model\obj\Release\Model.csproj.CopyComplete
 D:\VS\IS220.N12\Model\obj\Release\Model.dll
 D:\VS\IS220.N12\Model\obj\Release\Model.pdb
-D:\VS\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache

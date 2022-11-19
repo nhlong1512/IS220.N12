@@ -35,7 +35,7 @@ namespace MoriiCoffee.Controllers
             return View();
         }
 
-        public ActionResult VanChuyen()
+        public ActionResult GiaoHang()
         {
             if (ModelState.IsValid)
             {
