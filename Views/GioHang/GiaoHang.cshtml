@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-    var nd = ViewBag.ndd;
 }
 
 @model Model.EF.NguoiDung
@@ -32,136 +31,79 @@
         <div class="form-horizontal">
             <div class="row">
                 <div class="col-sm-7">
-                    <div style="margin-right: 60px;">
+                    <div>
                         <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Thông Tin Giao Hàng</h3>
-                        <hr class="style-10" />
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Sản Phẩm</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
+                        <div class="form-detail" style="margin-top: 80px;">
 
-                                            </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                            <div class="form-group row">
+                                <div class="col-sm-12" style="padding-left: 0;">
+                                    <input type="text" class="form-control form-control-lg" id="hoTenLabel" placeholder="Họ Tên" name="HoTen">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12" style="padding-left: 0;">
+                                    <input type="number" class="form-control form-control-lg" id="phoneLabel" placeholder="SĐT" name="SDT">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12" style="padding-left: 0;">
+                                    <input type="email" class="form-control form-control-lg" id="emailLabel" placeholder="Email" name="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12" style="padding-left: 0;">
+                                    <input type="text" class="form-control form-control-lg" id="addressLabel" placeholder="Địa Chỉ (VD: KTX Khu A - ĐHQG TPHCM)" name="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4" style="padding-left: 0;">
+                                    <input type="text" class="form-control form-control-lg" id="tinhLabel" placeholder="Tỉnh/Thành Phố" name="">
+                                </div>
+                                <div class="col-sm-4" style="padding-left: 0;">
+                                    <input type="text" class="form-control form-control-lg" id="huyenLabel" placeholder="Quận/Huyện" name="">
+                                </div>
+                                <div class="col-sm-4" style="padding-left: 0;">
+                                    <input type="text" class="form-control form-control-lg" id="xaLabel" placeholder="Phường/Xã" name="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12" style="padding-left: 0;">
+                                    <input type="text" class="form-control form-control-lg" id="noteLabel" placeholder="Ghi Chú (VD: Không Đá, Ít Đá,...)" name="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <input type="checkbox" checked name="my-checkbox" id="saveAddress" />
+                                <label for="saveAddress" style="font-weight: 600; font-size: 16px; line-height: 20px; color: #000000; margin: 0 0 0 8px;">
+                                    Lưu địa chỉ đặt hàng.
+                                </label>
+                            </div>
+                        </div>
 
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
-
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a style="display:flex; justify-content:center;">
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
-
-                                            </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
-
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a style="display:flex; justify-content:center;">
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
-
-                                            </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
-
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a style="display:flex; justify-content:center;">
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px; margin-top: 60px;">Phương Thức Thanh Toán</h3>
+                        <div class="form-check col-sm-12" style="" >
+                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                            <label class="labelPaymentMethod" for="flexRadioDefault1" style="margin-bottom: 0;">
+                                <img class="imgPaymentMethod" src="~/Data/Files/COD-svg.svg"/>
+                                COD
+                            </label>
+                        </div>
+                        <style>
+                            
+                        </style>
+                        <div class="form-check">
+                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <label class="labelPaymentMethod" for="flexRadioDefault2" style="margin-bottom: 0;">
+                                <img class="imgPaymentMethod" src="~/Data/Files/Momo-png.png"/>
+                                Momo
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                            <label class="labelPaymentMethod" for="flexRadioDefault3" style="margin-bottom: 0;">
+                                <img class="imgPaymentMethod" src="~/Data/Files/Paypal-svg.svg"/>
+                                Paypal
+                            </label>
+                        </div>
                     </div>
 
                 </div>
@@ -180,11 +122,6 @@
                             </div>
                         </div>
 
-
-                        <style>
-                        </style>
-
-
                         <hr class="style-10" />
                         <div>
                             <div class="wrap-estimated-total">
@@ -202,7 +139,31 @@
     </div>
 
     <style>
+        .form-check {
+            padding: 8px 16px;
+            padding: 0.5rem 1rem;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            border-radius: 0.3rem;
+            border: 1px solid #ced4da;
+            margin-bottom: 20px;
+        }
 
+        .labelPaymentMethod {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;
+            color: #000000;
+        }
+
+        .paymentMethodInput {
+            margin-right: 40px;
+        }
+
+        .imgPaymentMethod {
+            margin-right: 16px;
+        }
+        
         #wrap-order-summary {
             padding: 24px;
         }
