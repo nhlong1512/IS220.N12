@@ -34,5 +34,23 @@ namespace MoriiCoffee.Controllers
             }
             return View();
         }
+
+        public ActionResult VanChuyen()
+        {
+            if (ModelState.IsValid)
+            {
+                var session = new UserLogin();
+                session = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+                if (!(session is null))
+                {
+                    ViewBag.session = session;
+                    var ndd = nddao.ViewDetailEmail(session.UserName);
+                    ViewBag.ndd = ndd;
+                }
+
+            }
+            return View();
+        }
     }
 }

@@ -126,6 +126,13 @@ namespace MoriiCoffee
               url: "gio-hang",
               defaults: new { controller = "GioHang", action = "GioHang", id = UrlParameter.Optional }
           );
+
+
+            routes.MapRoute(
+              name: "VanChuyen",
+              url: "van-chuyen",
+              defaults: new { controller = "GioHang", action = "VanChuyen", id = UrlParameter.Optional }
+          );
             //Route mặc định luôn phải để ở cuối cùng, tránh ghi đè lên các route đã được customize
 
             routes.MapRoute(
