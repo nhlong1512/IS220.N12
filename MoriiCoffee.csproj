@@ -1576,6 +1576,7 @@
     <Content Include="Data\Files\COD-svg.svg" />
     <Content Include="Data\Files\deleteIcon.png" />
     <Content Include="Data\Files\dots-option.png" />
+    <Content Include="Data\Files\kemCheese.jpg" />
     <Content Include="Data\Files\latte.jpg" />
     <Content Include="Data\Files\menu-1.png" />
     <Content Include="Data\Files\menu-2.png" />
@@ -1604,6 +1605,9 @@
     <Content Include="Data\Files\noAvt.png" />
     <Content Include="Data\Files\noAvt2.png" />
     <Content Include="Data\Files\Paypal-svg.svg" />
+    <Content Include="Data\Files\suongSao.jpg" />
+    <Content Include="Data\Files\tranChauDen.png" />
+    <Content Include="Data\Files\tranChauTrang.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
