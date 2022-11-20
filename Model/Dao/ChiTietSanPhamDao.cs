@@ -33,6 +33,21 @@ namespace Model.Dao
 
         }
 
+        //Xem danh sách các món Topping
+        public List<ChiTietSanPham> ViewListTopping()
+        {
+            List<ChiTietSanPham> chitietsps = new List<ChiTietSanPham>();
+            if (db.ChiTietSanPhams.Count() == 0)
+            {
+                return chitietsps;
+            }
+            var list = db.ChiTietSanPhams.Where(p => p.MaPhanLoai == 3);
+            //Convert từ IqueryTable sang list
+            chitietsps = new List<ChiTietSanPham>(list);
+            return chitietsps;
+
+        }
+
         //Xem chi tiết SanPham
         public ChiTietSanPham ViewDetail(long id)
         {

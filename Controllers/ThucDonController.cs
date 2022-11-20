@@ -58,13 +58,13 @@ namespace MoriiCoffee.Controllers
 
             }
 
+            var listTopping = ctspdao.ViewListTopping();
+            ViewBag.listTopping = listTopping;
+
             var ctsp = ctspdao.ViewDetail(id);
             ViewBag.ctsps = ctspdao.ViewAll();
 
             return View(ctsp);
-
-            
-
         }
 
     }

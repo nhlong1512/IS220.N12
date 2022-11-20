@@ -4,6 +4,7 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var ctsps = ViewBag.ctsps;
+    var listTopping = ViewBag.listTopping;
 }
 
 
@@ -60,18 +61,22 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="wrapChonTopping">
                                 <p class="titleChonTopping">Chọn Topping</p>
                                 <div class="listTopping">
-                                    <div class="topping" id="">
-                                        Trân châu đen + 10.000 đ
-                                    </div>
-                                    <div class="topping" id="">
-                                        Machiato + 10.000 đ
-                                    </div>
-                                    <div class="topping" id="">
-                                        Trân châu trắng + 10.000 đ
-                                    </div>
+                                    @{
+                                        foreach (var sp in listTopping)
+                                        {
+                                            var tGia = @sp.Gia;
+                                            tGia = tGia / 1000;
+
+                                            <div class="topping" id="">
+                                                @sp.TenSanPham +  @tGia.000 đ
+                                            </div>
+                                        }
+                                    }
                                 </div>
                             </div>
 
@@ -129,11 +134,11 @@
                                         </div>
                                     </div>
                                 </a>
-                                                        if (c > 6)
-                                                        {
-                                                            break;
-                                                        }
-                                                    }
+                                if (c > 6)
+                                {
+                                    break;
+                                }
+                            }
 
 
                         }
