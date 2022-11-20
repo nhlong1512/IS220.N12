@@ -82,7 +82,6 @@
                             </div>
                         </div>
                         <style>
-                            
                         </style>
 
                     </div>
@@ -95,14 +94,15 @@
                     <div class="moTaDiv">
                         <hr class="style10">
                         <h3 class="moTa">Sản phẩm liên quan</h3>
-                        <p class="moTaP">@Model.MoTaSanPham</p>
                     </div>
 
 
                     <div class="row w3-services-grids">
                         @{
+                            var c = 0;
                             foreach (var sp in ctsps)
                             {
+                                c++;
                                 if (sp.ID == Model.ID)
                                 {
                                     continue;
@@ -129,7 +129,13 @@
                                         </div>
                                     </div>
                                 </a>
-                            }
+                                                        if (c > 6)
+                                                        {
+                                                            break;
+                                                        }
+                                                    }
+
+
                         }
                     </div>
                 </div>
@@ -231,7 +237,7 @@
 
     .listTopping {
         display: flex;
-        flex-wrap:wrap;
+        flex-wrap: wrap;
     }
 
     .topping {
@@ -265,7 +271,6 @@
         border-radius: 20px;
         border: none;
     }
-
 </style>
 
 
