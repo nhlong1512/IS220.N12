@@ -8,7 +8,10 @@
 }
 
 
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- about breadcrumb -->
 <section class="w3l-about-breadcrumb position-relative text-center">
@@ -53,12 +56,18 @@
                             <div class="wrapChonSize">
                                 <p class="titleChonSize">Chọn Size</p>
                                 <div class="listSize">
-                                    <div class="size" id="sizeVua">
-                                        Vừa + 0 đ
-                                    </div>
-                                    <div class="size" id="sizeLon">
-                                        Lớn + 5.000 đ
-                                    </div>
+                                    <input type="radio" class="sizeProduct" id="sizeVua" onclick="handleClick(this);" name="sizeProduct" value="sizeVua" checked="checked">
+                                    <label for="sizeVua">
+                                        <div class="size activeButton" id="sizeVuaButton">
+                                            Vừa + 0 đ
+                                        </div>
+                                    </label>
+                                    <input type="radio" class="sizeProduct" id="sizeLon" onclick="handleClick(this);" name="sizeProduct" value="sizeLon">
+                                    <label for="sizeLon">
+                                        <div class="size" id="sizeLonButton">
+                                            Lớn + 5.000 đ
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
 
@@ -151,6 +160,12 @@
 </div>
 
 <style>
+
+    .activeButton {
+        background-color: #146d4d!important;
+        color: #fff!important;
+    }
+
     .product {
         display: flex;
         /*flex-direction:column;*/
@@ -280,48 +295,32 @@
 
 
 
-
-
-
-<!-- //contact-form -->
-<!-- Template JavaScript -->
-<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
-<script src="~/Assets/Client/js/theme-change.js"></script>
-<!-- disable body scroll which navbar is in active -->
 <script>
-    $(function () {
-        $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
-        })
+    $(document).ready(function () {
+        
+
+        //var currentValue = "Nothing";
+        //function handleClick(myRadio) {
+        //    alert('Old value: ' + currentValue);
+        //    alert('New value: ' + myRadio.value);
+        //    currentValue = myRadio.value;
+        //}
     });
 </script>
-<!-- disable body scroll which navbar is in active -->
-<!--/MENU-JS-->
-
 <script>
-    $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= 80) {
-            $("#site-header").addClass("nav-fixed");
-        } else {
-            $("#site-header").removeClass("nav-fixed");
+    function handleClick(myRadio) {
+    var currentValue = "Nothing";
+        var sizeVuaButton = document.querySelector("#sizeVuaButton");
+        var sizeLonButton = document.querySelector("#sizeLonButton");
+        currentValue = myRadio.value;
+        if (currentValue == "sizeLon") {
+            sizeLonButton.classList.add("activeButton");
+            sizeVuaButton.classList.remove("activeButton");
         }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-        if ($(window).width() > 991) {
-            $("header").removeClass("active");
+        if (currentValue == "sizeVua") {
+            sizeLonButton.classList.remove("activeButton");
+            sizeVuaButton.classList.add("activeButton");
         }
-        $(window).on("resize", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-        });
-    });
+    }
 </script>
-<!--//MENU-JS-->
+
