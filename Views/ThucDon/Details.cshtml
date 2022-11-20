@@ -56,13 +56,13 @@
                             <div class="wrapChonSize">
                                 <p class="titleChonSize">Chọn Size</p>
                                 <div class="listSize">
-                                    <input type="radio" class="sizeProduct" id="sizeVua" onclick="handleClick(this);" name="sizeProduct" value="sizeVua" checked="checked">
+                                    <input type="radio" class="sizeProduct" id="sizeVua" onclick="handleClickSize(this);" name="sizeProduct" value="sizeVua" checked="checked">
                                     <label for="sizeVua">
                                         <div class="size activeButton" id="sizeVuaButton">
                                             Vừa + 0 đ
                                         </div>
                                     </label>
-                                    <input type="radio" class="sizeProduct" id="sizeLon" onclick="handleClick(this);" name="sizeProduct" value="sizeLon">
+                                    <input type="radio" class="sizeProduct" id="sizeLon" onclick="handleClickSize(this);" name="sizeProduct" value="sizeLon">
                                     <label for="sizeLon">
                                         <div class="size" id="sizeLonButton">
                                             Lớn + 5.000 đ
@@ -78,14 +78,54 @@
                                     @{
                                         foreach (var sp in listTopping)
                                         {
+
                                             var tGia = @sp.Gia;
                                             tGia = tGia / 1000;
 
-                                            <div class="topping" id="">
-                                                @sp.TenSanPham +  @tGia.000 đ
-                                            </div>
+                                            <input type="checkbox" id="@sp.TenSanPham" data-id="@sp.ID" name="toppingCB" onclick="handleClickTopping(this)" value="@sp.TenSanPham">
+                                            <label for="@sp.TenSanPham" style="margin:0;">
+                                                <div class="topping" id="@sp.ID">
+                                                    @sp.TenSanPham +  @tGia.000 đ
+                                                </div>
+                                            </label>
                                         }
                                     }
+
+                                    <script>
+                                        function handleClickTopping(myCheckbox) {
+                                            var currentValue = "Nothing";
+                                            var arrCurrentValue = [];
+                                            var spID = myCheckbox.getAttribute('data-id');
+                                            console.log(spID);
+                                            var buttonTopping = document.getElementById(spID);
+                                            console.log(buttonTopping);
+                                            currentValue = myCheckbox.value;
+                                            var currentChecked = myCheckbox.checked;
+                                            console.log(currentChecked);
+                                            console.log(myCheckbox);
+                                            if (currentChecked) {
+                                                buttonTopping.classList.add("activeButton");
+                                            } else {
+                                                buttonTopping.classList.remove("activeButton");
+                                            }
+                                            
+                                            
+                                            //if (currentValue == "sizeLon") {
+                                            //    sizeLonButton.classList.add("activeButton");
+                                            //    sizeVuaButton.classList.remove("activeButton");
+                                            //    giaSP += 5000;
+                                            //}
+                                            //if (currentValue == "sizeVua") {
+                                            //    sizeLonButton.classList.remove("activeButton");
+                                            //    sizeVuaButton.classList.add("activeButton");
+                                            //    giaSP += 0;
+                                            //}
+                                            ////Set text
+                                            //giaSP = giaSP / 1000;
+                                            //var textGiaSP = giaSP + '.000 đ';
+                                            //giaSanPham.innerHTML = textGiaSP;
+                                        }
+                                    </script>
                                 </div>
                             </div>
 
@@ -135,7 +175,6 @@
                                                 @{
                                                     var b = sp.Gia;
                                                     b = b / 1000;
-
                                                 }
                                                 @b.000 đ
                                             </p>
@@ -308,8 +347,8 @@
     });
 </script>
 <script>
-    function handleClick(myRadio) {
-    var currentValue = "Nothing";
+    function handleClickSize(myRadio) {
+        var currentValue = "Nothing";
         var sizeVuaButton = document.querySelector("#sizeVuaButton");
         var sizeLonButton = document.querySelector("#sizeLonButton");
         var giaSanPham = document.querySelector("#giaSanPham");
@@ -325,8 +364,6 @@
             sizeVuaButton.classList.add("activeButton");
             giaSP += 0;
         }
-        console.log(giaSP);
-
         //Set text
         giaSP = giaSP / 1000;
         var textGiaSP = giaSP + '.000 đ';
