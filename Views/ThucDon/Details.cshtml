@@ -92,39 +92,7 @@
                                     }
 
                                     <script>
-                                        function handleClickTopping(myCheckbox) {
-                                            var currentValue = "Nothing";
-                                            var arrCurrentValue = [];
-                                            var spID = myCheckbox.getAttribute('data-id');
-                                            console.log(spID);
-                                            var buttonTopping = document.getElementById(spID);
-                                            console.log(buttonTopping);
-                                            currentValue = myCheckbox.value;
-                                            var currentChecked = myCheckbox.checked;
-                                            console.log(currentChecked);
-                                            console.log(myCheckbox);
-                                            if (currentChecked) {
-                                                buttonTopping.classList.add("activeButton");
-                                            } else {
-                                                buttonTopping.classList.remove("activeButton");
-                                            }
-                                            
-                                            
-                                            //if (currentValue == "sizeLon") {
-                                            //    sizeLonButton.classList.add("activeButton");
-                                            //    sizeVuaButton.classList.remove("activeButton");
-                                            //    giaSP += 5000;
-                                            //}
-                                            //if (currentValue == "sizeVua") {
-                                            //    sizeLonButton.classList.remove("activeButton");
-                                            //    sizeVuaButton.classList.add("activeButton");
-                                            //    giaSP += 0;
-                                            //}
-                                            ////Set text
-                                            //giaSP = giaSP / 1000;
-                                            //var textGiaSP = giaSP + '.000 đ';
-                                            //giaSanPham.innerHTML = textGiaSP;
-                                        }
+
                                     </script>
                                 </div>
                             </div>
@@ -201,8 +169,8 @@
 <style>
 
     .activeButton {
-        background-color: #146d4d!important;
-        color: #fff!important;
+        background-color: #146d4d !important;
+        color: #fff !important;
     }
 
     .product {
@@ -336,7 +304,7 @@
 
 <script>
     $(document).ready(function () {
-        
+
 
         //var currentValue = "Nothing";
         //function handleClick(myRadio) {
@@ -347,22 +315,68 @@
     });
 </script>
 <script>
+    var currentValue = "";
     function handleClickSize(myRadio) {
-        var currentValue = "Nothing";
         var sizeVuaButton = document.querySelector("#sizeVuaButton");
         var sizeLonButton = document.querySelector("#sizeLonButton");
-        var giaSanPham = document.querySelector("#giaSanPham");
-        var giaSP = +giaSanPham.getAttribute('data-gia');
+
         currentValue = myRadio.value;
         if (currentValue == "sizeLon") {
             sizeLonButton.classList.add("activeButton");
             sizeVuaButton.classList.remove("activeButton");
-            giaSP += 5000;
         }
         if (currentValue == "sizeVua") {
             sizeLonButton.classList.remove("activeButton");
             sizeVuaButton.classList.add("activeButton");
+        }
+        updatePrice();
+    }
+
+    var arrCurrentValue = [];
+    function handleClickTopping(myCheckbox) {
+        var currentValue = "Nothing";
+        //Handle nếu tích có thì thêm vào arr ngược lại thì remove
+        if (myCheckbox.checked) {
+            arrCurrentValue.push(myCheckbox.value)
+
+        } else {
+            var index = arrCurrentValue.indexOf(myCheckbox.value);
+            if (index > -1) {
+                arrCurrentValue.splice(index, 1);
+            }
+        }
+        console.log(arrCurrentValue);
+        var giaSanPham = document.querySelector("#giaSanPham");
+        var giaSP = +giaSanPham.getAttribute('data-gia');
+        var spID = myCheckbox.getAttribute('data-id');
+        console.log(spID);
+        var buttonTopping = document.getElementById(spID);
+        console.log(buttonTopping);
+        currentValue = myCheckbox.value;
+        var currentChecked = myCheckbox.checked;
+        console.log(currentChecked);
+        console.log(myCheckbox);
+        if (currentChecked) {
+            buttonTopping.classList.add("activeButton");
+        } else {
+            buttonTopping.classList.remove("activeButton");
+        }
+        updatePrice();
+
+    }
+
+    function updatePrice() {
+        var giaSanPham = document.querySelector("#giaSanPham");
+        var giaSP = +giaSanPham.getAttribute('data-gia');
+        console.log('UpdatePrice', currentValue);
+        if (currentValue == 'sizeVua') {
             giaSP += 0;
+        }
+        if (currentValue == 'sizeLon') {
+            giaSP += 5000;
+        }
+        if (arrCurrentValue.length > 0) {
+            giaSP += 10000 * arrCurrentValue.length;
         }
         //Set text
         giaSP = giaSP / 1000;
