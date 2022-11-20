@@ -46,7 +46,7 @@
                             <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
                                 @Model.TenSanPham
                             </h3>
-                            <p style="font-size: 24px; font-weight: 700;">
+                            <p id="giaSanPham" data-gia="@Model.Gia" style="font-size: 24px; font-weight: 700;">
                                 @{
                                     var t = @Model.Gia;
                                     t = t / 1000;
@@ -312,15 +312,25 @@
     var currentValue = "Nothing";
         var sizeVuaButton = document.querySelector("#sizeVuaButton");
         var sizeLonButton = document.querySelector("#sizeLonButton");
+        var giaSanPham = document.querySelector("#giaSanPham");
+        var giaSP = +giaSanPham.getAttribute('data-gia');
         currentValue = myRadio.value;
         if (currentValue == "sizeLon") {
             sizeLonButton.classList.add("activeButton");
             sizeVuaButton.classList.remove("activeButton");
+            giaSP += 5000;
         }
         if (currentValue == "sizeVua") {
             sizeLonButton.classList.remove("activeButton");
             sizeVuaButton.classList.add("activeButton");
+            giaSP += 0;
         }
+        console.log(giaSP);
+
+        //Set text
+        giaSP = giaSP / 1000;
+        var textGiaSP = giaSP + '.000 đ';
+        giaSanPham.innerHTML = textGiaSP;
     }
 </script>
 
