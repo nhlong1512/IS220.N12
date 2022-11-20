@@ -345,17 +345,10 @@
                 arrCurrentValue.splice(index, 1);
             }
         }
-        console.log(arrCurrentValue);
-        var giaSanPham = document.querySelector("#giaSanPham");
-        var giaSP = +giaSanPham.getAttribute('data-gia');
         var spID = myCheckbox.getAttribute('data-id');
-        console.log(spID);
         var buttonTopping = document.getElementById(spID);
-        console.log(buttonTopping);
         currentValue = myCheckbox.value;
         var currentChecked = myCheckbox.checked;
-        console.log(currentChecked);
-        console.log(myCheckbox);
         if (currentChecked) {
             buttonTopping.classList.add("activeButton");
         } else {
