@@ -46,7 +46,7 @@
                             <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
                                 @Model.TenSanPham
                             </h3>
-                            <p id="giaSanPham" data-gia="@Model.Gia" style="font-size: 24px; font-weight: 700;">
+                            <p id="giaSanPham" data-id="@Model.ID" data-gia="@Model.Gia" style="font-size: 24px; font-weight: 700;">
                                 @{
                                     var t = @Model.Gia;
                                     t = t / 1000;
@@ -91,9 +91,6 @@
                                         }
                                     }
 
-                                    <script>
-
-                                    </script>
                                 </div>
                             </div>
 
@@ -315,17 +312,17 @@
     });
 </script>
 <script>
-    var currentValue = "";
+    var sizeValue = "sizeVua";
     function handleClickSize(myRadio) {
         var sizeVuaButton = document.querySelector("#sizeVuaButton");
         var sizeLonButton = document.querySelector("#sizeLonButton");
 
-        currentValue = myRadio.value;
-        if (currentValue == "sizeLon") {
+        sizeValue = myRadio.value;
+        if (sizeValue == "sizeLon") {
             sizeLonButton.classList.add("activeButton");
             sizeVuaButton.classList.remove("activeButton");
         }
-        if (currentValue == "sizeVua") {
+        if (sizeValue == "sizeVua") {
             sizeLonButton.classList.remove("activeButton");
             sizeVuaButton.classList.add("activeButton");
         }
@@ -334,7 +331,6 @@
 
     var arrCurrentValue = [];
     function handleClickTopping(myCheckbox) {
-        var currentValue = "Nothing";
         //Handle nếu tích có thì thêm vào arr ngược lại thì remove
         if (myCheckbox.checked) {
             arrCurrentValue.push(myCheckbox.value)
@@ -361,11 +357,11 @@
     function updatePrice() {
         var giaSanPham = document.querySelector("#giaSanPham");
         var giaSP = +giaSanPham.getAttribute('data-gia');
-        console.log('UpdatePrice', currentValue);
-        if (currentValue == 'sizeVua') {
+        var idSP = +giaSanPham.getAttribute('data-id');
+        if (sizeValue == 'sizeVua') {
             giaSP += 0;
         }
-        if (currentValue == 'sizeLon') {
+        if (sizeValue == 'sizeLon') {
             giaSP += 5000;
         }
         if (arrCurrentValue.length > 0) {
@@ -375,6 +371,22 @@
         giaSP = giaSP / 1000;
         var textGiaSP = giaSP + '.000 đ';
         giaSanPham.innerHTML = textGiaSP;
+        console.log(idSP);
+        console.log(sizeValue);
+        console.log(arrCurrentValue);
+        console.log(textGiaSP);
     }
+
+    $(document).ready(function () {
+        $(".buttonThemGioHang").on('click',
+            function handleClickThemVaoGioHang(e) {
+                e.preventDefault();
+                updatePrice();
+            }
+        )
+    });
+
+
+
 </script>
 
