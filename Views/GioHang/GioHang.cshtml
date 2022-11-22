@@ -3,6 +3,7 @@
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var nd = ViewBag.ndd;
+    var TongGia = 0;
 }
 
 @model List<MoriiCoffee.Common.CartItem>
@@ -36,15 +37,6 @@
                 <div class="col-sm-8">
                     <div style="margin-right: 60px;">
                         <hr class="style-10" />
-                        @foreach (var item in Model)
-                        {
-                            <h1>@item.ChiTietSanPham.TenSanPham</h1>
-                            <img src="@item.ChiTietSanPham.UrlImage" />
-                            <h2>@item.Size</h2>
-                            <h2>@item.Gia</h2>
-                            <h2>@item.Topping</h2>
-                            <h2>@item.Quantity</h2>
-                        }
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -55,88 +47,52 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note" style="margin-bottom: 0">
-                                                    Size: L
-                                                </p>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
-
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
+                                            <div class="img-product-wrap">
+                                                <img class="img-product" src="@item.ChiTietSanPham.UrlImage" />
                                             </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                                            <div class="product-details">
+                                                <div>
+                                                    <h3 class="product-title">
+                                                        @item.ChiTietSanPham.TenSanPham
+                                                    </h3>
+                                                    <p class="product-note" style="margin-bottom: 0">
+                                                        Size: @item.Size
+                                                    </p>
+                                                    <p class="product-note">
+                                                        @item.Topping
+                                                    </p>
 
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
-
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a style="display:flex; justify-content:center;">
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note" style="margin-bottom: 0">
-                                                    Size: L
+                                                </div>
+                                                <p class="product-price">
+                                                    @item.Gia
                                                 </p>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
-
                                             </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                                        </th>
+                                        <td>
+                                            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
 
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
+                                                <button class="button-quantity">-</button>
+                                                <input class="quantity-product" type="number" value="@item.Quantity" readonly />
+                                                <button class="button-quantity">+</button>
+                                            </div>
 
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a style="display:flex; justify-content:center;">
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        
+                                        <td style="padding-right: 30px;">
+                                            <p class="total-price">@(item.Gia * item.Quantity)</p>
+                                        </td>
+                                        <td>
+                                            <a style="display:flex; justify-content:center;">
+                                                <img src="~/Data/Files/deleteIcon.png" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
 
                                 <tr>
                                     <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
