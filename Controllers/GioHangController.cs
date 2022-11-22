@@ -84,6 +84,19 @@ namespace MoriiCoffee.Controllers
             return Redirect("/gio-hang");
         }
 
+        [HttpPost]
+        public JsonResult ThemGioHangJson(long id, string size, string topping, string gia)
+        {
+
+
+
+            
+            return Json(new
+            {
+                status = true,
+            });
+        }
+
         public ActionResult GiaoHang()
         {
             if (ModelState.IsValid)

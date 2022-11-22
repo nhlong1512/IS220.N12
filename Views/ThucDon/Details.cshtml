@@ -95,12 +95,11 @@
                             </div>
 
                             <div class="wrapThemGioHang">
-                                @*<h3>/them-gio-hang?productID=@Model.ID&quantity=1</h3>*@
-                                <a href="/them-gio-hang?productID=@Model.ID&quantity=1" style="width:100%">
+                                @*<a href="/them-gio-hang?productID=@Model.ID&quantity=1" style="width:100%">*@
                                     <div  class="buttonThemGioHang">
                                         Thêm Vào Giỏ Hàng
                                     </div>
-                                </a>
+                                @*</a>*@
                             </div>
                         </div>
                         <style>
@@ -294,6 +293,7 @@
         font-size: 20px;
         line-height: 30px;
         /* identical to box height */
+        cursor:pointer;
         text-align: center;
         border-radius: 20px;
         border: none;
@@ -302,18 +302,6 @@
 
 
 
-<script>
-    $(document).ready(function () {
-
-
-        //var currentValue = "Nothing";
-        //function handleClick(myRadio) {
-        //    alert('Old value: ' + currentValue);
-        //    alert('New value: ' + myRadio.value);
-        //    currentValue = myRadio.value;
-        //}
-    });
-</script>
 <script>
     var sizeValue = "sizeVua";
     function handleClickSize(myRadio) {
@@ -374,18 +362,115 @@
         giaSP = giaSP / 1000;
         var textGiaSP = giaSP + '.000 đ';
         giaSanPham.innerHTML = textGiaSP;
+        var resJson = {
+            idSp: idSP,
+            sizeValue: sizeValue,
+            listTopping: arrCurrentValue,
+            giaSP: textGiaSP
+        }
         console.log(idSP);
         console.log(sizeValue);
         console.log(arrCurrentValue);
         console.log(textGiaSP);
+        return resJson;
     }
 
     $(document).ready(function () {
         $(".buttonThemGioHang").on('click',
             function handleClickThemVaoGioHang(e) {
-                //e.preventDefault();
-                updatePrice();
-                //window.location.replace("https://localhost:44309/gio-hang");
+                e.preventDefault();
+                var resJson = updatePrice();
+                console.log('RESJSON', resJson);
+                console.log('id:', resJson.idSp);
+                console.log('size:', resJson.sizeValue);
+                console.log('listTopping:', resJson.listTopping);
+                console.log('giaSP:', resJson.giaSP);
+                var id = + resJson.idSp;
+                var size = "";
+                if (sizeValue == "sizeVua") size = "M";
+                if (sizeValue == "sizeLon") size = "L";
+                var topping = "";
+                resJson.listTopping.forEach(c => {
+                    topping += c + ", ";
+                })
+                var gia = resJson.giaSP;
+                console.log("ID", id);
+                console.log("size", size);
+                console.log("topping", topping);
+                console.log("gia", gia);
+
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/GioHang/ThemGioHangJson",
+                //    data: {
+                //        id: id,
+                //        oldPassword: oldPassword,
+                //        newPassword: newPassword,
+                //        confirmNewPassword: confirmNewPassword
+                //    },
+                //    dataType: "json",
+                //    success: function (res) {
+                //        console.log("NguyenHuuLong --> ", res.msg);
+                //        console.log("NguyenHuuLong --> err", res.err);
+                //        if (res.isValid) {
+                //            $('.message-success').append("Thay đổi mật khẩu thành công. ");
+                //        }
+                //        if (res.err) {
+                //            $(".message-error").append(res.err);
+                //        }
+                //        //window.location.replace("https://localhost:44309/");
+                //    },
+                //    error: function (err) {
+                //        console.log("err --> ", err);
+                //        console.log("err ->>", err.err);
+                //    },
+                //});
+            }
+        )
+        $("#doiMatKhauButton").on('click',
+            function DoiMatKhau(e) {
+                e.preventDefault();
+                //Clear $(".message-error") and $('.message-success')
+                $(".message-error").empty();
+                $('.message-success').empty();
+
+                var id = $(this).data('id');
+
+                var oldPassword = $('#matKhauCuLabel').val();
+                var newPassword = $('#matKhauMoiLabel').val();
+                var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
+
+                console.log('Old Password ->>', oldPassword);
+                console.log('New Password ->>', newPassword);
+                console.log('Confirm New Password ->>', confirmNewPassword);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Profile/DoiMatKhau",
+                    data: {
+                        id: id,
+                        oldPassword: oldPassword,
+                        newPassword: newPassword,
+                        confirmNewPassword: confirmNewPassword
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        console.log("NguyenHuuLong --> ", res.msg);
+                        console.log("NguyenHuuLong --> err", res.err);
+                        if (res.isValid) {
+                            $('.message-success').append("Thay đổi mật khẩu thành công. ");
+                        }
+                        if (res.err) {
+                            $(".message-error").append(res.err);
+                        }
+                        //window.location.replace("https://localhost:44309/");
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
+
             }
         )
     });

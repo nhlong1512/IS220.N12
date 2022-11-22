@@ -11,6 +11,8 @@ namespace MoriiCoffee.Common
     {
         public ChiTietSanPham ChiTietSanPham { set; get; }
         public int Quantity { get; set; }
+        public string Size { get; set; }
+        public string Topping { get; set; }
 
     }
 }
