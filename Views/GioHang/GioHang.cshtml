@@ -35,7 +35,7 @@
             <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Giỏ Hàng</h3>
             <div class="row">
                 <div class="col-sm-8">
-                    <div style="margin-right: 60px;">
+                    <div style="">
                         <hr class="style-10" />
                         <table class="table table-borderless">
                             <thead>
@@ -50,7 +50,7 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
+                                        <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
                                             <div class="img-product-wrap">
                                                 <img class="img-product" src="@item.ChiTietSanPham.UrlImage" />
                                             </div>
@@ -68,7 +68,11 @@
 
                                                 </div>
                                                 <p class="product-price">
-                                                    @item.Gia
+                                                    @{
+                                                        var b = item.Gia;
+                                                        b = b / 1000;
+                                                    }
+                                                    @b.000 đ
                                                 </p>
                                             </div>
                                         </th>
@@ -83,7 +87,13 @@
                                         </td>
                                         
                                         <td style="padding-right: 30px;">
-                                            <p class="total-price">@(item.Gia * item.Quantity)</p>
+                                            <p class="total-price">
+                                                @{
+                                                    var c = item.Gia * item.Quantity;
+                                                    c = c / 1000;
+                                                }
+                                                @c.000 đ
+                                            </p>
                                         </td>
                                         <td>
                                             <a style="display:flex; justify-content:center;">
@@ -93,48 +103,6 @@
                                     </tr>
                                 }
 
-
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note" style="margin-bottom: 0">
-                                                    Size: L
-                                                </p>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
-
-                                            </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-
-                                            <button class="button-quantity">-</button>
-                                            <input class="quantity-product" type="number" value="1" readonly />
-                                            <button class="button-quantity">+</button>
-                                        </div>
-
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                    <td>
-                                        <a style="display:flex; justify-content:center;">
-                                            <img src="~/Data/Files/deleteIcon.png" />
-                                        </a>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -232,8 +200,8 @@
         }
 
         .img-product {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 15px;
             margin-right: 20px;
         }
@@ -255,6 +223,7 @@
             font-size: 16px;
             line-height: 20px;
             margin-bottom: 16px;
+            max-width: 260px;
         }
 
         .product-price {
