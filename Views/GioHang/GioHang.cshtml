@@ -31,17 +31,17 @@
 <div class="w3-services py-5">
     <div class="container" style="padding:24px 0;">
         <div class="form-horizontal">
+            <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Giỏ Hàng</h3>
             <div class="row">
                 <div class="col-sm-8">
                     <div style="margin-right: 60px;">
-                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Giỏ Hàng</h3>
                         <hr class="style-10" />
-                        @foreach(var item in Model)
-            {
-                <h1>@item.ChiTietSanPham.TenSanPham</h1>
-                <img src="@item.ChiTietSanPham.UrlImage"/>
-                <h2>@item.ChiTietSanPham.Gia</h2>
-            }
+                        @foreach (var item in Model)
+                        {
+                            <h1>@item.ChiTietSanPham.TenSanPham</h1>
+                            <img src="@item.ChiTietSanPham.UrlImage" />
+                            <h2>@item.ChiTietSanPham.Gia</h2>
+                        }
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -62,6 +62,9 @@
                                                 <h3 class="product-title">
                                                     Latte
                                                 </h3>
+                                                <p class="product-note" style="margin-bottom: 0">
+                                                    Size: L
+                                                </p>
                                                 <p class="product-note">
                                                     Trân Châu Đen, Macchiato
                                                 </p>
@@ -100,6 +103,9 @@
                                                 <h3 class="product-title">
                                                     Latte
                                                 </h3>
+                                                <p class="product-note" style="margin-bottom: 0">
+                                                    Size: L
+                                                </p>
                                                 <p class="product-note">
                                                     Trân Châu Đen, Macchiato
                                                 </p>
@@ -139,6 +145,9 @@
                                                 <h3 class="product-title">
                                                     Latte
                                                 </h3>
+                                                <p class="product-note" style="margin-bottom: 0">
+                                                    Size: L
+                                                </p>
                                                 <p class="product-note">
                                                     Trân Châu Đen, Macchiato
                                                 </p>
