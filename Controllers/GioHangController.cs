@@ -32,9 +32,56 @@ namespace MoriiCoffee.Controllers
                     var ndd = nddao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
                 }
-
             }
-            return View();
+
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if(cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            return View(list);
+        }
+
+        public ActionResult ThemGioHang(long productID, int quantity)
+        {
+            var sanpham = new ChiTietSanPhamDao().ViewDetail(productID);
+            var cart = Session[CartSession];
+            if (cart != null)
+            {
+                var list = (List<CartItem>)cart;
+                if (list.Exists(x => x.ChiTietSanPham.ID == productID))
+                {
+                    foreach (var item in list)
+                    {
+                        if (item.ChiTietSanPham.ID == productID)
+                        {
+                            item.Quantity += quantity;
+                        }
+                    }
+                }
+                else
+                {
+                    var item = new CartItem();
+                    item.ChiTietSanPham = sanpham;
+                    item.Quantity = quantity;
+                    list.Add(item);
+                }
+                Session[CartSession] = list;
+            }
+            else
+            {
+                //Tạo mới đối tượng CartItem
+                var item = new CartItem();
+                item.ChiTietSanPham = sanpham;
+                item.Quantity = quantity;
+                var list = new List<CartItem>();
+                list.Add(item);
+                //Gán vào Session
+                Session[CartSession] = list;
+            }
+
+            return Redirect("/gio-hang");
         }
 
         public ActionResult GiaoHang()
@@ -57,44 +104,6 @@ namespace MoriiCoffee.Controllers
         
 
 
-        public ActionResult ThemGioHang(long productID, int quantity)
-        {
-            var sanpham = new SanPhamDao().ViewDetail(productID);
-            var cart = Session[CartSession];
-            if(cart != null)
-            {
-                var list = (List<CartItem>)cart;
-                if (list.Exists(x => x.SanPham.ID == productID))
-                {
-                    foreach (var item in list)
-                    {
-                        if (item.SanPham.ID == productID)
-                        {
-                            item.Quantity += quantity;
-                        }
-                    }
-                }
-                else
-                {
-                    var item = new CartItem();
-                    item.SanPham = sanpham;
-                    item.Quantity = quantity;
-                    list.Add(item);
-                }
-            }
-            else
-            {
-                //Tạo mới đối tượng CartItem
-                var item = new CartItem();
-                item.SanPham = sanpham;
-                item.Quantity = quantity;
-                var list = new List<CartItem>();
-
-                //Gán vào Session
-                Session[CartSession] = list;
-            }
-
-            return Redirect("/gio-hang");
-        }
+        
     }
 }

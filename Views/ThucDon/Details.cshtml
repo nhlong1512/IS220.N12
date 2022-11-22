@@ -95,10 +95,11 @@
                             </div>
 
                             <div class="wrapThemGioHang">
-                                <a href="/them-gio-hang?productID=@Model.ID&quantity=1">
-                                <button class="buttonThemGioHang">
-                                    Thêm Vào Giỏ Hàng
-                                </button>
+                                @*<h3>/them-gio-hang?productID=@Model.ID&quantity=1</h3>*@
+                                <a href="/them-gio-hang?productID=@Model.ID&quantity=1" style="width:100%">
+                                    <div  class="buttonThemGioHang">
+                                        Thêm Vào Giỏ Hàng
+                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -382,8 +383,9 @@
     $(document).ready(function () {
         $(".buttonThemGioHang").on('click',
             function handleClickThemVaoGioHang(e) {
-                e.preventDefault();
+                //e.preventDefault();
                 updatePrice();
+                //window.location.replace("https://localhost:44309/gio-hang");
             }
         )
     });

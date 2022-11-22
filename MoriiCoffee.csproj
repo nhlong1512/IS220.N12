@@ -2620,7 +2620,6 @@
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogTrangChuController.cs" />
-    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CauChuyenController.cs" />
     <Compile Include="Controllers\CuaHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />

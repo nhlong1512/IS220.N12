@@ -9,7 +9,7 @@ namespace MoriiCoffee.Common
     [Serializable]
     public class CartItem
     {
-        public SanPham SanPham { set; get; }
+        public ChiTietSanPham ChiTietSanPham { set; get; }
         public int Quantity { get; set; }
 
     }

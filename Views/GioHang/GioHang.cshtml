@@ -5,7 +5,7 @@
     var nd = ViewBag.ndd;
 }
 
-@model Model.EF.NguoiDung
+@model List<MoriiCoffee.Common.CartItem>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +36,12 @@
                     <div style="margin-right: 60px;">
                         <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Giỏ Hàng</h3>
                         <hr class="style-10" />
+                        @foreach(var item in Model)
+            {
+                <h1>@item.ChiTietSanPham.TenSanPham</h1>
+                <img src="@item.ChiTietSanPham.UrlImage"/>
+                <h2>@item.ChiTietSanPham.Gia</h2>
+            }
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
