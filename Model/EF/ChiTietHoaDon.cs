@@ -9,9 +9,15 @@ namespace Model.EF
     [Table("ChiTietHoaDon")]
     public partial class ChiTietHoaDon
     {
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 
-        public long? MaSP { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public long MaSP { get; set; }
 
         public int? SoLuong { get; set; }
 
