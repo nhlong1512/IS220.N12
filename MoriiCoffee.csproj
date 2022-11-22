@@ -2615,10 +2615,12 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietSanPhamController.cs" />
+    <Compile Include="Common\CartItem.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogTrangChuController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CauChuyenController.cs" />
     <Compile Include="Controllers\CuaHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -2753,6 +2755,7 @@
     <Folder Include="Assets\Login_Register\js\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Cart\" />
     <Folder Include="Views\LayoutClient\" />
   </ItemGroup>
   <ItemGroup>
