@@ -13,6 +13,7 @@ namespace MoriiCoffee.Common
         public int Quantity { get; set; }
         public string Size { get; set; }
         public string Topping { get; set; }
+        public long Gia { get; set; }
 
     }
 }

@@ -358,20 +358,16 @@
         if (arrCurrentValue.length > 0) {
             giaSP += 10000 * arrCurrentValue.length;
         }
-        //Set text
-        giaSP = giaSP / 1000;
-        var textGiaSP = giaSP + '.000 đ';
-        giaSanPham.innerHTML = textGiaSP;
         var resJson = {
             idSp: idSP,
             sizeValue: sizeValue,
             listTopping: arrCurrentValue,
-            giaSP: textGiaSP
+            giaSP: giaSP,
         }
-        console.log(idSP);
-        console.log(sizeValue);
-        console.log(arrCurrentValue);
-        console.log(textGiaSP);
+        //Set text
+        giaSP = giaSP / 1000;
+        var textGiaSP = giaSP + '.000 đ';
+        giaSanPham.innerHTML = textGiaSP;
         return resJson;
     }
 
@@ -390,89 +386,44 @@
                 if (sizeValue == "sizeVua") size = "M";
                 if (sizeValue == "sizeLon") size = "L";
                 var topping = "";
-                resJson.listTopping.forEach(c => {
-                    topping += c + ", ";
-                })
+                for (var i = 0; i < resJson.listTopping.length; i++) {
+                    if (i == resJson.listTopping.length - 1) {
+                        topping += resJson.listTopping[i];
+                    } else {
+                        topping += resJson.listTopping[i] + ", ";
+                    }
+                }
                 var gia = resJson.giaSP;
                 console.log("ID", id);
                 console.log("size", size);
                 console.log("topping", topping);
                 console.log("gia", gia);
 
-                //$.ajax({
-                //    type: "POST",
-                //    url: "/GioHang/ThemGioHangJson",
-                //    data: {
-                //        id: id,
-                //        oldPassword: oldPassword,
-                //        newPassword: newPassword,
-                //        confirmNewPassword: confirmNewPassword
-                //    },
-                //    dataType: "json",
-                //    success: function (res) {
-                //        console.log("NguyenHuuLong --> ", res.msg);
-                //        console.log("NguyenHuuLong --> err", res.err);
-                //        if (res.isValid) {
-                //            $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                //        }
-                //        if (res.err) {
-                //            $(".message-error").append(res.err);
-                //        }
-                //        //window.location.replace("https://localhost:44309/");
-                //    },
-                //    error: function (err) {
-                //        console.log("err --> ", err);
-                //        console.log("err ->>", err.err);
-                //    },
-                //});
-            }
-        )
-        $("#doiMatKhauButton").on('click',
-            function DoiMatKhau(e) {
-                e.preventDefault();
-                //Clear $(".message-error") and $('.message-success')
-                $(".message-error").empty();
-                $('.message-success').empty();
-
-                var id = $(this).data('id');
-
-                var oldPassword = $('#matKhauCuLabel').val();
-                var newPassword = $('#matKhauMoiLabel').val();
-                var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
-
-                console.log('Old Password ->>', oldPassword);
-                console.log('New Password ->>', newPassword);
-                console.log('Confirm New Password ->>', confirmNewPassword);
-
                 $.ajax({
                     type: "POST",
-                    url: "/Profile/DoiMatKhau",
+                    url: "/GioHang/ThemGioHangJson",
                     data: {
                         id: id,
-                        oldPassword: oldPassword,
-                        newPassword: newPassword,
-                        confirmNewPassword: confirmNewPassword
+                        size: size,
+                        topping: topping,
+                        gia: gia
                     },
                     dataType: "json",
                     success: function (res) {
                         console.log("NguyenHuuLong --> ", res.msg);
                         console.log("NguyenHuuLong --> err", res.err);
-                        if (res.isValid) {
-                            $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                        }
-                        if (res.err) {
-                            $(".message-error").append(res.err);
-                        }
-                        //window.location.replace("https://localhost:44309/");
+                        console.log(res.id, res.size, res.gia, res.topping);
+
+                        window.location.replace("https://localhost:44309/gio-hang");
                     },
                     error: function (err) {
                         console.log("err --> ", err);
                         console.log("err ->>", err.err);
                     },
                 });
-
             }
         )
+        
     });
 
 

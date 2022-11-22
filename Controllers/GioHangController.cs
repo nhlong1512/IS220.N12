@@ -85,15 +85,57 @@ namespace MoriiCoffee.Controllers
         }
 
         [HttpPost]
-        public JsonResult ThemGioHangJson(long id, string size, string topping, string gia)
+        public JsonResult ThemGioHangJson(long id, string size, string topping, long gia)
         {
 
-
-
-            
+            var sanpham = new ChiTietSanPhamDao().ViewDetail(id);
+            var cart = Session[CartSession];
+            if (cart != null)
+            {
+                var list = (List<CartItem>)cart;
+                if (list.Exists(x => x.ChiTietSanPham.ID == id))
+                {
+                    foreach (var item in list)
+                    {
+                        if (item.ChiTietSanPham.ID == id && item.Size == size && item.Topping == topping && item.Gia == gia)
+                        {
+                            item.Quantity += 1;
+                        }
+                    }
+                }
+                else
+                {
+                    var item = new CartItem();
+                    item.ChiTietSanPham = sanpham;
+                    item.Quantity = 1;
+                    item.Gia = gia;
+                    item.Topping = topping;
+                    item.Size = size;
+                    list.Add(item);
+                }
+                Session[CartSession] = list;
+            }
+            else
+            {
+                //Tạo mới đối tượng CartItem
+                var item = new CartItem();
+                item.ChiTietSanPham = sanpham;
+                item.Quantity = 1;
+                item.Gia = gia;
+                item.Topping = topping;
+                item.Size = size;
+                var list = new List<CartItem>();
+                list.Add(item);
+                //Gán vào Session
+                Session[CartSession] = list;
+            }
             return Json(new
             {
                 status = true,
+                id = id, 
+                size = size,
+                topping = topping,
+                gia = gia
             });
         }
 
