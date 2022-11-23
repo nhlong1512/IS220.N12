@@ -38,6 +38,16 @@ namespace MoriiCoffee.Controllers
                     ViewBag.ndd = ndd;
                 }
 
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
+                }
+
             }
             var nd = nguoidungdao.ViewDetail(id);
             if (nd.GioiTinh == null)
@@ -64,6 +74,15 @@ namespace MoriiCoffee.Controllers
                     var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
                 }
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
+                }
 
             }
             var nd = nguoidungdao.ViewDetail(id);
@@ -88,6 +107,15 @@ namespace MoriiCoffee.Controllers
                     ViewBag.session = session;
                     var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
+                }
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
                 }
 
             }
@@ -122,6 +150,15 @@ namespace MoriiCoffee.Controllers
                     var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
                 }
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
+                }
 
             }
             var nd = nguoidungdao.ViewDetail(id);
@@ -144,6 +181,15 @@ namespace MoriiCoffee.Controllers
                 ViewBag.session = session;
                 var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
                 ViewBag.ndd = ndd;
+            }
+            var cart = Session[CartSession];
+            var listCart = new List<CartItem>();
+            if (cart != null)
+            {
+                listCart = (List<CartItem>)cart;
+
+                var cartQtySession = listCart.Count();
+                ViewBag.cartQtySession = cartQtySession;
             }
 
             var err = "";
@@ -270,6 +316,15 @@ namespace MoriiCoffee.Controllers
                     var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
                 }
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
+                }
 
             }
            
@@ -290,6 +345,15 @@ namespace MoriiCoffee.Controllers
                     ViewBag.session = session;
                     var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
+                }
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
                 }
 
             }

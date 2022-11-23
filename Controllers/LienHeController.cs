@@ -35,6 +35,16 @@ namespace MoriiCoffee.Controllers
                     ViewBag.ndd = nd;
                 }
 
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
+                }
+
 
                 ViewBag.sanphams = spdao.ViewAll();
                 ViewBag.ctsps = ctspdao.ViewAll();
