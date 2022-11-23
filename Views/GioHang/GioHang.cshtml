@@ -95,9 +95,12 @@ else
                                             <td>
                                                 <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
 
-                                                    <button class="button-quantity">-</button>
+                                                    <button class="button-quantity" id="decreaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
+                                                            data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia" data-qty="@item.Quantity">
+                                                        -
+                                                    </button>
                                                     <input class="quantity-product" type="number" value="@item.Quantity" readonly />
-                                                    <button class="button-quantity" data-id="@item.ChiTietSanPham.ID" 
+                                                    <button class="button-quantity" id="increaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
                                                             data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia">
                                                         +
                                                     </button>
@@ -175,7 +178,7 @@ else
 
 <script>
     $(document).ready(function () {
-        $(".button-quantity").on('click',
+        $("#increaseQtyButton").on('click',
             function handleClickIncreaseQty(e) {
                 e.preventDefault();
                 var id = $(this).data("id");
@@ -205,6 +208,43 @@ else
                         console.log("err ->>", err.err);
                     },
                 });
+            }
+        )
+
+        $('#decreaseQtyButton').on('click',
+            function handleClickIncreaseQty(e) {
+                e.preventDefault();
+                var id = $(this).data("id");
+                var size = $(this).data("size");
+                var topping = $(this).data("topping");
+                var gia = $(this).data("gia");
+                var qty = $(this).data("qty")
+                console.log("Quantity", qty);
+                console.log("DecreaseButton", id, size, topping, gia, qty);
+                if (qty > 1) {
+                $.ajax({
+                    type: "POST",
+                    url: "/GioHang/DecreaseQtyJson",
+                    data: {
+                        id: id,
+                        size: size,
+                        topping: topping,
+                        gia: gia
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        console.log("NguyenHuuLong --> ", res.msg);
+                        console.log("NguyenHuuLong --> err", res.err);
+                        console.log(res.id, res.size, res.gia, res.topping);
+
+                        window.location.replace("https://localhost:44309/gio-hang");
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
+                }
             }
         )
 
