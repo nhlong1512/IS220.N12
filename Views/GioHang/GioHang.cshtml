@@ -3,7 +3,8 @@
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var nd = ViewBag.ndd;
-    var TongGia = 0;
+    long TongGia = 0;
+    
 }
 
 @model List<MoriiCoffee.Common.CartItem>
@@ -63,6 +64,7 @@ else
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                        
                                         <tr>
                                             <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
                                                 <div class="img-product-wrap">
@@ -104,6 +106,8 @@ else
                                                 <p class="total-price">
                                                     @{
                                                         var c = item.Gia * item.Quantity;
+                                                        //Tính tổng giá
+                                                        TongGia += c;
                                                         c = c / 1000;
                                                     }
                                                     @c.000 đ
@@ -129,7 +133,13 @@ else
                             <div style="margin-bottom: 100px;">
                                 <div class="wrap-sub-total">
                                     <p class="sub-total">TỔNG TIỀN HÀNG</p>
-                                    <p class="sub-total" style="font-weight:600;">87.000 đ</p>
+                                    <p class="sub-total" style="font-weight:600;">
+                                        @{
+                                            var d = TongGia;
+                                            d = d / 1000;
+                                        }
+                                        @d.000 đ
+                                    </p>
                                 </div>
                                 <div class="wrap-giamgia">
                                     <p class="sub-total">GIẢM GIÁ</p>
@@ -141,7 +151,9 @@ else
                             <div>
                                 <div class="wrap-estimated-total">
                                     <p class="sub-total">TỔNG SỐ TIỀN </p>
-                                    <p class="sub-total" style="color:#146d4d; font-weight: 600;">87.000 đ</p>
+                                    <p class="sub-total" style="color:#146d4d; font-weight: 600;">
+                                        @d.000 đ
+                                    </p>
                                 </div>
                             </div>
                             <a href="/giao-hang">
