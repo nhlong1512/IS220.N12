@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết HoaDon
-        public HoaDon ViewDetail(int id)
+        public HoaDon ViewDetail(long id)
         {
             return db.HoaDons.Find(id);
         }
@@ -40,6 +40,8 @@ namespace Model.Dao
                 hd.MaNV = entity.MaNV;
                 hd.MaCH = entity.MaCH;
                 hd.MaKH = entity.MaKH;
+                hd.IsOnline = entity.IsOnline;
+                hd.MaKM = entity.MaKM;
                 hd.TongTien = entity.TongTien;
                 hd.ModifiedBy = entity.ModifiedBy;
                 hd.ModifiedDate = DateTime.Now;
@@ -53,7 +55,7 @@ namespace Model.Dao
         }
 
         //Xóa HoaDon
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {

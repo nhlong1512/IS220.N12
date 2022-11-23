@@ -18,7 +18,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết DatHang
-        public DatHang ViewDetail(int id)
+        public DatHang ViewDetail(long id)
         {
             return db.DatHangs.Find(id);
         }
@@ -38,7 +38,17 @@ namespace Model.Dao
             {
                 var dh = db.DatHangs.Find(entity.ID);
                 dh.MaHoaDon = entity.MaHoaDon;
+                dh.MaKH = entity.MaKH;
+                dh.HoTen = entity.HoTen;
+                dh.SDT = entity.SDT;
+                dh.Email = entity.Email;
                 dh.DiaChiNhanHang = entity.DiaChiNhanHang;
+                dh.Tinh = entity.Tinh;
+                dh.Quan = entity.Quan;
+                dh.Phuong = entity.Phuong;
+                dh.GhiChu = entity.GhiChu;
+                dh.PTTT = entity.PTTT;
+                dh.TTDH = entity.TTDH;
                 dh.UrlImage = entity.UrlImage;
                 dh.ModifiedBy = entity.ModifiedBy;
                 dh.ModifiedDate = DateTime.Now;
@@ -52,7 +62,7 @@ namespace Model.Dao
         }
 
         //Xóa DatHang
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {

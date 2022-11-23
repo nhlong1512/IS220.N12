@@ -19,6 +19,10 @@ namespace Model.EF
 
         public decimal? TongTien { get; set; }
 
+        public bool? IsOnline { get; set; }
+
+        public long? MaKM { get; set; }
+
         [StringLength(250)]
         public string MetaTitle { get; set; }
 

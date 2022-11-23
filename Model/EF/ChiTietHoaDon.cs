@@ -9,19 +9,24 @@ namespace Model.EF
     [Table("ChiTietHoaDon")]
     public partial class ChiTietHoaDon
     {
-        [Key]
-        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long MaSP { get; set; }
+        public long? MaSP { get; set; }
+
+        [StringLength(2)]
+        public string Size { get; set; }
+
+        [StringLength(50)]
+        public string Topping { get; set; }
+
+        public decimal? Gia { get; set; }
 
         public int? SoLuong { get; set; }
 
         public decimal? ThanhTien { get; set; }
+
+        public long? IDHoaDon { get; set; }
 
         public bool? Status { get; set; }
 

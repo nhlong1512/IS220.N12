@@ -17,7 +17,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết hóa đơn
-        public ChiTietHoaDon ViewDetail(int id)
+        public ChiTietHoaDon ViewDetail(long id)
         {
             return db.ChiTietHoaDons.Find(id);
         }
@@ -36,7 +36,11 @@ namespace Model.Dao
             try
             {
                 var cthd = db.ChiTietHoaDons.Find(entity.ID);
+                cthd.IDHoaDon = entity.IDHoaDon;
                 cthd.MaSP = entity.MaSP;
+                cthd.Size = entity.Size;
+                cthd.Topping = entity.Topping;
+                cthd.Gia = entity.Gia;
                 cthd.SoLuong = entity.SoLuong;
                 cthd.ThanhTien = entity.ThanhTien;
                 cthd.ModifiedBy = entity.ModifiedBy;
