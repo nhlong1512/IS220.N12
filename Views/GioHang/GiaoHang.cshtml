@@ -2,15 +2,22 @@
 @{
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    long TongGia = 0;
 }
 
-@model Model.EF.NguoiDung
+@model List<MoriiCoffee.Common.CartItem>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+@foreach (var item in Model)
+{
+    var c = item.Gia * item.Quantity;
+    //Tính tổng giá
+    TongGia += c;
+}
 
 <!-- about breadcrumb -->
 <section class="w3l-about-breadcrumb position-relative text-center">
@@ -29,7 +36,7 @@
 <div class="w3-services py-5">
     <div class="container" style="padding:24px 0;">
         <div class="form-horizontal">
-                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Thông Tin Giao Hàng</h3>
+            <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Thông Tin Giao Hàng</h3>
             <div class="row">
                 <div class="col-sm-7">
                     <div>
@@ -68,7 +75,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12" style="padding-left: 0;">
-                                    <input type="text" class="form-control form-control-lg" id="noteLabel" placeholder="Ghi Chú (VD: Không Đá, Ít Đá,...)" name="">
+                                    <input type="text" class="form-control form-control-lg" id="noteLabel" placeholder="Ghi Chú (VD: Không Đá, Giao Trước 11 Giờ,...)" name="">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -80,27 +87,26 @@
                         </div>
 
                         <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px; margin-top: 60px;">Phương Thức Thanh Toán</h3>
-                        <div class="form-check col-sm-12" style="" >
+                        <div class="form-check col-sm-12" style="">
                             <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                             <label class="labelPaymentMethod" for="flexRadioDefault1" style="margin-bottom: 0;">
-                                <img class="imgPaymentMethod" src="~/Data/Files/COD-svg.svg"/>
+                                <img class="imgPaymentMethod" src="~/Data/Files/COD-svg.svg" />
                                 COD
                             </label>
                         </div>
                         <style>
-                            
                         </style>
                         <div class="form-check">
                             <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                             <label class="labelPaymentMethod" for="flexRadioDefault2" style="margin-bottom: 0;">
-                                <img class="imgPaymentMethod" src="~/Data/Files/Momo-png.png"/>
+                                <img class="imgPaymentMethod" src="~/Data/Files/Momo-png.png" />
                                 Momo
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                             <label class="labelPaymentMethod" for="flexRadioDefault3" style="margin-bottom: 0;">
-                                <img class="imgPaymentMethod" src="~/Data/Files/Paypal-svg.svg"/>
+                                <img class="imgPaymentMethod" src="~/Data/Files/Paypal-svg.svg" />
                                 Paypal
                             </label>
                         </div>
@@ -114,7 +120,13 @@
                         <div style="margin-bottom: 100px;">
                             <div class="wrap-sub-total">
                                 <p class="sub-total">TỔNG TIỀN HÀNG</p>
-                                <p class="sub-total" style="font-weight:600;">87.000 đ</p>
+                                <p class="sub-total" style="font-weight:600;">
+                                    @{
+                                        var a= TongGia;
+                                        a = a / 1000;
+                                    }
+                                    @a.000 đ
+                                </p>
                             </div>
                             <div class="wrap-giamgia">
                                 <p class="sub-total">GIẢM GIÁ</p>
@@ -130,7 +142,13 @@
                         <div>
                             <div class="wrap-estimated-total">
                                 <p class="sub-total">TỔNG SỐ TIỀN </p>
-                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">117.000 đ</p>
+                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">
+                                    @{
+                                        var b = TongGia + 30000;
+                                        b = b / 1000;
+                                    }
+                                    @b.000 đ
+                                </p>
                             </div>
                         </div>
                         <button class="button-checkout">
@@ -167,7 +185,7 @@
         .imgPaymentMethod {
             margin-right: 16px;
         }
-        
+
         #wrap-order-summary {
             padding: 24px;
         }

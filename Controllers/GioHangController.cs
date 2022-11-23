@@ -267,6 +267,7 @@ namespace MoriiCoffee.Controllers
             });
         }
 
+        //ViewAction Giao diện Giao Hàng
         public ActionResult GiaoHang()
         {
             if (ModelState.IsValid)
@@ -280,18 +281,20 @@ namespace MoriiCoffee.Controllers
                     var ndd = nddao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
                 }
-                var cart = Session[CartSession];
-                var list = new List<CartItem>();
-                if (cart != null)
-                {
-                    list = (List<CartItem>)cart;
-
-                    var cartQtySession = list.Count();
-                    ViewBag.cartQtySession = cartQtySession;
-                }
-
             }
-            return View();
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+
+                var cartQtySession = list.Count();
+                ViewBag.cartQtySession = cartQtySession;
+            }
+
+            
+                
+            return View(list);
         }
         
 
