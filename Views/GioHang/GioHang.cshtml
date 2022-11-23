@@ -27,8 +27,52 @@
     </div>
 </section>
 <!-- //about breadcrumb -->
+<!-- //Nếu không có bất kì sản phẩm nào trong cửa hàng, sẽ hiện giao diện giỏ hàng trống-->
 
+@if (Model.Count() == 0)
+{
+    <div class="empty-cart-img">
+    <img class="" style="width:100%" src="~/Data/Files/cartEmpty3.png" />
 
+    <h1 class="empty-cart-alert centered-empty-cart">Chưa có sản phẩm trong giỏ hàng của bạn.</h1>
+        <a href="/thuc-don">
+
+        <button class="button-buy-now">Mua Sắm Ngay</button>
+        </a>
+    </div>
+    <style>
+        .empty-cart-img {
+            width: 100%;
+            position: relative;
+            text-align: center;
+            color: #000;
+        }
+
+        .centered-empty-cart {
+            position: absolute;
+            top: calc(50% + 300px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .button-buy-now {
+            position: absolute;
+            top: calc(50% + 390px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background-color: #146d4d;
+            border-radius: 15px;
+            padding: 26px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            color: #FFFFFF;
+        }
+    </style>
+}
+else
+{
 <div class="w3-services py-5">
     <div class="container" style="padding:24px 0;">
         <div class="form-horizontal">
@@ -85,7 +129,7 @@
                                             </div>
 
                                         </td>
-                                        
+
                                         <td style="padding-right: 30px;">
                                             <p class="total-price">
                                                 @{
@@ -141,281 +185,287 @@
             </div>
         </div>
     </div>
+</div>
 
-    <style>
-
-        #wrap-order-summary {
-            padding: 24px;
         }
 
-        .order-summary-title {
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 29px;
-            margin-bottom: 14px;
-        }
 
-        .wrap-sub-total {
-            display: flex;
-            margin-top: 20px;
-            justify-content: space-between;
-            margin-bottom: 48px;
-        }
 
-        .wrap-giamgia {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
 
-        .wrap-estimated-total {
-            display: flex;
-            justify-content: space-between;
-        }
+        <style>
 
-        .sub-total {
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 20px;
-            color: #000;
-        }
+            #wrap-order-summary {
+                padding: 24px;
+            }
 
-        .button-checkout {
-            margin-top: 36px;
-            border: none;
-            background-color: #146d4d;
-            border-radius: 15px;
-            padding: 16px;
-            width: 100%;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 22px;
-            color: #FFFFFF;
-        }
+            .order-summary-title {
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 29px;
+                margin-bottom: 14px;
+            }
 
-        #wrap-order-summary {
-            background-color: #F5F5F6;
-            border-radius: 15px;
-        }
+            .wrap-sub-total {
+                display: flex;
+                margin-top: 20px;
+                justify-content: space-between;
+                margin-bottom: 48px;
+            }
 
-        .img-product {
-            width: 120px;
-            height: 120px;
-            border-radius: 15px;
-            margin-right: 20px;
-        }
+            .wrap-giamgia {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-        .product-details {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-        }
+            .wrap-estimated-total {
+                display: flex;
+                justify-content: space-between;
+            }
 
-        .product-title {
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 26px;
-        }
+            .sub-total {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: #000;
+            }
 
-        .product-note {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 20px;
-            margin-bottom: 16px;
-            max-width: 260px;
-        }
-
-        .product-price {
-            font-style: normal;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 20px;
-            color: #146d4d;
-        }
-
-        .quantity-product {
-            width: 50px;
-            height: 33px;
-            border: 2px solid #CFCFCF;
-            text-align: center;
-            margin: 0 13px;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        .button-quantity {
-            background-color: transparent;
-            border: none;
-            font-weight: 400;
-            font-size: 36px;
-            line-height: 36px;
-            outline: none !important;
-        }
-
-        .total-price {
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 20px;
-            text-align: center;
-            color: #146d4d;
-        }
-
-        .img-header-avt:hover {
-            cursor: pointer
-        }
-
-        .form-check-label {
-            padding: 0.5rem 1rem;
-            font-size: 1.25rem;
-            line-height: 1.5;
-        }
-
-        .form-check-input {
-            padding: 7px;
-            width: 100%;
-            height: 2em;
-        }
-
-        button, input, select, label, li {
-            -webkit-appearance: button;
-        }
-
-        .form-group {
-            margin: 30px 0 30px 0;
-        }
-
-        .profile-header {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .profile-header-left {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .img-header {
-            margin-right: 50px;
-        }
-
-        .button-profile-save {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-            .button-profile-save > button {
+            .button-checkout {
+                margin-top: 36px;
+                border: none;
+                background-color: #146d4d;
+                border-radius: 15px;
+                padding: 16px;
+                width: 100%;
+                font-style: normal;
                 font-weight: 600;
                 font-size: 18px;
                 line-height: 22px;
-                background-color: #146d4d;
-                padding: 14px;
-                text-align: center;
                 color: #FFFFFF;
+            }
+
+            #wrap-order-summary {
+                background-color: #F5F5F6;
+                border-radius: 15px;
+            }
+
+            .img-product {
+                width: 120px;
+                height: 120px;
+                border-radius: 15px;
+                margin-right: 20px;
+            }
+
+            .product-details {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+            }
+
+            .product-title {
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 26px;
+            }
+
+            .product-note {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 20px;
+                margin-bottom: 16px;
+                max-width: 260px;
+            }
+
+            .product-price {
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 20px;
+                color: #146d4d;
+            }
+
+            .quantity-product {
+                width: 50px;
+                height: 33px;
+                border: 2px solid #CFCFCF;
+                text-align: center;
+                margin: 0 13px;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            .button-quantity {
+                background-color: transparent;
                 border: none;
-                border-radius: 8px;
+                font-weight: 400;
+                font-size: 36px;
+                line-height: 36px;
+                outline: none !important;
             }
 
+            .total-price {
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 20px;
+                text-align: center;
+                color: #146d4d;
+            }
 
+            .img-header-avt:hover {
+                cursor: pointer
+            }
 
-        hr.style10 {
-            border-top: 0.5px dotted #E5E5E5;
-            border-bottom: 1px dotted #fff;
-        }
-    </style>
+            .form-check-label {
+                padding: 0.5rem 1rem;
+                font-size: 1.25rem;
+                line-height: 1.5;
+            }
 
+            .form-check-input {
+                padding: 7px;
+                width: 100%;
+                height: 2em;
+            }
 
-    <script>
-        $(document).ready(function () {
-            $("#doiMatKhauButton").on('click',
-                function DoiMatKhau(e) {
-                    e.preventDefault();
-                    //Clear $(".message-error") and $('.message-success')
-                    $(".message-error").empty();
-                    $('.message-success').empty();
+            button, input, select, label, li {
+                -webkit-appearance: button;
+            }
 
-                    var id = $(this).data('id');
+            .form-group {
+                margin: 30px 0 30px 0;
+            }
 
-                    var oldPassword = $('#matKhauCuLabel').val();
-                    var newPassword = $('#matKhauMoiLabel').val();
-                    var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
+            .profile-header {
+                display: flex;
+                justify-content: space-between;
+            }
 
-                    console.log('Old Password ->>', oldPassword);
-                    console.log('New Password ->>', newPassword);
-                    console.log('Confirm New Password ->>', confirmNewPassword);
+            .profile-header-left {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-                    $.ajax({
-                        type: "POST",
-                        url: "/Profile/DoiMatKhau",
-                        data: {
-                            id: id,
-                            oldPassword: oldPassword,
-                            newPassword: newPassword,
-                            confirmNewPassword: confirmNewPassword
-                        },
-                        dataType: "json",
-                        success: function (res) {
-                            console.log("NguyenHuuLong --> ", res.msg);
-                            console.log("NguyenHuuLong --> err", res.err);
-                            if (res.isValid) {
-                                $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                            }
-                            if (res.err) {
-                                $(".message-error").append(res.err);
-                            }
-                            //window.location.replace("https://localhost:44309/");
-                        },
-                        error: function (err) {
-                            console.log("err --> ", err);
-                            console.log("err ->>", err.err);
-                        },
-                    });
+            .img-header {
+                margin-right: 50px;
+            }
 
+            .button-profile-save {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .button-profile-save > button {
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                    background-color: #146d4d;
+                    padding: 14px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    border: none;
+                    border-radius: 8px;
                 }
-            )
-        });
-    </script>
 
 
 
-    <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-            })
-        });
-    </script>
-
-    <script>
-        $(window).on("scroll", function () {
-            var scroll = $(window).scrollTop();
-
-            if (scroll >= 80) {
-                $("#site-header").addClass("nav-fixed");
-            } else {
-                $("#site-header").removeClass("nav-fixed");
+            hr.style10 {
+                border-top: 0.5px dotted #E5E5E5;
+                border-bottom: 1px dotted #fff;
             }
-        });
+        </style>
 
-        //Main navigation Active Class Add Remove
-        $(".navbar-toggler").on("click", function () {
-            $("header").toggleClass("active");
-        });
-        $(document).on("ready", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-            $(window).on("resize", function () {
+
+        <script>
+            $(document).ready(function () {
+                $("#doiMatKhauButton").on('click',
+                    function DoiMatKhau(e) {
+                        e.preventDefault();
+                        //Clear $(".message-error") and $('.message-success')
+                        $(".message-error").empty();
+                        $('.message-success').empty();
+
+                        var id = $(this).data('id');
+
+                        var oldPassword = $('#matKhauCuLabel').val();
+                        var newPassword = $('#matKhauMoiLabel').val();
+                        var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
+
+                        console.log('Old Password ->>', oldPassword);
+                        console.log('New Password ->>', newPassword);
+                        console.log('Confirm New Password ->>', confirmNewPassword);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/Profile/DoiMatKhau",
+                            data: {
+                                id: id,
+                                oldPassword: oldPassword,
+                                newPassword: newPassword,
+                                confirmNewPassword: confirmNewPassword
+                            },
+                            dataType: "json",
+                            success: function (res) {
+                                console.log("NguyenHuuLong --> ", res.msg);
+                                console.log("NguyenHuuLong --> err", res.err);
+                                if (res.isValid) {
+                                    $('.message-success').append("Thay đổi mật khẩu thành công. ");
+                                }
+                                if (res.err) {
+                                    $(".message-error").append(res.err);
+                                }
+                                //window.location.replace("https://localhost:44309/");
+                            },
+                            error: function (err) {
+                                console.log("err --> ", err);
+                                console.log("err ->>", err.err);
+                            },
+                        });
+
+                    }
+                )
+            });
+        </script>
+
+
+
+        <script>
+            $(function () {
+                $('.navbar-toggler').click(function () {
+                    $('body').toggleClass('noscroll');
+                })
+            });
+        </script>
+
+        <script>
+            $(window).on("scroll", function () {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= 80) {
+                    $("#site-header").addClass("nav-fixed");
+                } else {
+                    $("#site-header").removeClass("nav-fixed");
+                }
+            });
+
+            //Main navigation Active Class Add Remove
+            $(".navbar-toggler").on("click", function () {
+                $("header").toggleClass("active");
+            });
+            $(document).on("ready", function () {
                 if ($(window).width() > 991) {
                     $("header").removeClass("active");
                 }
+                $(window).on("resize", function () {
+                    if ($(window).width() > 991) {
+                        $("header").removeClass("active");
+                    }
+                });
             });
-        });
-    </script>
-    <!--//MENU-JS-->
+        </script>
+        <!--//MENU-JS-->
