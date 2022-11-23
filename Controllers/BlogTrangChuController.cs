@@ -23,6 +23,7 @@ namespace MoriiCoffee.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
+        private const string CartSession = "CartSession";
 
         public ActionResult Index()
         {
@@ -37,6 +38,7 @@ namespace MoriiCoffee.Controllers
                     var nd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = nd;
                 }
+
 
 
                 ViewBag.sanphams = spdao.ViewAll();

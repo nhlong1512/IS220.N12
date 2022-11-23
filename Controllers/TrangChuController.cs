@@ -19,6 +19,8 @@ namespace MoriiCoffee.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
+        private const string CartSession = "CartSession";
+
         // GET: TrangChu
 
         public ActionResult Index()

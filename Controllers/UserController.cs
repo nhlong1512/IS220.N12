@@ -23,6 +23,7 @@ namespace MoriiCoffee.Controllers
         private MoriiCoffeeDBContext _db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
         private NguoiDung nd = new NguoiDung();
+        private const string CartSession = "CartSession";
         public static string randomValidationCode;
         public static string emailForgotPassword;
         public static string msgSuccessSend;

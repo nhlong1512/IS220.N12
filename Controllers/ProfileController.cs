@@ -17,6 +17,8 @@ namespace MoriiCoffee.Controllers
         // GET: Profile
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
+        private const string CartSession = "CartSession";
+
         public ActionResult Index()
         {
             return View();
