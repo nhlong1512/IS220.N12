@@ -32,440 +32,441 @@
 @if (Model.Count() == 0)
 {
     <div class="empty-cart-img">
-    <img class="" style="width:100%" src="~/Data/Files/cartEmpty3.png" />
+        <img class="" style="width:100%" src="~/Data/Files/cartEmpty3.png" />
 
-    <h1 class="empty-cart-alert centered-empty-cart">Chưa có sản phẩm trong giỏ hàng của bạn.</h1>
+        <h1 class="empty-cart-alert centered-empty-cart">Chưa có sản phẩm trong giỏ hàng của bạn.</h1>
         <a href="/thuc-don">
 
-        <button class="button-buy-now">Mua Sắm Ngay</button>
+            <button class="button-buy-now">Mua Sắm Ngay</button>
         </a>
     </div>
-    <style>
-        .empty-cart-img {
-            width: 100%;
-            position: relative;
-            text-align: center;
-            color: #000;
-        }
-
-        .centered-empty-cart {
-            position: absolute;
-            top: calc(50% + 300px);
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .button-buy-now {
-            position: absolute;
-            top: calc(50% + 390px);
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: none;
-            background-color: #146d4d;
-            border-radius: 15px;
-            padding: 26px;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 22px;
-            color: #FFFFFF;
-        }
-    </style>
 }
 else
 {
-<div class="w3-services py-5">
-    <div class="container" style="padding:24px 0;">
-        <div class="form-horizontal">
-            <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Giỏ Hàng</h3>
-            <div class="row">
-                <div class="col-sm-8">
-                    <div style="">
-                        <hr class="style-10" />
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Sản Phẩm</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
+    <div class="w3-services py-5">
+        <div class="container" style="padding:24px 0;">
+            <div class="form-horizontal">
+                <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Giỏ Hàng</h3>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div style="">
+                            <hr class="style-10" />
+                            <table class="table table-borderless">
+                                <thead>
                                     <tr>
-                                        <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
-                                            <div class="img-product-wrap">
-                                                <img class="img-product" src="@item.ChiTietSanPham.UrlImage" />
-                                            </div>
-                                            <div class="product-details">
-                                                <div>
-                                                    <h3 class="product-title">
-                                                        @item.ChiTietSanPham.TenSanPham
-                                                    </h3>
-                                                    <p class="product-note" style="margin-bottom: 0">
-                                                        Size: @item.Size
-                                                    </p>
-                                                    <p class="product-note">
-                                                        @item.Topping
-                                                    </p>
-
-                                                </div>
-                                                <p class="product-price">
-                                                    @{
-                                                        var b = item.Gia;
-                                                        b = b / 1000;
-                                                    }
-                                                    @b.000 đ
-                                                </p>
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-
-                                                <button class="button-quantity">-</button>
-                                                <input class="quantity-product" type="number" value="@item.Quantity" readonly />
-                                                <button class="button-quantity">+</button>
-                                            </div>
-
-                                        </td>
-
-                                        <td style="padding-right: 30px;">
-                                            <p class="total-price">
-                                                @{
-                                                    var c = item.Gia * item.Quantity;
-                                                    c = c / 1000;
-                                                }
-                                                @c.000 đ
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <a style="display:flex; justify-content:center;">
-                                                <img src="~/Data/Files/deleteIcon.png" />
-                                            </a>
-                                        </td>
+                                        <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Sản Phẩm</th>
+                                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
+                                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
+                                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
                                     </tr>
-                                }
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
+                                                <div class="img-product-wrap">
+                                                    <img class="img-product" src="@item.ChiTietSanPham.UrlImage" />
+                                                </div>
+                                                <div class="product-details">
+                                                    <div>
+                                                        <h3 class="product-title">
+                                                            @item.ChiTietSanPham.TenSanPham
+                                                        </h3>
+                                                        <p class="product-note" style="margin-bottom: 0">
+                                                            Size: @item.Size
+                                                        </p>
+                                                        <p class="product-note">
+                                                            @item.Topping
+                                                        </p>
 
-                            </tbody>
-                        </table>
+                                                    </div>
+                                                    <p class="product-price">
+                                                        @{
+                                                            var b = item.Gia;
+                                                            b = b / 1000;
+                                                        }
+                                                        @b.000 đ
+                                                    </p>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+
+                                                    <button class="button-quantity">-</button>
+                                                    <input class="quantity-product" type="number" value="@item.Quantity" readonly />
+                                                    <button class="button-quantity">+</button>
+                                                </div>
+
+                                            </td>
+
+                                            <td style="padding-right: 30px;">
+                                                <p class="total-price">
+                                                    @{
+                                                        var c = item.Gia * item.Quantity;
+                                                        c = c / 1000;
+                                                    }
+                                                    @c.000 đ
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <a style="display:flex; justify-content:center;">
+                                                    <img src="~/Data/Files/deleteIcon.png" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
+                    <div class="col-sm-4">
+                        <div id="wrap-order-summary">
+                            <h3 class="order-summary-title">TỔNG ĐƠN</h3>
+                            <hr class="style-10" />
+                            <div style="margin-bottom: 100px;">
+                                <div class="wrap-sub-total">
+                                    <p class="sub-total">TỔNG TIỀN HÀNG</p>
+                                    <p class="sub-total" style="font-weight:600;">87.000 đ</p>
+                                </div>
+                                <div class="wrap-giamgia">
+                                    <p class="sub-total">GIẢM GIÁ</p>
+                                    <p class="sub-total" style="font-weight:600;">__</p>
+                                </div>
+                            </div>
 
-                </div>
-                <div class="col-sm-4">
-                    <div id="wrap-order-summary">
-                        <h3 class="order-summary-title">TỔNG ĐƠN</h3>
-                        <hr class="style-10" />
-                        <div style="margin-bottom: 100px;">
-                            <div class="wrap-sub-total">
-                                <p class="sub-total">TỔNG TIỀN HÀNG</p>
-                                <p class="sub-total" style="font-weight:600;">87.000 đ</p>
+                            <hr class="style-10" />
+                            <div>
+                                <div class="wrap-estimated-total">
+                                    <p class="sub-total">TỔNG SỐ TIỀN </p>
+                                    <p class="sub-total" style="color:#146d4d; font-weight: 600;">87.000 đ</p>
+                                </div>
                             </div>
-                            <div class="wrap-giamgia">
-                                <p class="sub-total">GIẢM GIÁ</p>
-                                <p class="sub-total" style="font-weight:600;">__</p>
-                            </div>
+                            <a href="/giao-hang">
+                                <button class="button-checkout">
+                                    THANH TOÁN
+                                </button>
+
+                            </a>
                         </div>
-
-                        <hr class="style-10" />
-                        <div>
-                            <div class="wrap-estimated-total">
-                                <p class="sub-total">TỔNG SỐ TIỀN </p>
-                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">87.000 đ</p>
-                            </div>
-                        </div>
-                        <a href="/giao-hang">
-                            <button class="button-checkout">
-                                THANH TOÁN
-                            </button>
-
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+}
+
+
+
+
+<style>
+
+    .empty-cart-img {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        color: #000;
+    }
+
+    .centered-empty-cart {
+        position: absolute;
+        top: calc(50% + 300px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+    .button-buy-now {
+        position: absolute;
+        top: calc(50% + 390px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 26px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        padding: 24px;
+    }
+
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 120px;
+        height: 120px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+        max-width: 260px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #146d4d;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #146d4d;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
         }
 
 
 
-
-        <style>
-
-            #wrap-order-summary {
-                padding: 24px;
-            }
-
-            .order-summary-title {
-                font-weight: 600;
-                font-size: 24px;
-                line-height: 29px;
-                margin-bottom: 14px;
-            }
-
-            .wrap-sub-total {
-                display: flex;
-                margin-top: 20px;
-                justify-content: space-between;
-                margin-bottom: 48px;
-            }
-
-            .wrap-giamgia {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .wrap-estimated-total {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .sub-total {
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 20px;
-                color: #000;
-            }
-
-            .button-checkout {
-                margin-top: 36px;
-                border: none;
-                background-color: #146d4d;
-                border-radius: 15px;
-                padding: 16px;
-                width: 100%;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 18px;
-                line-height: 22px;
-                color: #FFFFFF;
-            }
-
-            #wrap-order-summary {
-                background-color: #F5F5F6;
-                border-radius: 15px;
-            }
-
-            .img-product {
-                width: 120px;
-                height: 120px;
-                border-radius: 15px;
-                margin-right: 20px;
-            }
-
-            .product-details {
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
-            }
-
-            .product-title {
-                font-weight: 600;
-                font-size: 20px;
-                line-height: 26px;
-            }
-
-            .product-note {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 20px;
-                margin-bottom: 16px;
-                max-width: 260px;
-            }
-
-            .product-price {
-                font-style: normal;
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 20px;
-                color: #146d4d;
-            }
-
-            .quantity-product {
-                width: 50px;
-                height: 33px;
-                border: 2px solid #CFCFCF;
-                text-align: center;
-                margin: 0 13px;
-            }
-
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-
-            .button-quantity {
-                background-color: transparent;
-                border: none;
-                font-weight: 400;
-                font-size: 36px;
-                line-height: 36px;
-                outline: none !important;
-            }
-
-            .total-price {
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 20px;
-                text-align: center;
-                color: #146d4d;
-            }
-
-            .img-header-avt:hover {
-                cursor: pointer
-            }
-
-            .form-check-label {
-                padding: 0.5rem 1rem;
-                font-size: 1.25rem;
-                line-height: 1.5;
-            }
-
-            .form-check-input {
-                padding: 7px;
-                width: 100%;
-                height: 2em;
-            }
-
-            button, input, select, label, li {
-                -webkit-appearance: button;
-            }
-
-            .form-group {
-                margin: 30px 0 30px 0;
-            }
-
-            .profile-header {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .profile-header-left {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .img-header {
-                margin-right: 50px;
-            }
-
-            .button-profile-save {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-                .button-profile-save > button {
-                    font-weight: 600;
-                    font-size: 18px;
-                    line-height: 22px;
-                    background-color: #146d4d;
-                    padding: 14px;
-                    text-align: center;
-                    color: #FFFFFF;
-                    border: none;
-                    border-radius: 8px;
-                }
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+</style>
 
 
+<script>
+    $(document).ready(function () {
+        $("#doiMatKhauButton").on('click',
+            function DoiMatKhau(e) {
+                e.preventDefault();
+                //Clear $(".message-error") and $('.message-success')
+                $(".message-error").empty();
+                $('.message-success').empty();
 
-            hr.style10 {
-                border-top: 0.5px dotted #E5E5E5;
-                border-bottom: 1px dotted #fff;
-            }
-        </style>
+                var id = $(this).data('id');
 
+                var oldPassword = $('#matKhauCuLabel').val();
+                var newPassword = $('#matKhauMoiLabel').val();
+                var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
 
-        <script>
-            $(document).ready(function () {
-                $("#doiMatKhauButton").on('click',
-                    function DoiMatKhau(e) {
-                        e.preventDefault();
-                        //Clear $(".message-error") and $('.message-success')
-                        $(".message-error").empty();
-                        $('.message-success').empty();
+                console.log('Old Password ->>', oldPassword);
+                console.log('New Password ->>', newPassword);
+                console.log('Confirm New Password ->>', confirmNewPassword);
 
-                        var id = $(this).data('id');
-
-                        var oldPassword = $('#matKhauCuLabel').val();
-                        var newPassword = $('#matKhauMoiLabel').val();
-                        var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
-
-                        console.log('Old Password ->>', oldPassword);
-                        console.log('New Password ->>', newPassword);
-                        console.log('Confirm New Password ->>', confirmNewPassword);
-
-                        $.ajax({
-                            type: "POST",
-                            url: "/Profile/DoiMatKhau",
-                            data: {
-                                id: id,
-                                oldPassword: oldPassword,
-                                newPassword: newPassword,
-                                confirmNewPassword: confirmNewPassword
-                            },
-                            dataType: "json",
-                            success: function (res) {
-                                console.log("NguyenHuuLong --> ", res.msg);
-                                console.log("NguyenHuuLong --> err", res.err);
-                                if (res.isValid) {
-                                    $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                                }
-                                if (res.err) {
-                                    $(".message-error").append(res.err);
-                                }
-                                //window.location.replace("https://localhost:44309/");
-                            },
-                            error: function (err) {
-                                console.log("err --> ", err);
-                                console.log("err ->>", err.err);
-                            },
-                        });
-
-                    }
-                )
-            });
-        </script>
-
-
-
-        <script>
-            $(function () {
-                $('.navbar-toggler').click(function () {
-                    $('body').toggleClass('noscroll');
-                })
-            });
-        </script>
-
-        <script>
-            $(window).on("scroll", function () {
-                var scroll = $(window).scrollTop();
-
-                if (scroll >= 80) {
-                    $("#site-header").addClass("nav-fixed");
-                } else {
-                    $("#site-header").removeClass("nav-fixed");
-                }
-            });
-
-            //Main navigation Active Class Add Remove
-            $(".navbar-toggler").on("click", function () {
-                $("header").toggleClass("active");
-            });
-            $(document).on("ready", function () {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
-                $(window).on("resize", function () {
-                    if ($(window).width() > 991) {
-                        $("header").removeClass("active");
-                    }
+                $.ajax({
+                    type: "POST",
+                    url: "/Profile/DoiMatKhau",
+                    data: {
+                        id: id,
+                        oldPassword: oldPassword,
+                        newPassword: newPassword,
+                        confirmNewPassword: confirmNewPassword
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        console.log("NguyenHuuLong --> ", res.msg);
+                        console.log("NguyenHuuLong --> err", res.err);
+                        if (res.isValid) {
+                            $('.message-success').append("Thay đổi mật khẩu thành công. ");
+                        }
+                        if (res.err) {
+                            $(".message-error").append(res.err);
+                        }
+                        //window.location.replace("https://localhost:44309/");
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
                 });
-            });
-        </script>
-        <!--//MENU-JS-->
+
+            }
+        )
+    });
+</script>
+
+
+
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!--//MENU-JS-->

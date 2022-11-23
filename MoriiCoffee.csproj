@@ -1572,10 +1572,14 @@
     <Content Include="Data\Files\Bg-main-3.jpeg" />
     <Content Include="Data\Files\Capture.PNG" />
     <Content Include="Data\Files\caramel-macchiato_830x550.jpg" />
+    <Content Include="Data\Files\cartEmpty1.png" />
+    <Content Include="Data\Files\cartEmpty2.png" />
+    <Content Include="Data\Files\cartEmpty3.png" />
     <Content Include="Data\Files\COD-png.png" />
     <Content Include="Data\Files\COD-svg.svg" />
     <Content Include="Data\Files\deleteIcon.png" />
     <Content Include="Data\Files\dots-option.png" />
+    <Content Include="Data\Files\emptyCart4.png" />
     <Content Include="Data\Files\HAT.jpg" />
     <Content Include="Data\Files\HAT2.png" />
     <Content Include="Data\Files\kemCheese.jpg" />

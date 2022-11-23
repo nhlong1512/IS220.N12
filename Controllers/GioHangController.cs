@@ -95,12 +95,24 @@ namespace MoriiCoffee.Controllers
                 var list = (List<CartItem>)cart;
                 if (list.Exists(x => x.ChiTietSanPham.ID == id))
                 {
+                    var flag = false;
                     foreach (var item in list)
                     {
                         if (item.ChiTietSanPham.ID == id && item.Size == size && item.Topping == topping && item.Gia == gia)
                         {
                             item.Quantity += 1;
+                            flag = true;
                         }
+                    }
+                    if(!flag)
+                    {
+                        var item = new CartItem();
+                        item.ChiTietSanPham = sanpham;
+                        item.Quantity = 1;
+                        item.Gia = gia;
+                        item.Topping = topping;
+                        item.Size = size;
+                        list.Add(item);
                     }
                 }
                 else
