@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "MoriiCoffee";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<a href="~/Views/GiaoHang/data.json"></a>
+
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Tài Khoản Của Tôi</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Đặt Hàng</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span>Giao Hàng</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="col-md-6 form-group">
+    <label>Tỉnh/Thành phố</label>
+    <select class="form-control" name="" id="province">
+        <option value="-1">Chọn tỉnh/thành phố</option>
+    </select>
+</div>
+<div class="col-md-6 form-group">
+    <label>Quận/huyện</label>
+    <select class="form-control" name="" id="district">
+        <option value="-1">Chọn quận/huyện</option>
+    </select>
+</div>
+
+
+<div class="col-md-6 form-group">
+    <label>Phường/xã</label>
+    <select class="form-control" name="" id="town">
+        <option value="-1">Chọn phường/xã</option>
+    </select>
+</div>
+<div class="col-md-6 form-group">
+    <label>Số nhà/thôn/xóm</label>
+    <input id="cart-town" class="form-control" type="text" placeholder="166, ấp Tân Phú 2">
+</div>
+
+<script>
+    $(document).ready(function () {
+        apiProvince = (prodvince) => {
+            let district;
+
+            prodvince.forEach(element => {
+                $('#province').append(`<option value="${element.name}">${element.name}</option>`)
+            });
+            $('#province').change(function () {
+                $('#district').html('<option value="-1">Chọn quận/huyện</option>')
+                $('#town').html('<option value = "-1"> Chọn phường/xã </option>')
+                let value = $(this).val();
+                $.each(prodvince, function (index, element) {
+                    if (element.name == value) {
+                        district = element.districts;
+                        $.each(element.districts, function (index, element1) {
+                            $('#district').append(`<option value="${element1.name}">${element1.name}</option>`)
+                        })
+
+                    }
+                })
+            });
+            $('#district').change(function () {
+                $('#town').html('<option value = "-1"> Chọn phường/xã </option>')
+                let value = $(this).val();
+                $.each(district, function (index, element) {
+                    if (element.name == value) {
+                        element.wards.forEach(element1 => {
+                            $('#town').append(`<option value="${element1.name}">${element1.name}</option>`)
+                        });
+                    }
+                })
+            });
+        }
+        //cách 1 lấy dữ liệu từ file json
+        prodvince = JSON.parse(data);
+        apiProvince(prodvince);
+    })
+</script>

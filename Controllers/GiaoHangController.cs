@@ -42,5 +42,10 @@ namespace MoriiCoffee.Controllers
             }
             return View(list);
         }
+
+        public ActionResult Province()
+        {
+            return View();
+        }
     }
 }
