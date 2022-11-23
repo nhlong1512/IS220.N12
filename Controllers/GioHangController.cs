@@ -88,6 +88,8 @@ namespace MoriiCoffee.Controllers
             return Redirect("/gio-hang");
         }
 
+
+        //Handle phương thức thêm giỏ hàng trong mục deltail sản phẩm
         [HttpPost]
         public JsonResult ThemGioHangJson(long id, string size, string topping, long gia)
         {
@@ -149,6 +151,43 @@ namespace MoriiCoffee.Controllers
             {
                 status = true,
                 id = id, 
+                size = size,
+                topping = topping,
+                gia = gia
+            });
+        }
+
+        //Handle thêm quantity trong giỏ hàng
+        [HttpPost]
+        public JsonResult IncreaseQtyJson(long id, string size, string topping, long gia)
+        {
+            //Update Qty cho Session
+            var cart = Session[CartSession];
+            if (cart != null)
+            {
+                var list = (List<CartItem>)cart;
+                if (list.Exists(x => x.ChiTietSanPham.ID == id))
+                {
+                    var flag = false;
+                    foreach (var item in list)
+                    {
+                        if (item.ChiTietSanPham.ID == id && item.Size == size && item.Topping == topping && item.Gia == gia)
+                        {
+                            item.Quantity += 1;
+                            flag = true;
+                        }
+                    }
+                    
+                }
+                
+                Session[CartSession] = list;
+            }
+
+
+            return Json(new
+            {
+                status = true,
+                id = id,
                 size = size,
                 topping = topping,
                 gia = gia
