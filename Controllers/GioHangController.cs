@@ -230,6 +230,43 @@ namespace MoriiCoffee.Controllers
             });
         }
 
+
+        //Handle Xóa CartItem trong giỏ hàng
+        [HttpPost]
+        public JsonResult DeleteItemJson(long id, string size, string topping, long gia)
+        {
+            //Duyệt mảng, delete CartItem
+            var cart = Session[CartSession];
+            if (cart != null)
+            {
+                var list = (List<CartItem>)cart;
+                if (list.Exists(x => x.ChiTietSanPham.ID == id))
+                {
+                    var flag = false;
+                    foreach (var item in list)
+                    {
+                        if (item.ChiTietSanPham.ID == id && item.Size == size && item.Topping == topping && item.Gia == gia)
+                        {
+                            list.Remove(item);
+                            flag = true;
+                        }
+                        if(flag==true)
+                        {
+                            break;
+                        }
+                    }
+
+                }
+                Session[CartSession] = list;
+            }
+
+
+            return Json(new
+            {
+                status = true,
+            });
+        }
+
         public ActionResult GiaoHang()
         {
             if (ModelState.IsValid)

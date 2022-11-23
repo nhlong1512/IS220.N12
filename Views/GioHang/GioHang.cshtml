@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var nd = ViewBag.ndd;
     long TongGia = 0;
-    
+
 }
 
 @model List<MoriiCoffee.Common.CartItem>
@@ -64,7 +64,7 @@ else
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        
+
                                         <tr>
                                             <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
                                                 <div class="img-product-wrap">
@@ -95,12 +95,12 @@ else
                                             <td>
                                                 <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
 
-                                                    <button class="button-quantity-decrease" id="decreaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
+                                                    <button class="button-quantity-decrease" id="decreaseQtyButton" data-id="@item.ChiTietSanPham.ID"
                                                             data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia" data-qty="@item.Quantity">
                                                         -
                                                     </button>
                                                     <input class="quantity-product" type="number" value="@item.Quantity" readonly />
-                                                    <button class="button-quantity-increase" id="increaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
+                                                    <button class="button-quantity-increase" id="increaseQtyButton" data-id="@item.ChiTietSanPham.ID"
                                                             data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia">
                                                         +
                                                     </button>
@@ -120,7 +120,8 @@ else
                                                 </p>
                                             </td>
                                             <td>
-                                                <a style="display:flex; justify-content:center;">
+                                                <a class="button-delete" style="display:flex; justify-content:center;" data-id="@item.ChiTietSanPham.ID"
+                                                   data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia">
                                                     <img src="~/Data/Files/deleteIcon.png" />
                                                 </a>
                                             </td>
@@ -222,9 +223,46 @@ else
                 console.log("Quantity", qty);
                 console.log("DecreaseButton", id, size, topping, gia, qty);
                 if (qty > 1) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/GioHang/DecreaseQtyJson",
+                        data: {
+                            id: id,
+                            size: size,
+                            topping: topping,
+                            gia: gia
+                        },
+                        dataType: "json",
+                        success: function (res) {
+                            console.log("NguyenHuuLong --> ", res.msg);
+                            console.log("NguyenHuuLong --> err", res.err);
+                            console.log(res.id, res.size, res.gia, res.topping);
+
+                            window.location.replace("https://localhost:44309/gio-hang");
+                        },
+                        error: function (err) {
+                            console.log("err --> ", err);
+                            console.log("err ->>", err.err);
+                        },
+                    });
+                }
+            }
+        )
+
+
+        $('.button-delete').on('click',
+            function handleClickIncreaseQty(e) {
+                e.preventDefault();
+                var id = $(this).data("id");
+                var size = $(this).data("size");
+                var topping = $(this).data("topping");
+                var gia = $(this).data("gia");
+                var qty = $(this).data("qty")
+                console.log("DeleteButton", id, size, topping, gia);
+
                 $.ajax({
                     type: "POST",
-                    url: "/GioHang/DecreaseQtyJson",
+                    url: "/GioHang/DeleteItemJson",
                     data: {
                         id: id,
                         size: size,
@@ -235,8 +273,7 @@ else
                     success: function (res) {
                         console.log("NguyenHuuLong --> ", res.msg);
                         console.log("NguyenHuuLong --> err", res.err);
-                        console.log(res.id, res.size, res.gia, res.topping);
-
+                        console.log(res.status)
                         window.location.replace("https://localhost:44309/gio-hang");
                     },
                     error: function (err) {
@@ -244,7 +281,6 @@ else
                         console.log("err ->>", err.err);
                     },
                 });
-                }
             }
         )
 
