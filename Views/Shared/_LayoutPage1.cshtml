@@ -3,6 +3,7 @@
 @{
     var session = ViewBag.session;
     var nd = ViewBag.ndd;
+    var cartQtySession = ViewBag.CartQtySession;
 }
 <html>
 <head>
@@ -276,10 +277,20 @@
                     </a>
 
                 </div>
-                <div class="top_menu_unseen">
-                    3
-                </div>
+                @if (cartQtySession != null)
+                {
+                    <div class="top_menu_unseen">
 
+                        @cartQtySession
+                    </div>
+                }
+                else
+                {
+                    <div class="top_menu_unseen">
+
+                        0
+                    </div>
+                }
 
             </nav>
 
@@ -289,6 +300,7 @@
     <div>
         @RenderBody()
     </div>
+    
     <!-- footer-66 -->
     <footer class="w3l-footer-66">
         <section class="footer-inner-main">

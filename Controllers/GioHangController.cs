@@ -25,6 +25,7 @@ namespace MoriiCoffee.Controllers
             {
                 var session = new UserLogin();
                 session = (UserLogin)Session[CommonConstants.USER_SESSION];
+                
 
                 if (!(session is null))
                 {
@@ -39,6 +40,9 @@ namespace MoriiCoffee.Controllers
             if(cart != null)
             {
                 list = (List<CartItem>)cart;
+
+                var cartQtySession = list.Count();
+                ViewBag.cartQtySession = cartQtySession;
             }
             return View(list);
         }
