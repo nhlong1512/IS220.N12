@@ -267,35 +267,7 @@ namespace MoriiCoffee.Controllers
             });
         }
 
-        //ViewAction Giao diện Giao Hàng
-        public ActionResult GiaoHang()
-        {
-            if (ModelState.IsValid)
-            {
-                var session = new UserLogin();
-                session = (UserLogin)Session[CommonConstants.USER_SESSION];
-
-                if (!(session is null))
-                {
-                    ViewBag.session = session;
-                    var ndd = nddao.ViewDetailEmail(session.UserName);
-                    ViewBag.ndd = ndd;
-                }
-            }
-            var cart = Session[CartSession];
-            var list = new List<CartItem>();
-            if (cart != null)
-            {
-                list = (List<CartItem>)cart;
-
-                var cartQtySession = list.Count();
-                ViewBag.cartQtySession = cartQtySession;
-            }
-
-            
-                
-            return View(list);
-        }
+        
         
 
 

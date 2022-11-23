@@ -2626,6 +2626,7 @@
     <Compile Include="Controllers\BlogTrangChuController.cs" />
     <Compile Include="Controllers\CauChuyenController.cs" />
     <Compile Include="Controllers\CuaHangController.cs" />
+    <Compile Include="Controllers\GiaoHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\LayoutClientController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
@@ -2742,9 +2743,9 @@
     <Content Include="Views\Profile\Update.cshtml" />
     <Content Include="Views\Profile\DoiMatKhau.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
-    <Content Include="Views\GioHang\GiaoHang.cshtml" />
     <Content Include="Views\Profile\DonDat.cshtml" />
     <Content Include="Views\Profile\ChiTietDonDat.cshtml" />
+    <Content Include="Views\GiaoHang\GiaoHang.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

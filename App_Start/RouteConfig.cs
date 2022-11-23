@@ -145,10 +145,11 @@ namespace MoriiCoffee
           );
 
 
+            //Config Route cho Giao Hàng
             routes.MapRoute(
               name: "GiaoHang",
               url: "giao-hang",
-              defaults: new { controller = "GioHang", action = "GiaoHang", id = UrlParameter.Optional }
+              defaults: new { controller = "GiaoHang", action = "GiaoHang", id = UrlParameter.Optional }
           );
 
 

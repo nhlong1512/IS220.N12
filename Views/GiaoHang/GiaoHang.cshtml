@@ -3,6 +3,7 @@
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     long TongGia = 0;
+    var nd = ViewBag.ndd;
 }
 
 @model List<MoriiCoffee.Common.CartItem>
@@ -44,17 +45,17 @@
 
                             <div class="form-group row" style="margin-top:0">
                                 <div class="col-sm-12" style="padding-left: 0;">
-                                    <input type="text" class="form-control form-control-lg" id="hoTenLabel" placeholder="Họ Tên" name="HoTen">
+                                    <input type="text" class="form-control form-control-lg" id="hoTenLabel" placeholder="Họ Tên" name="HoTen" value="@nd.HoTen">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12" style="padding-left: 0;">
-                                    <input type="number" class="form-control form-control-lg" id="phoneLabel" placeholder="SĐT" name="SDT">
+                                    <input type="number" class="form-control form-control-lg" id="phoneLabel" placeholder="SĐT" name="SDT" value="@nd.SDT">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12" style="padding-left: 0;">
-                                    <input type="email" class="form-control form-control-lg" id="emailLabel" placeholder="Email" name="Email">
+                                    <input type="email" class="form-control form-control-lg" id="emailLabel" placeholder="Email" name="Email" value="@nd.Email">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -122,7 +123,7 @@
                                 <p class="sub-total">TỔNG TIỀN HÀNG</p>
                                 <p class="sub-total" style="font-weight:600;">
                                     @{
-                                        var a= TongGia;
+                                        var a = TongGia;
                                         a = a / 1000;
                                     }
                                     @a.000 đ
@@ -378,91 +379,3 @@
     </style>
 
 
-    <script>
-        $(document).ready(function () {
-            $("#doiMatKhauButton").on('click',
-                function DoiMatKhau(e) {
-                    e.preventDefault();
-                    //Clear $(".message-error") and $('.message-success')
-                    $(".message-error").empty();
-                    $('.message-success').empty();
-
-                    var id = $(this).data('id');
-
-                    var oldPassword = $('#matKhauCuLabel').val();
-                    var newPassword = $('#matKhauMoiLabel').val();
-                    var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
-
-                    console.log('Old Password ->>', oldPassword);
-                    console.log('New Password ->>', newPassword);
-                    console.log('Confirm New Password ->>', confirmNewPassword);
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/Profile/DoiMatKhau",
-                        data: {
-                            id: id,
-                            oldPassword: oldPassword,
-                            newPassword: newPassword,
-                            confirmNewPassword: confirmNewPassword
-                        },
-                        dataType: "json",
-                        success: function (res) {
-                            console.log("NguyenHuuLong --> ", res.msg);
-                            console.log("NguyenHuuLong --> err", res.err);
-                            if (res.isValid) {
-                                $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                            }
-                            if (res.err) {
-                                $(".message-error").append(res.err);
-                            }
-                            //window.location.replace("https://localhost:44309/");
-                        },
-                        error: function (err) {
-                            console.log("err --> ", err);
-                            console.log("err ->>", err.err);
-                        },
-                    });
-
-                }
-            )
-        });
-    </script>
-
-
-
-    <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-            })
-        });
-    </script>
-
-    <script>
-        $(window).on("scroll", function () {
-            var scroll = $(window).scrollTop();
-
-            if (scroll >= 80) {
-                $("#site-header").addClass("nav-fixed");
-            } else {
-                $("#site-header").removeClass("nav-fixed");
-            }
-        });
-
-        //Main navigation Active Class Add Remove
-        $(".navbar-toggler").on("click", function () {
-            $("header").toggleClass("active");
-        });
-        $(document).on("ready", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-            $(window).on("resize", function () {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
-            });
-        });
-    </script>
-    <!--//MENU-JS-->

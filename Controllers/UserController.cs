@@ -289,6 +289,7 @@ namespace MoriiCoffee.Controllers
 
             //LongCode
             Session[CommonConstants.USER_SESSION] = null;
+            Session["CartSession"] = null;
             return Redirect("/");
 
         }
