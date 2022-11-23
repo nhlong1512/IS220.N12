@@ -95,12 +95,12 @@ else
                                             <td>
                                                 <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
 
-                                                    <button class="button-quantity" id="decreaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
+                                                    <button class="button-quantity-decrease" id="decreaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
                                                             data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia" data-qty="@item.Quantity">
                                                         -
                                                     </button>
                                                     <input class="quantity-product" type="number" value="@item.Quantity" readonly />
-                                                    <button class="button-quantity" id="increaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
+                                                    <button class="button-quantity-increase" id="increaseQtyButton" data-id="@item.ChiTietSanPham.ID" 
                                                             data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia">
                                                         +
                                                     </button>
@@ -178,7 +178,7 @@ else
 
 <script>
     $(document).ready(function () {
-        $("#increaseQtyButton").on('click',
+        $(".button-quantity-increase").on('click',
             function handleClickIncreaseQty(e) {
                 e.preventDefault();
                 var id = $(this).data("id");
@@ -211,7 +211,7 @@ else
             }
         )
 
-        $('#decreaseQtyButton').on('click',
+        $('.button-quantity-decrease').on('click',
             function handleClickIncreaseQty(e) {
                 e.preventDefault();
                 var id = $(this).data("id");
@@ -389,7 +389,7 @@ else
         margin: 0;
     }
 
-    .button-quantity {
+    .button-quantity-decrease {
         background-color: transparent;
         border: none;
         font-weight: 400;
@@ -397,6 +397,17 @@ else
         line-height: 36px;
         outline: none !important;
     }
+
+    .button-quantity-increase {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+
 
     .total-price {
         font-weight: 600;
