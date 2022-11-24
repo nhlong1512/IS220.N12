@@ -64,16 +64,16 @@
                                 </div>
                             </div>
                             @*<div class="form-group row">
-                                <div class="col-sm-4" style="padding-left: 0;">
-                                    <input type="text" class="form-control form-control-lg" id="tinhLabel" placeholder="Tỉnh/Thành Phố" name="">
-                                </div>
-                                <div class="col-sm-4" style="padding-left: 0;">
-                                    <input type="text" class="form-control form-control-lg" id="huyenLabel" placeholder="Quận/Huyện" name="">
-                                </div>
-                                <div class="col-sm-4" style="padding-left: 0;">
-                                    <input type="text" class="form-control form-control-lg" id="xaLabel" placeholder="Phường/Xã" name="">
-                                </div>
-                            </div>*@
+                                    <div class="col-sm-4" style="padding-left: 0;">
+                                        <input type="text" class="form-control form-control-lg" id="tinhLabel" placeholder="Tỉnh/Thành Phố" name="">
+                                    </div>
+                                    <div class="col-sm-4" style="padding-left: 0;">
+                                        <input type="text" class="form-control form-control-lg" id="huyenLabel" placeholder="Quận/Huyện" name="">
+                                    </div>
+                                    <div class="col-sm-4" style="padding-left: 0;">
+                                        <input type="text" class="form-control form-control-lg" id="xaLabel" placeholder="Phường/Xã" name="">
+                                    </div>
+                                </div>*@
                             <div class="form-group row">
                                 <div class="col-sm-12" style="padding-left: 0;">
                                     <input type="text" class="form-control form-control-lg" id="noteLabel" placeholder="Ghi Chú (VD: Không Đá, Giao Trước 11 Giờ,...)" name="">
@@ -89,7 +89,7 @@
 
                         <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px; margin-top: 60px;">Phương Thức Thanh Toán</h3>
                         <div class="form-check col-sm-12" style="">
-                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="COD" checked>
                             <label class="labelPaymentMethod" for="flexRadioDefault1" style="margin-bottom: 0;">
                                 <img class="imgPaymentMethod" src="~/Data/Files/COD-svg.svg" />
                                 COD
@@ -98,14 +98,14 @@
                         <style>
                         </style>
                         <div class="form-check">
-                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Momo">
                             <label class="labelPaymentMethod" for="flexRadioDefault2" style="margin-bottom: 0;">
                                 <img class="imgPaymentMethod" src="~/Data/Files/Momo-png.png" />
                                 Momo
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                            <input class="paymentMethodInput" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Paypal">
                             <label class="labelPaymentMethod" for="flexRadioDefault3" style="margin-bottom: 0;">
                                 <img class="imgPaymentMethod" src="~/Data/Files/Paypal-svg.svg" />
                                 Paypal
@@ -152,7 +152,7 @@
                                 </p>
                             </div>
                         </div>
-                        <button class="button-checkout">
+                        <button data-id="@nd.ID" class="button-checkout">
                             ĐẶT GIAO
                         </button>
                     </div>
@@ -160,221 +160,269 @@
             </div>
         </div>
     </div>
+</div>
 
-    <style>
-        .form-check {
-            padding: 8px 16px;
-            padding: 0.5rem 1rem;
-            font-size: 1.25rem;
-            line-height: 1.5;
-            border-radius: 0.3rem;
-            border: 1px solid #ced4da;
-            margin-bottom: 20px;
-        }
+<script>
+    $(document).ready(function () {
+        $(".button-checkout").on('click',
+            function handleClickCheckout(e) {
+                e.preventDefault();
+                console.log("Long")
+                var id = $(this).data("id");
+                var hoTen = $('#hoTenLabel').val();
+                var sdt = $('#phoneLabel').val();
+                var email = $('#emailLabel').val();
+                var diaChi = $('#addressLabel').val();
+                var ghiChu = $('#noteLabel').val();
+                var pttt = "";
+                var pttt = $('input[name="flexRadioDefault"]:checked').val();
+                console.log(id, hoTen, sdt, email, diaChi, ghiChu, pttt);
 
-        .labelPaymentMethod {
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 20px;
-            color: #000000;
-        }
 
-        .paymentMethodInput {
-            margin-right: 40px;
-        }
 
-        .imgPaymentMethod {
-            margin-right: 16px;
-        }
 
-        #wrap-order-summary {
-            padding: 24px;
-        }
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/GiaoHang/DatGiaoJson",
+                //    data: {
+                //        id: id,
+                //        hoTen: hoTen,
+                //        sdt: sdt,
+                //        email: email,
+                //        diaChi: diaChi,
+                //        ghiChu: ghiChu,
+                //    },
+                //    dataType: "json",
+                //    success: function (res) {
+                //        console.log("NguyenHuuLong --> ", res.msg);
+                //        console.log("NguyenHuuLong --> err", res.err);
+                //        console.log(res.id, res.size, res.gia, res.topping);
+                //        //window.location.replace("https://localhost:44309/gio-hang");
+                //    },
+                //    error: function (err) {
+                //        console.log("err --> ", err);
+                //        console.log("err ->>", err.err);
+                //    },
+                //});
+            }
+        )
+    })
+</script>
 
-        .order-summary-title {
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 29px;
-            margin-bottom: 14px;
-        }
+<style>
+    .form-check {
+        padding: 8px 16px;
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        border-radius: 0.3rem;
+        border: 1px solid #ced4da;
+        margin-bottom: 20px;
+    }
 
-        .wrap-sub-total {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
+    .labelPaymentMethod {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000000;
+    }
 
-        .wrap-giamgia {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+    .paymentMethodInput {
+        margin-right: 40px;
+    }
 
-        .wrap-phivanchuyen {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .imgPaymentMethod {
+        margin-right: 16px;
+    }
 
-        .wrap-estimated-total {
-            display: flex;
-            justify-content: space-between;
-        }
+    #wrap-order-summary {
+        padding: 24px;
+    }
 
-        .sub-total {
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 20px;
-            color: #000;
-        }
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
 
-        .button-checkout {
-            margin-top: 36px;
-            border: none;
-            background-color: #146d4d;
-            border-radius: 15px;
-            padding: 16px;
-            width: 100%;
-            font-style: normal;
+    .wrap-sub-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .wrap-phivanchuyen {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 100px;
+        height: 100px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #146d4d;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #146d4d;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
             font-weight: 600;
             font-size: 18px;
             line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
             color: #FFFFFF;
-        }
-
-        #wrap-order-summary {
-            background-color: #F5F5F6;
-            border-radius: 15px;
-        }
-
-        .img-product {
-            width: 100px;
-            height: 100px;
-            border-radius: 15px;
-            margin-right: 20px;
-        }
-
-        .product-details {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-        }
-
-        .product-title {
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 26px;
-        }
-
-        .product-note {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 20px;
-            margin-bottom: 16px;
-        }
-
-        .product-price {
-            font-style: normal;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 20px;
-            color: #146d4d;
-        }
-
-        .quantity-product {
-            width: 50px;
-            height: 33px;
-            border: 2px solid #CFCFCF;
-            text-align: center;
-            margin: 0 13px;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        .button-quantity {
-            background-color: transparent;
             border: none;
-            font-weight: 400;
-            font-size: 36px;
-            line-height: 36px;
-            outline: none !important;
+            border-radius: 8px;
         }
 
-        .total-price {
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 20px;
-            text-align: center;
-            color: #146d4d;
-        }
-
-        .img-header-avt:hover {
-            cursor: pointer
-        }
-
-        .form-check-label {
-            padding: 0.5rem 1rem;
-            font-size: 1.25rem;
-            line-height: 1.5;
-        }
-
-        .form-check-input {
-            padding: 7px;
-            width: 100%;
-            height: 2em;
-        }
-
-        button, input, select, label, li {
-            -webkit-appearance: button;
-        }
-
-        .form-group {
-            margin: 30px 0 30px 0;
-        }
-
-        .profile-header {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .profile-header-left {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .img-header {
-            margin-right: 50px;
-        }
-
-        .button-profile-save {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-            .button-profile-save > button {
-                font-weight: 600;
-                font-size: 18px;
-                line-height: 22px;
-                background-color: #146d4d;
-                padding: 14px;
-                text-align: center;
-                color: #FFFFFF;
-                border: none;
-                border-radius: 8px;
-            }
 
 
-
-        hr.style10 {
-            border-top: 0.5px dotted #E5E5E5;
-            border-bottom: 1px dotted #fff;
-        }
-    </style>
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+</style>
 

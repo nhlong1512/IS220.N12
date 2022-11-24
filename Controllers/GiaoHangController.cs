@@ -48,7 +48,7 @@ namespace MoriiCoffee.Controllers
         //Các dữ liệu sẽ được đổ hết vào 3 bảng ChiTietHoaDon, HoaDon và Bảng DatHang
 
         [HttpPost]
-        public JsonResult DatGiaoJson(long id, string hoTen, string sdt, string diaChi, string ghiChu, string pttt)
+        public JsonResult DatGiaoJson(long id, string hoTen, string sdt, string email, string diaChi, string ghiChu, string pttt)
         {
 
             var cart = Session[CartSession];
@@ -110,6 +110,7 @@ namespace MoriiCoffee.Controllers
                 id = id,
                 hoTen = hoTen,
                 sdt = sdt,
+                email = email,
                 diaChi = diaChi,
                 ghiChu = ghiChu,
                 pttt = pttt,

@@ -2611,7 +2611,6 @@
     <Content Include="Scripts\ckfinder\_samples\skin_v1.html" />
     <Content Include="Scripts\ckfinder\_samples\standalone.html" />
     <Content Include="Scripts\ckfinder\_samples\standalone_v1.html" />
-    <Content Include="Views\GiaoHang\api.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2747,8 +2746,6 @@
     <Content Include="Views\Profile\DonDat.cshtml" />
     <Content Include="Views\Profile\ChiTietDonDat.cshtml" />
     <Content Include="Views\GiaoHang\GiaoHang.cshtml" />
-    <Content Include="Views\GiaoHang\Province.cshtml" />
-    <Content Include="Views\GiaoHang\data.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
