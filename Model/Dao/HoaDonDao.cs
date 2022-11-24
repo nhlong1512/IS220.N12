@@ -55,6 +55,28 @@ namespace Model.Dao
             }
         }
 
+        public bool UpdateTongTien(HoaDon entity)
+        {
+            try
+            {
+                var hd = db.HoaDons.Find(entity.ID);
+                hd.MaNV = entity.MaNV;
+                hd.MaCH = entity.MaCH;
+                hd.MaKH = entity.MaKH;
+                hd.IsOnline = entity.IsOnline;
+                hd.MaKM = entity.MaKM;
+                hd.TongTien = entity.TongTien;
+                hd.ModifiedBy = entity.ModifiedBy;
+                hd.ModifiedDate = entity.ModifiedDate;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         //Xóa HoaDon
         public bool Delete(long id)
         {

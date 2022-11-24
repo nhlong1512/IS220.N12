@@ -95,6 +95,7 @@ namespace MoriiCoffee.Controllers
                 HoaDon hd = new HoaDon();
                 hd.TongTien = 0;
                 hd.IsOnline = true;
+                hd.MaKM = id;
                 var idhd = hddao.Insert(hd);
                 //Kiểm tra nếu thêm được thì tiếp tục thêm dữ liệu cho bảng CTHD ngược lại thì không làm gì cả
                 if (idhd > 0)
@@ -106,9 +107,9 @@ namespace MoriiCoffee.Controllers
                         cthd.MaSP = item.ChiTietSanPham.ID;
                         cthd.Size = item.Size;
                         cthd.Topping = item.Topping;
-                        cthd.Gia = item.ChiTietSanPham.Gia;
+                        cthd.Gia = item.Gia;
                         cthd.SoLuong = item.Quantity;
-                        cthd.ThanhTien = item.Quantity * item.ChiTietSanPham.Gia;
+                        cthd.ThanhTien = item.Quantity * item.Gia;
                         cthd.IDHoaDon = idhd;
                         var idcthd = cthddao.Insert(cthd);
                         if(idcthd <= 0)
@@ -121,7 +122,9 @@ namespace MoriiCoffee.Controllers
                     //Sau khi thêm tất cả các sản phẩm đặt vào chi tiết hóa đơn, ta tiến hành cập nhật tổng tiền
                     if(hd.TongTien > 0)
                     {
-                        db.SaveChanges();
+                        //Thêm 30 nghìn phí ship
+                        hd.TongTien = hd.TongTien + 30000;
+                        hddao.UpdateTongTien(hd);
 
                     }
                     //Sau khi cập nhật tổng tiền cho phần Hóa đơn, ta tiến hành thêm thông tin cho Đặt hàng

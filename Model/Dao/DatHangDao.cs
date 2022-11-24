@@ -62,6 +62,8 @@ namespace Model.Dao
             }
         }
 
+        
+
         //Xóa DatHang
         public bool Delete(long id)
         {

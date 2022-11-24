@@ -9,7 +9,6 @@ namespace Model.EF
     [Table("ChiTietHoaDon")]
     public partial class ChiTietHoaDon
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 
         public long? MaSP { get; set; }
