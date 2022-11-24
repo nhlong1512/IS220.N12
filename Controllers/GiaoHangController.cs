@@ -15,6 +15,13 @@ namespace MoriiCoffee.Controllers
 
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
+        private HoaDonDao hddao = new HoaDonDao();
+        //private HoaDon hd = new HoaDon();
+        private ChiTietHoaDonDao cthddao = new ChiTietHoaDonDao();
+        //private ChiTietHoaDon cthd = new ChiTietHoaDon();
+        private DatHangDao dhdao = new DatHangDao();
+        //private DatHang dh = new DatHang();
+
         private const string CartSession = "CartSession";
         //ViewAction Giao diện Giao Hàng
         public ActionResult GiaoHang()
@@ -79,6 +86,66 @@ namespace MoriiCoffee.Controllers
             {
                 isValid = false;
                 errMsg += "Vui lòng chọn phương thức thanh toán. ";
+            }
+            
+            //Nếu tất cả các case đều hợp lệ, Ta sẽ tiến hành cập nhật dữ liệu và CSDL
+            if(isValid == true)
+            {
+                //Thêm hóa đơn mới
+                HoaDon hd = new HoaDon();
+                hd.TongTien = 0;
+                hd.IsOnline = true;
+                var idhd = hddao.Insert(hd);
+                //Kiểm tra nếu thêm được thì tiếp tục thêm dữ liệu cho bảng CTHD ngược lại thì không làm gì cả
+                if (idhd > 0)
+                {
+                    foreach(var item in list)
+                    {
+                        //Thêm các sản phẩm đặt vào chi tiết hóa đơn
+                        ChiTietHoaDon cthd = new ChiTietHoaDon();
+                        cthd.MaSP = item.ChiTietSanPham.ID;
+                        cthd.Size = item.Size;
+                        cthd.Topping = item.Topping;
+                        cthd.Gia = item.ChiTietSanPham.Gia;
+                        cthd.SoLuong = item.Quantity;
+                        cthd.ThanhTien = item.Quantity * item.ChiTietSanPham.Gia;
+                        cthd.IDHoaDon = idhd;
+                        var idcthd = cthddao.Insert(cthd);
+                        if(idcthd <= 0)
+                        {
+                            isValid = false;
+                        }
+                        hd.TongTien += cthd.ThanhTien;
+                    }
+
+                    //Sau khi thêm tất cả các sản phẩm đặt vào chi tiết hóa đơn, ta tiến hành cập nhật tổng tiền
+                    if(hd.TongTien > 0)
+                    {
+                        db.SaveChanges();
+
+                    }
+                    //Sau khi cập nhật tổng tiền cho phần Hóa đơn, ta tiến hành thêm thông tin cho Đặt hàng
+                    DatHang dh = new DatHang();
+                    dh.MaKH = id;
+                    dh.HoTen = hoTen;
+                    dh.SDT = sdt;
+                    dh.Email = email;
+                    dh.DiaChiNhanHang = diaChi;
+                    dh.GhiChu = ghiChu;
+                    dh.PTTT = pttt;
+                    dh.TTDH = "Chờ Xác Nhận";
+                    dh.MaHoaDon = idhd;
+                    var iddh = dhdao.Insert(dh);
+                    //Nếu không thêm được isValid sẽ là False
+                    if(iddh <= 0)
+                    {
+                        isValid = false;
+                    }
+                }
+                else
+                {
+                    isValid = false;
+                }
             }
 
 

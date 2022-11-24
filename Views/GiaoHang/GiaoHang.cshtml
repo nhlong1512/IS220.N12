@@ -39,7 +39,10 @@
         <div class="form-horizontal">
             <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Thông Tin Giao Hàng</h3>
             <div class="form-group row">
-                <div class="message-error" style="color: #dc3545 !important; font-size: 20px; " role="alert"></div>
+                <div class="message-success" style="color: #155724 !important; font-size: 20px; padding-left: 15px;" role="alert"></div>
+            </div>
+            <div class="form-group row">
+                <div class="message-error" style="color: #dc3545 !important; font-size: 20px; padding-left: 15px;" role="alert"></div>
             </div>
             <div class="row">
                 <div class="col-sm-7">
@@ -204,7 +207,7 @@
                             res.hoTen, res.sdt, res.email, res.diaChi, res.ghiChu, res.pttt, res.errMsg);
                         if (res.isValid) {
                             $('.message-success').append("Đặt hàng thành công. ");
-                        window.location.replace("https://localhost:44309/profile/don-dat");
+                        //window.location.replace("https://localhost:44309/profile/don-dat");
                         }
                         if (res.errMsg) {
                             $(".message-error").append(res.errMsg);

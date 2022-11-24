@@ -26,6 +26,7 @@ namespace Model.Dao
         //Thêm DatHang
         public long Insert(DatHang entity)
         {
+            entity.CreatedDate = DateTime.Now;
             db.DatHangs.Add(entity);
             db.SaveChanges();
             return entity.ID;

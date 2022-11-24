@@ -26,6 +26,7 @@ namespace Model.Dao
         //Thêm HoaDon
         public long Insert(HoaDon entity)
         {
+            entity.CreatedDate = DateTime.Now;
             db.HoaDons.Add(entity);
             db.SaveChanges();
             return entity.ID;

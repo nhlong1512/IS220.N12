@@ -25,6 +25,7 @@ namespace Model.Dao
         //Thêm chi tiết hóa đơn
         public long Insert(ChiTietHoaDon entity)
         {
+            entity.CreatedDate = DateTime.Now;
             db.ChiTietHoaDons.Add(entity);
             db.SaveChanges();
             return entity.ID;
