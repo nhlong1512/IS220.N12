@@ -63,14 +63,14 @@
 
                                         <td>
                                             <p class="pDonDat">
-                                                @item.CreatedDate   
+                                                @item.CreatedDate
                                             </p>
                                         </td>
                                         <td>
                                             @*Tìm giá của đơn đặt*@
-                                            @foreach(var i in hoadons)
+                                            @foreach (var i in hoadons)
                                             {
-                                                if(i.ID == item.MaHoaDon)
+                                                if (i.ID == item.MaHoaDon)
                                                 {
                                                     gia = i.TongTien;
                                                 }
@@ -84,9 +84,31 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <p class="pDonDat waitingAcceptColor">
-                                                @item.TTDH
-                                            </p>
+                                            
+                                            @if (item.TTDH == "Chờ Xác Nhận")
+                                            {
+                                                <p class="pDonDat waitingAcceptColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
+                                            else if (item.TTDH == "Đang Giao")
+                                            {
+                                                <p class="pDonDat inProgressColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
+                                            else if (item.TTDH == "Đã Hủy")
+                                            {
+                                                <p class="pDonDat cancelledColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p class="pDonDat activeColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
                                         </td>
                                         <td>
                                             <p class="pDonDat">
@@ -102,109 +124,7 @@
                                 }
 
 
-                                <tr>
-                                    <th>
-                                        <p class="maDonDat">
-                                            #123456
-                                        </p>
-                                    </th>
-
-
-                                    <td>
-                                        <p class="pDonDat">
-                                            15/12/2022
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            117.000 đ
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat cancelledColor">
-                                            Đã Hủy
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            Tiền Mặt
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <a style="">
-                                            <img src="~/Data/Files/dots-option.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>
-                                        <p class="maDonDat">
-                                            #123456
-                                        </p>
-                                    </th>
-
-
-                                    <td>
-                                        <p class="pDonDat">
-                                            15/12/2022
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            117.000 đ
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat inProgressColor">
-                                            Đang Giao
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            Ví Điện Tử
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <a style="">
-                                            <img src="~/Data/Files/dots-option.png" />
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <p class="maDonDat">
-                                            #123456
-                                        </p>
-                                    </th>
-
-
-                                    <td>
-                                        <p class="pDonDat">
-                                            15/12/2022
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            117.000 đ
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat waitingAcceptColor">
-                                            Chờ Xác Nhận
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            Ví Điện Tử
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <a style="">
-                                            <img src="~/Data/Files/dots-option.png" />
-                                        </a>
-                                    </td>
-                                </tr>
+                                
                             </tbody>
                         </table>
 
