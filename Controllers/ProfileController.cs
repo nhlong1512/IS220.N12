@@ -17,6 +17,8 @@ namespace MoriiCoffee.Controllers
         // GET: Profile
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
+        private DatHangDao dhdao = new DatHangDao();
+        private HoaDonDao hddao = new HoaDonDao();
         private const string CartSession = "CartSession";
 
         public ActionResult Index()
@@ -315,6 +317,9 @@ namespace MoriiCoffee.Controllers
                     ViewBag.session = session;
                     var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
                     ViewBag.ndd = ndd;
+                    ViewBag.dathangs = dhdao.ViewAllByID(ndd.ID);
+                    ViewBag.hoadons = hddao.ViewAllByID(ndd.ID);
+
                 }
                 var cart = Session[CartSession];
                 var list = new List<CartItem>();
@@ -327,7 +332,6 @@ namespace MoriiCoffee.Controllers
                 }
 
             }
-           
             return View();
         }
 

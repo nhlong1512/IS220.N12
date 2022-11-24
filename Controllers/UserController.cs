@@ -282,11 +282,6 @@ namespace MoriiCoffee.Controllers
 
         public ActionResult DangXuat()
         {
-            //TinCode
-            //Session.Clear();//remove session
-            //return RedirectToAction("Login");
-
-
             //LongCode
             Session[CommonConstants.USER_SESSION] = null;
             Session["CartSession"] = null;

@@ -23,6 +23,35 @@ namespace Model.Dao
             return db.HoaDons.Find(id);
         }
 
+        //Xem tất cả HoaDon
+        public List<HoaDon> ViewAll()
+        {
+            List<HoaDon> hoadons = new List<HoaDon>();
+            if (db.HoaDons.Count() == 0)
+            {
+                return hoadons;
+            }
+            var list = db.HoaDons.Where(p => p.ID > 0);
+            //Convert từ IqueryTable sang list
+            hoadons = new List<HoaDon>(list);
+            return hoadons;
+        }
+
+        //Xem tất cả HoaDon có id 
+        public List<HoaDon> ViewAllByID(long id)
+        {
+            List<HoaDon> hoadons = new List<HoaDon>();
+            if (db.HoaDons.Count() == 0)
+            {
+                return hoadons;
+            }
+            var list = db.HoaDons.Where(p => p.MaKH == id);
+            //Convert từ IqueryTable sang list
+            hoadons = new List<HoaDon>(list);
+            return hoadons;
+        }
+
+
         //Thêm HoaDon
         public long Insert(HoaDon entity)
         {

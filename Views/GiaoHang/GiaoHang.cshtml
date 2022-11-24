@@ -207,7 +207,7 @@
                             res.hoTen, res.sdt, res.email, res.diaChi, res.ghiChu, res.pttt, res.errMsg);
                         if (res.isValid) {
                             $('.message-success').append("Đặt hàng thành công. ");
-                        //window.location.replace("https://localhost:44309/profile/don-dat");
+                            window.location.replace("https://localhost:44309/profile/don-dat");
                         }
                         if (res.errMsg) {
                             $(".message-error").append(res.errMsg);

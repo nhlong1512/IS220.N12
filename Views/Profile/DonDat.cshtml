@@ -3,6 +3,9 @@
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var nd = ViewBag.ndd;
+    var dathangs = ViewBag.dathangs;
+    var hoadons = ViewBag.hoadons;
+    decimal gia = 0;
 }
 
 @model Model.EF.NguoiDung
@@ -48,40 +51,56 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>
-                                        <p class="maDonDat">
-                                            #123456
-                                        </p>
-                                    </th>
+                                @foreach (var item in dathangs)
+                                {
+                                    <tr>
+                                        <th>
+                                            <p class="maDonDat">
+                                                #@item.ID
+                                            </p>
+                                        </th>
 
 
-                                    <td>
-                                        <p class="pDonDat">
-                                            15/12/2022
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            117.000 đ
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat activeColor">
-                                            Đã Giao
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            Tiền Mặt
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <a style="">
-                                            <img src="~/Data/Files/dots-option.png" />
-                                        </a>
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <p class="pDonDat">
+                                                @item.CreatedDate   
+                                            </p>
+                                        </td>
+                                        <td>
+                                            @*Tìm giá của đơn đặt*@
+                                            @foreach(var i in hoadons)
+                                            {
+                                                if(i.ID == item.MaHoaDon)
+                                                {
+                                                    gia = i.TongTien;
+                                                }
+                                            }
+                                            <p class="pDonDat">
+                                                @{
+                                                    var a = gia;
+                                                    a = a / 1000;
+                                                }
+                                                @a.000 đ
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="pDonDat waitingAcceptColor">
+                                                @item.TTDH
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="pDonDat">
+                                                @item.PTTT
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <a style="">
+                                                <img src="~/Data/Files/dots-option.png" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
 
                                 <tr>
                                     <th>

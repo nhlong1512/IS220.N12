@@ -23,6 +23,34 @@ namespace Model.Dao
             return db.DatHangs.Find(id);
         }
 
+        //Xem tất cả DatHang
+        public List<DatHang> ViewAll()
+        {
+            List<DatHang> dathangs = new List<DatHang>();
+            if (db.DatHangs.Count() == 0)
+            {
+                return dathangs;
+            }
+            var list = db.DatHangs.Where(p => p.ID > 0);
+            //Convert từ IqueryTable sang list
+            dathangs = new List<DatHang>(list);
+            return dathangs;
+        }
+
+        //Xem tất cả DatHang của Người dùng
+        public List<DatHang> ViewAllByID(long id)
+        {
+            List<DatHang> dathangs = new List<DatHang>();
+            if (db.DatHangs.Count() == 0)
+            {
+                return dathangs;
+            }
+            var list = db.DatHangs.Where(p => p.MaKH == id);
+            //Convert từ IqueryTable sang list
+            dathangs = new List<DatHang>(list);
+            return dathangs;
+        }
+
         //Thêm DatHang
         public long Insert(DatHang entity)
         {

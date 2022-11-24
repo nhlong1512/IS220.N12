@@ -95,7 +95,7 @@ namespace MoriiCoffee.Controllers
                 HoaDon hd = new HoaDon();
                 hd.TongTien = 0;
                 hd.IsOnline = true;
-                hd.MaKM = id;
+                hd.MaKH = id;
                 var idhd = hddao.Insert(hd);
                 //Kiểm tra nếu thêm được thì tiếp tục thêm dữ liệu cho bảng CTHD ngược lại thì không làm gì cả
                 if (idhd > 0)
@@ -149,6 +149,12 @@ namespace MoriiCoffee.Controllers
                 {
                     isValid = false;
                 }
+            }
+
+            //Kiểm tra nếu tất cả đã hoàn thành và hợp lệ rồi thì sẽ đưa session về null
+            if(isValid == true)
+            {
+                Session["CartSession"] = null;
             }
 
 
