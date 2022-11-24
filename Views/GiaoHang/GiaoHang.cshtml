@@ -38,6 +38,9 @@
     <div class="container" style="padding:24px 0;">
         <div class="form-horizontal">
             <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Thông Tin Giao Hàng</h3>
+            <div class="form-group row">
+                <div class="message-error" style="color: #dc3545 !important; font-size: 20px; " role="alert"></div>
+            </div>
             <div class="row">
                 <div class="col-sm-7">
                     <div>
@@ -64,16 +67,16 @@
                                 </div>
                             </div>
                             @*<div class="form-group row">
-                                    <div class="col-sm-4" style="padding-left: 0;">
-                                        <input type="text" class="form-control form-control-lg" id="tinhLabel" placeholder="Tỉnh/Thành Phố" name="">
-                                    </div>
-                                    <div class="col-sm-4" style="padding-left: 0;">
-                                        <input type="text" class="form-control form-control-lg" id="huyenLabel" placeholder="Quận/Huyện" name="">
-                                    </div>
-                                    <div class="col-sm-4" style="padding-left: 0;">
-                                        <input type="text" class="form-control form-control-lg" id="xaLabel" placeholder="Phường/Xã" name="">
-                                    </div>
-                                </div>*@
+                            <div class="col-sm-4" style="padding-left: 0;">
+                                <input type="text" class="form-control form-control-lg" id="tinhLabel" placeholder="Tỉnh/Thành Phố" name="">
+                            </div>
+                            <div class="col-sm-4" style="padding-left: 0;">
+                                <input type="text" class="form-control form-control-lg" id="huyenLabel" placeholder="Quận/Huyện" name="">
+                            </div>
+                            <div class="col-sm-4" style="padding-left: 0;">
+                                <input type="text" class="form-control form-control-lg" id="xaLabel" placeholder="Phường/Xã" name="">
+                            </div>
+                        </div>*@
                             <div class="form-group row">
                                 <div class="col-sm-12" style="padding-left: 0;">
                                     <input type="text" class="form-control form-control-lg" id="noteLabel" placeholder="Ghi Chú (VD: Không Đá, Giao Trước 11 Giờ,...)" name="">
@@ -181,31 +184,45 @@
 
 
 
-                //$.ajax({
-                //    type: "POST",
-                //    url: "/GiaoHang/DatGiaoJson",
-                //    data: {
-                //        id: id,
-                //        hoTen: hoTen,
-                //        sdt: sdt,
-                //        email: email,
-                //        diaChi: diaChi,
-                //        ghiChu: ghiChu,
-                //    },
-                //    dataType: "json",
-                //    success: function (res) {
-                //        console.log("NguyenHuuLong --> ", res.msg);
-                //        console.log("NguyenHuuLong --> err", res.err);
-                //        console.log(res.id, res.size, res.gia, res.topping);
-                //        //window.location.replace("https://localhost:44309/gio-hang");
-                //    },
-                //    error: function (err) {
-                //        console.log("err --> ", err);
-                //        console.log("err ->>", err.err);
-                //    },
-                //});
+                $.ajax({
+                    type: "POST",
+                    url: "/GiaoHang/DatGiaoJson",
+                    data: {
+                        id: id,
+                        hoTen: hoTen,
+                        sdt: sdt,
+                        email: email,
+                        diaChi: diaChi,
+                        ghiChu: ghiChu,
+                        pttt: pttt,
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        console.log("NguyenHuuLong --> ", res.msg);
+                        console.log("NguyenHuuLong --> err", res.err);
+                        console.log("jsonReturn", res.isValid, res.listCart, res.id,
+                            res.hoTen, res.sdt, res.email, res.diaChi, res.ghiChu, res.pttt, res.errMsg);
+                        if (res.isValid) {
+                            $('.message-success').append("Đặt hàng thành công. ");
+                        window.location.replace("https://localhost:44309/profile/don-dat");
+                        }
+                        if (res.errMsg) {
+                            $(".message-error").append(res.errMsg);
+                            topFunction();
+                        }
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
             }
         )
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     })
 </script>
 

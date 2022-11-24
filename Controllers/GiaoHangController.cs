@@ -52,60 +52,39 @@ namespace MoriiCoffee.Controllers
         {
 
             var cart = Session[CartSession];
-                var list = (List<CartItem>)cart;
-            //if (cart != null)
-            //{
-                //if (list.Exists(x => x.ChiTietSanPham.ID == id))
-                //{
-                //    var flag = false;
-                //    foreach (var item in list)
-                //    {
-                //        if (item.ChiTietSanPham.ID == id && item.Size == size && item.Topping == topping && item.Gia == gia)
-                //        {
-                //            item.Quantity += 1;
-                //            flag = true;
-                //        }
-                //    }
-                //    if (!flag)
-                //    {
-                //        var item = new CartItem();
-                //        item.ChiTietSanPham = sanpham;
-                //        item.Quantity = 1;
-                //        item.Gia = gia;
-                //        item.Topping = topping;
-                //        item.Size = size;
-                //        list.Add(item);
-                //    }
-                //}
-                //else
-                //{
-                //    var item = new CartItem();
-                //    item.ChiTietSanPham = sanpham;
-                //    item.Quantity = 1;
-                //    item.Gia = gia;
-                //    item.Topping = topping;
-                //    item.Size = size;
-                //    list.Add(item);
-                //}
-                //Session[CartSession] = list;
-            //}
-            //else
-            //{
-            //    //Tạo mới đối tượng CartItem
-            //    var item = new CartItem();
-            //    item.ChiTietSanPham = sanpham;
-            //    item.Quantity = 1;
-            //    item.Gia = gia;
-            //    item.Topping = topping;
-            //    item.Size = size;
-            //    var list = new List<CartItem>();
-            //    list.Add(item);
-            //    //Gán vào Session
-            //    Session[CartSession] = list;
-            //}
+            var list = (List<CartItem>)cart;
+            var isValid = true;
+            var errMsg = "";
+            if (string.IsNullOrEmpty(hoTen))
+            {
+                isValid = false;
+                errMsg += "Vui lòng nhập họ tên. ";
+            }
+            if (string.IsNullOrEmpty(sdt))
+            {
+                isValid = false;
+                errMsg += "Vui lòng nhập số điện thoại. ";
+            }
+            if (string.IsNullOrEmpty(email))
+            {
+                isValid = false;
+                errMsg += "Vui lòng nhập Email. ";
+            }
+            if (string.IsNullOrEmpty(diaChi))
+            {
+                isValid = false;
+                errMsg += "Vui lòng nhập địa chỉ. ";
+            }
+            if (string.IsNullOrEmpty(pttt))
+            {
+                isValid = false;
+                errMsg += "Vui lòng chọn phương thức thanh toán. ";
+            }
+
+
             return Json(new
             {
-                status = true,
+                isValid = isValid,
                 listCart = list,
                 id = id,
                 hoTen = hoTen,
@@ -114,8 +93,9 @@ namespace MoriiCoffee.Controllers
                 diaChi = diaChi,
                 ghiChu = ghiChu,
                 pttt = pttt,
-                
-            }); 
+                errMsg = errMsg,
+
+            }) ; 
         }
 
     }
