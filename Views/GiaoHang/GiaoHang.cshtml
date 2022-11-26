@@ -171,7 +171,6 @@
         $(".button-checkout").on('click',
             function handleClickCheckout(e) {
                 e.preventDefault();
-                console.log("Long")
                 var id = $(this).data("id");
                 var hoTen = $('#hoTenLabel').val();
                 var sdt = $('#phoneLabel').val();
@@ -180,11 +179,6 @@
                 var ghiChu = $('#noteLabel').val();
                 var pttt = "";
                 var pttt = $('input[name="flexRadioDefault"]:checked').val();
-                console.log(id, hoTen, sdt, email, diaChi, ghiChu, pttt);
-
-
-
-
                 $.ajax({
                     type: "POST",
                     url: "/GiaoHang/DatGiaoJson",
@@ -199,10 +193,6 @@
                     },
                     dataType: "json",
                     success: function (res) {
-                        console.log("NguyenHuuLong --> ", res.msg);
-                        console.log("NguyenHuuLong --> err", res.err);
-                        console.log("jsonReturn", res.isValid, res.listCart, res.id,
-                            res.hoTen, res.sdt, res.email, res.diaChi, res.ghiChu, res.pttt, res.errMsg);
                         if (res.isValid) {
                             $('.message-success').append("Đặt hàng thành công. ");
                             window.location.replace("https://localhost:44309/profile/don-dat");
