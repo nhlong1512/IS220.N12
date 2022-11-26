@@ -585,6 +585,22 @@
         $(".xacNhanDaGiaoButton").click(function (e) {
             var id = $(this).data("id");
             console.log("idXacNhanDaGiao", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/DaNhanHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
         })
 
 

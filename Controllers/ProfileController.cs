@@ -404,6 +404,34 @@ namespace MoriiCoffee.Controllers
                 isValid = isValid,
             }); 
         }
+
+
+        //Handle Xác nhận Đã nhận hàng
+        [HttpPost]
+        public JsonResult DaNhanHangJson(long id)
+        {
+            var dh = dhdao.ViewDetail(id);
+            var isValid = true;
+            if (dh.TTDH == "Đang Giao")
+            {
+                dh.TTDH = "Đã Giao";
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            if (isValid == true)
+            {
+                dhdao.Update(dh);
+            }
+            return Json(new
+            {
+                status = true,
+                id = id,
+                isValid = isValid,
+            });
+        }
     }
 }
 
