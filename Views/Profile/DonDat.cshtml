@@ -116,9 +116,16 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <a style="">
+                                            <a style="" class="optionsSelect">
                                                 <img src="~/Data/Files/dots-option.png" />
+                                                <div class="toggle-options-select">
+                                                    <div class="wrap-options">
+                                                        <p>Hủy Đơn Hàng</p>
+                                                        <p>Xem Chi Tiết</p>
+                                                    </div>
+                                                </div>
                                             </a>
+                                            
                                         </td>
                                     </tr>
                                 }
@@ -140,6 +147,32 @@
     </div>
 
     <style>
+
+        .optionsSelect {
+            position:relative;
+        }
+
+        .toggle-options-select {
+            background-color: #ccc;
+            border-radius: 12px;
+            vertical-align: top;
+            position: absolute;
+            top: 157px;
+            right: -6px;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 0;
+            border: 1px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .wrap-options {
+            display: flex;
+            flex-direction: column;
+        }
 
         .maDonDat {
             font-weight: 600;
@@ -360,88 +393,8 @@
 
     <script>
         $(document).ready(function () {
-            $("#doiMatKhauButton").on('click',
-                function DoiMatKhau(e) {
-                    e.preventDefault();
-                    //Clear $(".message-error") and $('.message-success')
-                    $(".message-error").empty();
-                    $('.message-success').empty();
-
-                    var id = $(this).data('id');
-
-                    var oldPassword = $('#matKhauCuLabel').val();
-                    var newPassword = $('#matKhauMoiLabel').val();
-                    var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
-
-                    console.log('Old Password ->>', oldPassword);
-                    console.log('New Password ->>', newPassword);
-                    console.log('Confirm New Password ->>', confirmNewPassword);
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/Profile/DoiMatKhau",
-                        data: {
-                            id: id,
-                            oldPassword: oldPassword,
-                            newPassword: newPassword,
-                            confirmNewPassword: confirmNewPassword
-                        },
-                        dataType: "json",
-                        success: function (res) {
-                            console.log("NguyenHuuLong --> ", res.msg);
-                            console.log("NguyenHuuLong --> err", res.err);
-                            if (res.isValid) {
-                                $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                            }
-                            if (res.err) {
-                                $(".message-error").append(res.err);
-                            }
-                            //window.location.replace("https://localhost:44309/");
-                        },
-                        error: function (err) {
-                            console.log("err --> ", err);
-                            console.log("err ->>", err.err);
-                        },
-                    });
-
-                }
-            )
-        });
-    </script>
-
-
-
-    <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-            })
-        });
-    </script>
-
-    <script>
-        $(window).on("scroll", function () {
-            var scroll = $(window).scrollTop();
-
-            if (scroll >= 80) {
-                $("#site-header").addClass("nav-fixed");
-            } else {
-                $("#site-header").removeClass("nav-fixed");
-            }
-        });
-
-        //Main navigation Active Class Add Remove
-        $(".navbar-toggler").on("click", function () {
-            $("header").toggleClass("active");
-        });
-        $(document).on("ready", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-            $(window).on("resize", function () {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
+            $(".optionsSelect").click(function () {
+                
             });
         });
     </script>
