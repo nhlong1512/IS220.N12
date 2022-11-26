@@ -20,6 +20,7 @@ namespace MoriiCoffee.Controllers
         private DatHangDao dhdao = new DatHangDao();
         private HoaDonDao hddao = new HoaDonDao();
         private ChiTietHoaDonDao cthddao = new ChiTietHoaDonDao();
+        private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
         private const string CartSession = "CartSession";
 
         public ActionResult Index()
@@ -366,10 +367,13 @@ namespace MoriiCoffee.Controllers
             var hd = hddao.ViewDetail(dh.MaHoaDon);
             var listCTHD = new List<ChiTietHoaDon>();
             listCTHD = cthddao.ViewAllByID(dh.MaHoaDon);
+            var listCTSP = ctspdao.ViewAll();
+
 
             ViewBag.dh = dh;
             ViewBag.hd = hd;
             ViewBag.listCTHD = listCTHD;
+            ViewBag.listCTSP = listCTSP;
             return View();
         }
     }
