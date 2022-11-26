@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-    var nd = ViewBag.ndd;
+    var hd = ViewBag.hd;
+    var dh = ViewBag.dh;
+    var listCTHD = ViewBag.listCTHD;
 }
 
 @model Model.EF.NguoiDung
@@ -42,24 +44,24 @@
                                 <p class="pDonDat" style="margin-bottom: 12px;">
                                     Đơn Đặt: &nbsp;
                                     <span style="font-weight: 600;">
-                                        #123456
+                                        #@dh.ID
                                     </span>
                                 </p>
                                 <p class="pDonDat" style="margin-bottom: 12px;">
                                     Ngày Mua: &nbsp;
                                     <span style="font-weight: 600;">
-                                        15/12/2022
+                                        @hd.CreatedDate
                                     </span>
                                 </p>
                                 <p class="pDonDat" style="margin-bottom: 12px;">
                                     Thanh Toán: &nbsp;
                                     <span style="font-weight: 600;">
-                                        COD
+                                        @dh.PTTT
                                     </span>
                                 </p>
                                 <a>
                                     <button class="finishedButton">
-                                        Hoàn Thành
+                                        @dh.TTDH
                                     </button>
                                 </a>
                             </div>
@@ -67,19 +69,19 @@
                                 <p class="pDonDat" style="margin-bottom: 12px;">
                                     Họ Tên: &nbsp;
                                     <span style="font-weight: 600;">
-                                        Nguyễn Hữu Long
+                                        @dh.HoTen
                                     </span>
                                 </p>
                                 <p class="pDonDat" style="margin-bottom: 12px;">
                                     SĐT: &nbsp;
                                     <span style="font-weight: 600;">
-                                        0775504619
+                                        @dh.SDT
                                     </span>
                                 </p>
                                 <p class="pDonDat" style="margin-bottom: 12px;">
                                     Địa Chỉ: &nbsp;
                                     <span style="font-weight: 600;">
-                                        KTX Khu A - ĐHQG TPHCM, Phường Linh Trung, Thành phố Thủ Đức
+                                       @dh.DiaChiNhanHang
                                     </span>
                                 </p>
                             </div>
@@ -95,37 +97,52 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="/Data/Files/latte.jpg" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    Latte
-                                                </h3>
-                                                <p class="product-note">
-                                                    Trân Châu Đen, Macchiato
-                                                </p>
-
+                                @foreach (var item in listCTHD)
+                                {
+                                    <tr>
+                                        <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
+                                            <div class="img-product-wrap">
+                                                <img class="img-product" src="/Data/Files/latte.jpg" />
                                             </div>
-                                            <p class="product-price">
-                                                29.000 đ
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                                            <p class="pDonDat">1</p>
-                                        </div>
+                                            <div class="product-details">
+                                                <div>
+                                                    <h3 class="product-title">
+                                                        Latte Nóng
+                                                    </h3>
+                                                    <p class="product-note">
+                                                        @item.Topping
+                                                    </p>
 
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        <p class="total-price">29.000 đ</p>
-                                    </td>
-                                </tr>
-                                <tr>
+                                                </div>
+                                                <p class="product-price">
+                                                    @{
+                                                        var a = item.Gia;
+                                                        a = a / 1000;
+                                                    }
+                                                    @a.000 đ
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                                                <p class="pDonDat">@item.SoLuong</p>
+                                            </div>
+
+                                        </td>
+                                        <td style="padding-right: 30px;">
+                                            <p class="total-price">
+                                                @{
+                                                    var b = item.ThanhTien;
+                                                    b = b / 1000;
+                                                }
+                                                @b.000 đ
+
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+
+                                @*<tr>
                                     <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
                                         <div class="img-product-wrap">
                                             <img class="img-product" src="/Data/Files/latte.jpg" />
@@ -184,7 +201,7 @@
                                     <td style="padding-right: 30px;">
                                         <p class="total-price">29.000 đ</p>
                                     </td>
-                                </tr>
+                                </tr>*@
                             </tbody>
                         </table>
                     </div>
@@ -197,7 +214,13 @@
                         <div style="margin-bottom: 100px;">
                             <div class="wrap-sub-total">
                                 <p class="sub-total">TỔNG TIỀN HÀNG</p>
-                                <p class="sub-total" style="font-weight:600;">87.000 đ</p>
+                                <p class="sub-total" style="font-weight:600;">
+                                    @{
+                                        var c = hd.TongTien - 30000;
+                                        c = c / 1000;
+                                    }
+                                    @c.000 đ
+                                </p>
                             </div>
                             <div class="wrap-giamgia">
                                 <p class="sub-total">GIẢM GIÁ</p>
@@ -213,7 +236,13 @@
                         <div>
                             <div class="wrap-estimated-total">
                                 <p class="sub-total">TỔNG SỐ TIỀN </p>
-                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">117.000 đ</p>
+                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">
+                                    @{
+                                        var d = hd.TongTien;
+                                        d = d / 1000;
+                                    }
+                                    @d.000 đ
+                                </p>
                             </div>
                         </div>
                     </div>

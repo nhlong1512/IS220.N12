@@ -19,6 +19,7 @@ namespace MoriiCoffee.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         private DatHangDao dhdao = new DatHangDao();
         private HoaDonDao hddao = new HoaDonDao();
+        private ChiTietHoaDonDao cthddao = new ChiTietHoaDonDao();
         private const string CartSession = "CartSession";
 
         public ActionResult Index()
@@ -337,7 +338,7 @@ namespace MoriiCoffee.Controllers
 
 
         [ValidateInput(false)]
-        public ActionResult ChiTietDonDat()
+        public ActionResult ChiTietDonDat(long id)
         {
             if (ModelState.IsValid)
             {
@@ -361,8 +362,20 @@ namespace MoriiCoffee.Controllers
                 }
 
             }
+            var dh = dhdao.ViewDetail(id);
+            var hd = hddao.ViewDetail(dh.MaHoaDon);
+            var listCTHD = new List<ChiTietHoaDon>();
+            listCTHD = cthddao.ViewAllByID(dh.MaHoaDon);
 
+            ViewBag.dh = dh;
+            ViewBag.hd = hd;
+            ViewBag.listCTHD = listCTHD;
             return View();
         }
     }
 }
+
+
+
+
+

@@ -22,6 +22,34 @@ namespace Model.Dao
             return db.ChiTietHoaDons.Find(id);
         }
 
+        //Xem tất cả ChiTietHoaDon
+        public List<ChiTietHoaDon> ViewAll()
+        {
+            List<ChiTietHoaDon> hoadons = new List<ChiTietHoaDon>();
+            if (db.ChiTietHoaDons.Count() == 0)
+            {
+                return hoadons;
+            }
+            var list = db.ChiTietHoaDons.Where(p => p.ID > 0);
+            //Convert từ IqueryTable sang list
+            hoadons = new List<ChiTietHoaDon>(list);
+            return hoadons;
+        }
+
+        //Xem tất cả ChiTietHoaDon có id 
+        public List<ChiTietHoaDon> ViewAllByID(long id)
+        {
+            List<ChiTietHoaDon> hoadons = new List<ChiTietHoaDon>();
+            if (db.HoaDons.Count() == 0)
+            {
+                return hoadons;
+            }
+            var list = db.ChiTietHoaDons.Where(p => p.IDHoaDon == id);
+            //Convert từ IqueryTable sang list
+            hoadons = new List<ChiTietHoaDon>(list);
+            return hoadons;
+        }
+
         //Thêm chi tiết hóa đơn
         public long Insert(ChiTietHoaDon entity)
         {

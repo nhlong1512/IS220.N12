@@ -11,7 +11,7 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
-        public long? MaHoaDon { get; set; }
+        public long MaHoaDon { get; set; }
 
         public long? MaKH { get; set; }
 
