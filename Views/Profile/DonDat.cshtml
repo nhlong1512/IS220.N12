@@ -116,12 +116,12 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <a style="" class="optionsSelect">
+                                            <a style="" class="optionsSelect" data-id="@item.ID" id="option_@item.ID">
                                                 <img src="~/Data/Files/dots-option.png" />
-                                                <div class="toggle-options-select">
+                                                <div class="toggle-options-select" id="Toggle_@item.ID">
                                                     <div class="wrap-options">
-                                                        <p>Hủy Đơn Hàng</p>
-                                                        <p>Xem Chi Tiết</p>
+                                                        <p class="huyDonHang">Hủy Đơn Hàng</p>
+                                                        <p class="xemChiTiet">Xem Chi Tiết</p>
                                                     </div>
                                                 </div>
                                             </a>
@@ -129,9 +129,6 @@
                                         </td>
                                     </tr>
                                 }
-
-
-                                
                             </tbody>
                         </table>
 
@@ -147,26 +144,49 @@
     </div>
 
     <style>
+        .huyDonHang {
+            font-size: 14px;
+            color: #FF0000;
+            line-height:20px;
+            margin-bottom: 10px;
+            font-weight:600;
+        }
+            .huyDonHang:hover {
+                opacity: 0.5;
+            }
+
+        .xemChiTiet {
+            font-size: 14px;
+            color: #1976D2;
+            line-height: 20px;
+        }
+
+            .xemChiTiet:hover {
+                opacity:0.5;
+            }
 
         .optionsSelect {
             position:relative;
         }
 
         .toggle-options-select {
-            background-color: #ccc;
-            border-radius: 12px;
-            vertical-align: top;
+            padding-top: 10px;
+            padding-bottom: 10px;
             position: absolute;
-            top: 157px;
-            right: -6px;
+            background-color: #eee;
+            border-radius: 8px;
             color: white;
             font-size: 10px;
             font-weight: bold;
-            line-height: 0;
-            border: 1px solid #fff;
             display: flex;
+            border: 1px solid #fff;
             justify-content: center;
             align-items: center;
+            width: 130px;
+            top: -175%;
+            left: 140%;
+            visibility: hidden;
+            transition: all 0.03s ease;
         }
         
         .wrap-options {
@@ -388,14 +408,33 @@
             border-top: 0.5px dotted #E5E5E5;
             border-bottom: 1px dotted #fff;
         }
+        .show{
+            visibility:visible;
+            
+        }
     </style>
 
 
     <script>
         $(document).ready(function () {
-            $(".optionsSelect").click(function () {
-                
-            });
+            var idToggle
+            $('.optionsSelect').click(function (e) {
+                idToggle = $(this).data("id");
+                var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
+                e.preventDefault();
+                e.stopPropagation();
+                $(".toggle-options-select").removeClass("show");
+                if (isHasClass == false) {
+                    $("#Toggle_" + idToggle).addClass("show");
+                } else {
+                    $("#Toggle_" + idToggle).removeClass("show");
+                }
+                    
+            })
+            $(window).click(function () {
+                $(".toggle-options-select").removeClass("show");
+            })
+
         });
     </script>
     <!--//MENU-JS-->
