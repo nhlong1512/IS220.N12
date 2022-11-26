@@ -60,11 +60,41 @@
                                         @dh.PTTT
                                     </span>
                                 </p>
-                                <a>
-                                    <button class="finishedButton">
-                                        @dh.TTDH
-                                    </button>
-                                </a>
+                                @if (dh.TTDH == "Đã Giao")
+                                {
+                                    <a>
+                                        <button class="finishedButton">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else if (dh.TTDH == "Chờ Xác Nhận")
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #1976D2;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else if (dh.TTDH == "Đang Giao")
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #FFC107;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #FF0000;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+
+
+
                             </div>
                             <div class="col-sm-7" style="padding: 0;">
                                 <p class="pDonDat" style="margin-bottom: 12px;">
