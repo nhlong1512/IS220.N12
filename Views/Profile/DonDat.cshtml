@@ -120,7 +120,23 @@
                                                 <img src="~/Data/Files/dots-option.png" />
                                                 <div class="toggle-options-select" id="Toggle_@item.ID">
                                                     <div class="wrap-options">
-                                                        <p class="huyDonHang">Hủy Đơn Hàng</p>
+                                                        @if (item.TTDH == "Chờ Xác Nhận")
+                                                        {
+
+                                                            <p class="huyDonHang">Hủy Đơn Hàng</p>
+                                                        }
+                                                        else if (item.TTDH == "Đang Giao")
+                                                        {
+                                                            <p class="daNhanHang">Đã Nhận Hàng</p>
+                                                        }
+                                                        else if (item.TTDH == "Đã Giao")
+                                                        {
+
+                                                        }
+                                                        else
+                                                        {
+
+                                                        }
                                                         <p class="xemChiTiet" data-id="@item.ID">Xem Chi Tiết</p>
 
                                                     </div>
@@ -148,9 +164,21 @@
         font-weight: 600;
     }
 
-        .huyDonHang:hover {
+    .daNhanHang {
+        font-size: 14px;
+        color: #009D34;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .daNhanHang:hover {
             opacity: 0.5;
         }
+
+    .huyDonHang:hover {
+        opacity: 0.5;
+    }
 
     .xemChiTiet {
         font-size: 14px;
