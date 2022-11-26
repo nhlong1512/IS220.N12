@@ -121,7 +121,9 @@
                                                 <div class="toggle-options-select" id="Toggle_@item.ID">
                                                     <div class="wrap-options">
                                                         <p class="huyDonHang">Hủy Đơn Hàng</p>
-                                                        <p class="xemChiTiet">Xem Chi Tiết</p>
+                                                        @*<a href="~/profile/chi-tiet-don-dat/@item.ID">*@
+                                                            <p class="xemChiTiet" data-id="@item.ID">Xem Chi Tiết</p>
+                                                        @*</a>*@
                                                     </div>
                                                 </div>
                                             </a>
@@ -186,7 +188,7 @@
             top: -175%;
             left: 140%;
             visibility: hidden;
-            transition: all 0.03s ease;
+            transition: all 0.02s ease;
         }
         
         .wrap-options {
@@ -417,12 +419,14 @@
 
     <script>
         $(document).ready(function () {
-            var idToggle
             $('.optionsSelect').click(function (e) {
-                idToggle = $(this).data("id");
+                var idToggle = $(this).data("id");
+                console.log('rich', idToggle);
                 var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
+                console.log("isHasClass", isHasClass);
                 e.preventDefault();
                 e.stopPropagation();
+                console.log("Toggle_" + idToggle);
                 $(".toggle-options-select").removeClass("show");
                 if (isHasClass == false) {
                     $("#Toggle_" + idToggle).addClass("show");
@@ -433,6 +437,11 @@
             })
             $(window).click(function () {
                 $(".toggle-options-select").removeClass("show");
+            })
+
+            $('.xemChiTiet').click(function () {
+                var idXemChiTiet = $(this).data("id");
+                window.location.replace("https://localhost:44309/profile/chi-tiet-don-dat/" + idXemChiTiet);
             })
 
         });
