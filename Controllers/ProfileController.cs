@@ -376,6 +376,34 @@ namespace MoriiCoffee.Controllers
             ViewBag.listCTSP = listCTSP;
             return View();
         }
+
+
+        //Handle Xác nhận Hủy Đơn hàng
+        [HttpPost]
+        public JsonResult HuyDonHangJson(long id)
+        {
+            var dh = dhdao.ViewDetail(id);
+            var isValid = true;
+            if(dh.TTDH == "Chờ Xác Nhận")
+            {
+                dh.TTDH = "Đã Hủy";
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            if (isValid == true)
+            {
+                dhdao.Update(dh);
+            }
+            return Json(new
+            {
+                status = true,
+                id = id,
+                isValid = isValid,
+            }); 
+        }
     }
 }
 

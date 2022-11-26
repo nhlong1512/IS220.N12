@@ -185,7 +185,9 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                            <button class="btn btn-primary xacNhanButton">Xác Nhận</button>
+                                                            <button class="btn btn-primary xacNhanDaGiaoButton" data-id="@item.ID" id="xacNhanDaGiaoButton_@item.ID">
+                                                            Xác Nhận
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -558,7 +560,32 @@
         })
 
         //Handle Xác nhận Hủy đơn hàng
-        
+        $(".xacNhanHuyButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhan", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/HuyDonHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đã giao
+        $(".xacNhanDaGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhanDaGiao", id);
+        })
 
 
 
