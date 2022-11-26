@@ -129,7 +129,9 @@
                                                         }
                                                         else if (item.TTDH == "Đang Giao")
                                                         {
-                                                            <p class="daNhanHang">Đã Nhận Hàng</p>
+                                                            <p class="daNhanHang daNhanHangButton" data-id="@item.ID" id="daNhanHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                Đã Nhận Hàng
+                                                            </p>
                                                         }
                                                         else if (item.TTDH == "Đã Giao")
                                                         {
@@ -161,50 +163,33 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                            <button class="btn btn-primary xacNhanButton">Xác Nhận</button>
+                                                            <button class="btn btn-primary xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <style>
-
-                                                .modal-body {
-                                                    color: #000;
-                                                    font-size: 16px;
-                                                    font-weight: 500;
-                                                    line-height: 26px;
-                                                }
-
-                                                .modal-open {
-                                                    padding-right: 0 !important;
-                                                }
-
-                                                #site-header {
-                                                    padding-right: 0 !important;
-                                                }
-                                            </style>
-
-
-
-                                            @*<script>
-                                                
-                                                //var modal = document.getElementByClass("huyDonHangModal");
-
-                                                // Get the button that opens the modal
-                                                var btn = document.getElementByClass("huyDonHangButton");
-                                                // When the user clicks on the button, open the modal
-                                                btn.onclick = function () {
-                                                    var idHuy = this.getAttri
-                                                    $('#exampleModal').modal('show')
-                                                }
-
-                                                var closeButton = document.getElementById('closeButton');
-                                                closeButton.onclick = function () {
-                                                    $('#exampleModal').modal('hide')
-                                                }
-                                            </script>*@
-
+                                            <div class="modal fade daNhanHangModal" id="daNhanHang_@item.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="daNhanHangLabel">
+                                                                Xác Nhận Đã Nhận Hàng
+                                                                <strong>
+                                                                    #@item.ID
+                                                                </strong>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Đơn Hàng Của Bạn Sẽ Chuyển Sang Trạng Thái Đã Giao Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                            <button class="btn btn-primary xacNhanButton">Xác Nhận</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 }
@@ -218,6 +203,21 @@
 </div>
 
 <style>
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
+
     .huyDonHang {
         font-size: 14px;
         color: #FF0000;
@@ -526,24 +526,40 @@
             window.location.replace("https://localhost:44309/profile/chi-tiet-don-dat/" + idXemChiTiet);
         })
 
+
+        //Handle xác nhận mở modal hủy đơn hàng
         $('.huyDonHangButton').click(function (e) {
             var idHuy = $(this).data("id");
             console.log(idHuy);
             $('#exampleModal_' + idHuy).modal('show')
         })
 
+
+        //Handle đóng modal xác nhận Hủy đơn hàng
         $('.closeButton').click(function (e) {
             var idClose = $(this).data("id");
             console.log("Hủy", idClose);
             $('#exampleModal_' + idClose).modal('hide')
         })
 
-        //var btn = document.getElementByClass("huyDonHangButton");
-        //// When the user clicks on the button, open the modal
-        //btn.onclick = function () {
-        //    var idHuy = this.getAttri
-        //    $('#exampleModal').modal('show')
-        //}
+        
+        //Handle mở modal xác nhận Đã nhận hàng
+        $('.daNhanHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đã nhận hàng
+        $('.closeButtonNhanHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('hide')
+        })
+
+        //Handle Xác nhận Hủy đơn hàng
+        
+
 
 
     });
