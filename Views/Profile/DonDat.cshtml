@@ -122,8 +122,10 @@
                                                     <div class="wrap-options">
                                                         @if (item.TTDH == "Chờ Xác Nhận")
                                                         {
+                                                            <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                Hủy Đơn Hàng
+                                                            </p>
 
-                                                            <p class="huyDonHang">Hủy Đơn Hàng</p>
                                                         }
                                                         else if (item.TTDH == "Đang Giao")
                                                         {
@@ -142,6 +144,66 @@
                                                     </div>
                                                 </div>
                                             </a>
+                                            <!-- Modal -->
+                                            <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                Xác Nhận Hủy Đơn Hàng
+                                                                <strong>
+                                                                    #@item.ID
+                                                                </strong>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Đơn Hàng Của Bạn Sẽ Được Hủy Ngay Lập Tức. Bạn Có Muốn Hủy Đơn Hàng Này?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                            <button class="btn btn-primary xacNhanButton">Xác Nhận</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <style>
+
+                                                .modal-body {
+                                                    color: #000;
+                                                    font-size: 16px;
+                                                    font-weight: 500;
+                                                    line-height: 26px;
+                                                }
+
+                                                .modal-open {
+                                                    padding-right: 0 !important;
+                                                }
+
+                                                #site-header {
+                                                    padding-right: 0 !important;
+                                                }
+                                            </style>
+
+
+
+                                            @*<script>
+                                                
+                                                //var modal = document.getElementByClass("huyDonHangModal");
+
+                                                // Get the button that opens the modal
+                                                var btn = document.getElementByClass("huyDonHangButton");
+                                                // When the user clicks on the button, open the modal
+                                                btn.onclick = function () {
+                                                    var idHuy = this.getAttri
+                                                    $('#exampleModal').modal('show')
+                                                }
+
+                                                var closeButton = document.getElementById('closeButton');
+                                                closeButton.onclick = function () {
+                                                    $('#exampleModal').modal('hide')
+                                                }
+                                            </script>*@
 
                                         </td>
                                     </tr>
@@ -444,12 +506,9 @@
     $(document).ready(function () {
         $('.optionsSelect').click(function (e) {
             var idToggle = $(this).data("id");
-            console.log('rich', idToggle);
             var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
-            console.log("isHasClass", isHasClass);
             e.preventDefault();
             e.stopPropagation();
-            console.log("Toggle_" + idToggle);
             $(".toggle-options-select").removeClass("show");
             if (isHasClass == false) {
                 $("#Toggle_" + idToggle).addClass("show");
@@ -466,6 +525,26 @@
             var idXemChiTiet = $(this).data("id");
             window.location.replace("https://localhost:44309/profile/chi-tiet-don-dat/" + idXemChiTiet);
         })
+
+        $('.huyDonHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#exampleModal_' + idHuy).modal('show')
+        })
+
+        $('.closeButton').click(function (e) {
+            var idClose = $(this).data("id");
+            console.log("Hủy", idClose);
+            $('#exampleModal_' + idClose).modal('hide')
+        })
+
+        //var btn = document.getElementByClass("huyDonHangButton");
+        //// When the user clicks on the button, open the modal
+        //btn.onclick = function () {
+        //    var idHuy = this.getAttri
+        //    $('#exampleModal').modal('show')
+        //}
+
 
     });
 </script>
