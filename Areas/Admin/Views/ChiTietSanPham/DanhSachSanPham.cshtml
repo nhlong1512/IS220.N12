@@ -16,139 +16,114 @@
     </div>
 }
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 @{
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    var sanphams = ViewBag.sanphams;
-    var nguoidung = ViewBag.nguoidung;
+    var ctsps = ViewBag.ctsps;
+    var sps = ViewBag.sps;
 }
 <div class="w3-services py-5">
-    <div class="container" style="padding:24px 0;">
+    <div class="container">
         <div class="form-horizontal">
-            <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Giỏ Hàng</h3>
+            <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Danh Sách Sản Phẩm</h3>
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <div style="">
                         <hr class="style-10" />
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Sản Phẩm</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
-                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-transform: uppercase;">Sản Phẩm</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-transform: uppercase;">Phân Loại</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-transform: uppercase;">Ngày Đăng</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-transform: uppercase;">
+                                        Trạng Thái
+                                    </th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-transform: uppercase;">Giá</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-transform: uppercase;">Thao Tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
+                                @foreach (var item in ctsps)
                                 {
-
                                     <tr>
                                         <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
                                             <div class="img-product-wrap">
-                                                <img class="img-product" src="@item.ChiTietSanPham.UrlImage" />
+                                                <img class="img-product" src="@item.UrlImage" />
                                             </div>
                                             <div class="product-details">
                                                 <div>
                                                     <h3 class="product-title">
-                                                        @item.ChiTietSanPham.TenSanPham
+                                                        @item.TenSanPham
                                                     </h3>
-                                                    <p class="product-note" style="margin-bottom: 0">
-                                                        Size: @item.Size
-                                                    </p>
-                                                    <p class="product-note">
-                                                        @item.Topping
-                                                    </p>
-
+                                                    <style>
+                                                        .product-desc {
+                                                            overflow: hidden;
+                                                            display: -webkit-box;
+                                                            -webkit-line-clamp: 2;
+                                                            -webkit-box-orient: vertical;
+                                                            max-width:400px;
+                                                        }
+                                                    </style>
                                                 </div>
-                                                <p class="product-price">
-                                                    @{
-                                                        var b = item.Gia;
-                                                        b = b / 1000;
-                                                    }
-                                                    @b.000 đ
-                                                </p>
+                                                    <p class="product-desc">@item.MoTaSanPham</p>
                                             </div>
                                         </th>
                                         <td>
                                             <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-
-                                                <button class="button-quantity-decrease" id="decreaseQtyButton" data-id="@item.ChiTietSanPham.ID"
-                                                        data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia" data-qty="@item.Quantity">
-                                                    -
-                                                </button>
-                                                <input class="quantity-product" type="number" value="@item.Quantity" readonly />
-                                                <button class="button-quantity-increase" id="increaseQtyButton" data-id="@item.ChiTietSanPham.ID"
-                                                        data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia">
-                                                    +
-                                                </button>
+                                                @foreach (var it in sps)
+                                                {
+                                                    if (it.ID == item.MaPhanLoai)
+                                                    {
+                                                        <p class="phanLoai ngayDang">@it.PhanLoai</p>
+                                                    }
+                                                }
                                             </div>
 
                                         </td>
-
-                                        <td style="padding-right: 30px;">
-                                            <p class="total-price">
-                                                @{
-                                                    var c = item.Gia * item.Quantity;
-                                                    //Tính tổng giá
-                                                    TongGia += c;
-                                                    c = c / 1000;
-                                                }
-                                                @c.000 đ
+                                        <td>
+                                            <p class="ngayDang">
+                                                @item.CreatedDate
                                             </p>
                                         </td>
                                         <td>
-                                            <a class="button-delete" style="display:flex; justify-content:center;" data-id="@item.ChiTietSanPham.ID"
-                                               data-size="@item.Size" data-topping="@item.Topping" data-gia="@item.Gia">
+                                            
+                                            @if (item.Status == true)
+                                            {
+
+
+                                                <p class="trangThai ngayDang">Đang Mở Bán</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="trangThai ngayDang">Chưa Mở Bán</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            <p class="total-price">
+                                                @{ 
+                                                    var a = item.Gia;
+                                                    a = a / 1000;
+                                                }
+                                                @a.000 đ
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <a class="button-delete" style="display:flex; justify-content:center;">
                                                 <img src="~/Data/Files/deleteIcon.png" />
                                             </a>
                                         </td>
                                     </tr>
                                 }
-
                             </tbody>
                         </table>
                     </div>
 
-                </div>
-                <div class="col-sm-4">
-                    <div id="wrap-order-summary">
-                        <h3 class="order-summary-title">TỔNG ĐƠN</h3>
-                        <hr class="style-10" />
-                        <div style="margin-bottom: 100px;">
-                            <div class="wrap-sub-total">
-                                <p class="sub-total">TỔNG TIỀN HÀNG</p>
-                                <p class="sub-total" style="font-weight:600;">
-                                    @{
-                                        var d = TongGia;
-                                        d = d / 1000;
-                                    }
-                                    @d.000 đ
-                                </p>
-                            </div>
-                            <div class="wrap-giamgia">
-                                <p class="sub-total">GIẢM GIÁ</p>
-                                <p class="sub-total" style="font-weight:600;">__</p>
-                            </div>
-                        </div>
-
-                        <hr class="style-10" />
-                        <div>
-                            <div class="wrap-estimated-total">
-                                <p class="sub-total">TỔNG SỐ TIỀN </p>
-                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">
-                                    @d.000 đ
-                                </p>
-                            </div>
-                        </div>
-                        <a href="/giao-hang">
-                            <button class="button-checkout">
-                                THANH TOÁN
-                            </button>
-
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -256,8 +231,19 @@
 
     });
 </script>
-
 <style>
+    .ngayDang {
+        text-align:center;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+        margin:0;
+    }
+
+    .table tbody tr td {
+        vertical-align: middle;
+    }
 
     .empty-cart-img {
         width: 100%;
@@ -347,8 +333,8 @@
     }
 
     .img-product {
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
         border-radius: 15px;
         margin-right: 20px;
     }
@@ -421,6 +407,7 @@
         line-height: 20px;
         text-align: center;
         color: #146d4d;
+        margin: 0;
     }
 
     .img-header-avt:hover {

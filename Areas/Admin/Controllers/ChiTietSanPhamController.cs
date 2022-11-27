@@ -131,11 +131,17 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult DanhSachSanPham()
         {
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
-            if (session == null)
-            {
-                return Redirect("/dang-nhap");
-            }
+            //var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            //if (session == null)
+            //{
+            //    return Redirect("/dang-nhap");
+            //}
+
+            var ctsps = ctspdao.ViewAll();
+            var sps = spdao.ViewAll();
+            ViewBag.ctsps = ctsps;
+            ViewBag.sps = sps;
+            
             return View();
         }
     }
