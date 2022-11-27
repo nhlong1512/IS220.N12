@@ -37,6 +37,12 @@ namespace MoriiCoffee.Areas.Admin
 
             //Cấu hình định tuyến cho Sản phẩm
             context.MapRoute(
+               name: "DanhSachSanPham",
+               url: "admin/danh-sach-san-pham",
+               defaults: new { controller = "ChiTietSanPham", action = "DanhSachSanPham", id = UrlParameter.Optional }
+           );
+
+            context.MapRoute(
                name: "ChiTietSanPham",
                url: "admin/san-pham",
                defaults: new { controller = "ChiTietSanPham", action = "Index", id = UrlParameter.Optional }

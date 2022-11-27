@@ -127,5 +127,16 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 return View(ctsp);
             }
         }
+
+
+        public ActionResult DanhSachSanPham()
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            return View();
+        }
     }
 }
