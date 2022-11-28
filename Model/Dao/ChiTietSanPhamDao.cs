@@ -57,6 +57,7 @@ namespace Model.Dao
         public long Insert(ChiTietSanPham entity)
         {
             entity.CreatedDate = DateTime.Now;
+            entity.Size = true;
             db.ChiTietSanPhams.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -76,6 +77,7 @@ namespace Model.Dao
                 ctsp.MoTaSanPham = entity.MoTaSanPham;
                 ctsp.ChiTietSanPham1 = entity.ChiTietSanPham1;
                 ctsp.ModifiedBy = entity.ModifiedBy;
+                ctsp.MaPhanLoai = entity.MaPhanLoai;
                 ctsp.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;
