@@ -1578,7 +1578,9 @@
     <Content Include="Data\Files\COD-png.png" />
     <Content Include="Data\Files\COD-svg.svg" />
     <Content Include="Data\Files\deleteIcon.png" />
+    <Content Include="Data\Files\detail.png" />
     <Content Include="Data\Files\dots-option.png" />
+    <Content Include="Data\Files\edit.png" />
     <Content Include="Data\Files\emptyCart4.png" />
     <Content Include="Data\Files\HAT.jpg" />
     <Content Include="Data\Files\HAT2.png" />

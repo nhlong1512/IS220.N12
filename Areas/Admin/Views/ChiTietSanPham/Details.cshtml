@@ -8,57 +8,6 @@
     var ctsps = ViewBag.ctsps;
 }
 
-<style>
-
-    .breadcrumb {
-        --cui-breadcrumb-padding-x: 0 !important;
-        --cui-breadcrumb-padding-y: 0 !important;
-        --cui-breadcrumb-margin-bottom: 1rem !important;
-        --cui-breadcrumb-bg: unset !important;
-        --cui-breadcrumb-border-radius: !important;
-        --cui-breadcrumb-divider-color: #8a93a2 !important;
-        --cui-breadcrumb-item-padding-x: 0.5rem !important;
-        --cui-breadcrumb-item-active-color: #8a93a2 !important;
-        display: flex !important;
-        flex-wrap: wrap !important;
-        padding: var(--cui-breadcrumb-padding-y) var(--cui-breadcrumb-padding-x) !important;
-        margin-bottom: var(--cui-breadcrumb-margin-bottom) !important;
-        font-size: var(--cui-breadcrumb-font-size) !important;
-        list-style: none !important;
-        background-color: var(--cui-breadcrumb-bg) !important;
-        border-radius: var(--cui-breadcrumb-border-radius) !important;
-    }
-
-    html:not([dir=rtl]) .breadcrumb-item + .breadcrumb-item {
-        padding-left: var(--cui-breadcrumb-item-padding-x) !important;
-    }
-
-    *[dir=rtl] .breadcrumb-item + .breadcrumb-item {
-        padding-right: var(--cui-breadcrumb-item-padding-x) !important;
-    }
-
-    .breadcrumb-item + .breadcrumb-item::before {
-        color: var(--cui-breadcrumb-divider-color) !important;
-    }
-
-    html:not([dir=rtl]) .breadcrumb-item + .breadcrumb-item::before {
-        float: left !important;
-        padding-right: var(--cui-breadcrumb-item-padding-x) !important;
-        content: var(--cui-breadcrumb-divider, "/") !important;
-    }
-
-    *[dir=rtl] .breadcrumb-item + .breadcrumb-item::before {
-        float: right !important;
-        padding-left: var(--cui-breadcrumb-item-padding-x) !important;
-        content: var(--cui-breadcrumb-divider-flipped, "/") !important;
-    }
-
-    .breadcrumb-item.active {
-        color: var(--cui-breadcrumb-item-active-color) !important;
-    }
-</style>
-
-
 @section breadcrumb {
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
@@ -72,11 +21,17 @@
     </div>
 }
 
-<link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />
+@*<link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />
 <link href="~/Assets/Client/css/custom-profiledropdown.css" rel="stylesheet" />
-<script src="~/Assets/Client/js/bootstrap.min.js"></script>
+<script src="~/Assets/Client/js/bootstrap.min.js"></script>*@
 
 <style>
+
+    .activeButton {
+        background-color: #146d4d !important;
+        color: #fff !important;
+    }
+
     .product {
         display: flex;
         /*flex-direction:column;*/
@@ -95,7 +50,7 @@
     }
 
     .moTaDiv {
-        margin-top: 20px;
+        margin: 20px 0;
     }
 
     .moTa {
@@ -107,6 +62,7 @@
     .moTaP {
         font-size: 18px;
         font-weight: 400;
+        margin-bottom: 20px;
     }
 
     hr.style10 {
@@ -128,6 +84,79 @@
 
     .splienquan-p {
         font-size: 18px !important;
+    }
+
+    .wrapChonSize {
+    }
+
+    .titleChonSize {
+        margin: 30px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listSize {
+        display: flex;
+    }
+
+    .size {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 0 0;
+    }
+
+    .wrapChonTopping {
+    }
+
+    .titleChonTopping {
+        margin: 30px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listTopping {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .topping {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 15px 0;
+    }
+
+    .wrapThemGioHang {
+        display: flex;
+    }
+
+    .buttonThemGioHang {
+        width: 100%;
+        font-weight: 600;
+        padding: 12px;
+        margin: 30px 0 15px 0;
+        background-color: #146d4d;
+        color: #fff;
+        font-size: 20px;
+        line-height: 30px;
+        /* identical to box height */
+        cursor: pointer;
+        text-align: center;
+        border-radius: 20px;
+        border: none;
     }
 </style>
 

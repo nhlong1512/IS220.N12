@@ -20,21 +20,21 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
-        //public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
-        //{
-        //    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
-        //    if (session == null)
-        //    {
-        //        return Redirect("/dang-nhap");
-        //    }
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
 
-        //    //var blogs = bldao.ViewAll();
-        //    //ViewBag.blogs = blogs;
-        //    ViewBag.sanphams = spdao.ViewAll();
-        //    var model = ctspdao.ListAllPaging(searchString, page, pageSize);
-        //    ViewBag.SearchString = searchString;
-        //    return View(model);
-        //}
+            //var blogs = bldao.ViewAll();
+            //ViewBag.blogs = blogs;
+            ViewBag.sanphams = spdao.ViewAll();
+            var model = ctspdao.ListAllPaging(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+            return View(model);
+        }
 
         [ValidateInput(false)]
         public ActionResult Create(ChiTietSanPham ctsp)
