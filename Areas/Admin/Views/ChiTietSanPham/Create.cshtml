@@ -26,13 +26,13 @@
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 
 
-<div class="w3-services py-5">
+<div class="w3-services py-5" style="margin-bottom:40px;">
     <div class="container">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
             <div class="form-horizontal">
-                <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:30px;">Danh Sách Sản Phẩm</h3>
+                <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:30px;">Thêm Mới Sản Phẩm</h3>
                 <div class="form-detail" style="margin-top: 80px;">
 
                     <div class="form-group row">
@@ -89,7 +89,12 @@
                         <button type="submit" value="Create">
                             Tạo Mới
                         </button>
-                    </a>    
+                    </a>
+                    <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none">
+                        <a href="~/admin/san-pham" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
+                            Danh Sách Sản Phẩm
+                        </a>
+                    </div>
                 </div>
             </div>
         }

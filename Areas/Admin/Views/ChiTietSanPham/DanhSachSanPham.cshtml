@@ -27,10 +27,10 @@
     var ctsps = ViewBag.ctsps;
     var sps = ViewBag.sps;
 }
-<div class="w3-services py-5">
+<div class="w3-services py-5" style="margin-bottom: 48px;">
     <div class="container">
         <div class="form-horizontal">
-            <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:30px;">Danh Sách Sản Phẩm</h3>
+            <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Danh Sách Sản Phẩm</h3>
             <div class="row">
                 <div class="col-sm-12">
                     <div style="">
@@ -52,101 +52,101 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <th style="vertical-align: middle;">
-                                        <p class="" style="padding-left:20px;">#@item.ID</p>
-                                    </th>
-                                    <td scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
-                                        <div class="img-product-wrap">
-                                            <img class="img-product" src="@item.UrlImage" />
-                                        </div>
-                                        <div class="product-details">
-                                            <div>
-                                                <h3 class="product-title">
-                                                    @item.TenSanPham
-                                                </h3>
+                                    <tr>
+                                        <th style="vertical-align: middle;">
+                                            <p class="" style="padding-left:20px;">#@item.ID</p>
+                                        </th>
+                                        <td scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
+                                            <div class="img-product-wrap">
+                                                <img class="img-product" src="@item.UrlImage" />
                                             </div>
-                                            <p class="product-desc">@item.MoTaSanPham</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                                            @foreach (var it in sps)
-                                            {
-                                                if (it.ID == item.MaPhanLoai)
+                                            <div class="product-details">
+                                                <div>
+                                                    <h3 class="product-title">
+                                                        @item.TenSanPham
+                                                    </h3>
+                                                </div>
+                                                <p class="product-desc">@item.MoTaSanPham</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                                                @foreach (var it in sps)
                                                 {
-                                                    <p class="phanLoai ngayDang">@it.PhanLoai</p>
+                                                    if (it.ID == item.MaPhanLoai)
+                                                    {
+                                                        <p class="phanLoai ngayDang">@it.PhanLoai</p>
+                                                    }
                                                 }
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <p class="ngayDang">
+                                                @item.CreatedDate
+                                            </p>
+                                        </td>
+                                        <td>
+
+                                            @if (item.Status == true)
+                                            {
+
+
+                                                <p class="trangThai ngayDang">Đang Mở Bán</p>
                                             }
-                                        </div>
-
-                                    </td>
-                                    <td>
-                                        <p class="ngayDang">
-                                            @item.CreatedDate
-                                        </p>
-                                    </td>
-                                    <td>
-
-                                        @if (item.Status == true)
-                                        {
-
-
-                                            <p class="trangThai ngayDang">Đang Mở Bán</p>
-                                        }
-                                        else
-                                        {
-                                            <p class="trangThai ngayDang">Chưa Mở Bán</p>
-                                        }
-                                    </td>
-                                    <td>
-                                        <p class="total-price">
-                                            @{
-                                                var a = item.Gia;
-                                                a = a / 1000;
+                                            else
+                                            {
+                                                <p class="trangThai ngayDang">Chưa Mở Bán</p>
                                             }
-                                            @a.000 đ
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <div style="display:flex; justify-content:center; align-items:center;">
-                                            <a class="button-detail button-option" href="/admin/san-pham/details/@item.ID">
-                                                <img src="~/Data/Files/detail.png" />
-                                            </a>
-                                            <a class="button-edit button-option" href="/admin/san-pham/update/@item.ID">
-                                                <img src="~/Data/Files/edit.png" />
-                                            </a>
-                                            <a class="button-delete button-option huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                                                <img src="~/Data/Files/deleteIcon.png" />
-                                            </a>
-                                        </div>
+                                        </td>
+                                        <td>
+                                            <p class="total-price">
+                                                @{
+                                                    var a = item.Gia;
+                                                    a = a / 1000;
+                                                }
+                                                @a.000 đ
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <div style="display:flex; justify-content:center; align-items:center;">
+                                                <a class="button-detail button-option" href="/admin/san-pham/details/@item.ID">
+                                                    <img src="~/Data/Files/detail.png" />
+                                                </a>
+                                                <a class="button-edit button-option" href="/admin/san-pham/update/@item.ID">
+                                                    <img src="~/Data/Files/edit.png" />
+                                                </a>
+                                                <a class="button-delete button-option huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                    <img src="~/Data/Files/deleteIcon.png" />
+                                                </a>
+                                            </div>
 
-                                    </td>
-                                    <!-- Modal -->
-                                    <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                        Xác Nhận Xóa Sản Phẩm
-                                                        <strong>
-                                                            #@item.ID
-                                                        </strong>
-                                                    </h5>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Sản Phẩm #@item.ID Sẽ Được Xóa Ngay Lập Tức. Bạn Có Muốn Xóa Sản Phẩm Này?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                    <a href="/admin/san-pham/delete/@item.ID">
-                                                    <button class="xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
-                                                    </a>
+                                        </td>
+                                        <!-- Modal -->
+                                        <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            Xác Nhận Xóa Sản Phẩm
+                                                            <strong>
+                                                                #@item.ID
+                                                            </strong>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Sản Phẩm #@item.ID Sẽ Được Xóa Ngay Lập Tức. Bạn Có Muốn Xóa Sản Phẩm Này?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                        <a href="/admin/san-pham/delete/@item.ID">
+                                                            <button class="xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </tr>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
@@ -158,6 +158,11 @@
                                 </div>
                             </div>
                         </section>
+                        <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none">
+                            <a href="~/admin/san-pham/create" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
+                                Thêm Mới Sản Phẩm
+                            </a>
+                        </div>
                     </div>
 
                 </div>
