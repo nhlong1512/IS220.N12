@@ -63,6 +63,9 @@
         font-size: 18px;
         font-weight: 400;
         margin-bottom: 20px;
+        line-height: 26px;
+        color: #787e92;
+        font-family: 'Poppins', sans-serif;
     }
 
     hr.style10 {
@@ -84,6 +87,7 @@
 
     .splienquan-p {
         font-size: 18px !important;
+        color: #787e92;
     }
 
     .wrapChonSize {
@@ -173,13 +177,13 @@
                     <div class="container">
                         <div class="product">
                             <div class="imgProduct">
-                                <img src=@Model.UrlImage style="width:500px; height: 500px;" />
+                                <img src=@Model.UrlImage style="width: 500px; height: 500px; border-radius: 6px;" />
                             </div>
                             <div class="contentProduct">
                                 <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #146d4d; ">
                                     @Model.TenSanPham
                                 </h3>
-                                <p style="font-size: 24px; font-weight: 700;">
+                                <p style="font-size: 24px; font-weight: 700; color:#787e92;">
                                     @{
                                         var t = @Model.Gia;
                                         t = t / 1000;
@@ -214,8 +218,8 @@
                                     <a href="~/admin/san-pham/details/@sp.ID" style="width:auto!important; padding:0!important">
                                         <div class="col-lg-2 col-md-3 causes-grid">
                                             <div>
-                                                <a href="~/admin/san-pham/details/@sp.ID"><img src=@sp.UrlImage alt="@sp.TenSanPham" height="120"></a>
-                                                <a href="~/admin/san-pham/details/@sp.ID" class="cause-title-wrap">
+                                                <a href="~/admin/san-pham/details/@sp.ID"><img src=@sp.UrlImage alt="@sp.TenSanPham" style="border-radius:6px; height:120px; width:180px;"></a>
+                                                <a href="~/admin/san-pham/details/@sp.ID" class="cause-title-wrap" style="text-decoration:none">
                                                     <h4 class="cause-title splienquan-h4 text-morii">
                                                         @sp.TenSanPham
                                                     </h4>
