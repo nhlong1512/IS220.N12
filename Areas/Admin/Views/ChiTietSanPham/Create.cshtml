@@ -25,80 +25,479 @@
 <script src="~/Scripts/ckfinder/ckfinder.js"></script>
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 
-<div class="tab-content rounded-bottom">
-    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+
+<div class="w3-services py-5">
+    <div class="container">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-
             <div class="form-horizontal">
-                <h4>Thêm mới Sản phẩm</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:30px;">Danh Sách Sản Phẩm</h3>
+                <div class="form-detail" style="margin-top: 80px;">
 
-
-                <div class="tab-content rounded-bottom">
-                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-644">
-                        <form>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="urlAnh">Loại sản phẩm</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group" style="cursor: pointer;">
-                                        <select class="form-select" aria-label="Default select example" name="MaPhanLoai">
-                                            @{
-                                                foreach (var sp in sanpham)
-                                                {
-                                                    <option class="selectedPhanLoai" value="@sp.ID">@sp.PhanLoai</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="urlAnh">Ảnh Sản phẩm</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group" onclick="BrowserSever()" style="cursor: pointer;">
-                                        <span class="input-group-text" id="basic-addon3">Upload</span>
-                                        <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlImage">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="tieude">Tên sản phẩm</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="tieude" type="text" name="TenSanPham">
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="tieude">Giá</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="tieude" type="text" name="Gia">
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="col-sm-2 col-form-label" for="exampleFormControlTextarea1">Mô tả sản phẩm</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="MoTaSanPham"></textarea>
-                                </div>
-
-                            </div>
-                            @*Nội dung*@
-                            @*<div class="input-group mb-3">
-            <label class="col-sm-2 col-form-label" for="noidung">Nội dung</label>
-            <div class="col-sm-10">
-                <textarea class="form-control ckeditor" name="noidung" id="noidung" rows="3"></textarea>
-            </div>
-        </div>*@
-                            <button class="btn btn-success" type="submit" value="Create">Tạo mới</button>
-                        </form>
+                    <div class="form-group row">
+                        <label for="loaiSanPhamLabel" class="col-sm-2 col-form-label col-form-label-lg">Loại Sản Phẩm</label>
+                        <div class="col-sm-10">
+                            <!--<input type="text" class="form-control form-control-lg" id="loaiSanPhamLabel"--> @*value="@Model.HoTen"*@ <!--name="LoaiSanPham">-->
+                            <select class="form-select form-select-lg" aria-label="Default select example" name="MaPhanLoai" style="padding:8px 16px;">
+                                @{
+                                    foreach (var sp in sanpham)
+                                    {
+                                        <option class="selectedPhanLoai" value="@sp.ID">@sp.PhanLoai</option>
+                                    }
+                                }
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    <hr class="style10">
 
+                    <div class="form-group row">
+                        <label for="urlAnh" class="col-sm-2 col-form-label col-form-label-lg">Ảnh Sản Phẩm</label>
+                        <div class="col-sm-10">
+                            <div class="input-group" onclick="BrowserSever()" style="cursor: pointer;">
+                                <span class="input-group-text" id="basic-addon3">Upload</span>
+                                <input class="form-control form-control-lg" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlImage">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="style10">
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label col-form-label-lg" for="tieude">Tên sản phẩm</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control-lg" name="TenSanPham">
+                        </div>
+                    </div>
+                    <hr class="style10">
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label col-form-label-lg" for="gia">Giá</label>
+                        <div class="col-sm-10">
+                            <input class="form-control form-control-lg" id="gia" type="number" name="Gia">
+                        </div>
+                    </div>
+                    <hr class="style10">
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label col-form-label-lg" for="exampleFormControlTextarea1">Mô tả sản phẩm</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3" name="MoTaSanPham"></textarea>
+                        </div>
+                    </div>
+
+                    <a class="button-profile-save" style="text-decoration:none;">
+                        <button type="submit" value="Create">
+                            Tạo Mới
+                        </button>
+                    </a>
+
+
+
+
+                </div>
             </div>
         }
     </div>
 </div>
+
+
+
+<style>
+    .button-option {
+        display: flex;
+        justify-content: center;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .button-delete {
+        margin-right: 0;
+    }
+
+    .button-edit {
+        height: 23px;
+    }
+
+    .button-detail {
+        height: 23px;
+    }
+
+    .product-desc {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-width: 350px;
+    }
+
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
+
+    .huyDonHang {
+        font-size: 14px;
+        color: #FF0000;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .chinhSua {
+        font-size: 14px;
+        color: #1976D2;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .chinhSua:hover {
+            opacity: 0.5;
+        }
+
+
+    .daNhanHang {
+        font-size: 14px;
+        color: #009D34;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .daNhanHang:hover {
+            opacity: 0.5;
+        }
+
+    .huyDonHang:hover {
+        opacity: 0.5;
+    }
+
+    .xemChiTiet {
+        font-size: 14px;
+        color: #146d4d;
+        line-height: 20px;
+    }
+
+        .xemChiTiet:hover {
+            opacity: 0.5;
+        }
+
+    .optionsSelect {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .show {
+        visibility: visible !important;
+    }
+
+    .toggle-options-select {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        position: absolute;
+        background-color: #ccc;
+        border-radius: 8px;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        display: flex;
+        border: 1px solid #fff;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        top: -390%;
+        left: -150%;
+        visibility: hidden;
+        transition: all 0.02s ease;
+    }
+
+    .wrap-options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .maDonDat {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000;
+    }
+
+    .pDonDat {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+    }
+
+    .activeColor {
+        color: #009D34 !important;
+    }
+
+
+    .cancelledColor {
+        color: #FF0000 !important;
+    }
+
+    .inProgressColor {
+        color: #FFC107 !important;
+    }
+
+    .waitingAcceptColor {
+        color: #1976D2 !important;
+    }
+
+    .ngayDang {
+        text-align: center;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+        margin: 0;
+    }
+
+    .table tbody tr td {
+        vertical-align: middle;
+    }
+
+    .empty-cart-img {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        color: #000;
+        margin-bottom: 100px;
+    }
+
+    .centered-empty-cart {
+        position: absolute;
+        top: calc(50% + 140px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+    .button-buy-now {
+        position: absolute;
+        top: calc(50% + 220px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 26px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        padding: 24px;
+    }
+
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 80px;
+        height: 80px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+        max-width: 260px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #146d4d;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity-decrease {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .button-quantity-increase {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #146d4d;
+        margin: 0;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+</style>
 
 <script>
     //Handle thêm CKEDITOR
@@ -121,7 +520,7 @@
 
 <script>
     $(document).ready(function () {
-         console.log($('.form-select').val())
-        
+        console.log($('.form-select').val())
+
     });
 </script>

@@ -30,7 +30,6 @@ namespace Model.Dao
             //Convert từ IqueryTable sang list
             chitietsps = new List<ChiTietSanPham>(list);
             return chitietsps;
-
         }
 
         //Xem danh sách các món Topping
