@@ -53,7 +53,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
                 if (id > 0)
                 {
-                    return RedirectToAction("Index", "ChiTietSanPham");
+                    return Redirect("/admin/san-pham");
                 }
                 return View("Create");
 
@@ -87,7 +87,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             }
 
             ctspdao.Delete(id);
-            return RedirectToAction("Index");
+            return Redirect("~/admin/san-pham");
         }
 
 
@@ -119,7 +119,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             var isTrue = ctspdao.Update(ctsp);
             if (isTrue)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("DanhSachSanPham");
             }
             else
             {
@@ -131,11 +131,11 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult DanhSachSanPham(string searchString, int page = 1, int pageSize = 5)
         {
-            //var session = (UserLogin)Session[CommonConstants.USER_SESSION];
-            //if (session == null)
-            //{
-            //    return Redirect("/dang-nhap");
-            //}
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
             var model = ctspdao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
 

@@ -52,78 +52,101 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <th style="vertical-align: middle;">
-                                            <p class="" style="padding-left:20px;">#@item.ID</p>
-                                        </th>
-                                        <td scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
-                                            <div class="img-product-wrap">
-                                                <img class="img-product" src="@item.UrlImage" />
+                                <tr>
+                                    <th style="vertical-align: middle;">
+                                        <p class="" style="padding-left:20px;">#@item.ID</p>
+                                    </th>
+                                    <td scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
+                                        <div class="img-product-wrap">
+                                            <img class="img-product" src="@item.UrlImage" />
+                                        </div>
+                                        <div class="product-details">
+                                            <div>
+                                                <h3 class="product-title">
+                                                    @item.TenSanPham
+                                                </h3>
                                             </div>
-                                            <div class="product-details">
-                                                <div>
-                                                    <h3 class="product-title">
-                                                        @item.TenSanPham
-                                                    </h3>
-                                                </div>
-                                                <p class="product-desc">@item.MoTaSanPham</p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                                                @foreach (var it in sps)
+                                            <p class="product-desc">@item.MoTaSanPham</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                                            @foreach (var it in sps)
+                                            {
+                                                if (it.ID == item.MaPhanLoai)
                                                 {
-                                                    if (it.ID == item.MaPhanLoai)
-                                                    {
-                                                        <p class="phanLoai ngayDang">@it.PhanLoai</p>
-                                                    }
+                                                    <p class="phanLoai ngayDang">@it.PhanLoai</p>
                                                 }
-                                            </div>
-
-                                        </td>
-                                        <td>
-                                            <p class="ngayDang">
-                                                @item.CreatedDate
-                                            </p>
-                                        </td>
-                                        <td>
-
-                                            @if (item.Status == true)
-                                            {
-
-
-                                                <p class="trangThai ngayDang">Đang Mở Bán</p>
                                             }
-                                            else
-                                            {
-                                                <p class="trangThai ngayDang">Chưa Mở Bán</p>
-                                            }
-                                        </td>
-                                        <td>
-                                            <p class="total-price">
-                                                @{
-                                                    var a = item.Gia;
-                                                    a = a / 1000;
-                                                }
-                                                @a.000 đ
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <div style="display:flex; justify-content:center; align-items:center;">
-                                                <a class="button-detail button-option" href="/admin/san-pham/details/@item.ID" >
-                                                    <img src="~/Data/Files/detail.png" />
-                                                </a>
-                                                <a class="button-edit button-option">
-                                                    <img src="~/Data/Files/edit.png" />
-                                                </a>
-                                                <a class="button-delete button-option">
-                                                    <img src="~/Data/Files/deleteIcon.png" />
-                                                </a>
-                                            </div>
+                                        </div>
 
-                                        </td>
-                                        
-                                    </tr>
+                                    </td>
+                                    <td>
+                                        <p class="ngayDang">
+                                            @item.CreatedDate
+                                        </p>
+                                    </td>
+                                    <td>
+
+                                        @if (item.Status == true)
+                                        {
+
+
+                                            <p class="trangThai ngayDang">Đang Mở Bán</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="trangThai ngayDang">Chưa Mở Bán</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        <p class="total-price">
+                                            @{
+                                                var a = item.Gia;
+                                                a = a / 1000;
+                                            }
+                                            @a.000 đ
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div style="display:flex; justify-content:center; align-items:center;">
+                                            <a class="button-detail button-option" href="/admin/san-pham/details/@item.ID">
+                                                <img src="~/Data/Files/detail.png" />
+                                            </a>
+                                            <a class="button-edit button-option" href="/admin/san-pham/update/@item.ID">
+                                                <img src="~/Data/Files/edit.png" />
+                                            </a>
+                                            <a class="button-delete button-option huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                <img src="~/Data/Files/deleteIcon.png" />
+                                            </a>
+                                        </div>
+
+                                    </td>
+                                    <!-- Modal -->
+                                    <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                        Xác Nhận Xóa Sản Phẩm
+                                                        <strong>
+                                                            #@item.ID
+                                                        </strong>
+                                                    </h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Sản Phẩm #@item.ID Sẽ Được Xóa Ngay Lập Tức. Bạn Có Muốn Xóa Sản Phẩm Này?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                    <a href="/admin/san-pham/delete/@item.ID">
+                                                    <button class="xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tr>
                                 }
                             </tbody>
                         </table>
@@ -199,49 +222,6 @@
             $('#daNhanHang_' + idHuy).modal('hide')
         })
 
-        //Handle Xác nhận Hủy đơn hàng
-        $(".xacNhanHuyButton").click(function (e) {
-            var id = $(this).data("id");
-            console.log("idXacNhan", id);
-            $.ajax({
-                type: "POST",
-                url: "/Profile/HuyDonHangJson",
-                data: {
-                    id: id
-                },
-                dataType: "json",
-                success: function (res) {
-                    window.location.replace("https://localhost:44309/profile/don-dat");
-                    console.log("res", res.id, "isValid", res.isValid);
-                },
-                error: function (err) {
-                    console.log("err --> ", err);
-                    console.log("err ->>", err.err);
-                },
-            });
-        })
-
-        //Handle Xác nhận chuyển trạng thái đơn hàng sang đã giao
-        $(".xacNhanDaGiaoButton").click(function (e) {
-            var id = $(this).data("id");
-            console.log("idXacNhanDaGiao", id);
-            $.ajax({
-                type: "POST",
-                url: "/Profile/DaNhanHangJson",
-                data: {
-                    id: id
-                },
-                dataType: "json",
-                success: function (res) {
-                    window.location.replace("https://localhost:44309/profile/don-dat");
-                    console.log("res", res.id, "isValid", res.isValid);
-                },
-                error: function (err) {
-                    console.log("err --> ", err);
-                    console.log("err ->>", err.err);
-                },
-            });
-        })
 
 
 
@@ -249,6 +229,33 @@
 </script>
 
 <style>
+    .xacNhanHuyButton{
+        background-color:#146d4d;
+        color:white;
+        font-weight:500;
+        outline:none;
+        padding: 6px 12px;
+        border:none;
+        border-radius: 6px;
+    }
+
+        .xacNhanHuyButton:hover {
+            opacity:0.7;
+        }
+
+    .closeButton{
+        color:#fff;
+        font-weight:500;
+        outline:none;
+        border:none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+    .closeButton:hover {
+        opacity:0.7;
+    }
+
     .button-option {
         display: flex;
         justify-content: center;
@@ -292,11 +299,7 @@
     }
 
     .huyDonHang {
-        font-size: 14px;
-        color: #FF0000;
-        line-height: 20px;
-        margin-bottom: 10px;
-        font-weight: 600;
+        
     }
 
     .chinhSua {
