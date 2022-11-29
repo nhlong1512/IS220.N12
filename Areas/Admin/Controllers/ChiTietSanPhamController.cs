@@ -40,6 +40,78 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult DanhSachCaPhe(string searchString, int page = 1, int pageSize = 5)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            var model = ctspdao.ListAllPagingCaPhe(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+
+            var ctsps = ctspdao.ViewAll();
+            var sps = spdao.ViewAll();
+            ViewBag.ctsps = ctsps;
+            ViewBag.sps = sps;
+
+            return View(model);
+        }
+
+        public ActionResult DanhSachTraSua(string searchString, int page = 1, int pageSize = 5)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            var model = ctspdao.ListAllPagingTraSua(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+
+            var ctsps = ctspdao.ViewAll();
+            var sps = spdao.ViewAll();
+            ViewBag.ctsps = ctsps;
+            ViewBag.sps = sps;
+
+            return View(model);
+        }
+
+        public ActionResult DanhSachTopping(string searchString, int page = 1, int pageSize = 5)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            var model = ctspdao.ListAllPagingTopping(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+
+            var ctsps = ctspdao.ViewAll();
+            var sps = spdao.ViewAll();
+            ViewBag.ctsps = ctsps;
+            ViewBag.sps = sps;
+
+            return View(model);
+        }
+
+        public ActionResult DanhSachKhac(string searchString, int page = 1, int pageSize = 5)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            var model = ctspdao.ListAllPagingKhac(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+
+            var ctsps = ctspdao.ViewAll();
+            var sps = spdao.ViewAll();
+            ViewBag.ctsps = ctsps;
+            ViewBag.sps = sps;
+
+            return View(model);
+        }
+
         [ValidateInput(false)]
         public ActionResult Create(ChiTietSanPham ctsp)
         {
@@ -133,6 +205,23 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         }
 
 
-        
+        //Handle Chọn danh sách sản phẩm theo từng loại
+        //[HttpPost]
+        //public JsonResult DanhSachChonJson(string name)
+        //{
+        //    if(name == "Tất Cả")
+        //    {
+
+        //    }
+        //    return Json(new
+        //    {
+        //        status = true,
+        //        id = id,
+        //        isValid = isValid,
+        //    });
+        //}
+
+
+
     }
 }

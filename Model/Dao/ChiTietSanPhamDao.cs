@@ -116,5 +116,46 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
+        public IEnumerable<ChiTietSanPham> ListAllPagingCaPhe(string searchString, int page, int pageSize)
+        {
+            IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            model = model.Where(x => x.MaPhanLoai == 1);
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.TenSanPham.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
+        public IEnumerable<ChiTietSanPham> ListAllPagingTraSua(string searchString, int page, int pageSize)
+        {
+            IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.TenSanPham.Contains(searchString) && x.MaPhanLoai == 2);
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
+        public IEnumerable<ChiTietSanPham> ListAllPagingTopping(string searchString, int page, int pageSize)
+        {
+            IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.TenSanPham.Contains(searchString) && x.MaPhanLoai == 3);
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
+        public IEnumerable<ChiTietSanPham> ListAllPagingKhac(string searchString, int page, int pageSize)
+        {
+            IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.TenSanPham.Contains(searchString) && x.MaPhanLoai == 4);
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
     }
 }

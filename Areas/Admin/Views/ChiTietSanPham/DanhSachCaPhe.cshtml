@@ -31,7 +31,7 @@
     <div class="container">
         <div class="form-horizontal">
             <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Danh Sách Sản Phẩm</h3>
-                        <hr class="style-10" />
+            <hr class="style-10" />
             <div class="row wrap-button-products">
                 <div>
                     <a class="button-products-link">
@@ -105,12 +105,12 @@
             </script>
             <style>
                 .wrap-button-products {
-                    display:flex;
+                    display: flex;
                     margin-bottom: 40px;
                 }
 
                 .button-products-link {
-                    text-decoration:none;
+                    text-decoration: none;
                 }
 
 
@@ -125,7 +125,7 @@
                     border: 1px solid #146d4d;
                     border-radius: 8px;
                     transition: all 0.02s ease;
-                    margin-right:12px;
+                    margin-right: 12px;
                 }
 
                     .button-products:hover {
@@ -263,7 +263,7 @@
                             <div class="panel-body">
                                 <div class="pull-right">
                                     <br />
-                                    @Html.PagedListPager(Model, page => Url.Action("DanhSachSanPham", new { page, @searchString = @ViewBag.SearchString }))
+                                    @Html.PagedListPager(Model, page => Url.Action("DanhSachCaPhe", new { page, @searchString = @ViewBag.SearchString }))
                                 </div>
                             </div>
                         </section>
@@ -343,32 +343,32 @@
 </script>
 
 <style>
-    .xacNhanHuyButton{
-        background-color:#146d4d;
-        color:white;
-        font-weight:500;
-        outline:none;
+    .xacNhanHuyButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
         padding: 6px 12px;
-        border:none;
+        border: none;
         border-radius: 6px;
     }
 
         .xacNhanHuyButton:hover {
-            opacity:0.7;
+            opacity: 0.7;
         }
 
-    .closeButton{
-        color:#fff;
-        font-weight:500;
-        outline:none;
-        border:none;
+    .closeButton {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
         padding: 6px 12px;
         border-radius: 6px;
     }
 
-    .closeButton:hover {
-        opacity:0.7;
-    }
+        .closeButton:hover {
+            opacity: 0.7;
+        }
 
     .button-option {
         display: flex;
@@ -378,16 +378,15 @@
     }
 
     .button-delete {
-        margin-right:0;
+        margin-right: 0;
     }
 
-    .button-edit{
-        height:23px;
+    .button-edit {
+        height: 23px;
     }
 
-    .button-detail{
-        height:23px;
-
+    .button-detail {
+        height: 23px;
     }
 
     .product-desc {
@@ -397,6 +396,7 @@
         -webkit-box-orient: vertical;
         max-width: 350px;
     }
+
     .modal-body {
         color: #000;
         font-size: 16px;
@@ -413,7 +413,6 @@
     }
 
     .huyDonHang {
-        
     }
 
     .chinhSua {
@@ -424,9 +423,9 @@
         font-weight: 600;
     }
 
-    .chinhSua:hover {
-        opacity:0.5;
-    }
+        .chinhSua:hover {
+            opacity: 0.5;
+        }
 
 
     .daNhanHang {
