@@ -752,13 +752,15 @@
 
 <script>
     $(document).ready(function () {
+        var url = window.location.href;
+        console.log("url", url);
+
         $(".button-products").click(function () {
             {
                 console.log($(this).data("name"));
                 var name = $(this).data("name");
                 if (name == "Tất Cả") {
                     window.location.replace("https://localhost:44309/admin/san-pham");
-
                 }
                 if (name == "Cà Phê") {
                     window.location.replace("https://localhost:44309/admin/san-pham/ca-phe");
@@ -812,6 +814,5 @@
     .button-active {
         background-color: #146d4d;
         color: #FFFFFF;
-        transition: all 0.02s ease;
     }
 </style>

@@ -35,27 +35,27 @@
             <div class="row wrap-button-products">
                 <div>
                     <a class="button-products-link">
-                        <button class="button-products button-active" id="button-products-0" data-name="Tất Cả">
+                        <button class="button-products" id="tat-ca" data-name="Tất Cả">
                             Tất Cả
                         </button>
                     </a>
                     <a class="button-products-link">
-                        <button class="button-products" id="button-products-1" data-name="Cà Phê">
+                        <button class="button-products" id="ca-phe" data-name="Cà Phê">
                             Cà Phê
                         </button>
                     </a>
                     <a class="button-products-link">
-                        <button class="button-products" id="button-products-2" data-name="Trà Sữa">
+                        <button class="button-products" id="tra-sua" data-name="Trà Sữa">
                             Trà Sữa
                         </button>
                     </a>
                     <a class="button-products-link">
-                        <button class="button-products" id="button-products-3" data-name="Topping">
+                        <button class="button-products" id="topping" data-name="Topping">
                             Topping
                         </button>
                     </a>
                     <a class="button-products-link">
-                        <button class="button-products" id="button-products-4" data-name="Khác">
+                        <button class="button-products button-active" id="khac" data-name="Khác">
                             Khác
                         </button>
                     </a>
@@ -752,11 +752,13 @@
 
 <script>
     $(document).ready(function () {
+        var url = window.location.href;
+        console.log("url", url)
+
         $(".button-products").click(function () {
             {
                 console.log($(this).data("name"));
                 var name = $(this).data("name");
-
                 if (name == "Tất Cả") {
                     window.location.replace("https://localhost:44309/admin/san-pham");
                 }
@@ -810,6 +812,5 @@
     .button-active {
         background-color: #146d4d;
         color: #FFFFFF;
-        transition: all 0.02s ease;
     }
 </style>
