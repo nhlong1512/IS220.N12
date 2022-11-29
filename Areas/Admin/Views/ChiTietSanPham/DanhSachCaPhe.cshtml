@@ -63,7 +63,7 @@
             </div>
 
             <div class="panel-body">
-                @using (Html.BeginForm("DanhSachSanPham", "ChiTietSanPham", FormMethod.Get))
+                @using (Html.BeginForm("DanhSachCaPhe", "ChiTietSanPham", FormMethod.Get))
                 {
                     <div class="form-group col-sm-4" style="display: flex; gap: 10px; white-space: nowrap; margin-bottom: 20px;">
                         <input value="@ViewBag.SearchString" name="searchString" class="form-control form-control-lg" type="text" id="search" placeholder="Tìm Kiếm..." autocomplete="off">

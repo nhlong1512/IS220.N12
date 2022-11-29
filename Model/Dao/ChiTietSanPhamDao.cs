@@ -126,9 +126,9 @@ namespace Model.Dao
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString) || ((x.ID).ToString()+"#").Contains(searchString) 
+                model = model.Where(x => x.TenSanPham.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
                 || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
-                ("Khác" + "Trà Sữa" + "Cà Phê" + "Topping").Contains(searchString));
+                (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) || ("Cà Phê").Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
@@ -139,7 +139,9 @@ namespace Model.Dao
             model = model.Where(x => x.MaPhanLoai == 2);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString));
+                model = model.Where(x => x.TenSanPham.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) || ("Trà Sữa").Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
@@ -150,7 +152,9 @@ namespace Model.Dao
             model = model.Where(x => x.MaPhanLoai == 3);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString));
+                model = model.Where(x => x.TenSanPham.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) ||("Topping").Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
@@ -161,7 +165,9 @@ namespace Model.Dao
             model = model.Where(x => x.MaPhanLoai == 4);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString));
+                model = model.Where(x => x.TenSanPham.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) || ("Khác").Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
