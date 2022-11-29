@@ -62,6 +62,20 @@
                 </div>
             </div>
 
+            <div class="panel-body">
+                @using (Html.BeginForm("DanhSachSanPham", "ChiTietSanPham", FormMethod.Get))
+                {
+                    <div class="col-md-4" style="display: flex; gap: 10px; white-space: nowrap; margin-bottom: 20px;">
+                        <input value="@ViewBag.SearchString" name="searchString" class="form-control" id="exampleDataList" list="datalistOptions" placeholder="Nhập Nội Dung Tìm Kiếm...">
+                        <a class="button-products-link">
+                            <button class="button-products button-active" >
+                                Tìm Kiếm
+                            </button>
+                        </a>
+                    </div>
+                }
+            </div>
+
             <div class="row">
                 <div class="col-sm-12">
                     <div style="">
