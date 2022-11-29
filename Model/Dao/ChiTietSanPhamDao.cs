@@ -111,7 +111,10 @@ namespace Model.Dao
             IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString));
+                model = model.Where(x => x.TenSanPham.Contains(searchString) || ("#"+(x.ID).ToString()).Contains(searchString)
+                || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) ||
+                (x.MaPhanLoai == 1 ? "Cà Phê" : (x.MaPhanLoai == 2 ? "Trà Sữa" : (x.MaPhanLoai == 3 ? "Topping" : "Khác"))).Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
@@ -120,9 +123,12 @@ namespace Model.Dao
         {
             IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
             model = model.Where(x => x.MaPhanLoai == 1);
+
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString));
+                model = model.Where(x => x.TenSanPham.Contains(searchString) || ((x.ID).ToString()+"#").Contains(searchString) 
+                || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
+                ("Khác" + "Trà Sữa" + "Cà Phê" + "Topping").Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }

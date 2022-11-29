@@ -65,10 +65,10 @@
             <div class="panel-body">
                 @using (Html.BeginForm("DanhSachSanPham", "ChiTietSanPham", FormMethod.Get))
                 {
-                    <div class="col-md-4" style="display: flex; gap: 10px; white-space: nowrap; margin-bottom: 20px;">
-                        <input value="@ViewBag.SearchString" name="searchString" class="form-control" id="exampleDataList" list="datalistOptions" placeholder="Nhập Nội Dung Tìm Kiếm...">
+                    <div class="form-group col-sm-4" style="display: flex; gap: 10px; white-space: nowrap; margin-bottom: 20px;">
+                        <input value="@ViewBag.SearchString" name="searchString" class="form-control form-control-lg" type="text" id="search" placeholder="Tìm Kiếm..." autocomplete="off">
                         <a class="button-products-link">
-                            <button class="button-products button-active" >
+                            <button class="button-active" style="font-weight: 600; font-size: 18px; line-height: 22px; padding: 12px 14px; text-align: center; border: 1px solid #146d4d; border-radius: 8px; margin-right: 12px;">
                                 Tìm Kiếm
                             </button>
                         </a>
