@@ -30,17 +30,17 @@ namespace MoriiCoffee.Areas.Admin
            );
 
             context.MapRoute(
+               name: "DanhSachBlogs",
+               url: "admin/danh-sach-blog",
+               defaults: new { controller = "Blog", action = "DanhSachBlog", id = UrlParameter.Optional }
+           );
+
+            context.MapRoute(
                name: "BlogCreate",
                url: "admin/blog/create",
                defaults: new { controller = "Blog", action = "Create", id = UrlParameter.Optional }
            );
 
-            //Cấu hình định tuyến cho Sản phẩm
-           // context.MapRoute(
-           //    name: "DanhSachSanPham",
-           //    url: "admin/danh-sach-san-pham",
-           //    defaults: new { controller = "ChiTietSanPham", action = "DanhSachSanPham", id = UrlParameter.Optional }
-           //);
 
             context.MapRoute(
                name: "ChiTietSanPham",

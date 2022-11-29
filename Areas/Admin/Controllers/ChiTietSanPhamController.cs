@@ -20,19 +20,23 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
+
+
+        public ActionResult DanhSachSanPham(string searchString, int page = 1, int pageSize = 5)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
             {
                 return Redirect("/dang-nhap");
             }
-
-            //var blogs = bldao.ViewAll();
-            //ViewBag.blogs = blogs;
-            ViewBag.sanphams = spdao.ViewAll();
             var model = ctspdao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
+
+            var ctsps = ctspdao.ViewAll();
+            var sps = spdao.ViewAll();
+            ViewBag.ctsps = ctsps;
+            ViewBag.sps = sps;
+
             return View(model);
         }
 
@@ -129,22 +133,6 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         }
 
 
-        public ActionResult DanhSachSanPham(string searchString, int page = 1, int pageSize = 5)
-        {
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
-            if (session == null)
-            {
-                return Redirect("/dang-nhap");
-            }
-            var model = ctspdao.ListAllPaging(searchString, page, pageSize);
-            ViewBag.SearchString = searchString;
-
-            var ctsps = ctspdao.ViewAll();
-            var sps = spdao.ViewAll();
-            ViewBag.ctsps = ctsps;
-            ViewBag.sps = sps;
-            
-            return View(model);
-        }
+        
     }
 }

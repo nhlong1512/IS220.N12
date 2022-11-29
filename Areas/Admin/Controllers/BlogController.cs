@@ -34,6 +34,23 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult DanhSachBlog(string searchString, int page = 1, int pageSize = 5)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            //var blogs = bldao.ViewAll();
+            //ViewBag.blogs = blogs;
+            var nguoidung = nguoidungdao.ViewDetail(1);
+            ViewBag.nguoidung = nguoidung;
+            var model = bldao.ListAllPaging(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+            return View(model);
+        }
+
+
 
 
         [ValidateInput(false)]
