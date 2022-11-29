@@ -61,9 +61,6 @@
                     </a>
                 </div>
             </div>
-
-
-
             <div class="row">
                 <div class="col-sm-12">
                     <div style="">
@@ -186,7 +183,7 @@
                             <div class="panel-body">
                                 <div class="pull-right">
                                     <br />
-                                    @Html.PagedListPager(Model, page => Url.Action("DanhSachTraSua", new { page, @searchString = @ViewBag.SearchString }))
+                                    @Html.PagedListPager(Model, page => Url.Action("DanhSachTopping", new { page, @searchString = @ViewBag.SearchString }))
                                 </div>
                             </div>
                         </section>
@@ -751,6 +748,7 @@
         //Xử lý nếu trang đang ở 1 thì sẽ disabled nút previous
     });
 </script>
+
 
 <script>
     $(document).ready(function () {

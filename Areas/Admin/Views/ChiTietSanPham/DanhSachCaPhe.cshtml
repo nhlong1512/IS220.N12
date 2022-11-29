@@ -62,85 +62,6 @@
                 </div>
             </div>
 
-            <script>
-                $(document).ready(function () {
-                    $(".button-products").click(function () {
-                        {
-                            console.log($(this).data("name"));
-                            var name = $(this).data("name");
-                            //$.ajax({
-                            //    type: "POST",
-                            //    url: "/ChiTietSanPham/DanhSachChonJson",
-                            //    data: {
-                            //        name:name,
-                            //    },
-                            //    dataType: "json",
-                            //    success: function (res) {
-                            //        //window.location.replace("https://localhost:44309/profile/don-dat");
-                            //        console.log("name:", name);
-                            //    },
-                            //    error: function (err) {
-                            //        console.log("err --> ", err);
-                            //        console.log("err ->>", err.err);
-                            //    },
-                            //});
-                            if (name == "Tất Cả") {
-                                window.location.replace("https://localhost:44309/admin/san-pham");
-                            }
-                            if (name == "Cà Phê") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/ca-phe");
-                            }
-                            if (name == "Trà Sữa") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/tra-sua");
-                            }
-                            if (name == "Topping") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/topping");
-                            }
-                            if (name == "Khác") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/khac");
-                            }
-                        }
-                    })
-                });
-            </script>
-            <style>
-                .wrap-button-products {
-                    display: flex;
-                    margin-bottom: 40px;
-                }
-
-                .button-products-link {
-                    text-decoration: none;
-                }
-
-
-                .button-products {
-                    font-weight: 600;
-                    font-size: 18px;
-                    line-height: 22px;
-                    background-color: #eee;
-                    padding: 10px 14px;
-                    text-align: center;
-                    color: #146d4d;
-                    border: 1px solid #146d4d;
-                    border-radius: 8px;
-                    transition: all 0.02s ease;
-                    margin-right: 12px;
-                }
-
-                    .button-products:hover {
-                        background-color: #146d4d;
-                        color: #FFFFFF;
-                        transition: all 0.02s ease;
-                    }
-
-                .button-active {
-                    background-color: #146d4d;
-                    color: #FFFFFF;
-                    transition: all 0.02s ease;
-                }
-            </style>
-
             <div class="row">
                 <div class="col-sm-12">
                     <div style="">
@@ -828,3 +749,67 @@
         //Xử lý nếu trang đang ở 1 thì sẽ disabled nút previous
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        $(".button-products").click(function () {
+            {
+                console.log($(this).data("name"));
+                var name = $(this).data("name");
+
+                if (name == "Tất Cả") {
+                    window.location.replace("https://localhost:44309/admin/san-pham");
+                }
+                if (name == "Cà Phê") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/ca-phe");
+                }
+                if (name == "Trà Sữa") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/tra-sua");
+                }
+                if (name == "Topping") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/topping");
+                }
+                if (name == "Khác") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/khac");
+                }
+            }
+        })
+    });
+</script>
+<style>
+    .wrap-button-products {
+        display: flex;
+        margin-bottom: 40px;
+    }
+
+    .button-products-link {
+        text-decoration: none;
+    }
+
+
+    .button-products {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        background-color: #eee;
+        padding: 10px 14px;
+        text-align: center;
+        color: #146d4d;
+        border: 1px solid #146d4d;
+        border-radius: 8px;
+        transition: all 0.02s ease;
+        margin-right: 12px;
+    }
+
+        .button-products:hover {
+            background-color: #146d4d;
+            color: #FFFFFF;
+            transition: all 0.02s ease;
+        }
+
+    .button-active {
+        background-color: #146d4d;
+        color: #FFFFFF;
+        transition: all 0.02s ease;
+    }
+</style>

@@ -31,7 +31,7 @@
     <div class="container">
         <div class="form-horizontal">
             <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Danh Sách Sản Phẩm</h3>
-                        <hr class="style-10" />
+            <hr class="style-10" />
             <div class="row wrap-button-products">
                 <div>
                     <a class="button-products-link">
@@ -61,88 +61,6 @@
                     </a>
                 </div>
             </div>
-
-            <script>
-                $(document).ready(function () {
-                    $(".button-products").click(function () {
-                        {
-                            console.log($(this).data("name"));
-                            var name = $(this).data("name");
-                            //$.ajax({
-                            //    type: "POST",
-                            //    url: "/ChiTietSanPham/DanhSachChonJson",
-                            //    data: {
-                            //        name:name,
-                            //    },
-                            //    dataType: "json",
-                            //    success: function (res) {
-                            //        //window.location.replace("https://localhost:44309/profile/don-dat");
-                            //        console.log("name:", name);
-                            //    },
-                            //    error: function (err) {
-                            //        console.log("err --> ", err);
-                            //        console.log("err ->>", err.err);
-                            //    },
-                            //});
-                            if (name == "Tất Cả") {
-                                window.location.replace("https://localhost:44309/admin/san-pham");
-                                
-                            }
-                            if (name == "Cà Phê") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/ca-phe");
-                                $(".button-products").removeClass("button-active");
-                                $("#ca-phe").addClass("button-active");
-                            }
-                            if (name == "Trà Sữa") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/tra-sua");
-                            }
-                            if (name == "Topping") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/topping");
-                            }
-                            if (name == "Khác") {
-                                window.location.replace("https://localhost:44309/admin/san-pham/khac");
-                            }
-                        }
-                    })
-                });
-            </script>
-            <style>
-                .wrap-button-products {
-                    display:flex;
-                    margin-bottom: 40px;
-                }
-
-                .button-products-link {
-                    text-decoration:none;
-                }
-
-
-                .button-products {
-                    font-weight: 600;
-                    font-size: 18px;
-                    line-height: 22px;
-                    background-color: #eee;
-                    padding: 10px 14px;
-                    text-align: center;
-                    color: #146d4d;
-                    border: 1px solid #146d4d;
-                    border-radius: 8px;
-                    transition: all 0.02s ease;
-                    margin-right:12px;
-                }
-
-                    .button-products:hover {
-                        background-color: #146d4d;
-                        color: #FFFFFF;
-                        transition: all 0.02s ease;
-                    }
-
-                .button-active {
-                    background-color: #146d4d;
-                    color: #FFFFFF;
-                    transition: all 0.02s ease;
-                }
-            </style>
 
             <div class="row">
                 <div class="col-sm-12">
@@ -346,32 +264,32 @@
 </script>
 
 <style>
-    .xacNhanHuyButton{
-        background-color:#146d4d;
-        color:white;
-        font-weight:500;
-        outline:none;
+    .xacNhanHuyButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
         padding: 6px 12px;
-        border:none;
+        border: none;
         border-radius: 6px;
     }
 
         .xacNhanHuyButton:hover {
-            opacity:0.7;
+            opacity: 0.7;
         }
 
-    .closeButton{
-        color:#fff;
-        font-weight:500;
-        outline:none;
-        border:none;
+    .closeButton {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
         padding: 6px 12px;
         border-radius: 6px;
     }
 
-    .closeButton:hover {
-        opacity:0.7;
-    }
+        .closeButton:hover {
+            opacity: 0.7;
+        }
 
     .button-option {
         display: flex;
@@ -381,16 +299,15 @@
     }
 
     .button-delete {
-        margin-right:0;
+        margin-right: 0;
     }
 
-    .button-edit{
-        height:23px;
+    .button-edit {
+        height: 23px;
     }
 
-    .button-detail{
-        height:23px;
-
+    .button-detail {
+        height: 23px;
     }
 
     .product-desc {
@@ -400,6 +317,7 @@
         -webkit-box-orient: vertical;
         max-width: 350px;
     }
+
     .modal-body {
         color: #000;
         font-size: 16px;
@@ -416,7 +334,6 @@
     }
 
     .huyDonHang {
-        
     }
 
     .chinhSua {
@@ -427,9 +344,9 @@
         font-weight: 600;
     }
 
-    .chinhSua:hover {
-        opacity:0.5;
-    }
+        .chinhSua:hover {
+            opacity: 0.5;
+        }
 
 
     .daNhanHang {
@@ -832,3 +749,69 @@
         //Xử lý nếu trang đang ở 1 thì sẽ disabled nút previous
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        $(".button-products").click(function () {
+            {
+                console.log($(this).data("name"));
+                var name = $(this).data("name");
+                if (name == "Tất Cả") {
+                    window.location.replace("https://localhost:44309/admin/san-pham");
+
+                }
+                if (name == "Cà Phê") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/ca-phe");
+                    $(".button-products").removeClass("button-active");
+                    $("#ca-phe").addClass("button-active");
+                }
+                if (name == "Trà Sữa") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/tra-sua");
+                }
+                if (name == "Topping") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/topping");
+                }
+                if (name == "Khác") {
+                    window.location.replace("https://localhost:44309/admin/san-pham/khac");
+                }
+            }
+        })
+    });
+</script>
+<style>
+    .wrap-button-products {
+        display: flex;
+        margin-bottom: 40px;
+    }
+
+    .button-products-link {
+        text-decoration: none;
+    }
+
+
+    .button-products {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        background-color: #eee;
+        padding: 10px 14px;
+        text-align: center;
+        color: #146d4d;
+        border: 1px solid #146d4d;
+        border-radius: 8px;
+        transition: all 0.02s ease;
+        margin-right: 12px;
+    }
+
+        .button-products:hover {
+            background-color: #146d4d;
+            color: #FFFFFF;
+            transition: all 0.02s ease;
+        }
+
+    .button-active {
+        background-color: #146d4d;
+        color: #FFFFFF;
+        transition: all 0.02s ease;
+    }
+</style>

@@ -2711,6 +2711,7 @@
     <Content Include="Areas\Admin\Views\Blog\DanhSachBlog.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietSanPham\DanhSachCaPhe.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietSanPham\DanhSachTraSua.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietSanPham\DanhSachTopping.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
