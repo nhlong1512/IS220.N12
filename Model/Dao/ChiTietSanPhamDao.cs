@@ -130,9 +130,10 @@ namespace Model.Dao
         public IEnumerable<ChiTietSanPham> ListAllPagingTraSua(string searchString, int page, int pageSize)
         {
             IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            model = model.Where(x => x.MaPhanLoai == 2);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString) && x.MaPhanLoai == 2);
+                model = model.Where(x => x.TenSanPham.Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
@@ -140,9 +141,10 @@ namespace Model.Dao
         public IEnumerable<ChiTietSanPham> ListAllPagingTopping(string searchString, int page, int pageSize)
         {
             IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            model = model.Where(x => x.MaPhanLoai == 3);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString) && x.MaPhanLoai == 3);
+                model = model.Where(x => x.TenSanPham.Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
@@ -150,9 +152,10 @@ namespace Model.Dao
         public IEnumerable<ChiTietSanPham> ListAllPagingKhac(string searchString, int page, int pageSize)
         {
             IQueryable<ChiTietSanPham> model = db.ChiTietSanPhams;
+            model = model.Where(x => x.MaPhanLoai == 4);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TenSanPham.Contains(searchString) && x.MaPhanLoai == 4);
+                model = model.Where(x => x.TenSanPham.Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
