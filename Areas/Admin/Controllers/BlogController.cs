@@ -18,21 +18,21 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
-        {
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
-            if (session == null)
-            {
-                return Redirect("/dang-nhap");
-            }
-            //var blogs = bldao.ViewAll();
-            //ViewBag.blogs = blogs;
-            var nguoidung = nguoidungdao.ViewDetail(1);
-            ViewBag.nguoidung = nguoidung;
-            var model = bldao.ListAllPaging(searchString, page, pageSize);
-            ViewBag.SearchString = searchString;
-            return View(model);
-        }
+        //public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
+        //{
+        //    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+        //    if (session == null)
+        //    {
+        //        return Redirect("/dang-nhap");
+        //    }
+        //    //var blogs = bldao.ViewAll();
+        //    //ViewBag.blogs = blogs;
+        //    var nguoidung = nguoidungdao.ViewDetail(1);
+        //    ViewBag.nguoidung = nguoidung;
+        //    var model = bldao.ListAllPaging(searchString, page, pageSize);
+        //    ViewBag.SearchString = searchString;
+        //    return View(model);
+        //}
 
         public ActionResult DanhSachBlog(string searchString, int page = 1, int pageSize = 5)
         {
@@ -68,7 +68,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 var id = bldao.Insert(blog);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index", "Blog");
+                    return Redirect("/admin/blog");
                 }
                 return View("Create");
 
@@ -103,7 +103,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             }
 
             bldao.Delete(id);
-            return RedirectToAction("Index");
+            return Redirect("/admin/blog");
         }
 
 
@@ -134,7 +134,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             var isTrue =  bldao.Update(blog);
             if(isTrue)
             {
-                return RedirectToAction("Index");
+                return Redirect("/admin/blog");
             }
             else
             {
