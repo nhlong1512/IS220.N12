@@ -76,10 +76,10 @@
                                         </td>
                                         <td>
                                             <div style="display:flex; justify-content:center; align-items:center;">
-                                                <a class="button-detail button-option" href="/admin/san-pham/details/@item.ID">
+                                                <a class="button-detail button-option" href="/admin/blog/details/@item.ID">
                                                     <img src="~/Data/Files/detail.png" />
                                                 </a>
-                                                <a class="button-edit button-option" href="/admin/san-pham/update/@item.ID">
+                                                <a class="button-edit button-option" href="/admin/blog/update/@item.ID">
                                                     <img src="~/Data/Files/edit.png" />
                                                 </a>
                                                 <a class="button-delete button-option huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
@@ -94,18 +94,18 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                            Xác Nhận Xóa Sản Phẩm
+                                                            Xác Nhận Xóa Blog
                                                             <strong>
                                                                 #@item.ID
                                                             </strong>
                                                         </h5>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Sản Phẩm #@item.ID Sẽ Được Xóa Ngay Lập Tức. Bạn Có Muốn Xóa Sản Phẩm Này?
+                                                        Blog #@item.ID Sẽ Được Xóa Ngay Lập Tức. Bạn Có Muốn Xóa Blog Này?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                        <a href="/admin/san-pham/delete/@item.ID">
+                                                        <a href="/admin/blog/delete/@item.ID">
                                                             <button class="xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
                                                         </a>
                                                     </div>
@@ -125,7 +125,7 @@
                             </div>
                         </section>
                         <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none">
-                            <a href="~/admin/san-pham/create" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
+                            <a href="~/admin/blog/create" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
                                 Thêm Mới Blog
                             </a>
                         </div>
