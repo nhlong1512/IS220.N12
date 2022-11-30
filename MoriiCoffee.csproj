@@ -2713,6 +2713,7 @@
     <Content Include="Areas\Admin\Views\ChiTietSanPham\DanhSachTopping.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietSanPham\DanhSachKhac.cshtml" />
     <Content Include="Areas\Admin\Views\DonDat\DanhSachDonDat.cshtml" />
+    <Content Include="Areas\Admin\Views\DonDat\ChiTietDonDat.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

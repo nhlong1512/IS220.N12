@@ -98,6 +98,14 @@ namespace MoriiCoffee.Areas.Admin
               defaults: new { controller = "DonDat", action = "DanhSachDonDat", id = UrlParameter.Optional }
           );
 
+            context.MapRoute(
+              name: "AdminChiTietDonDat",
+              url: "admin/don-dat/chi-tiet-don-dat/{id}",
+              defaults: new { controller = "DonDat", action = "ChiTietDonDat", id = UrlParameter.Optional }
+          );
+
+
+
 
 
 
