@@ -95,7 +95,8 @@ namespace Model.Dao
             IQueryable<Blog> model = db.Blogs;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.TieuDe.Contains(searchString));
+                model = model.Where(x => x.TieuDe.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || ((x.CreatedDate).ToString()).Contains(searchString) || ("Nguyễn Hữu Long").Contains(searchString));
             }
             return model.OrderByDescending(x=>x.CreatedDate).ToPagedList(page, pageSize);
         }
