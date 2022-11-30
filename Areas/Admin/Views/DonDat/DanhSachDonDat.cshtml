@@ -42,6 +42,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Đơn Đặt</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Người Đặt</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Ngày Mua</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Trạng Thái</th>
@@ -52,147 +53,164 @@
                             <tbody>
                                 @foreach (var item in dathangs)
                                 {
-                                    <tr>
-                                        <th>
-                                            <p class="maDonDat">
-                                                #@item.ID
-                                            </p>
-                                        </th>
-
-
-                                        <td>
-                                            <p class="pDonDat">
-                                                @item.CreatedDate
-                                            </p>
-                                        </td>
-                                        <td>
-                                            @*Tìm giá của đơn đặt*@
-                                            @foreach (var i in hoadons)
+                                <tr>
+                                    <th>
+                                        <p class="maDonDat">
+                                            #@item.ID
+                                        </p>
+                                    </th>
+                                    <td>
+                                        @foreach (var it in nds)
+                                        {
+                                            if (item.MaKH == it.ID)
                                             {
-                                                if (i.ID == item.MaHoaDon)
-                                                {
-                                                    gia = i.TongTien;
-                                                }
-                                            }
-                                            <p class="pDonDat">
-                                                @{
-                                                    var a = gia;
-                                                    a = a / 1000;
-                                                }
-                                                @a.000 đ
-                                            </p>
-                                        </td>
-                                        <td>
-
-                                            @if (item.TTDH == "Chờ Xác Nhận")
-                                            {
-                                                <p class="pDonDat waitingAcceptColor">
-                                                    @item.TTDH
+                                                <p class="pDonDat">
+                                                    @it.HoTen
                                                 </p>
                                             }
-                                            else if (item.TTDH == "Đang Giao")
+                                        }
+
+                                    </td>
+
+
+                                    <td>
+                                        <p class="pDonDat">
+                                            @item.CreatedDate
+                                        </p>
+                                    </td>
+                                    <td>
+                                        @*Tìm giá của đơn đặt*@
+                                        @foreach (var i in hoadons)
+                                        {
+                                            if (i.ID == item.MaHoaDon)
                                             {
-                                                <p class="pDonDat inProgressColor">
-                                                    @item.TTDH
-                                                </p>
+                                                gia = i.TongTien;
                                             }
-                                            else if (item.TTDH == "Đã Hủy")
-                                            {
-                                                <p class="pDonDat cancelledColor">
-                                                    @item.TTDH
-                                                </p>
+                                        }
+                                        <p class="pDonDat">
+                                            @{
+                                                var a = gia;
+                                                a = a / 1000;
                                             }
-                                            else
-                                            {
-                                                <p class="pDonDat activeColor">
-                                                    @item.TTDH
-                                                </p>
-                                            }
-                                        </td>
-                                        <td>
-                                            <p class="pDonDat">
-                                                @item.PTTT
+                                            @a.000 đ
+                                        </p>
+                                    </td>
+                                    <td>
+
+                                        @if (item.TTDH == "Chờ Xác Nhận")
+                                        {
+                                            <p class="pDonDat waitingAcceptColor">
+                                                @item.TTDH
                                             </p>
-                                        </td>
-                                        <td>
-                                            <a style="" class="optionsSelect" data-id="@item.ID" id="option_@item.ID">
-                                                <img src="~/Data/Files/dots-option.png" />
-                                                <div class="toggle-options-select" id="Toggle_@item.ID">
-                                                    <div class="wrap-options">
-                                                        @if (item.TTDH == "Chờ Xác Nhận")
-                                                        {
-                                                            <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                                                                Hủy Đơn Hàng
-                                                            </p>
+                                        }
+                                        else if (item.TTDH == "Đang Giao")
+                                        {
+                                            <p class="pDonDat inProgressColor">
+                                                @item.TTDH
+                                            </p>
+                                        }
+                                        else if (item.TTDH == "Đã Hủy")
+                                        {
+                                            <p class="pDonDat cancelledColor">
+                                                @item.TTDH
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="pDonDat activeColor">
+                                                @item.TTDH
+                                            </p>
+                                        }
+                                    </td>
+                                    <td>
+                                        <p class="pDonDat">
+                                            @item.PTTT
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <a style="" class="optionsSelect" data-id="@item.ID" id="option_@item.ID">
+                                            <img src="~/Data/Files/dots-option.png" />
+                                            <div class="toggle-options-select" id="Toggle_@item.ID">
+                                                <div class="wrap-options">
+                                                    @if (item.TTDH == "Chờ Xác Nhận")
+                                                    {
+                                                        <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                            Hủy Đơn Hàng
+                                                        </p>
 
-                                                        }
-                                                        else if (item.TTDH == "Đang Giao")
-                                                        {
-                                                            <p class="daNhanHang daNhanHangButton" data-id="@item.ID" id="daNhanHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                                                                Đã Nhận Hàng
-                                                            </p>
-                                                        }
-                                                        else if (item.TTDH == "Đã Giao")
-                                                        {
+                                                        <p class="dangGiao dangGiaoButton" data-id="@item.ID" id="dangGiaoButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                            Đang Giao
+                                                        </p>
 
-                                                        }
-                                                        else
-                                                        {
+                                                    }
+                                                    else if (item.TTDH == "Đang Giao")
+                                                    {
+                                                        <p class="daNhanHang daNhanHangButton" data-id="@item.ID" id="daNhanHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                            Đã Nhận Hàng
+                                                        </p>
+                                                    }
+                                                    else if (item.TTDH == "Đã Giao")
+                                                    {
 
-                                                        }
-                                                        <p class="xemChiTiet" data-id="@item.ID">Xem Chi Tiết</p>
+                                                    }
+                                                    else
+                                                    {
 
-                                                    </div>
+                                                    }
+                                                    <p class="xemChiTiet" data-id="@item.ID">Xem Chi Tiết</p>
                                                 </div>
-                                            </a>
-                                            <!-- Modal -->
-                                            <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                                Xác Nhận Hủy Đơn Hàng
-                                                                <strong>
-                                                                    #@item.ID
-                                                                </strong>
-                                                            </h5>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Đơn Hàng Của Bạn Sẽ Được Hủy Ngay Lập Tức. Bạn Có Muốn Hủy Đơn Hàng Này?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                            <button class="btn btn-primary xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
-                                                        </div>
+                                            </div>
+                                        </a>
+                                        <!-- Modal -->
+                                        <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            Xác Nhận Hủy Đơn Hàng
+                                                            <strong>
+                                                                #@item.ID
+                                                            </strong>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Đơn Hàng Của Bạn Sẽ Được Hủy Ngay Lập Tức. Bạn Có Muốn Hủy Đơn Hàng Này?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                        <button class="xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="modal fade daNhanHangModal" id="daNhanHang_@item.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="daNhanHangLabel">
-                                                                Xác Nhận Đã Nhận Hàng
-                                                                <strong>
-                                                                    #@item.ID
-                                                                </strong>
-                                                            </h5>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Đơn Hàng Của Bạn Sẽ Chuyển Sang Trạng Thái Đã Giao Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                            <button class="btn btn-primary xacNhanDaGiaoButton" data-id="@item.ID" id="xacNhanDaGiaoButton_@item.ID">
-                                                                Xác Nhận
-                                                            </button>
-                                                        </div>
+                                        
+
+                                        <div class="modal fade daNhanHangModal" id="daNhanHang_@item.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="daNhanHangLabel">
+                                                            Xác Nhận Đã Nhận Hàng
+                                                            <strong>
+                                                                #@item.ID
+                                                            </strong>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Đơn Hàng Của Bạn Sẽ Chuyển Sang Trạng Thái Đã Giao Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                        <button class="btn btn-primary xacNhanDaGiaoButton" data-id="@item.ID" id="xacNhanDaGiaoButton_@item.ID">
+                                                            Xác Nhận
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>
@@ -204,6 +222,34 @@
 </div>
 
 <style>
+
+    .xacNhanHuyButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanHuyButton:hover {
+            opacity: 0.7;
+        }
+
+    .closeButton {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButton:hover {
+            opacity: 0.7;
+        }
+
     .modal-body {
         color: #000;
         font-size: 16px;
@@ -225,6 +271,7 @@
         line-height: 20px;
         margin-bottom: 10px;
         font-weight: 600;
+        cursor:pointer;
     }
 
     .daNhanHang {
@@ -233,7 +280,30 @@
         line-height: 20px;
         margin-bottom: 10px;
         font-weight: 600;
+        cursor: pointer;
     }
+
+    .xemChiTiet {
+        font-size: 14px;
+        color: #146d4d;
+        line-height: 20px;
+        margin-bottom: 0;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .dangGiao {
+        font-size: 14px;
+        color: #FFC107;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+        .dangGiao:hover {
+            opacity: 0.5;
+        }
 
         .daNhanHang:hover {
             opacity: 0.5;
@@ -243,11 +313,6 @@
         opacity: 0.5;
     }
 
-    .xemChiTiet {
-        font-size: 14px;
-        color: #146d4d;
-        line-height: 20px;
-    }
 
         .xemChiTiet:hover {
             opacity: 0.5;
@@ -261,13 +326,11 @@
         padding-top: 10px;
         padding-bottom: 10px;
         position: absolute;
-        background-color: #eee;
-        border-radius: 8px;
-        color: white;
+        background-color: #ccc;
         font-size: 10px;
         font-weight: bold;
+        border-radius:8px;
         display: flex;
-        border: 1px solid #fff;
         justify-content: center;
         align-items: center;
         width: 130px;
