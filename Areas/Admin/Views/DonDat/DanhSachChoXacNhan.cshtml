@@ -42,12 +42,12 @@
                         <div class="row wrap-button-products">
                             <div>
                                 <a class="button-products-link">
-                                    <button class="button-products button-active" id="tat-ca" data-name="Tất Cả">
+                                    <button class="button-products" id="tat-ca" data-name="Tất Cả">
                                         Tất Cả
                                     </button>
                                 </a>
                                 <a class="button-products-link">
-                                    <button class="button-products" id="cho-xac-nhan" data-name="Chờ Xác Nhận">
+                                    <button class="button-products button-active" id="cho-xac-nhan" data-name="Chờ Xác Nhận">
                                         Chờ Xác Nhận
                                     </button>
                                 </a>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            @using (Html.BeginForm("DanhSachDonDat", "DonDat", FormMethod.Get))
+                            @using (Html.BeginForm("DanhSachChoXacNhan", "DonDat", FormMethod.Get))
                             {
                                 <div class="form-group col-sm-4" style="display: flex; gap: 10px; white-space: nowrap; margin-bottom: 20px;">
                                     <input value="@ViewBag.SearchString" name="searchString" class="form-control form-control-lg" type="text" id="search" placeholder="Tìm Kiếm..." autocomplete="off">
@@ -321,9 +321,9 @@
         border-radius: 6px;
     }
 
-    .xacNhanDaGiaoButton:hover {
-        opacity: 0.7;
-    }
+        .xacNhanDaGiaoButton:hover {
+            opacity: 0.7;
+        }
 
     .xacNhanDangGiaoButton {
         background-color: #146d4d;
@@ -399,7 +399,7 @@
         line-height: 20px;
         margin-bottom: 10px;
         font-weight: 600;
-        cursor:pointer;
+        cursor: pointer;
     }
 
     .daNhanHang {
@@ -433,18 +433,18 @@
             opacity: 0.5;
         }
 
-        .daNhanHang:hover {
-            opacity: 0.5;
-        }
+    .daNhanHang:hover {
+        opacity: 0.5;
+    }
 
     .huyDonHang:hover {
         opacity: 0.5;
     }
 
 
-        .xemChiTiet:hover {
-            opacity: 0.5;
-        }
+    .xemChiTiet:hover {
+        opacity: 0.5;
+    }
 
     .optionsSelect {
         position: relative;
@@ -457,7 +457,7 @@
         background-color: #ccc;
         font-size: 10px;
         font-weight: bold;
-        border-radius:8px;
+        border-radius: 8px;
         display: flex;
         justify-content: center;
         align-items: center;

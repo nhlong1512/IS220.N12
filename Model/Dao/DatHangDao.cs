@@ -50,6 +50,20 @@ namespace Model.Dao
             return model;
         }
 
+        public IEnumerable<DatHang> ListAllPagingChoXacNhan(string searchString)
+        {
+            IQueryable<DatHang> model = db.DatHangs;
+            model = model.Where(x => x.TTDH == "Chờ Xác Nhận");
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.HoTen.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.TTDH).Contains(searchString) || (x.PTTT).Contains(searchString));
+
+            }
+            return model;
+        }
+
         //Xem tất cả DatHang của Người dùng
         public List<DatHang> ViewAllByID(long id)
         {
