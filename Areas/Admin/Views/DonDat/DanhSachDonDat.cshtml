@@ -164,7 +164,8 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <!-- Modal -->
+
+                                        <!-- Modal Xác Nhận Hủy Đơn Hàng-->
                                         <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -177,7 +178,7 @@
                                                         </h5>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Đơn Hàng Của Bạn Sẽ Được Hủy Ngay Lập Tức. Bạn Có Muốn Hủy Đơn Hàng Này?
+                                                        Đơn Hàng Này Sẽ Được Chuyển Sang Trạng Thái Đã Hủy Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Hủy Đơn Hàng?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
@@ -187,8 +188,8 @@
                                             </div>
                                         </div>
 
-                                        
 
+                                        <!-- Modal Xác Nhận Đã Nhận Hàng-->
                                         <div class="modal fade daNhanHangModal" id="daNhanHang_@item.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -201,11 +202,11 @@
                                                         </h5>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Đơn Hàng Của Bạn Sẽ Chuyển Sang Trạng Thái Đã Giao Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+                                                        Đơn Hàng Của Này Sẽ Được Chuyển Sang Trạng Thái Đã Giao Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                        <button class="btn btn-primary xacNhanDaGiaoButton" data-id="@item.ID" id="xacNhanDaGiaoButton_@item.ID">
+                                                        <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                        <button class="xacNhanDaGiaoButton" data-id="@item.ID" id="xacNhanDaGiaoButton_@item.ID">
                                                             Xác Nhận
                                                         </button>
                                                     </div>
@@ -241,6 +242,20 @@
             opacity: 0.7;
         }
 
+    .xacNhanDaGiaoButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+    .xacNhanDaGiaoButton:hover {
+        opacity: 0.7;
+    }
+
     .closeButton {
         color: #fff;
         font-weight: 500;
@@ -251,6 +266,19 @@
     }
 
         .closeButton:hover {
+            opacity: 0.7;
+        }
+
+    .closeButtonNhanHang {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButtonNhanHang:hover {
             opacity: 0.7;
         }
 
@@ -653,7 +681,7 @@
             console.log("idXacNhanDaGiao", id);
             $.ajax({
                 type: "POST",
-                url: "/Admin/DonDat/HuyDonHangAdminJson",
+                url: "/Admin/DonDat/DaNhanHangAdminJson",
                 data: {
                     id: id
                 },
