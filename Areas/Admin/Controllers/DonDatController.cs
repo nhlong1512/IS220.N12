@@ -110,5 +110,32 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 isValid = isValid,
             });
         }
+
+        //Handle Xác nhận Đang Giao Đơn Hàng
+        [HttpPost]
+        public JsonResult DangGiaoHangAdminJson(long id)
+        {
+            var dh = dhdao.ViewDetail(id);
+            var isValid = true;
+            if (dh.TTDH == "Chờ Xác Nhận")
+            {
+                dh.TTDH = "Đang Giao";
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            if (isValid == true)
+            {
+                dhdao.Update(dh);
+            }
+            return Json(new
+            {
+                status = true,
+                id = id,
+                isValid = isValid,
+            });
+        }
     }
 }

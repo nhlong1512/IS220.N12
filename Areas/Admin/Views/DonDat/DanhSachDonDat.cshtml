@@ -202,11 +202,36 @@
                                                         </h5>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Đơn Hàng Của Này Sẽ Được Chuyển Sang Trạng Thái Đã Giao Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+                                                        Đơn Hàng Này Sẽ Được Chuyển Sang Trạng Thái Đã Giao Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
                                                         <button class="xacNhanDaGiaoButton" data-id="@item.ID" id="xacNhanDaGiaoButton_@item.ID">
+                                                            Xác Nhận
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal Xác Nhận Đang Giao Đơn Hàng-->
+                                        <div class="modal fade dangGiaoHangModal" id="dangGiaoHang_@item.ID" tabindex="-1" role="dialog" aria-labelledby="dangGiaoHangLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="dangGiaoHangLabel">
+                                                            Xác Nhận Đang Giao Hàng
+                                                            <strong>
+                                                                #@item.ID
+                                                            </strong>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Đơn Hàng Này Sẽ Được Chuyển Sang Trạng Thái Đang Giao Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đang Giao Đơn Hàng Này Không?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="closeButtonGiaoHang_@item.ID" data-id="@item.ID" class="closeButtonGiaoHang" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                        <button class="xacNhanDangGiaoButton" data-id="@item.ID" id="xacNhanDangGiaoButton_@item.ID">
                                                             Xác Nhận
                                                         </button>
                                                     </div>
@@ -256,6 +281,20 @@
         opacity: 0.7;
     }
 
+    .xacNhanDangGiaoButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanDangGiaoButton:hover {
+            opacity: 0.7;
+        }
+
     .closeButton {
         color: #fff;
         font-weight: 500;
@@ -279,6 +318,19 @@
     }
 
         .closeButtonNhanHang:hover {
+            opacity: 0.7;
+        }
+
+    .closeButtonGiaoHang {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButtonGiaoHang:hover {
             opacity: 0.7;
         }
 
@@ -653,6 +705,21 @@
             $('#daNhanHang_' + idHuy).modal('hide')
         })
 
+        //Handle mở modal xác nhận Đang giao hàng
+        $('.dangGiaoButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#dangGiaoHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đang giao hàng
+        $('.closeButtonGiaoHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#dangGiaoHang_' + idHuy).modal('hide')
+        })
+
+
         //Handle Xác nhận Hủy đơn hàng
         $(".xacNhanHuyButton").click(function (e) {
             var id = $(this).data("id");
@@ -682,6 +749,28 @@
             $.ajax({
                 type: "POST",
                 url: "/Admin/DonDat/DaNhanHangAdminJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/admin/don-dat");
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đang giao
+        $(".xacNhanDangGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("xacNhanDangGiaoButton", id);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DonDat/DangGiaoHangAdminJson",
                 data: {
                     id: id
                 },
