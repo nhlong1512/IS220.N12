@@ -147,15 +147,15 @@
                                             </div>
                                             <div class="product-details">
                                                 <div>
-                                                    <h3 class="product-title">
+                                                    <h3 class="product-title" style="margin:0;">
                                                         @sp.TenSanPham
                                                     </h3>
-                                                    <p class="product-note">
+                                                    <p class="product-note" style="margin:0;">
                                                         @item.Topping
                                                     </p>
 
                                                 </div>
-                                                <p class="product-price">
+                                                <p class="product-price" style="margin:0;">
                                                     @{
                                                         var a = item.Gia;
                                                         a = a / 1000;
@@ -166,12 +166,12 @@
                                         </th>
                                         <td>
                                             <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                                                <p class="pDonDat">@item.SoLuong</p>
+                                                <p class="pDonDat" style="margin:0;">@item.SoLuong</p>
                                             </div>
 
                                         </td>
-                                        <td style="padding-right: 30px;">
-                                            <p class="total-price">
+                                        <td >
+                                            <p class="total-price" style="margin:0;">
                                                 @{
                                                     var b = item.ThanhTien;
                                                     b = b / 1000;
