@@ -134,12 +134,12 @@
                                                 <div class="wrap-options">
                                                     @if (item.TTDH == "Chờ Xác Nhận")
                                                     {
-                                                        <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                                                            Hủy Đơn Hàng
-                                                        </p>
-
                                                         <p class="dangGiao dangGiaoButton" data-id="@item.ID" id="dangGiaoButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
                                                             Đang Giao
+                                                        </p>
+
+                                                        <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                            Hủy Đơn Hàng
                                                         </p>
 
                                                     }
@@ -147,6 +147,9 @@
                                                     {
                                                         <p class="daNhanHang daNhanHangButton" data-id="@item.ID" id="daNhanHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
                                                             Đã Nhận Hàng
+                                                        </p>
+                                                        <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                            Hủy Đơn Hàng
                                                         </p>
                                                     }
                                                     else if (item.TTDH == "Đã Giao")
@@ -628,13 +631,13 @@
             console.log("idXacNhan", id);
             $.ajax({
                 type: "POST",
-                url: "/Profile/HuyDonHangJson",
+                url: "/Admin/DonDat/HuyDonHangAdminJson",
                 data: {
                     id: id
                 },
                 dataType: "json",
                 success: function (res) {
-                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    window.location.replace("https://localhost:44309/admin/don-dat");
                     console.log("res", res.id, "isValid", res.isValid);
                 },
                 error: function (err) {
@@ -650,13 +653,13 @@
             console.log("idXacNhanDaGiao", id);
             $.ajax({
                 type: "POST",
-                url: "/Profile/DaNhanHangJson",
+                url: "/Admin/DonDat/HuyDonHangAdminJson",
                 data: {
                     id: id
                 },
                 dataType: "json",
                 success: function (res) {
-                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    window.location.replace("https://localhost:44309/admin/don-dat");
                     console.log("res", res.id, "isValid", res.isValid);
                 },
                 error: function (err) {
