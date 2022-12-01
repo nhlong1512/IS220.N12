@@ -20,15 +20,15 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private HoaDonDao hddao = new HoaDonDao();
         private ChiTietHoaDonDao cthddao = new ChiTietHoaDonDao();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
-        public ActionResult DanhSachDonDat()
+        public ActionResult DanhSachDonDat(string searchString)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
             {
                 return Redirect("/dang-nhap");
             }
-
-            ViewBag.dathangs = dhdao.ViewAll();
+            var model = dhdao.ListAllPaging(searchString);
+            ViewBag.dathangs = model;
             ViewBag.hoadons = hddao.ViewAll();
             ViewBag.nds = nguoidungdao.ViewAll();
             return View();

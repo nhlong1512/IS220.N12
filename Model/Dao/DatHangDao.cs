@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
-
+using PagedList;
 
 namespace Model.Dao
 {
@@ -35,6 +35,19 @@ namespace Model.Dao
             //Convert từ IqueryTable sang list
             dathangs = new List<DatHang>(list);
             return dathangs;
+        }
+
+        public IEnumerable<DatHang> ListAllPaging(string searchString)
+        {
+            IQueryable<DatHang> model = db.DatHangs;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.HoTen.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.TTDH).Contains(searchString) || (x.PTTT).Contains(searchString)); 
+                
+            }
+            return model;
         }
 
         //Xem tất cả DatHang của Người dùng
