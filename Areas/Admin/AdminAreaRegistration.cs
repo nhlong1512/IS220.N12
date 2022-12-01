@@ -105,6 +105,24 @@ namespace MoriiCoffee.Areas.Admin
           );
 
             context.MapRoute(
+              name: "AdminDonDatDangGiao",
+              url: "admin/don-dat/dang-giao",
+              defaults: new { controller = "DonDat", action = "DanhSachDangGiao", id = UrlParameter.Optional }
+          );
+
+            context.MapRoute(
+              name: "AdminDonDatDaGiao",
+              url: "admin/don-dat/da-giao",
+              defaults: new { controller = "DonDat", action = "DanhSachDaGiao", id = UrlParameter.Optional }
+          );
+
+            context.MapRoute(
+              name: "AdminDonDatDaHuy",
+              url: "admin/don-dat/da-huy",
+              defaults: new { controller = "DonDat", action = "DanhSachDaHuy", id = UrlParameter.Optional }
+          );
+
+            context.MapRoute(
               name: "AdminChiTietDonDat",
               url: "admin/don-dat/chi-tiet-don-dat/{id}",
               defaults: new { controller = "DonDat", action = "ChiTietDonDat", id = UrlParameter.Optional }

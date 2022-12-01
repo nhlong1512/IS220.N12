@@ -48,6 +48,47 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult DanhSachDangGiao(string searchString)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            var model = dhdao.ListAllPagingDangGiao(searchString);
+            ViewBag.dathangs = model;
+            ViewBag.hoadons = hddao.ViewAll();
+            ViewBag.nds = nguoidungdao.ViewAll();
+            return View();
+        }
+
+        public ActionResult DanhSachDaGiao(string searchString)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            var model = dhdao.ListAllPagingDaGiao(searchString);
+            ViewBag.dathangs = model;
+            ViewBag.hoadons = hddao.ViewAll();
+            ViewBag.nds = nguoidungdao.ViewAll();
+            return View();
+        }
+        public ActionResult DanhSachDaHuy(string searchString)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            var model = dhdao.ListAllPagingDaHuy(searchString);
+            ViewBag.dathangs = model;
+            ViewBag.hoadons = hddao.ViewAll();
+            ViewBag.nds = nguoidungdao.ViewAll();
+            return View();
+        }
+
         [ValidateInput(false)]
         public ActionResult ChiTietDonDat(long id)
         {

@@ -2715,6 +2715,9 @@
     <Content Include="Areas\Admin\Views\DonDat\DanhSachDonDat.cshtml" />
     <Content Include="Areas\Admin\Views\DonDat\ChiTietDonDat.cshtml" />
     <Content Include="Areas\Admin\Views\DonDat\DanhSachChoXacNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\DonDat\DanhSachDaGiao.cshtml" />
+    <Content Include="Areas\Admin\Views\DonDat\DanhSachDangGiao.cshtml" />
+    <Content Include="Areas\Admin\Views\DonDat\DanhSachDaHuy.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

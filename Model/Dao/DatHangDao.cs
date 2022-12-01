@@ -36,7 +36,7 @@ namespace Model.Dao
             dathangs = new List<DatHang>(list);
             return dathangs;
         }
-
+        //Xem tất cả DatHang có Search
         public IEnumerable<DatHang> ListAllPaging(string searchString)
         {
             IQueryable<DatHang> model = db.DatHangs;
@@ -50,10 +50,57 @@ namespace Model.Dao
             return model;
         }
 
+        //Xem tất cả DatHangChoXacNhan có Search
         public IEnumerable<DatHang> ListAllPagingChoXacNhan(string searchString)
         {
             IQueryable<DatHang> model = db.DatHangs;
             model = model.Where(x => x.TTDH == "Chờ Xác Nhận");
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.HoTen.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.TTDH).Contains(searchString) || (x.PTTT).Contains(searchString));
+
+            }
+            return model;
+        }
+
+
+        //Xem tất cả DatHangDangGiao có Search
+        public IEnumerable<DatHang> ListAllPagingDangGiao(string searchString)
+        {
+            IQueryable<DatHang> model = db.DatHangs;
+            model = model.Where(x => x.TTDH == "Đang Giao");
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.HoTen.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.TTDH).Contains(searchString) || (x.PTTT).Contains(searchString));
+
+            }
+            return model;
+        }
+
+        //Xem tất cả DatHangĐaGiao có Search
+        public IEnumerable<DatHang> ListAllPagingDaGiao(string searchString)
+        {
+            IQueryable<DatHang> model = db.DatHangs;
+            model = model.Where(x => x.TTDH == "Đã Giao");
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.HoTen.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                || (x.CreatedDate.ToString()).Contains(searchString) ||
+                (x.TTDH).Contains(searchString) || (x.PTTT).Contains(searchString));
+
+            }
+            return model;
+        }
+
+        //Xem tất cả DatHangDaHuy có Search
+        public IEnumerable<DatHang> ListAllPagingDaHuy(string searchString)
+        {
+            IQueryable<DatHang> model = db.DatHangs;
+            model = model.Where(x => x.TTDH == "Đã Hủy");
             if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.HoTen.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
