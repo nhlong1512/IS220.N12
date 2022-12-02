@@ -232,7 +232,21 @@
                         </div>
                     </div>
 
-                    <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+                    <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
+                        @if (dh.TTDH == "Chờ Xác Nhận")
+                        {
+
+                            <p class="huyDonHangButton"  data-id="@dh.ID" id="huyDonHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
+                                Hủy Đơn Hàng
+                            </p>
+                        }
+
+                        @if (dh.TTDH == "Đang Giao")
+                        {
+                            <p class="daNhanHangButton" data-id="@dh.ID" id="daNhanHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
+                                Đã Nhận Hàng
+                            </p>
+                        }
                         <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
                             Lịch Sử Đơn Đặt
                         </a>
@@ -240,333 +254,442 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <style>
+<!-- Modal -->
+<div class="modal fade huyDonHangModal" id="exampleModal_@dh.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Xác Nhận Hủy Đơn Hàng
+                    <strong>
+                        #@dh.ID
+                    </strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                Đơn Hàng Của Bạn Sẽ Được Hủy Ngay Lập Tức. Bạn Có Muốn Hủy Đơn Hàng Này?
+            </div>
+            <div class="modal-footer">
+                <button id="closeButton_@dh.ID" data-id="@dh.ID" class="closeButton btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-primary xacNhanHuyButton" data-id="@dh.ID" id="xacNhanHuyButton_@dh.ID">Xác Nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-            .finishedButton {
-                background-color: #146d4d;
-                border-radius: 3px;
-                padding: 4px 30px;
-                border: none;
-                outline: none;
-                font-weight: 600;
-                font-size: 12px;
-                line-height: 15px;
-                color: #FFFFFF;
+<div class="modal fade daNhanHangModal" id="daNhanHang_@dh.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="daNhanHangLabel">
+                    Xác Nhận Đã Nhận Hàng
+                    <strong>
+                        #@dh.ID
+                    </strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                Đơn Hàng Của Bạn Sẽ Chuyển Sang Trạng Thái Đã Giao Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+            </div>
+            <div class="modal-footer">
+                <button id="closeButtonNhanHang_@dh.ID" data-id="@dh.ID" class="closeButtonNhanHang btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-primary xacNhanDaGiaoButton" data-id="@dh.ID" id="xacNhanDaGiaoButton_@dh.ID">
+                    Xác Nhận
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
+
+    .huyDonHang {
+        font-size: 14px;
+        color: #FF0000;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .daNhanHang {
+        font-size: 14px;
+        color: #009D34;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .daNhanHang:hover {
+            opacity: 0.5;
+        }
+
+    .huyDonHang:hover {
+        opacity: 0.5;
+    }
+
+    .finishedButton {
+        background-color: #146d4d;
+        border-radius: 3px;
+        padding: 4px 30px;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: #FFFFFF;
+    }
+
+    .wrap-deltail-order {
+        margin: 0 0 36px 0;
+        padding: 14px 22px;
+        border: 1px solid #CFCFCF;
+        border-radius: 10px;
+    }
+
+    .pDonDat {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+    }
+
+    #wrap-order-summary {
+        padding: 24px;
+    }
+
+    .activeColor {
+        color: #009D34 !important;
+    }
+
+
+    .cancelledColor {
+        color: #FF0000 !important;
+    }
+
+    .inProgressColor {
+        color: #FFC107 !important;
+    }
+
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .wrap-phivanchuyen {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 100px;
+        height: 100px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #146d4d;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #146d4d;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+
+
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .show {
+        visibility: visible;
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $('.optionsSelect').click(function (e) {
+            var idToggle = $(this).data("id");
+            var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
+            e.preventDefault();
+            e.stopPropagation();
+            $(".toggle-options-select").removeClass("show");
+            if (isHasClass == false) {
+                $("#Toggle_" + idToggle).addClass("show");
+            } else {
+                $("#Toggle_" + idToggle).removeClass("show");
             }
 
-            .wrap-deltail-order {
-                margin: 0 0 36px 0;
-                padding: 14px 22px;
-                border: 1px solid #CFCFCF;
-                border-radius: 10px;
-            }
+        })
+        $(window).click(function () {
+            $(".toggle-options-select").removeClass("show");
+        })
 
-            .pDonDat {
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 22px;
-                color: #000000;
-            }
-
-            #wrap-order-summary {
-                padding: 24px;
-            }
-
-            .activeColor {
-                color: #009D34 !important;
-            }
+        $('.xemChiTiet').click(function () {
+            var idXemChiTiet = $(this).data("id");
+            window.location.replace("https://localhost:44309/profile/chi-tiet-don-dat/" + idXemChiTiet);
+        })
 
 
-            .cancelledColor {
-                color: #FF0000 !important;
-            }
-
-            .inProgressColor {
-                color: #FFC107 !important;
-            }
-
-            .order-summary-title {
-                font-weight: 600;
-                font-size: 24px;
-                line-height: 29px;
-                margin-bottom: 14px;
-            }
-
-            .wrap-sub-total {
-                display: flex;
-                margin-top: 20px;
-                justify-content: space-between;
-                margin-bottom: 48px;
-            }
-
-            .wrap-sub-total {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 20px;
-            }
-
-            .wrap-giamgia {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-
-            .wrap-phivanchuyen {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .wrap-estimated-total {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 48px;
-            }
-
-            .sub-total {
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 20px;
-                color: #000;
-            }
-
-            .button-checkout {
-                margin-top: 36px;
-                border: none;
-                background-color: #146d4d;
-                border-radius: 15px;
-                padding: 16px;
-                width: 100%;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 18px;
-                line-height: 22px;
-                color: #FFFFFF;
-            }
-
-            #wrap-order-summary {
-                background-color: #F5F5F6;
-                border-radius: 15px;
-            }
-
-            .img-product {
-                width: 100px;
-                height: 100px;
-                border-radius: 15px;
-                margin-right: 20px;
-            }
-
-            .product-details {
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
-            }
-
-            .product-title {
-                font-weight: 600;
-                font-size: 20px;
-                line-height: 26px;
-            }
-
-            .product-note {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 20px;
-                margin-bottom: 16px;
-            }
-
-            .product-price {
-                font-style: normal;
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 20px;
-                color: #146d4d;
-            }
-
-            .quantity-product {
-                width: 50px;
-                height: 33px;
-                border: 2px solid #CFCFCF;
-                text-align: center;
-                margin: 0 13px;
-            }
-
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-
-            .button-quantity {
-                background-color: transparent;
-                border: none;
-                font-weight: 400;
-                font-size: 36px;
-                line-height: 36px;
-                outline: none !important;
-            }
-
-            .total-price {
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 20px;
-                text-align: center;
-                color: #146d4d;
-            }
-
-            .img-header-avt:hover {
-                cursor: pointer
-            }
-
-            .form-check-label {
-                padding: 0.5rem 1rem;
-                font-size: 1.25rem;
-                line-height: 1.5;
-            }
-
-            .form-check-input {
-                padding: 7px;
-                width: 100%;
-                height: 2em;
-            }
-
-            button, input, select, label, li {
-                -webkit-appearance: button;
-            }
-
-            .form-group {
-                margin: 30px 0 30px 0;
-            }
-
-            .profile-header {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .profile-header-left {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .img-header {
-                margin-right: 50px;
-            }
-
-            .button-profile-save {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-                .button-profile-save > button {
-                    font-weight: 600;
-                    font-size: 18px;
-                    line-height: 22px;
-                    background-color: #146d4d;
-                    padding: 14px;
-                    text-align: center;
-                    color: #FFFFFF;
-                    border: none;
-                    border-radius: 8px;
-                }
+        //Handle xác nhận mở modal hủy đơn hàng
+        $('.huyDonHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#exampleModal_' + idHuy).modal('show')
+        })
 
 
+        //Handle đóng modal xác nhận Hủy đơn hàng
+        $('.closeButton').click(function (e) {
+            var idClose = $(this).data("id");
+            console.log("Hủy", idClose);
+            $('#exampleModal_' + idClose).modal('hide')
+        })
 
-            hr.style10 {
-                border-top: 0.5px dotted #E5E5E5;
-                border-bottom: 1px dotted #fff;
-            }
-        </style>
 
+        //Handle mở modal xác nhận Đã nhận hàng
+        $('.daNhanHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('show')
+        })
 
-        <script>
-            $(document).ready(function () {
-                $("#doiMatKhauButton").on('click',
-                    function DoiMatKhau(e) {
-                        e.preventDefault();
-                        //Clear $(".message-error") and $('.message-success')
-                        $(".message-error").empty();
-                        $('.message-success').empty();
+        //Handle đóng modal xác nhận đã nhận hàng
+        $('.closeButtonNhanHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('hide')
+        })
 
-                        var id = $(this).data('id');
-
-                        var oldPassword = $('#matKhauCuLabel').val();
-                        var newPassword = $('#matKhauMoiLabel').val();
-                        var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
-
-                        console.log('Old Password ->>', oldPassword);
-                        console.log('New Password ->>', newPassword);
-                        console.log('Confirm New Password ->>', confirmNewPassword);
-
-                        $.ajax({
-                            type: "POST",
-                            url: "/Profile/DoiMatKhau",
-                            data: {
-                                id: id,
-                                oldPassword: oldPassword,
-                                newPassword: newPassword,
-                                confirmNewPassword: confirmNewPassword
-                            },
-                            dataType: "json",
-                            success: function (res) {
-                                console.log("NguyenHuuLong --> ", res.msg);
-                                console.log("NguyenHuuLong --> err", res.err);
-                                if (res.isValid) {
-                                    $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                                }
-                                if (res.err) {
-                                    $(".message-error").append(res.err);
-                                }
-                                //window.location.replace("https://localhost:44309/");
-                            },
-                            error: function (err) {
-                                console.log("err --> ", err);
-                                console.log("err ->>", err.err);
-                            },
-                        });
-
-                    }
-                )
+        //Handle Xác nhận Hủy đơn hàng
+        $(".xacNhanHuyButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhan", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/HuyDonHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
             });
-        </script>
+        })
 
-
-
-        <script>
-            $(function () {
-                $('.navbar-toggler').click(function () {
-                    $('body').toggleClass('noscroll');
-                })
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đã giao
+        $(".xacNhanDaGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhanDaGiao", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/DaNhanHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
             });
-        </script>
+        })
 
-        <script>
-            $(window).on("scroll", function () {
-                var scroll = $(window).scrollTop();
 
-                if (scroll >= 80) {
-                    $("#site-header").addClass("nav-fixed");
-                } else {
-                    $("#site-header").removeClass("nav-fixed");
-                }
-            });
 
-            //Main navigation Active Class Add Remove
-            $(".navbar-toggler").on("click", function () {
-                $("header").toggleClass("active");
-            });
-            $(document).on("ready", function () {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
-                $(window).on("resize", function () {
-                    if ($(window).width() > 991) {
-                        $("header").removeClass("active");
-                    }
-                });
-            });
-        </script>
-        <!--//MENU-JS-->
+    });
+</script>

@@ -112,7 +112,13 @@
                                                 <h3 class="title border-effect">
                                                     <a href="~/thuc-don/details/@sp.ID">@sp.TenSanPham</a>
                                                 </h3>
-                                                <span class="price">@sp.Gia</span>
+                                                <span class="price">
+                                                    @{
+                                                        var a = sp.Gia;
+                                                        a = a / 1000;
+                                                    }
+                                                    @a.000 đ
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -468,5 +474,4 @@
 </script>
 <!-- //stats number counter -->
 <!--/MENU-JS-->
-
 <!--//MENU-JS-->

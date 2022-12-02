@@ -56,6 +56,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View(nd);
         }
 
+        [ValidateInput(false)]
         public ActionResult Create(NguoiDung nguoidung)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
