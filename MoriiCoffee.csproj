@@ -2619,6 +2619,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonDatController.cs" />
@@ -2718,6 +2719,7 @@
     <Content Include="Areas\Admin\Views\DonDat\DanhSachDaGiao.cshtml" />
     <Content Include="Areas\Admin\Views\DonDat\DanhSachDangGiao.cshtml" />
     <Content Include="Areas\Admin\Views\DonDat\DanhSachDaHuy.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProfile\Update.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
