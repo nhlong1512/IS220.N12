@@ -1,0 +1,704 @@
+﻿
+@{
+    ViewBag.Title = "MoriiCoffee";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var nd = ViewBag.ndd;
+    var dathangs = ViewBag.dathangs;
+    var hoadons = ViewBag.hoadons;
+    decimal gia = 0;
+}
+
+@model Model.EF.NguoiDung
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Tài Khoản Của Tôi</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Đơn Đặt</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span>Danh Sách Đơn Đặt</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+
+<div class="w3-services py-5">
+    <div class="container" style="padding:24px 0;">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div>
+                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Đơn Đặt</h3>
+                        <hr class="style-10" />
+                        <div class="wrap-button-products">
+                            <div>
+                                <a class="button-products-link">
+                                    <button class="button-products" id="tat-ca" data-name="Tất Cả">
+                                        Tất Cả
+                                    </button>
+                                </a>
+                                <a class="button-products-link">
+                                    <button class="button-products" id="cho-xac-nhan" data-name="Chờ Xác Nhận">
+                                        Chờ Xác Nhận
+                                    </button>
+                                </a>
+                                <a class="button-products-link">
+                                    <button class="button-products button-active" id="dang-giao" data-name="Đang Giao">
+                                        Đang Giao
+                                    </button>
+                                </a>
+                                <a class="button-products-link">
+                                    <button class="button-products" id="da-giao" data-name="Đã Giao">
+                                        Đã Giao
+                                    </button>
+                                </a>
+                                <a class="button-products-link">
+                                    <button class="button-products" id="da-huy" data-name="Đã Hủy">
+                                        Đã Hủy
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Đơn Đặt</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Ngày Mua</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Trạng Thái</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thanh Toán</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in dathangs)
+                                {
+                                    <tr>
+                                        <th>
+                                            <p class="maDonDat">
+                                                #@item.ID
+                                            </p>
+                                        </th>
+
+
+                                        <td>
+                                            <p class="pDonDat">
+                                                @item.CreatedDate
+                                            </p>
+                                        </td>
+                                        <td>
+                                            @*Tìm giá của đơn đặt*@
+                                            @foreach (var i in hoadons)
+                                            {
+                                                if (i.ID == item.MaHoaDon)
+                                                {
+                                                    gia = i.TongTien;
+                                                }
+                                            }
+                                            <p class="pDonDat">
+                                                @{
+                                                    var a = gia;
+                                                    a = a / 1000;
+                                                }
+                                                @a.000 đ
+                                            </p>
+                                        </td>
+                                        <td>
+
+                                            @if (item.TTDH == "Chờ Xác Nhận")
+                                            {
+                                                <p class="pDonDat waitingAcceptColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
+                                            else if (item.TTDH == "Đang Giao")
+                                            {
+                                                <p class="pDonDat inProgressColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
+                                            else if (item.TTDH == "Đã Hủy")
+                                            {
+                                                <p class="pDonDat cancelledColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p class="pDonDat activeColor">
+                                                    @item.TTDH
+                                                </p>
+                                            }
+                                        </td>
+                                        <td>
+                                            <p class="pDonDat">
+                                                @item.PTTT
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <a style="" class="optionsSelect" data-id="@item.ID" id="option_@item.ID">
+                                                <img src="~/Data/Files/dots-option.png" />
+                                                <div class="toggle-options-select" id="Toggle_@item.ID">
+                                                    <div class="wrap-options">
+                                                        @if (item.TTDH == "Chờ Xác Nhận")
+                                                        {
+                                                            <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                Hủy Đơn Hàng
+                                                            </p>
+
+                                                        }
+                                                        else if (item.TTDH == "Đang Giao")
+                                                        {
+                                                            <p class="daNhanHang daNhanHangButton" data-id="@item.ID" id="daNhanHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                Đã Nhận Hàng
+                                                            </p>
+                                                        }
+                                                        else if (item.TTDH == "Đã Giao")
+                                                        {
+
+                                                        }
+                                                        else
+                                                        {
+
+                                                        }
+                                                        <p class="xemChiTiet" data-id="@item.ID">Xem Chi Tiết</p>
+
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <!-- Modal -->
+                                            <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                Xác Nhận Hủy Đơn Hàng
+                                                                <strong>
+                                                                    #@item.ID
+                                                                </strong>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Đơn Hàng Của Bạn Sẽ Được Hủy Ngay Lập Tức. Bạn Có Muốn Hủy Đơn Hàng Này?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                            <button class="btn btn-primary xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal fade daNhanHangModal" id="daNhanHang_@item.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="daNhanHangLabel">
+                                                                Xác Nhận Đã Nhận Hàng
+                                                                <strong>
+                                                                    #@item.ID
+                                                                </strong>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Đơn Hàng Của Bạn Sẽ Chuyển Sang Trạng Thái Đã Giao Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button id="closeButtonNhanHang_@item.ID" data-id="@item.ID" class="closeButtonNhanHang btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                            <button class="btn btn-primary xacNhanDaGiaoButton" data-id="@item.ID" id="xacNhanDaGiaoButton_@item.ID">
+                                                                Xác Nhận
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
+
+    .huyDonHang {
+        font-size: 14px;
+        color: #FF0000;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .daNhanHang {
+        font-size: 14px;
+        color: #009D34;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .daNhanHang:hover {
+            opacity: 0.5;
+        }
+
+    .huyDonHang:hover {
+        opacity: 0.5;
+    }
+
+    .xemChiTiet {
+        font-size: 14px;
+        color: #146d4d;
+        line-height: 20px;
+    }
+
+        .xemChiTiet:hover {
+            opacity: 0.5;
+        }
+
+    .optionsSelect {
+        position: relative;
+    }
+
+    .toggle-options-select {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        position: absolute;
+        background-color: #eee;
+        border-radius: 8px;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        display: flex;
+        border: 1px solid #fff;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        top: -175%;
+        left: 140%;
+        visibility: hidden;
+        transition: all 0.02s ease;
+    }
+
+    .wrap-options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .maDonDat {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000;
+    }
+
+    .pDonDat {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+    }
+
+    .activeColor {
+        color: #009D34 !important;
+    }
+
+
+    .cancelledColor {
+        color: #FF0000 !important;
+    }
+
+    .inProgressColor {
+        color: #FFC107 !important;
+    }
+
+    .waitingAcceptColor {
+        color: #1976D2 !important;
+    }
+
+    #wrap-order-summary {
+        padding: 24px;
+    }
+
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 100px;
+        height: 100px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #146d4d;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #146d4d;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+
+
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .show {
+        visibility: visible;
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $('.optionsSelect').click(function (e) {
+            var idToggle = $(this).data("id");
+            var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
+            e.preventDefault();
+            e.stopPropagation();
+            $(".toggle-options-select").removeClass("show");
+            if (isHasClass == false) {
+                $("#Toggle_" + idToggle).addClass("show");
+            } else {
+                $("#Toggle_" + idToggle).removeClass("show");
+            }
+
+        })
+        $(window).click(function () {
+            $(".toggle-options-select").removeClass("show");
+        })
+
+        $('.xemChiTiet').click(function () {
+            var idXemChiTiet = $(this).data("id");
+            window.location.replace("https://localhost:44309/profile/chi-tiet-don-dat/" + idXemChiTiet);
+        })
+
+
+        //Handle xác nhận mở modal hủy đơn hàng
+        $('.huyDonHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#exampleModal_' + idHuy).modal('show')
+        })
+
+
+        //Handle đóng modal xác nhận Hủy đơn hàng
+        $('.closeButton').click(function (e) {
+            var idClose = $(this).data("id");
+            console.log("Hủy", idClose);
+            $('#exampleModal_' + idClose).modal('hide')
+        })
+
+
+        //Handle mở modal xác nhận Đã nhận hàng
+        $('.daNhanHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đã nhận hàng
+        $('.closeButtonNhanHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('hide')
+        })
+
+        //Handle Xác nhận Hủy đơn hàng
+        $(".xacNhanHuyButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhan", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/HuyDonHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đã giao
+        $(".xacNhanDaGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhanDaGiao", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/DaNhanHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+
+
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        var url = window.location.href;
+        console.log("url", url);
+
+        $(".button-products").click(function () {
+            {
+                console.log($(this).data("name"));
+                var name = $(this).data("name");
+                if (name == "Tất Cả") {
+                    window.location.replace("https://localhost:44309/profile/don-dat");
+                }
+                if (name == "Chờ Xác Nhận") {
+                    window.location.replace("https://localhost:44309/profile/don-dat/cho-xac-nhan");
+                }
+                if (name == "Đang Giao") {
+                    window.location.replace("https://localhost:44309/profile/don-dat/dang-giao");
+                }
+                if (name == "Đã Giao") {
+                    window.location.replace("https://localhost:44309/profile/don-dat/da-giao");
+                }
+                if (name == "Đã Hủy") {
+                    window.location.replace("https://localhost:44309/profile/don-dat/da-huy");
+                }
+            }
+        })
+    });
+</script>
+<style>
+    .wrap-button-products {
+        display: flex;
+        margin: 40px 0;
+    }
+
+    .button-products-link {
+        text-decoration: none;
+    }
+
+
+    .button-products {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        background-color: #eee;
+        padding: 10px 14px;
+        text-align: center;
+        color: #146d4d;
+        border: 1px solid #146d4d;
+        border-radius: 8px;
+        transition: all 0.02s ease;
+        margin-right: 12px;
+    }
+
+        .button-products:hover {
+            background-color: #146d4d;
+            color: #FFFFFF;
+            transition: all 0.02s ease;
+        }
+
+    .button-active {
+        background-color: #146d4d;
+        color: #FFFFFF;
+    }
+</style>

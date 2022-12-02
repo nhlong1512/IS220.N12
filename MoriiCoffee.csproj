@@ -2766,6 +2766,9 @@
     <Content Include="Views\Profile\ChiTietDonDat.cshtml" />
     <Content Include="Views\GiaoHang\GiaoHang.cshtml" />
     <Content Include="Views\Profile\DonDatChoXacNhan.cshtml" />
+    <Content Include="Views\Profile\DonDatDangGiao.cshtml" />
+    <Content Include="Views\Profile\DonDatDaGiao.cshtml" />
+    <Content Include="Views\Profile\DonDatDaHuy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -179,7 +179,7 @@ namespace Model.Dao
                 return dathangs;
             }
             var list = db.DatHangs.Where(p => p.MaKH == id);
-            var listt = list.Where(p => p.TTDH == "Đa Hủy");
+            var listt = list.Where(p => p.TTDH == "Đã Hủy");
             //Convert từ IqueryTable sang list
             dathangs = new List<DatHang>(listt);
             return dathangs;
