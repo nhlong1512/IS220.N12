@@ -131,9 +131,14 @@ namespace MoriiCoffee.Areas.Admin
 
             //Config Route cho AdminProfile
             context.MapRoute(
-              name: "AdminProfileTTCaNhan",
+              name: "AdminProfileThongTinCaNhan",
               url: "admin/profile/chinh-sua/{id}",
               defaults: new { controller = "AdminProfile", action = "Update", id = UrlParameter.Optional }
+          );
+            context.MapRoute(
+              name: "AdminProfileDoiMatKhau",
+              url: "admin/profile/doi-mat-khau/{id}",
+              defaults: new { controller = "AdminProfile", action = "DoiMatKhau", id = UrlParameter.Optional }
           );
 
 

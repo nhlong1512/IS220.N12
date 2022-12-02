@@ -1,0 +1,268 @@
+﻿
+
+@{
+    ViewBag.Title = "MoriiCoffee";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var nd = ViewBag.ndd;
+}
+
+@model Model.EF.NguoiDung
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+
+@section breadcrumb {
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <!-- if breadcrumb is single-->
+                    <span>Người Dùng</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Đổi Mật Khẩu</span></li>
+            </ol>
+        </nav>
+    </div>
+}
+
+
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="w3-services py-5">
+        <div class="container py-lg-4">
+            <div class="form-horizontal">
+                @*Check nếu là tài khoản đăng nhập bằng google hoặc facebook thì sẽ không được đổi mật khẩu*@
+                @{
+                    var isLoginWithFbOrGoogle = false;
+                    if (Model.Password == "FaceBookLogin2022!" || Model.Password == "GoogleLogin2022!")
+                    {
+                        isLoginWithFbOrGoogle = true;
+                    }
+                }
+                <div class="container">
+                    <form>
+                        <div class="profile-header">
+                            <div class="profile-header-left">
+                                <div>
+                                    <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Thay Đổi Mật Khẩu</h3>
+                                    <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Vui lòng không bao giờ chia sẻ hoặc cung cấp mật khẩu của bạn.</p>
+                                </div>
+                            </div>
+                            <a class="button-profile-save" id="doiMatKhauButton" data-id="@Model.ID" style="text-decoration:none">
+                                <button @*type="submit"*@>
+                                    Save
+                                </button>
+                            </a>
+                        </div>
+                        <div class="form-detail" style="">
+                            <div class="form-group row">
+                                <div class="message-success" style="color: #155724 !important; font-size: 20px; padding-left: 15px;" role="alert"></div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="message-error" style="color: #dc3545 !important; font-size: 20px; padding-left: 15px;" role="alert"></div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="matKhauCuLabel" class="col-sm-3 col-form-label col-form-label-lg">Mật Khẩu Cũ</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control form-control-lg" id="matKhauCuLabel" placeholder="••••••••••••" name="" @(isLoginWithFbOrGoogle == true ? "readonly=\"readonly\"" : "")>
+                                </div>
+                            </div>
+                            <hr class="style10">
+                            <div class="form-group row">
+                                <label for="matKhauMoiLabel" class="col-sm-3 col-form-label col-form-label-lg">Mật Khẩu Mới</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control form-control-lg" id="matKhauMoiLabel" placeholder="••••••••••••" name="" @(isLoginWithFbOrGoogle == true ? "readonly=\"readonly\"" : "")>
+                                </div>
+                            </div>
+                            <hr class="style10">
+                            <div class="form-group row">
+                                <label for="xacNhanMatKhauMoiLabel" class="col-sm-3 col-form-label col-form-label-lg">Xác Nhận Mật Khẩu Mới</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control form-control-lg" id="xacNhanMatKhauMoiLabel" placeholder="••••••••••••" name="" @(isLoginWithFbOrGoogle == true ? "readonly=\"readonly\"" : "")>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+
+    .product {
+        display: flex;
+        /*flex-direction:column;*/
+        gap: 30px;
+        padding-bottom: 20px;
+        /*border-bottom: 0.5px solid #ccc !important;*/
+    }
+
+    .imgProduct {
+        display: flex;
+    }
+
+    .contentProduct {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .moTaDiv {
+        margin: 20px 0;
+    }
+
+    .moTa {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .moTaP {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+        align-items: initial;
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #146d4d !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important;
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $("#doiMatKhauButton").on('click',
+            function DoiMatKhau(e) {
+                e.preventDefault();
+                //Clear $(".message-error") and $('.message-success')
+                $(".message-error").empty();
+                $('.message-success').empty();
+
+                var id = $(this).data('id');
+
+                var oldPassword = $('#matKhauCuLabel').val();
+                var newPassword = $('#matKhauMoiLabel').val();
+                var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
+
+                console.log('Old Password ->>', oldPassword);
+                console.log('New Password ->>', newPassword);
+                console.log('Confirm New Password ->>', confirmNewPassword);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/AdminProfile/DoiMatKhau",
+                    data: {
+                        id: id,
+                        oldPassword: oldPassword,
+                        newPassword: newPassword,
+                        confirmNewPassword: confirmNewPassword
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        console.log("NguyenHuuLong --> ", res.msg);
+                        console.log("NguyenHuuLong --> err", res.err);
+                        if (res.isValid) {
+                            $('.message-success').append("Thay đổi mật khẩu thành công. ");
+                        }
+                        if (res.err) {
+                            $(".message-error").append(res.err);
+                        }
+                        //window.location.replace("https://localhost:44309/");
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
+
+            }
+        )
+    });
+</script>
+
