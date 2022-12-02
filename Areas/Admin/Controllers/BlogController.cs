@@ -17,7 +17,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
-        private NguoiDungDao nguoidungdao = new NguoiDungDao();
+        private NguoiDungDao nddao = new NguoiDungDao();
         public ActionResult DanhSachBlog(string searchString, int page = 1, int pageSize = 5)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
@@ -25,10 +25,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
-            //var blogs = bldao.ViewAll();
-            //ViewBag.blogs = blogs;
-            var nguoidung = nguoidungdao.ViewDetail(1);
-            ViewBag.nguoidung = nguoidung;
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = bldao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
             return View(model);
@@ -45,6 +47,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
 
             if (ModelState.IsValid)
@@ -72,6 +80,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
 
             var blog = bldao.ViewDetail(id);
 
@@ -84,6 +98,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
 
             bldao.Delete(id);
@@ -99,6 +119,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
 
             var blog = bldao.ViewDetail(id);
             return View(blog);
@@ -113,6 +139,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
 
             var isTrue =  bldao.Update(blog);

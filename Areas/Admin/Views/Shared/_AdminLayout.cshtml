@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿
+@{ 
+    var session = ViewBag.session;
+    var nd = ViewBag.ndd;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>MoriiCoffee</title>
@@ -11,10 +17,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
-    @*<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
-        <script src="~/Assets/Client/js/jquery.countup.js"></script>
-        <script src="~/Assets/Client/js/jquery.waypoints.min.js"></script>
-        <script src="~/Assets/Client/js/jquery.magnific-popup.min.js"></script>*@
 
     <!-- Vendors styles-->
     <link rel="stylesheet" href="~/Assets/Admin/vendors/simplebar/css/simplebar.css">
@@ -164,21 +166,21 @@
                 </a>
                 <ul class="header-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="~/admin">
                             <svg class="icon icon-lg">
                                 <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-bell"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="~/admin">
                             <svg class="icon icon-lg">
                                 <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-list-rich"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="~/admin">
                             <svg class="icon icon-lg">
                                 <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-envelope-open"></use>
                             </svg>
@@ -186,60 +188,71 @@
                     </li>
                 </ul>
                 <ul class="header-nav ms-3">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <div class="avatar avatar-md"><img class="avatar-img" src="~/Assets/Images/MoriiFeedback4.jpg" alt="user@email.com"></div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end pt-0">
-                            <div class="dropdown-header bg-light py-2">
-                                <div class="fw-semibold">Account</div>
-                            </div><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-bell"></use>
-                                </svg> Updates<span class="badge badge-sm bg-info ms-2">42</span>
-                            </a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-envelope-open"></use>
-                                </svg> Messages<span class="badge badge-sm bg-success ms-2">42</span>
-                            </a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-task"></use>
-                                </svg> Tasks<span class="badge badge-sm bg-danger ms-2">42</span>
-                            </a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-comment-square"></use>
-                                </svg> Comments<span class="badge badge-sm bg-warning ms-2">42</span>
-                            </a>
-                            <div class="dropdown-header bg-light py-2">
-                                <div class="fw-semibold">Settings</div>
-                            </div><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-user"></use>
-                                </svg> Profile
-                            </a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-settings"></use>
-                                </svg> Settings
-                            </a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-credit-card"></use>
-                                </svg> Payments<span class="badge badge-sm bg-secondary ms-2">42</span>
-                            </a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-file"></use>
-                                </svg> Projects<span class="badge badge-sm bg-primary ms-2">42</span>
-                            </a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-lock-locked"></use>
-                                </svg> Lock Account
-                            </a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-account-logout"></use>
-                                </svg> Logout
-                            </a>
-                        </div>
-                    </li>
+                    @{
+                        if (session == null)
+                        {
+                            <li class="nav-item">
+                                <a href="~/dang-nhap" class="btn btn-primary d-none d-lg-block btn-style mr-2">
+                                    Đăng nhập
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            @*@RenderPage("_UserDropdown.cshtml")*@
+                            <ul class="header-nav ms-3">
+                                <li class="nav-item dropdown" style="margin-bottom: 6px; margin-top: 6px;">
+                                    <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        @if (string.IsNullOrEmpty(nd.Urlmage))
+                                        {
+                                            <div class="avatar avatar-md">
+                                                <img class="avatar-img" style="border-radius: 100%; width: 52px; height: 52px;"
+                                                     src="/Data/Files/noAvt2.png" alt="user@email.com">
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="avatar avatar-md">
+                                                <img class="avatar-img"style="border-radius: 100%; width: 48px; height: 48px;"
+                                                     src="@nd.Urlmage" alt="user@email.com">
+                                            </div>
+                                        }
+
+
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end pt-0" style="margin: 20px 0;">
+                                        <div class="dropdown-header bg-light py-2" style="border-top-left-radius: 6px; border-top-right-radius: 6px; margin: 0px;">
+                                            <div class="fw-semibold" style="font-size:18px;">@nd.HoTen</div>
+                                        </div>
+
+                                        <a class="dropdown-item" href="~/profile/chinh-sua/@nd.ID">
+                                            <svg class="icon me-2">
+                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-user"></use>
+                                            </svg> Tài Khoản Của Tôi
+                                        </a>
+                                        <a class="dropdown-item" href="~/profile/doi-mat-khau/@nd.ID">
+                                            <svg class="icon me-2">
+                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-lock-unlocked"></use>
+                                            </svg> Đổi Mật Khẩu
+                                        </a>
+                                        <a class="dropdown-item" href="~/profile/don-dat">
+                                            <svg class="icon me-2">
+                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-credit-card"></use>
+                                            </svg> Đơn Đặt
+                                        </a>
+                                        <a class="dropdown-item" id="dangXuatID"
+                                           href="/dang-xuat">
+                                            <svg class="icon me-2">
+                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-account-logout"></use>
+                                            </svg>  Đăng Xuất
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        }
+
+                    }
                 </ul>
             </div>
             <div class="header-divider"></div>
@@ -252,6 +265,13 @@
     <style>
         .sidebar-nav .nav-link {
             padding: 20px;
+        }
+
+        .dropdown-menu .dropdown-menu-end .pt-0 .show {
+            margin: 0px;
+            position: absolute;
+            inset: 6px 0px auto auto !important;
+            transform: translate3d(0px, 41.7778px, 0px);
         }
     </style>
 

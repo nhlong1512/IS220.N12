@@ -17,7 +17,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private SanPham sp = new SanPham();
         private SanPhamDao spdao = new SanPhamDao();
-        private NguoiDungDao nguoidungdao = new NguoiDungDao();
+        private NguoiDungDao nddao = new NguoiDungDao();
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
 
@@ -28,6 +28,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
@@ -47,6 +53,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = ctspdao.ListAllPagingCaPhe(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
 
@@ -64,6 +76,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPagingTraSua(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
@@ -83,6 +101,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = ctspdao.ListAllPagingTopping(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
 
@@ -100,6 +124,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPagingKhac(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
@@ -119,6 +149,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
 
             ViewBag.sanpham = spdao.ViewAll();
@@ -148,6 +184,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
 
             var ctsp = ctspdao.ViewDetail(id);
             ViewBag.ctsps = ctspdao.ViewAll();
@@ -160,6 +202,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
 
             ctspdao.Delete(id);
@@ -174,6 +222,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
 
             ViewBag.sanpham = spdao.ViewAll();
@@ -191,6 +245,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
 
             var isTrue = ctspdao.Update(ctsp);
             if (isTrue)
@@ -203,23 +263,6 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 return View(ctsp);
             }
         }
-
-
-        //Handle Chọn danh sách sản phẩm theo từng loại
-        //[HttpPost]
-        //public JsonResult DanhSachChonJson(string name)
-        //{
-        //    if(name == "Tất Cả")
-        //    {
-
-        //    }
-        //    return Json(new
-        //    {
-        //        status = true,
-        //        id = id,
-        //        isValid = isValid,
-        //    });
-        //}
 
 
 

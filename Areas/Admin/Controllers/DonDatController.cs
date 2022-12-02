@@ -15,7 +15,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
     {
         // GET: Admin/DonDat
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
-        private NguoiDungDao nguoidungdao = new NguoiDungDao();
+        private NguoiDungDao nddao = new NguoiDungDao();
         private DatHangDao dhdao = new DatHangDao();
         private HoaDonDao hddao = new HoaDonDao();
         private ChiTietHoaDonDao cthddao = new ChiTietHoaDonDao();
@@ -27,10 +27,16 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = dhdao.ListAllPaging(searchString);
             ViewBag.dathangs = model;
             ViewBag.hoadons = hddao.ViewAll();
-            ViewBag.nds = nguoidungdao.ViewAll();
+            ViewBag.nds = nddao.ViewAll();
             return View();
         }
 
@@ -41,10 +47,16 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = dhdao.ListAllPagingChoXacNhan(searchString);
             ViewBag.dathangs = model;
             ViewBag.hoadons = hddao.ViewAll();
-            ViewBag.nds = nguoidungdao.ViewAll();
+            ViewBag.nds = nddao.ViewAll();
             return View();
         }
 
@@ -55,10 +67,16 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = dhdao.ListAllPagingDangGiao(searchString);
             ViewBag.dathangs = model;
             ViewBag.hoadons = hddao.ViewAll();
-            ViewBag.nds = nguoidungdao.ViewAll();
+            ViewBag.nds = nddao.ViewAll();
             return View();
         }
 
@@ -69,10 +87,16 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = dhdao.ListAllPagingDaGiao(searchString);
             ViewBag.dathangs = model;
             ViewBag.hoadons = hddao.ViewAll();
-            ViewBag.nds = nguoidungdao.ViewAll();
+            ViewBag.nds = nddao.ViewAll();
             return View();
         }
         public ActionResult DanhSachDaHuy(string searchString)
@@ -82,10 +106,16 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 return Redirect("/dang-nhap");
             }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var model = dhdao.ListAllPagingDaHuy(searchString);
             ViewBag.dathangs = model;
             ViewBag.hoadons = hddao.ViewAll();
-            ViewBag.nds = nguoidungdao.ViewAll();
+            ViewBag.nds = nddao.ViewAll();
             return View();
         }
 
@@ -96,6 +126,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
             var dh = dhdao.ViewDetail(id);
             var hd = hddao.ViewDetail(dh.MaHoaDon);

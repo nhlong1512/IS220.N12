@@ -16,6 +16,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
+        private NguoiDungDao nddao = new NguoiDungDao();
 
         // GET: Admin/Admin
         public ActionResult Dashboard()
@@ -24,6 +25,11 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
+            }else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
             }
 
             var blogs = bldao.ViewAll();
