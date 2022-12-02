@@ -125,6 +125,7 @@ namespace Model.Dao
             return dathangs;
         }
 
+        //Xem Tất cả đơn đặt chờ xác nhận của người dùng có ID
         public List<DatHang> ViewAllByIDChoXacNhan(long id)
         {
             List<DatHang> dathangs = new List<DatHang>();
@@ -134,6 +135,51 @@ namespace Model.Dao
             }
             var list = db.DatHangs.Where(p => p.MaKH == id);
             var listt = list.Where(p => p.TTDH == "Chờ Xác Nhận");
+            //Convert từ IqueryTable sang list
+            dathangs = new List<DatHang>(listt);
+            return dathangs;
+        }
+
+        //Xem Tất cả đơn đặt Đang Giao của người dùng có ID
+        public List<DatHang> ViewAllByIDDangGiao(long id)
+        {
+            List<DatHang> dathangs = new List<DatHang>();
+            if (db.DatHangs.Count() == 0)
+            {
+                return dathangs;
+            }
+            var list = db.DatHangs.Where(p => p.MaKH == id);
+            var listt = list.Where(p => p.TTDH == "Đang Giao");
+            //Convert từ IqueryTable sang list
+            dathangs = new List<DatHang>(listt);
+            return dathangs;
+        }
+
+        //Xem Tất cả đơn đặt Đã Giao của người dùng có ID
+        public List<DatHang> ViewAllByIDDaGiao(long id)
+        {
+            List<DatHang> dathangs = new List<DatHang>();
+            if (db.DatHangs.Count() == 0)
+            {
+                return dathangs;
+            }
+            var list = db.DatHangs.Where(p => p.MaKH == id);
+            var listt = list.Where(p => p.TTDH == "Đã Giao");
+            //Convert từ IqueryTable sang list
+            dathangs = new List<DatHang>(listt);
+            return dathangs;
+        }
+
+        //Xem Tất cả đơn đặt Đa Huy của người dùng có ID
+        public List<DatHang> ViewAllByIDDaHuy(long id)
+        {
+            List<DatHang> dathangs = new List<DatHang>();
+            if (db.DatHangs.Count() == 0)
+            {
+                return dathangs;
+            }
+            var list = db.DatHangs.Where(p => p.MaKH == id);
+            var listt = list.Where(p => p.TTDH == "Đa Hủy");
             //Convert từ IqueryTable sang list
             dathangs = new List<DatHang>(listt);
             return dathangs;
