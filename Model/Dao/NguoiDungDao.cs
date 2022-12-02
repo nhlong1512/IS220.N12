@@ -140,5 +140,22 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
+        public IEnumerable<NguoiDung> ListAllPagingKhachHang(string searchString)
+        {
+            IQueryable<NguoiDung> model = db.NguoiDungs;
+            model = model.Where(x => x.Role == "Khách hàng");
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    model = model.Where(x => x.HoTen.Contains(searchString) || ("#" + (x.ID).ToString()).Contains(searchString)
+                    || (x.NgSinh.ToString()).Contains(searchString) || (x.Email).Contains(searchString) ||
+                    (x.SDT).Contains(searchString) || (x.GioiTinh == true ? "Nam" : "Nữ").Contains(searchString));
+
+                }
+            }
+            return model;
+        }
+
     }
 }

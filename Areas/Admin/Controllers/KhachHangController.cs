@@ -17,7 +17,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
 
-        public ActionResult DanhSachKhachHang()
+        public ActionResult DanhSachKhachHang(string searchString)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
@@ -30,6 +30,9 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 var nd = nddao.ViewDetailEmail(session.UserName);
                 ViewBag.ndd = nd;
             }
+
+            var model = nddao.ListAllPagingKhachHang(searchString);
+            ViewBag.nds = model;
             return View();
         }
     }
