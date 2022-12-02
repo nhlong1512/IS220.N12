@@ -2623,6 +2623,7 @@
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonDatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
     <Compile Include="Common\CartItem.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\UserLogin.cs" />
@@ -2721,6 +2722,7 @@
     <Content Include="Areas\Admin\Views\DonDat\DanhSachDaHuy.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProfile\Update.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProfile\DoiMatKhau.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\DanhSachKhachHang.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

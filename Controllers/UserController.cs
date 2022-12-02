@@ -133,20 +133,17 @@ namespace MoriiCoffee.Controllers
 
                 if (data.Count() > 0)
                 {
-                    //TinCode
-                    //add session
-                    //Session["FullName"] = data.FirstOrDefault().HoTen;
-                    //Session["Email"] = data.FirstOrDefault().Email;
-                    //Session["idUser"] = data.FirstOrDefault().ID;
-                    //return RedirectToAction("TrangChu", "TrangChu", new { area = "" });
-
                     //LongCode
                     var nd = nddao.ViewDetailEmail(email);
                     var userSession = new UserLogin();
                     userSession.UserName = nd.Email;
                     userSession.UserID = nd.ID;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
-                    return RedirectToAction("Index", "TrangChu");
+                    if(nd.Role == "ADMIN")
+                    {
+                        return Redirect("/admin");
+                    }
+                    return Redirect("/");
                 }
                 else
                 {
