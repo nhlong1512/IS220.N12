@@ -2724,6 +2724,7 @@
     <Content Include="Areas\Admin\Views\AdminProfile\DoiMatKhau.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\DanhSachKhachHang.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Create.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

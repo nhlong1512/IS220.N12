@@ -55,5 +55,40 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             return View(nd);
         }
+
+        public ActionResult Create(NguoiDung nguoidung)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nddd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nddd;
+            }
+
+            if (ModelState.IsValid)
+            {
+                nguoidung.Status = true;
+                var id = nddao.Insert(nguoidung);
+
+                if (id > 0)
+                {
+                    return Redirect("/admin/khach-hang");
+                }
+                return View("Create");
+
+            }
+            else
+            {
+
+            }
+            return View("Create");
+        }
+
+
     }
 }

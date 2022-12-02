@@ -155,6 +155,12 @@ namespace MoriiCoffee.Areas.Admin
               defaults: new { controller = "KhachHang", action = "Details", id = UrlParameter.Optional }
           );
 
+            context.MapRoute(
+              name: "AdminThemKhachHang",
+              url: "admin/khach-hang/create",
+              defaults: new { controller = "KhachHang", action = "Create", id = UrlParameter.Optional }
+          );
+
 
 
 
