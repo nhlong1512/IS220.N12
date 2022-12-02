@@ -337,6 +337,37 @@ namespace MoriiCoffee.Controllers
             return View();
         }
 
+        [ValidateInput(false)]
+        public ActionResult DonDatChoXacNhan()
+        {
+            if (ModelState.IsValid)
+            {
+                var session = new UserLogin();
+                session = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+                if (!(session is null))
+                {
+                    ViewBag.session = session;
+                    var ndd = nguoidungdao.ViewDetailEmail(session.UserName);
+                    ViewBag.ndd = ndd;
+                    ViewBag.dathangs = dhdao.ViewAllByIDChoXacNhan(ndd.ID);
+                    ViewBag.hoadons = hddao.ViewAllByID(ndd.ID);
+
+                }
+                var cart = Session[CartSession];
+                var list = new List<CartItem>();
+                if (cart != null)
+                {
+                    list = (List<CartItem>)cart;
+
+                    var cartQtySession = list.Count();
+                    ViewBag.cartQtySession = cartQtySession;
+                }
+
+            }
+            return View();
+        }
+
 
         [ValidateInput(false)]
         public ActionResult ChiTietDonDat(long id)

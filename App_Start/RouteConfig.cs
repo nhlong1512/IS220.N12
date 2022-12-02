@@ -76,6 +76,12 @@ namespace MoriiCoffee
             url: "profile/don-dat",
             defaults: new { controller = "Profile", action = "DonDat", id = UrlParameter.Optional }
         );
+
+            routes.MapRoute(
+            name: "ProfileDonDatChoXacNhan",
+            url: "profile/don-dat/cho-xac-nhan",
+            defaults: new { controller = "Profile", action = "DonDatChoXacNhan", id = UrlParameter.Optional }
+        );
             routes.MapRoute(
            name: "ProfileChiTeitDonDat",
            url: "profile/chi-tiet-don-dat/{id}",

@@ -125,6 +125,20 @@ namespace Model.Dao
             return dathangs;
         }
 
+        public List<DatHang> ViewAllByIDChoXacNhan(long id)
+        {
+            List<DatHang> dathangs = new List<DatHang>();
+            if (db.DatHangs.Count() == 0)
+            {
+                return dathangs;
+            }
+            var list = db.DatHangs.Where(p => p.MaKH == id);
+            var listt = list.Where(p => p.TTDH == "Chờ Xác Nhận");
+            //Convert từ IqueryTable sang list
+            dathangs = new List<DatHang>(listt);
+            return dathangs;
+        }
+
         //Thêm DatHang
         public long Insert(DatHang entity)
         {

@@ -151,6 +151,9 @@
                                                     <h3 class="product-title">
                                                         @sp.TenSanPham
                                                     </h3>
+                                                    <p class="product-note" style="margin-bottom: 0">
+                                                        Size: @item.Size
+                                                    </p>
                                                     <p class="product-note">
                                                         @item.Topping
                                                     </p>
@@ -232,25 +235,42 @@
                         </div>
                     </div>
 
-                    <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
-                        @if (dh.TTDH == "Chờ Xác Nhận")
-                        {
+                    @if (dh.TTDH == "Chờ Xác Nhận")
+                    {
+                        <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
 
-                            <p class="huyDonHangButton"  data-id="@dh.ID" id="huyDonHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
+                            <p class="huyDonHangButton" data-id="@dh.ID" id="huyDonHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
                                 Hủy Đơn Hàng
                             </p>
-                        }
+                            <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
+                                Lịch Sử Đơn Đặt
+                            </a>
+                        </div>
 
-                        @if (dh.TTDH == "Đang Giao")
-                        {
-                            <p class="daNhanHangButton" data-id="@dh.ID" id="daNhanHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
-                                Đã Nhận Hàng
-                            </p>
-                        }
+                    }
+
+                    else if (dh.TTDH == "Đang Giao")
+                    {
+                    <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
+
+                        <p class="daNhanHangButton" data-id="@dh.ID" id="daNhanHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
+                            Đã Nhận Hàng
+                        </p>
                         <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
                             Lịch Sử Đơn Đặt
                         </a>
                     </div>
+
+                    }else {
+                    <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+
+                        <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
+                            Lịch Sử Đơn Đặt
+                        </a>
+                    </div>
+                    }
+
+                </div>
                 </div>
             </div>
         </div>
