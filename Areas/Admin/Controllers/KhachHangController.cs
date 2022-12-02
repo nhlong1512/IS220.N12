@@ -35,5 +35,25 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             ViewBag.nds = model;
             return View();
         }
+
+        public ActionResult Details(long id)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nddd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nddd;
+            }
+
+            var nd = nddao.ViewDetail(id);
+            ViewBag.nd = nd;
+
+            return View(nd);
+        }
     }
 }
