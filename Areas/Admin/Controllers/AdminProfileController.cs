@@ -69,12 +69,12 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 var msg = "Cập nhật thông tin thành công. ";
                 ViewBag.msg = msg;
-                return RedirectToAction("Update", "Profile");
+                return Redirect("/admin/profile/chinh-sua/"+nd.ID);
             }
             else
             {
                 ModelState.AddModelError("", "Không lưu được vào CSDL");
-                return RedirectToAction("Update", "Profile");
+                return Redirect("/admin/profile/chinh-sua/" + nd.ID);
             }
 
         }
