@@ -251,30 +251,32 @@
 
                     else if (dh.TTDH == "Đang Giao")
                     {
-                    <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
+                        <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
 
-                        <p class="daNhanHangButton" data-id="@dh.ID" id="daNhanHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
-                            Đã Nhận Hàng
-                        </p>
-                        <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
-                            Lịch Sử Đơn Đặt
-                        </a>
-                    </div>
+                            <p class="daNhanHangButton" data-id="@dh.ID" id="daNhanHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer;">
+                                Đã Nhận Hàng
+                            </p>
+                            <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
+                                Lịch Sử Đơn Đặt
+                            </a>
+                        </div>
 
-                    }else {
-                    <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+                    }
+                    else
+                    {
+                        <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
 
-                        <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
-                            Lịch Sử Đơn Đặt
-                        </a>
-                    </div>
+                            <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d;">
+                                Lịch Sử Đơn Đặt
+                            </a>
+                        </div>
                     }
 
-                </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- Modal -->
@@ -677,7 +679,7 @@
                 },
                 dataType: "json",
                 success: function (res) {
-                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    window.location.replace("https://localhost:44309/profile/chi-tiet-don-dat/" + res.id);
                     console.log("res", res.id, "isValid", res.isValid);
                 },
                 error: function (err) {
@@ -699,7 +701,7 @@
                 },
                 dataType: "json",
                 success: function (res) {
-                    window.location.replace("https://localhost:44309/profile/don-dat");
+                    window.location.replace("https://localhost:44309/profile/chi-tiet-don-dat/" + res.id);
                     console.log("res", res.id, "isValid", res.isValid);
                 },
                 error: function (err) {

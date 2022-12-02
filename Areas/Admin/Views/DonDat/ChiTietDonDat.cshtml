@@ -150,6 +150,9 @@
                                                     <h3 class="product-title" style="margin:0;">
                                                         @sp.TenSanPham
                                                     </h3>
+                                                    <p class="product-note" style="margin-bottom: 0">
+                                                        Size: @item.Size
+                                                    </p>
                                                     <p class="product-note" style="margin:0;">
                                                         @item.Topping
                                                     </p>
@@ -170,7 +173,7 @@
                                             </div>
 
                                         </td>
-                                        <td >
+                                        <td>
                                             <p class="total-price" style="margin:0;">
                                                 @{
                                                     var b = item.ThanhTien;
@@ -230,19 +233,229 @@
                             </div>
                         </div>
                     </div>
+                    @if (dh.TTDH == "Chờ Xác Nhận")
+                    {
+                        <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
 
-                    <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
-                        <a href="~/admin/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
-                            Danh Sách Đơn Đặt
-                        </a>
-                    </div>
+                            <p class="huyDonHangButton" data-id="@dh.ID" id="huyDonHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer; margin-bottom:0;">
+                                Hủy Đơn Hàng
+                            </p>
+                            <p class="dangGiaoButton" data-id="@dh.ID" id="dangGiaoButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer; margin-bottom: 0;">
+                                Đang Giao
+                            </p>
+
+                            <a href="~/admin/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
+                                Danh Sách Đơn Đặt
+                            </a>
+                        </div>
+
+                    }
+
+                    else if (dh.TTDH == "Đang Giao")
+                    {
+                        <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
+
+                            <p class="huyDonHangButton" data-id="@dh.ID" id="huyDonHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer; margin-bottom:0;">
+                                Hủy Đơn Hàng
+                            </p>
+                            <p class="daNhanHangButton" data-id="@dh.ID" id="daNhanHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer; margin-bottom:0;">
+                                Đã Nhận Hàng
+                            </p>
+                            <a href="~/admin/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
+                                Danh Sách Đơn Đặt
+                            </a>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+                            <a href="~/admin/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
+                                Danh Sách Đơn Đặt
+                            </a>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
+
+<!-- Modal Xác Nhận Hủy Đơn Hàng-->
+<div class="modal fade huyDonHangModal" id="exampleModal_@dh.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Xác Nhận Hủy Đơn Hàng
+                    <strong>
+                        #@dh.ID
+                    </strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                Đơn Hàng Này Sẽ Được Chuyển Sang Trạng Thái Đã Hủy Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Hủy Đơn Hàng?
+            </div>
+            <div class="modal-footer">
+                <button id="closeButton_@dh.ID" data-id="@dh.ID" class="closeButton" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                <button class="xacNhanHuyButton" data-id="@dh.ID" id="xacNhanHuyButton_@dh.ID">Xác Nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Xác Nhận Đã Nhận Hàng-->
+<div class="modal fade daNhanHangModal" id="daNhanHang_@dh.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="daNhanHangLabel">
+                    Xác Nhận Đã Nhận Hàng
+                    <strong>
+                        #@dh.ID
+                    </strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                Đơn Hàng Này Sẽ Được Chuyển Sang Trạng Thái Đã Giao Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+            </div>
+            <div class="modal-footer">
+                <button id="closeButtonNhanHang_@dh.ID" data-id="@dh.ID" class="closeButtonNhanHang" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                <button class="xacNhanDaGiaoButton" data-id="@dh.ID" id="xacNhanDaGiaoButton_@dh.ID">
+                    Xác Nhận
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Xác Nhận Đang Giao Đơn Hàng-->
+<div class="modal fade dangGiaoHangModal" id="dangGiaoHang_@dh.ID" tabindex="-1" role="dialog" aria-labelledby="dangGiaoHangLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dangGiaoHangLabel">
+                    Xác Nhận Đang Giao Hàng
+                    <strong>
+                        #@dh.ID
+                    </strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                Đơn Hàng Này Sẽ Được Chuyển Sang Trạng Thái Đang Giao Và Sẽ Cập Nhật Vào CSDL Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đang Giao Đơn Hàng Này Không?
+            </div>
+            <div class="modal-footer">
+                <button id="closeButtonGiaoHang_@dh.ID" data-id="@dh.ID" class="closeButtonGiaoHang" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                <button class="xacNhanDangGiaoButton" data-id="@dh.ID" id="xacNhanDangGiaoButton_@dh.ID">
+                    Xác Nhận
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
+
+
+    .xacNhanHuyButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanHuyButton:hover {
+            opacity: 0.7;
+        }
+
+    .xacNhanDaGiaoButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanDaGiaoButton:hover {
+            opacity: 0.7;
+        }
+
+    .xacNhanDangGiaoButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanDangGiaoButton:hover {
+            opacity: 0.7;
+        }
+
+    .closeButton {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButton:hover {
+            opacity: 0.7;
+        }
+
+    .closeButtonNhanHang {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButtonNhanHang:hover {
+            opacity: 0.7;
+        }
+
+    .closeButtonGiaoHang {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButtonGiaoHang:hover {
+            opacity: 0.7;
+        }
+
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
 
     .table tbody tr td {
         vertical-align: middle;
@@ -489,89 +702,138 @@
 
 <script>
     $(document).ready(function () {
-        $("#doiMatKhauButton").on('click',
-            function DoiMatKhau(e) {
-                e.preventDefault();
-                //Clear $(".message-error") and $('.message-success')
-                $(".message-error").empty();
-                $('.message-success').empty();
-
-                var id = $(this).data('id');
-
-                var oldPassword = $('#matKhauCuLabel').val();
-                var newPassword = $('#matKhauMoiLabel').val();
-                var confirmNewPassword = $('#xacNhanMatKhauMoiLabel').val();
-
-                console.log('Old Password ->>', oldPassword);
-                console.log('New Password ->>', newPassword);
-                console.log('Confirm New Password ->>', confirmNewPassword);
-
-                $.ajax({
-                    type: "POST",
-                    url: "/Profile/DoiMatKhau",
-                    data: {
-                        id: id,
-                        oldPassword: oldPassword,
-                        newPassword: newPassword,
-                        confirmNewPassword: confirmNewPassword
-                    },
-                    dataType: "json",
-                    success: function (res) {
-                        console.log("NguyenHuuLong --> ", res.msg);
-                        console.log("NguyenHuuLong --> err", res.err);
-                        if (res.isValid) {
-                            $('.message-success').append("Thay đổi mật khẩu thành công. ");
-                        }
-                        if (res.err) {
-                            $(".message-error").append(res.err);
-                        }
-                        //window.location.replace("https://localhost:44309/");
-                    },
-                    error: function (err) {
-                        console.log("err --> ", err);
-                        console.log("err ->>", err.err);
-                    },
-                });
-
+        $('.optionsSelect').click(function (e) {
+            var idToggle = $(this).data("id");
+            var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
+            e.preventDefault();
+            e.stopPropagation();
+            $(".toggle-options-select").removeClass("show");
+            if (isHasClass == false) {
+                $("#Toggle_" + idToggle).addClass("show");
+            } else {
+                $("#Toggle_" + idToggle).removeClass("show");
             }
-        )
-    });
-</script>
+
+        })
+        $(window).click(function () {
+            $(".toggle-options-select").removeClass("show");
+        })
+
+        $('.xemChiTiet').click(function () {
+            var idXemChiTiet = $(this).data("id");
+            window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + idXemChiTiet);
+        })
 
 
+        //Handle xác nhận mở modal hủy đơn hàng
+        $('.huyDonHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#exampleModal_' + idHuy).modal('show')
+        })
 
-<script>
-    $(function () {
-        $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
+
+        //Handle đóng modal xác nhận Hủy đơn hàng
+        $('.closeButton').click(function (e) {
+            var idClose = $(this).data("id");
+            console.log("Hủy", idClose);
+            $('#exampleModal_' + idClose).modal('hide')
+        })
+
+
+        //Handle mở modal xác nhận Đã nhận hàng
+        $('.daNhanHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đã nhận hàng
+        $('.closeButtonNhanHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('hide')
+        })
+
+        //Handle mở modal xác nhận Đang giao hàng
+        $('.dangGiaoButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#dangGiaoHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đang giao hàng
+        $('.closeButtonGiaoHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#dangGiaoHang_' + idHuy).modal('hide')
+        })
+
+
+        //Handle Xác nhận Hủy đơn hàng
+        $(".xacNhanHuyButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhan", id);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DonDat/HuyDonHangAdminJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đã giao
+        $(".xacNhanDaGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhanDaGiao", id);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DonDat/DaNhanHangAdminJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đang giao
+        $(".xacNhanDangGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("xacNhanDangGiaoButton", id);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DonDat/DangGiaoHangAdminJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
         })
     });
 </script>
-
-<script>
-    $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= 80) {
-            $("#site-header").addClass("nav-fixed");
-        } else {
-            $("#site-header").removeClass("nav-fixed");
-        }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-        if ($(window).width() > 991) {
-            $("header").removeClass("active");
-        }
-        $(window).on("resize", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-        });
-    });
-</script>
-<!--//MENU-JS-->
