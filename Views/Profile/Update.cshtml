@@ -56,7 +56,7 @@
                                             <div style="display:none" class="img-header-avt">
                                                 <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
                                                     <span class="input-group-text" id="basic-addon3">Upload</span>
-                                                    <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlmage" value="@Model.Urlmage">
+                                                    <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="Urlmage" value="@Model.Urlmage">
                                                 </div>
                                             </div>
                                         }
@@ -68,7 +68,7 @@
                                             <div style="display:none" class="img-header-avt">
                                                 <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
                                                     <span class="input-group-text" id="basic-addon3">Upload</span>
-                                                    <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlmage" value="@Model.Urlmage">
+                                                    <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="Urlmage" value="@Model.Urlmage">
                                                 </div>
                                             </div>
                                         }
@@ -266,43 +266,6 @@
 <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
 <script src="~/Assets/Client/js/theme-change.js"></script>
 <!-- disable body scroll which navbar is in active -->
-<script>
-    $(function () {
-        $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
-        })
-    });
-</script>
-<!-- disable body scroll which navbar is in active -->
-<!--/MENU-JS-->
-
-<script>
-    $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= 80) {
-            $("#site-header").addClass("nav-fixed");
-        } else {
-            $("#site-header").removeClass("nav-fixed");
-        }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-        if ($(window).width() > 991) {
-            $("header").removeClass("active");
-        }
-        $(window).on("resize", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-        });
-    });
-</script>
-<!--//MENU-JS-->
 
 <script>
     //Handle thêm CKEDITOR

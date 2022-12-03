@@ -27,6 +27,7 @@ namespace MoriiCoffee.Controllers
         public static string randomValidationCode;
         public static string emailForgotPassword;
         public static string msgSuccessSend;
+
         private Uri RedirectUri
         {
             get
@@ -442,15 +443,7 @@ namespace MoriiCoffee.Controllers
                 nddd.ModifiedDate = DateTime.Now;
                 _db.Configuration.ValidateOnSaveEnabled = false;
                 _db.SaveChanges();
-                //var update = nddao.Update(ndd);
-                //if (update == true) 
-                //{
                 return Redirect("~/dang-nhap");
-                //}
-                //else
-                //{
-                //    return View();
-                //}
 
             }
             else

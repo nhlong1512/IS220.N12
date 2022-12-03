@@ -51,7 +51,7 @@
                                                 <img id="avt-link" src="/Data/Files/noAvt2.png" style="width: 218px; height:218px; border-radius: 100%;" />
                                             </label>
                                             <div style="display:none" class="img-header-avt">
-                                                <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
+                                                <div class="input-group mb-3" @*onclick="BrowserSever()"*@ style="cursor: pointer;">
                                                     <span class="input-group-text" id="basic-addon3">Upload</span>
                                                     <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlmage" value="@Model.Urlmage">
                                                 </div>
@@ -63,7 +63,7 @@
                                                 <img id="avt-link" src="@Model.Urlmage" style="width: 218px; height:218px; border-radius: 100%;" />
                                             </label>
                                             <div style="display:none" class="img-header-avt">
-                                                <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
+                                                <div class="input-group mb-3" @*onclick="BrowserSever()"*@ style="cursor: pointer;">
                                                     <span class="input-group-text" id="basic-addon3">Upload</span>
                                                     <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="urlmage" value="@Model.Urlmage">
                                                 </div>
@@ -97,7 +97,7 @@
                             <div class="form-group row">
                                 <label for="emailLabel" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control form-control-lg" id="hoTenLabel" placeholder="@Model.Email" readonly>
+                                    <input type="email" class="form-control form-control-lg" id="hoTenLabel" value="@Model.Email" readonly>
                                 </div>
                             </div>
                             <hr class="style10">

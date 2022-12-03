@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using PagedList;
 using MoriiCoffee.Controllers;
 using MoriiCoffee.Common;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace MoriiCoffee.Areas.Admin.Controllers
 {
@@ -56,8 +58,27 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View(nd);
         }
 
-        [ValidateInput(false)]
-        public ActionResult ThemKhachHang(NguoiDung nguoidung)
+
+        // GET: User
+        public ActionResult ThemKhachHang()
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nddd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nddd;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ThemKhachHang(NguoiDung user)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
@@ -71,23 +92,63 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 ViewBag.ndd = nddd;
             }
 
+            var err = "";
             if (ModelState.IsValid)
             {
-                nguoidung.Status = true;
-                var id = nddao.Insert(nguoidung);
-
-                if (id > 0)
+                //var nd = _db.NguoiDungs.FirstOrDefault(s => s.Email == _user.Email);
+                var nd = nddao.ViewDetailEmail(user.Email);
+                if (nd == null)
                 {
-                    return Redirect("/admin/khach-hang");
-                }
-                return View();
+                    user.Password = GetMD5(user.Password);
+                    user.ConfirmPassword = user.ConfirmPassword;
+                    user.Status = true;
+                    user.Role = "Khách hàng";
+                    var id = nddao.Insert(user);
+                    if (id >= 0)
+                    {
+                        return Redirect("/admin/khach-hang");
 
+                    }
+                    else
+                    {
+                        err += "Thêm thất bại. ";
+                    }
+                }
+                else
+                {
+                    err += "Email đã tồn tại. ";
+                    ViewBag.err = err;
+                    return View();
+                }
             }
             else
             {
-
+                var list = ModelState.ToDictionary(x => x.Key, y => y.Value.Errors.Select(x => x.ErrorMessage).ToArray())
+                  .Where(m => m.Value.Count() > 0);
+                foreach (var itm in list)
+                {
+                    err += string.Concat(string.Join(",", itm.Value.ToArray()), "");
+                }
+                ViewBag.err = err;
+                return View();
             }
             return View();
+        }
+
+
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+            return byte2String;
         }
 
 

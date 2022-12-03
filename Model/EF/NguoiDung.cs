@@ -40,11 +40,13 @@
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        //[Required(ErrorMessage = "Vui lòng chọn ngày sinh. ")]
         public DateTime? NgSinh { get; set; }
 
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
+        //[Required(ErrorMessage = "Vui lòng chọn giới tính. ")]
         public bool? GioiTinh { get; set; }
 
         [StringLength(250)]
