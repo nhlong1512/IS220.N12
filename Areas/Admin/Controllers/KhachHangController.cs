@@ -57,7 +57,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         }
 
         [ValidateInput(false)]
-        public ActionResult Create(NguoiDung nguoidung)
+        public ActionResult ThemKhachHang(NguoiDung nguoidung)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
@@ -80,14 +80,14 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 {
                     return Redirect("/admin/khach-hang");
                 }
-                return View("Create");
+                return View();
 
             }
             else
             {
 
             }
-            return View("Create");
+            return View();
         }
 
 
