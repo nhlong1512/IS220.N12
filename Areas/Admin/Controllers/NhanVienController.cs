@@ -138,6 +138,54 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult ChinhSuaNhanVien(long id)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nddd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nddd;
+            }
+            var nd = nddao.ViewDetail(id);
+            return View(nd); 
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChinhSuaNhanVien(NguoiDung user)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nddd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nddd;
+            }
+
+            var isTrue = nddao.Update(user);
+            if (isTrue)
+            {
+                var msg = "Cập nhật thông tin thành công. ";
+                ViewBag.msg = msg;
+                return Redirect("~/admin/nhan-vien/chinh-sua/" + user.ID);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Không lưu được vào CSDL");
+                return Redirect("~/admin/nhan-vien/chinh-sua/" + user.ID);
+            }
+        }
+
 
         public static string GetMD5(string str)
         {

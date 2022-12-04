@@ -1,0 +1,574 @@
+﻿@model Model.EF.NguoiDung
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+
+@section breadcrumb {
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <!-- if breadcrumb is single-->
+                    <span>Nhân Viên</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Chỉnh Sửa Nhân Viên</span></li>
+            </ol>
+        </nav>
+    </div>
+}
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var sanpham = ViewBag.sanpham;
+    var err = ViewBag.err;
+    var msg = ViewBag.msg;
+}
+
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+
+<div class="w3-services py-5" style="margin-bottom:40px;">
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-horizontal">
+                    <div class="container">
+                        <form>
+                            <div class="profile-header">
+                                <div class="profile-header-left">
+
+                                    <div class="img-header">
+                                        @{
+                                            if (string.IsNullOrEmpty(Model.Urlmage))
+                                            {
+                                                <label for="urlAnh" class="img-header-avt">
+                                                    <img id="avt-link" src="/Data/Files/noAvt2.png" style="width: 218px; height:218px; border-radius: 100%;" />
+                                                </label>
+                                                <div style="display:none" class="img-header-avt">
+                                                    <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
+                                                        <span class="input-group-text" id="basic-addon3">Upload</span>
+                                                        <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="Urlmage" value="@Model.Urlmage">
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <label for="urlAnh" class="img-header-avt">
+                                                    <img id="avt-link" src="@Model.Urlmage" style="width: 218px; height:218px; border-radius: 100%;" />
+                                                </label>
+                                                <div style="display:none" class="img-header-avt">
+                                                    <div class="input-group mb-3" onclick="BrowserSever()" style="cursor: pointer;">
+                                                        <span class="input-group-text" id="basic-addon3">Upload</span>
+                                                        <input class="form-control" id="urlAnh" type="text" aria-describedby="basic-addon3" name="Urlmage" value="@Model.Urlmage">
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+
+
+                                    <div>
+                                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Chỉnh Sửa Nhân Viên</h3>
+                                        <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Cập nhật ảnh và thông tin nhân viên.</p>
+                                    </div>
+                                </div>
+                                <a class="button-profile-save" style="text-decoration:none">
+                                    <button type="submit">
+                                        Save
+                                    </button>
+                                </a>
+
+                            </div>
+                            <div class="form-detail" style="margin-top: 80px;">
+                                @*<div class="form-group row">
+                                    <div class="message-success" style="color: #155724 !important; font-size: 20px;" role="alert">@msg</div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="message-error" style="color: #dc3545 !important; font-size: 20px;" role="alert">@err</div>
+                                </div>*@
+                                <div class="form-group row">
+                                    <label for="hoTenLabel" class="col-sm-2 col-form-label col-form-label-lg">Họ Tên</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" id="hoTenLabel" value="@Model.HoTen" name="HoTen">
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="emailLabel" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control form-control-lg" id="hoTenLabel" placeholder="@Model.Email" readonly>
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="phoneLabel" class="col-sm-2 col-form-label col-form-label-lg">SĐT</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control form-control-lg" id="phoneLabel" value="@Model.SDT" name="SDT">
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="genderLabel" class="col-sm-2 col-form-label col-form-label-lg">Giới Tính</label>
+                                    <div class="col-sm-10">
+
+                                        @Html.RadioButtonFor(model => model.GioiTinh, true)
+                                        <label class="form-check-label" for="inlineRadio1">Nam</label>
+
+                                        @Html.RadioButtonFor(model => model.GioiTinh, false)
+                                        <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                <div class="form-group row">
+                                    <label for="birthLabel" class="col-sm-2 col-form-label col-form-label-lg">Ngày Sinh</label>
+                                    <div class="col-sm-10">
+                                        @*<input type="date" class="form-control form-control-lg" id="birthLabel" value="@nd.NgSinh">*@
+                                        <input type="date" class="form-control form-control-lg" id="birthLabel" name="NgSinh" value="@string.Format("{0:yyyy-MM-dd}", Model.NgSinh)" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 60px;">
+                            <a href="~/admin/nhan-vien" style="font-weight: 500; font-size: 18px; line-height: 24px; color: #146d4d; padding:0 15px; text-decoration:none;">
+                                Danh Sách Nhân Viên
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<style>
+    .button-option {
+        display: flex;
+        justify-content: center;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .button-delete {
+        margin-right: 0;
+    }
+
+    .button-edit {
+        height: 23px;
+    }
+
+    .button-detail {
+        height: 23px;
+    }
+
+    .product-desc {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-width: 350px;
+    }
+
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
+
+    .huyDonHang {
+        font-size: 14px;
+        color: #FF0000;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .chinhSua {
+        font-size: 14px;
+        color: #1976D2;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .chinhSua:hover {
+            opacity: 0.5;
+        }
+
+
+    .daNhanHang {
+        font-size: 14px;
+        color: #009D34;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .daNhanHang:hover {
+            opacity: 0.5;
+        }
+
+    .huyDonHang:hover {
+        opacity: 0.5;
+    }
+
+    .xemChiTiet {
+        font-size: 14px;
+        color: #146d4d;
+        line-height: 20px;
+    }
+
+        .xemChiTiet:hover {
+            opacity: 0.5;
+        }
+
+    .optionsSelect {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .show {
+        visibility: visible !important;
+    }
+
+    .toggle-options-select {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        position: absolute;
+        background-color: #ccc;
+        border-radius: 8px;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        display: flex;
+        border: 1px solid #fff;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        top: -390%;
+        left: -150%;
+        visibility: hidden;
+        transition: all 0.02s ease;
+    }
+
+    .wrap-options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .maDonDat {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000;
+    }
+
+    .pDonDat {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+    }
+
+    .activeColor {
+        color: #009D34 !important;
+    }
+
+
+    .cancelledColor {
+        color: #FF0000 !important;
+    }
+
+    .inProgressColor {
+        color: #FFC107 !important;
+    }
+
+    .waitingAcceptColor {
+        color: #1976D2 !important;
+    }
+
+    .ngayDang {
+        text-align: center;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+        margin: 0;
+    }
+
+    .table tbody tr td {
+        vertical-align: middle;
+    }
+
+    .empty-cart-img {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        color: #000;
+        margin-bottom: 100px;
+    }
+
+    .centered-empty-cart {
+        position: absolute;
+        top: calc(50% + 140px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+    .button-buy-now {
+        position: absolute;
+        top: calc(50% + 220px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 26px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        padding: 24px;
+    }
+
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 80px;
+        height: 80px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+        max-width: 260px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #146d4d;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity-decrease {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .button-quantity-increase {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #146d4d;
+        margin: 0;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        margin-top: 40px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 20px 40px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+</style>
+
+
+<script>
+    //Handle thêm CKEDITOR
+    CKEDITOR.replace("ckeditor");
+
+    //Handle thêm CKFINDER
+    function BrowserSever() {
+        var finder = new CKFinder();
+        finder.selectActionFunction = GanUrl;
+        finder.popup();
+    }
+
+    function GanUrl(url) {
+        console.log(url);
+        localStorage.urlAvt = url;
+        //history.go(0);
+        $("#avt-link").attr("src", localStorage.getItem('urlAvt'));
+        $("#urlAnh").val(url);
+    }
+
+</script>
