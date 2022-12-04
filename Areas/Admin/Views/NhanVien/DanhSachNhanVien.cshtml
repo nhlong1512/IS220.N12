@@ -3,6 +3,7 @@
     ViewBag.Title = "DanhSachDonDat";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var nds = ViewBag.nds;
+    var nvs = ViewBag.nvs;
 }
 
 
@@ -60,6 +61,7 @@
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">SĐT</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Ngày Sinh</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Giới Tính</th>
+                                    @*<th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Lương</th>*@
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
                                 </tr>
                             </thead>
@@ -146,6 +148,26 @@
 
 
                                         </td>
+                                        @*<td>
+                                            @foreach (var it in nvs)
+                                            {
+                                                decimal b, c;
+                                                if (it.ID == item.ID)
+                                                {
+                                                    var a = it.Luong;
+                                                    if (a > 1000000)
+                                                    {
+                                                        b = a / 1000;
+                                                        c = b / 1000;
+                                                    <p class="pDonDat">
+                                                        @c.000.000 đ
+                                                    </p>
+                                                    }
+                                                }
+                                            }
+
+
+                                        </td>*@
                                         <td>
                                             <div style="display:flex;">
                                                 <a class="button-detail button-option" href="/admin/nhan-vien/details/@item.ID">
@@ -158,7 +180,7 @@
                                                     <img src="~/Data/Files/deleteIcon.png" />
                                                 </a>
                                             </div>
-                                           
+
                                             <!-- Modal -->
                                             <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -198,11 +220,11 @@
                                 Thêm Mới Nhân Viên
                             </a>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <style>

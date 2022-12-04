@@ -18,7 +18,20 @@ namespace Model.Dao
         }
 
         //Xem chi tiết NhanVien
-        public NhanVien ViewDetail(int id)
+        public List<NhanVien> ViewAll()
+        {
+            List<NhanVien> nds = new List<NhanVien>();
+            if (db.NguoiDungs.Count() == 0)
+            {
+                return nds;
+            }
+            var list = db.NhanViens.Where(p => p.ID > 0);
+            //Convert từ IqueryTable sang list
+            nds = new List<NhanVien>(list);
+            return nds;
+
+        }
+        public NhanVien ViewDetail(long id)
         {
             return db.NhanViens.Find(id);
         }

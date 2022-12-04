@@ -18,6 +18,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         // GET: Admin/NhanVien
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
+        private NhanVienDao nvdao = new NhanVienDao();
 
         public ActionResult DanhSachNhanVien(string searchString)
         {
@@ -35,6 +36,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             var model = nddao.ListAllPagingNhanVien(searchString);
             ViewBag.nds = model;
+            ViewBag.nvs = nvdao.ViewAll();
             return View();
         }
 
@@ -54,7 +56,8 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             var nd = nddao.ViewDetail(id);
             ViewBag.nd = nd;
-
+            var nvs = nvdao.ViewAll();
+            ViewBag.nvs = nvs;
             return View(nd);
         }
 

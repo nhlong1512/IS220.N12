@@ -5,6 +5,8 @@
     ViewBag.Title = "MoriiCoffee";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var nd = ViewBag.nd;
+    var nvs = ViewBag.nvs;
+    decimal luong;
 }
 
 @model Model.EF.NguoiDung
@@ -119,6 +121,29 @@
                                     <input type="date" class="form-control form-control-lg" id="birthLabel" name="NgSinh" value="@string.Format("{0:yyyy-MM-dd}", Model.NgSinh)" readonly />
                                 </div>
                             </div>
+                            @*<div class="form-group row">
+                                <label for="phoneLabel" class="col-sm-2 col-form-label col-form-label-lg">Lương</label>
+                                @{
+                                    var flag = false;
+                                    foreach (var it in nvs)
+                                    {
+                                        if (it.ID == Model.ID)
+                                        {
+                                            luong = it.Luong;
+                                            flag = true;
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control form-control-lg" id="phoneLabel" value="@luong" name="Luong" readonly>
+                                            </div>
+                                        }
+                                    }
+                                    if (flag == false)
+                                    {
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control form-control-lg" id="phoneLabel" value="null" name="Luong" readonly>
+                                        </div>
+                                    }
+                                }
+                            </div>*@
                         </div>
                     </form>
                     <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none; padding-right:12px;">
