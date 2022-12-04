@@ -2726,6 +2726,7 @@
     <Content Include="Areas\Admin\Views\KhachHang\DanhSachKhachHang.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\ThemKhachHang.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\DanhSachNhanVien.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -2781,7 +2782,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\NhanVien\" />
     <Folder Include="Assets\Login_Register\js\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />

@@ -187,11 +187,6 @@ namespace MoriiCoffee.Areas.Admin
               defaults: new { controller = "NhanVien", action = "ChinhSuaNhanVien", id = UrlParameter.Optional }
           );
 
-            context.MapRoute(
-              name: "AdminXoaNhanVien",
-              url: "admin/nhan-vien/xoa-nhan-vien",
-              defaults: new { controller = "NhanVien", action = "XoaNhanVien", id = UrlParameter.Optional }
-          );
 
 
 

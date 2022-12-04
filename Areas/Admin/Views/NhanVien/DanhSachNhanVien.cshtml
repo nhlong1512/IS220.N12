@@ -12,9 +12,9 @@
             <ol class="breadcrumb my-0 ms-2">
                 <li class="breadcrumb-item">
                     <!-- if breadcrumb is single-->
-                    <span>Khách Hàng</span>
+                    <span>Nhân Viên</span>
                 </li>
-                <li class="breadcrumb-item active"><span>Danh Sách Khách Hàng</span></li>
+                <li class="breadcrumb-item active"><span>Danh Sách Nhân Viên</span></li>
             </ol>
         </nav>
     </div>
@@ -32,13 +32,13 @@
         <div class="form-horizontal">
             <div class="row">
                 <div class="col-sm-12">
-                    <div>
+                    <div">
                         <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Danh Sách Khách Hàng</h3>
                         <hr class="style-10" />
 
 
                         <div class="panel-body">
-                            @using (Html.BeginForm("DanhSachKhachHang", "KhachHang", FormMethod.Get))
+                            @using (Html.BeginForm("DanhSachNhanVien", "NhanVien", FormMethod.Get))
                             {
                                 <div class="form-group col-sm-4" style="display: flex; gap: 10px; white-space: nowrap; margin-bottom: 20px;">
                                     <input value="@ViewBag.SearchString" name="searchString" class="form-control form-control-lg" type="text" id="search" placeholder="Tìm Kiếm..." autocomplete="off">
@@ -66,106 +66,136 @@
                             <tbody>
                                 @foreach (var item in nds)
                                 {
-                                <tr>
-                                    <th>
-                                        <p class="maDonDat">
-                                            #@item.ID
-                                        </p>
-                                    </th>
-                                    <td>
-                                        @if (string.IsNullOrEmpty(item.HoTen))
-                                        {
-                                            <p class="pDonDat">
-                                                null
+                                    <tr>
+                                        <th>
+                                            <p class="maDonDat">
+                                                #@item.ID
                                             </p>
-                                        }
-                                        else
-                                        {
-                                            <p class="pDonDat">
-                                                @item.HoTen
-                                            </p>
-                                        }
-
-                                    </td>
-                                    <td>
-                                        <p class="pDonDat">
-                                            @item.Email
-                                        </p>
-                                    </td>
-                                    <td>
-                                        @if (string.IsNullOrEmpty(item.SDT))
-                                        {
-                                            <p class="pDonDat">
-                                                null
-                                            </p>
-                                        }
-                                        else
-                                        {
-                                            <p class="pDonDat">
-                                                @item.SDT
-                                            </p>
-                                        }
-                                    </td>
-                                    <td>
-
-                                        @if (item.NgSinh == null)
-                                        {
-                                            <p class="pDonDat">
-                                                null
-                                            </p>
-                                        }
-                                        else
-                                        {
-                                            <p class="pDonDat">
-                                                @item.NgSinh
-                                            </p>
-                                        }
-                                    </td>
-                                    <td>
-                                        @if (item.GioiTinh == null)
-                                        {
-                                            <p class="pDonDat">
-                                                null
-                                            </p>
-                                        }
-                                        else
-                                        {
-                                            if (item.GioiTinh == true)
+                                        </th>
+                                        <td>
+                                            @if (string.IsNullOrEmpty(item.HoTen))
                                             {
                                                 <p class="pDonDat">
-                                                    Nam
+                                                    null
                                                 </p>
                                             }
-                                            if (item.GioiTinh == false)
+                                            else
                                             {
                                                 <p class="pDonDat">
-                                                    Nữ
+                                                    @item.HoTen
                                                 </p>
                                             }
-                                        }
+
+                                        </td>
+                                        <td>
+                                            <p class="pDonDat">
+                                                @item.Email
+                                            </p>
+                                        </td>
+                                        <td>
+                                            @if (string.IsNullOrEmpty(item.SDT))
+                                            {
+                                                <p class="pDonDat">
+                                                    null
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p class="pDonDat">
+                                                    @item.SDT
+                                                </p>
+                                            }
+                                        </td>
+                                        <td>
+
+                                            @if (item.NgSinh == null)
+                                            {
+                                                <p class="pDonDat">
+                                                    null
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p class="pDonDat">
+                                                    @item.NgSinh
+                                                </p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.GioiTinh == null)
+                                            {
+                                                <p class="pDonDat">
+                                                    null
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                if (item.GioiTinh == true)
+                                                {
+                                                    <p class="pDonDat">
+                                                        Nam
+                                                    </p>
+                                                }
+                                                if (item.GioiTinh == false)
+                                                {
+                                                    <p class="pDonDat">
+                                                        Nữ
+                                                    </p>
+                                                }
+                                            }
 
 
-                                    </td>
-                                    <td>
-                                        <div style="display:flex; justify-content:center; align-items:center;">
-                                            <a class="button-detail button-option" href="/admin/khach-hang/details/@item.ID">
-                                                <img src="~/Data/Files/detail.png" />
-                                            </a>
-                                            @*<a class="button-edit button-option" href="/admin/san-pham/update/@item.ID">
-                                                <img src="~/Data/Files/edit.png" />
-                                            </a>*@
-                                        </div>
+                                        </td>
+                                        <td>
+                                            <div style="display:flex;">
+                                                <a class="button-detail button-option" href="/admin/nhan-vien/details/@item.ID">
+                                                    <img src="~/Data/Files/detail.png" />
+                                                </a>
+                                                <a class="button-edit button-option" href="/admin/nhan-vien/chinh-sua/@item.ID">
+                                                    <img src="~/Data/Files/edit.png" />
+                                                </a>
+                                                <a class="button-delete button-option huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                    <img src="~/Data/Files/deleteIcon.png" />
+                                                </a>
+                                            </div>
+                                           
+                                            <!-- Modal -->
+                                            <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                Xác Nhận Xóa Nhân Viên
+                                                                <strong>
+                                                                    #@item.ID
+                                                                </strong>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Nhân Viên #@item.ID Sẽ Được Xóa Ngay Lập Tức. Bạn Có Muốn Xóa Sản Phẩm Này?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                                                            <a href="/admin/nhan-vien/delete/@item.ID">
+                                                                <button class="xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                    </td>
+                                        </td>
 
-                                    
-                                </tr>
+
+                                    </tr>
+
                                 }
                             </tbody>
                         </table>
+
                         <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none; padding-right:12px;">
-                            <a href="~/admin/khach-hang/them-khach-hang" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
-                                Thêm Mới Khách Hàng
+                            <a href="~/admin/nhan-vien/them-nhan-vien" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
+                                Thêm Mới Nhân Viên
                             </a>
                         </div>
                     </div>
