@@ -105,7 +105,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                     user.Password = GetMD5(user.Password);
                     user.ConfirmPassword = user.ConfirmPassword;
                     user.Status = true;
-                    user.Role = "Khách hàng";
+                    user.Role = "Nhân viên";
                     var id = nddao.Insert(user);
                     if (id >= 0)
                     {
