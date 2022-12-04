@@ -19,9 +19,9 @@
             <ol class="breadcrumb my-0 ms-2">
                 <li class="breadcrumb-item">
                     <!-- if breadcrumb is single-->
-                    <span>Khách Hàng</span>
+                    <span>Nhân Viên</span>
                 </li>
-                <li class="breadcrumb-item active"><span>Chi Tiết Khách Hàng</span></li>
+                <li class="breadcrumb-item active"><span>Chi Tiết Nhân Viên</span></li>
             </ol>
         </nav>
     </div>
@@ -37,7 +37,6 @@
     <div class="w3-services py-5">
         <div class="container py-lg-4">
             <div class="form-horizontal">
-
                 <div class="container">
                     <form>
                         <div class="profile-header">
@@ -75,7 +74,7 @@
 
                                 <div>
                                     <h3 style="font-weight: 700; font-size: 40px; line-height: 49px;">Thông Tin Cá Nhân</h3>
-                                    <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Xem ảnh và thông tin cá nhân của khách hàng.</p>
+                                    <p style="font-weight: 400; font-size: 18px; line-height: 22px;">Xem ảnh và thông tin cá nhân của nhân viên.</p>
                                 </div>
                             </div>
                         </div>
@@ -116,14 +115,15 @@
                             <div class="form-group row">
                                 <label for="birthLabel" class="col-sm-2 col-form-label col-form-label-lg">Ngày Sinh</label>
                                 <div class="col-sm-10">
+                                    @*<input type="date" class="form-control form-control-lg" id="birthLabel" value="@nd.NgSinh">*@
                                     <input type="date" class="form-control form-control-lg" id="birthLabel" name="NgSinh" value="@string.Format("{0:yyyy-MM-dd}", Model.NgSinh)" readonly />
                                 </div>
                             </div>
                         </div>
                     </form>
                     <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none; padding-right:12px;">
-                        <a href="~/admin/khach-hang" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
-                            Danh Sách Khách Hàng
+                        <a href="~/admin/nhan-vien" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
+                            Danh Sách Nhân Viên
                         </a>
                     </div>
                 </div>
