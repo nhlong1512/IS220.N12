@@ -108,7 +108,7 @@
                 </ul>
             </li>
             <li class="nav-group">
-                <a class="nav-link nav-group-toggle" href="Admin/Blog">
+                <a class="nav-link nav-group-toggle" href="/Admin/nhan-vien">
                     <svg class="nav-icon">
                         <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-people"></use>
                     </svg> Nhân viên<span class="badge badge-sm bg-info ms-auto"></span>
@@ -116,6 +116,17 @@
                 <ul class="nav-group-items">
                     <li class="nav-item"><a class="nav-link" href="~/Admin/nhan-vien"><span class="nav-icon"></span> Danh sách nhân viên</a></li>
                     <li class="nav-item"><a class="nav-link" href="~/Admin/nhan-vien/them-nhan-vien"><span class="nav-icon"></span> Thêm nhân viên</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <a class="nav-link nav-group-toggle" href="/admin/hoa-don">
+                    <svg class="nav-icon">
+                        <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cash"></use>
+                    </svg> Hóa Đơn<span class="badge badge-sm bg-info ms-auto"></span>
+                </a>
+                <ul class="nav-group-items">
+                    <li class="nav-item"><a class="nav-link" href="admin/hoa-don"><span class="nav-icon"></span> Danh sách hóa đơn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Admin/hoa-don/them-hoa-don"><span class="nav-icon"></span> Thêm hóa đơn</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -133,18 +144,12 @@
                     </svg> Báo cáo<span class="badge badge-sm bg-info ms-auto"></span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <svg class="nav-icon">
-                        <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-cash"></use>
-                    </svg> Hóa đơn<span class="badge badge-sm bg-info ms-auto"></span>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="~/">
                     <svg class="nav-icon">
                         <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-coffee"></use>
-                    </svg> Morii<span class="badge badge-sm bg-info ms-auto"></span>
+                    </svg> Morii <span class="badge badge-sm bg-info ms-auto"></span>
                 </a>
             </li>
         </ul>
@@ -234,11 +239,6 @@
                                             <svg class="icon me-2">
                                                 <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-lock-unlocked"></use>
                                             </svg> Đổi Mật Khẩu
-                                        </a>
-                                        <a class="dropdown-item" href="~/admin/profile/don-dat">
-                                            <svg class="icon me-2">
-                                                <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-credit-card"></use>
-                                            </svg> Đơn Đặt
                                         </a>
                                         <a class="dropdown-item" id="dangXuatID"
                                            href="/dang-xuat">
