@@ -2624,6 +2624,7 @@
     <Compile Include="Areas\Admin\Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonDatController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Common\CartItem.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\UserLogin.cs" />
@@ -2780,6 +2781,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\NhanVien\" />
     <Folder Include="Assets\Login_Register\js\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />

@@ -156,17 +156,42 @@ namespace MoriiCoffee.Areas.Admin
           );
 
             context.MapRoute(
-              name: "AdminKhachHangCreate",
-              url: "admin/khach-hang/create",
-              defaults: new { controller = "KhachHang", action = "Create", id = UrlParameter.Optional }
-          );
-
-            context.MapRoute(
               name: "AdminThemKhachHang",
               url: "admin/khach-hang/them-khach-hang",
               defaults: new { controller = "KhachHang", action = "ThemKhachHang", id = UrlParameter.Optional }
           );
 
+
+
+            //Config Route cho Nhân Viên
+            context.MapRoute(
+             name: "AdminDanhSachNhanVien",
+             url: "admin/nhan-vien",
+             defaults: new { controller = "NhanVien", action = "DanhSachNhanVien", id = UrlParameter.Optional }
+         );
+            context.MapRoute(
+              name: "AdminChiTietNhanVien",
+              url: "admin/nhan-vien/details/{id}",
+              defaults: new { controller = "NhanVien", action = "Details", id = UrlParameter.Optional }
+          );
+
+            context.MapRoute(
+              name: "AdminThemNhanVien",
+              url: "admin/nhan-vien/them-nhan-vien",
+              defaults: new { controller = "NhanVien", action = "ThemNhanVien", id = UrlParameter.Optional }
+          );
+
+            context.MapRoute(
+              name: "AdminCapNhatNhanVien",
+              url: "admin/nhan-vien/chinh-sua",
+              defaults: new { controller = "NhanVien", action = "ChinhSuaNhanVien", id = UrlParameter.Optional }
+          );
+
+            context.MapRoute(
+              name: "AdminXoaNhanVien",
+              url: "admin/nhan-vien/xoa-nhan-vien",
+              defaults: new { controller = "NhanVien", action = "XoaNhanVien", id = UrlParameter.Optional }
+          );
 
 
 
