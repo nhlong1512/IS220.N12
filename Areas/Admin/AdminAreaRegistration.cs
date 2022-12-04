@@ -187,6 +187,12 @@ namespace MoriiCoffee.Areas.Admin
               defaults: new { controller = "NhanVien", action = "ChinhSuaNhanVien", id = UrlParameter.Optional }
           );
 
+            context.MapRoute(
+              name: "AdminDeleteNhanVien",
+              url: "admin/nhan-vien/delete/{id}",
+              defaults: new { controller = "NhanVien", action = "Delete", id = UrlParameter.Optional }
+          );
+
 
 
 

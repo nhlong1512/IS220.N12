@@ -186,6 +186,24 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult Delete(long id)
+        {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
+
+            nddao.Delete(id);
+            return Redirect("~/admin/nhan-vien");
+        }
+
 
         public static string GetMD5(string str)
         {

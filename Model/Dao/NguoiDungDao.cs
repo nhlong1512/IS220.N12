@@ -114,7 +114,7 @@ namespace Model.Dao
         }
 
         //Xóa người dùng
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {
