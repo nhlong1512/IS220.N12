@@ -174,5 +174,83 @@ namespace MoriiCoffee.Controllers
             }) ; 
         }
 
+
+        //Handle phương thức đặt giao trong phần giao hàng, khi ấn đặt giao và không xảy ra ngoại lệ nào
+        //Các dữ liệu sẽ được đổ hết vào 3 bảng ChiTietHoaDon, HoaDon và Bảng DatHang
+
+        [HttpPost]
+        public JsonResult ThanhToanHoaDonJson(long id)
+        {
+
+            var cart = Session[CartSession];
+            var list = (List<CartItem>)cart;
+            var isValid = true;
+            var errMsg = "";
+            long idhd = 0;
+
+            //Nếu tất cả các case đều hợp lệ, Ta sẽ tiến hành cập nhật dữ liệu và CSDL
+            if (isValid == true)
+            {
+                //Thêm hóa đơn mới
+                HoaDon hd = new HoaDon();
+                hd.TongTien = 0;
+                hd.IsOnline = true;
+                hd.MaNV = id;
+                idhd = hddao.Insert(hd);
+                //Kiểm tra nếu thêm được thì tiếp tục thêm dữ liệu cho bảng CTHD ngược lại thì không làm gì cả
+                if (idhd > 0)
+                {
+                    foreach (var item in list)
+                    {
+                        //Thêm các sản phẩm đặt vào chi tiết hóa đơn
+                        ChiTietHoaDon cthd = new ChiTietHoaDon();
+                        cthd.MaSP = item.ChiTietSanPham.ID;
+                        cthd.Size = item.Size;
+                        cthd.Topping = item.Topping;
+                        cthd.Gia = item.Gia;
+                        cthd.SoLuong = item.Quantity;
+                        cthd.ThanhTien = item.Quantity * item.Gia;
+                        cthd.IDHoaDon = idhd;
+                        var idcthd = cthddao.Insert(cthd);
+                        if (idcthd <= 0)
+                        {
+                            isValid = false;
+                        }
+                        hd.TongTien += cthd.ThanhTien;
+                    }
+
+                    //Sau khi thêm tất cả các sản phẩm đặt vào chi tiết hóa đơn, ta tiến hành cập nhật tổng tiền
+                    if (hd.TongTien > 0)
+                    {
+                        //Thêm 30 nghìn phí ship
+                        hddao.UpdateTongTien(hd);
+
+                    }
+
+                }
+                else
+                {
+                    isValid = false;
+                }
+            }
+
+            //Kiểm tra nếu tất cả đã hoàn thành và hợp lệ rồi thì sẽ đưa session về null
+            if (isValid == true)
+            {
+                Session["CartSession"] = null;
+            }
+
+
+            return Json(new
+            {
+                isValid = isValid,
+                listCart = list,
+                id = id,
+                idhd = idhd,
+                errMsg = errMsg,
+
+            });
+        }
+
     }
 }

@@ -19,11 +19,23 @@
 <section class="w3l-about-breadcrumb position-relative text-center">
     <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
         <div class="container py-lg-5 py-3">
-            <h2 class="title text-morii">Tài Khoản Của Tôi</h2>
-            <ul class="breadcrumbs-custom-path mt-2">
-                <li><a href="Index">Đặt Hàng</a></li>
-                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span>Chi Tiết Giỏ Hàng</li>
-            </ul>
+            @if (nd.Role == "ADMIN" || nd.Role == "Nhân viên")
+            {
+                <h2 class="title text-morii">Hóa Đơn</h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="Index">Hóa Đơn</a></li>
+                    <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span>Thanh Toán Hóa Đơn</li>
+                </ul>
+
+            }
+            else
+            {
+                <h2 class="title text-morii">Tài Khoản Của Tôi</h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="Index">Đặt Hàng</a></li>
+                    <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span>Chi Tiết Giỏ Hàng</li>
+                </ul>
+            }
         </div>
     </div>
 </section>
@@ -45,9 +57,19 @@
 else
 {
     <div class="w3-services py-5">
+
         <div class="container" style="padding:24px 0;">
             <div class="form-horizontal">
-                <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Giỏ Hàng</h3>
+                @if (nd.Role == "ADMIN" || nd.Role == "Nhân viên")
+                {
+
+                    <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Thanh Toán Hóa Đơn</h3>
+                }
+                else
+                {
+                    <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px;">Giỏ Hàng</h3>
+
+                }
                 <div class="row">
                     <div class="col-sm-8">
                         <div style="">
@@ -163,12 +185,20 @@ else
                                     </p>
                                 </div>
                             </div>
-                            <a href="/giao-hang">
-                                <button class="button-checkout">
-                                    THANH TOÁN
-                                </button>
-
-                            </a>
+                            @if (nd.Role == "ADMIN" || nd.Role == "Nhân viên")
+                            {
+                                    <button data-id="@nd.ID" class="button-checkout button-thanhtoan">
+                                        THANH TOÁN
+                                    </button>
+                            }
+                            else
+                            {
+                                <a href="/giao-hang">
+                                    <button class="button-checkout">
+                                        THANH TOÁN
+                                    </button>
+                                </a>
+                            }
                         </div>
                     </div>
                 </div>
@@ -275,8 +305,44 @@ else
             }
         )
 
+
+        $(".button-thanhtoan").on('click',
+            function handleClickCheckout(e) {
+                e.preventDefault();
+                var id = $(this).data("id");
+                $.ajax({
+                    type: "POST",
+                    url: "/GiaoHang/ThanhToanHoaDonJson",
+                    data: {
+                        id: id,
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.isValid) {
+                            $('.message-success').append("Đặt hàng thành công. ");
+                            window.location.replace("https://localhost:44309/admin/hoa-don/details/"+ res.idhd);
+                        }
+                        if (res.errMsg) {
+                            $(".message-error").append(res.errMsg);
+                            topFunction();
+                        }
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
+            }
+        )
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
     });
 </script>
+
 
 <style>
 
