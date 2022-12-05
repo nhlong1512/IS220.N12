@@ -36,8 +36,8 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 ViewBag.ndd = nd;
             }
             var model = hddao.ListAllPaging(searchString);
-            ViewBag.dathangs = model;
-            ViewBag.hoadons = hddao.ViewAll();
+            ViewBag.dathangs = dhdao.ViewAll();
+            ViewBag.hoadons = model;
             ViewBag.nds = nddao.ViewAll();
             return View();
         }

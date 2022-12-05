@@ -122,19 +122,18 @@ namespace Model.Dao
             }
         }
 
-        public IEnumerable<DatHang> ListAllPaging(string searchString)
+        public IEnumerable<HoaDon> ListAllPaging(string searchString)
         {
-            IQueryable<DatHang> model = db.DatHangs;
+            IQueryable<HoaDon> model = db.HoaDons;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => ("#" + (x.MaHoaDon).ToString()).Contains(searchString)
+                model = model.Where(x => ("#" + (x.ID).ToString()).Contains(searchString)
                 || (x.CreatedDate.ToString()).Contains(searchString) ||
-                //("#" + (x.MaNV).ToString()).Contains(searchString) || ("#" + (x.MaKM).ToString()).Contains(searchString)
-                //|| (x.TongTien).ToString().Contains(searchString) ||
-                ("Nguyễn Hữu Long").Contains(searchString));
+                ("#" + (x.MaNV).ToString()).Contains(searchString) || ("#" + (x.MaKM).ToString()).Contains(searchString)
+                || (x.TongTien).ToString().Contains(searchString));
 
             }
-            return model;
+            return model.OrderBy(x => x.ID);
         }
 
         public string ConvertIDKHToHoTen(long id)

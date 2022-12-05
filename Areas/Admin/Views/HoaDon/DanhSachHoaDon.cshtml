@@ -9,6 +9,7 @@
 }
 
 
+
 @section breadcrumb {
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
@@ -87,7 +88,7 @@
                                 <tr>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Hóa Đơn</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Nhân Viên</th>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Khuyến Mãi</th>    
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Khuyến Mãi</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Người Đặt</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Ngày Mua</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Tổng Tiền</th>
@@ -95,162 +96,131 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in dathangs)
+                                @foreach (var item in hoadons)
                                 {
-                                <tr>
-                                    <th>
-                                        <p class="maDonDat">
-                                            #@item.MaHoaDon
-                                        </p>
-                                    </th>
-                                    <td>
-                                        @foreach (var it in hoadons)
-                                        {
-                                            if (it.ID == item.MaHoaDon)
-                                            {
-                                                if (it.MaNV != null)
-                                                {
-                                                    <p class="pDonDat">
-                                                        @it.MaNV
-                                                    </p>
-                                                }
-                                                else
-                                                {
-                                                    <p class="pDonDat">
-                                                        null
-                                                    </p>
-                                                }
-                                            }
-                                        }
-                                    </td>
+                                    <tr>
+                                        <th>
+                                            <p class="maDonDat">
+                                                #@item.ID
+                                            </p>
+                                        </th>
+                                        <td>
 
-                                    <td>
-                                        @foreach (var it in hoadons)
-                                        {
-                                            if (it.ID == item.MaHoaDon)
-                                            {
-                                                if (it.MaKM != null)
-                                                {
-                                                    <p class="pDonDat">
-                                                        @it.MaKM
-                                                    </p>
-                                                }
-                                                else
-                                                {
-                                                    <p class="pDonDat">
-                                                        null
-                                                    </p>
-                                                }
-                                            }
-                                        }
-                                    </td>
-                                    <td>
-                                        @foreach (var it in nds)
-                                        {
-                                            if (item.MaKH == it.ID)
+                                            @if (item.MaNV != null)
                                             {
                                                 <p class="pDonDat">
-                                                    @it.HoTen
+                                                    @item.MaNV
                                                 </p>
                                             }
-                                        }
-
-                                    </td>
-
-
-                                    <td>
-                                        <p class="pDonDat">
-                                            @item.CreatedDate
-                                        </p>
-                                    </td>
-                                    <td>
-                                        @*Tìm giá của đơn đặt*@
-                                        @foreach (var i in hoadons)
-                                        {
-                                            if (i.ID == item.MaHoaDon)
+                                            else
                                             {
-                                                gia = i.TongTien;
+                                                <p class="pDonDat">
+                                                    null
+                                                </p>
                                             }
-                                        }
-                                        <p class="pDonDat">
-                                            @{
-                                                var a = gia;
-                                                a = a / 1000;
+                                        </td>
+
+                                        <td>
+                                            @if (item.MaKM != null)
+                                            {
+                                                <p class="pDonDat">
+                                                    @item.MaKM
+                                                </p>
                                             }
-                                            @a.000 đ
-                                        </p>
-                                    </td>
+                                            else
+                                            {
+                                                <p class="pDonDat">
+                                                    null
+                                                </p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.MaKH != null)
+                                            {
 
-                                    <td>
-                                        @*<a style="" class="optionsSelect" data-id="@item.ID" id="option_@item.ID">
-            <img src="~/Data/Files/dots-option.png" />
-            <div class="toggle-options-select" id="Toggle_@item.ID">
-                <div class="wrap-options">
-                    @if (item.TTDH == "Chờ Xác Nhận")
-                    {
-                        <p class="dangGiao dangGiaoButton" data-id="@item.ID" id="dangGiaoButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                            Đang Giao
-                        </p>
+                                                foreach (var it in nds)
+                                                {
+                                                    if (item.MaKH == it.ID)
+                                                    {
+                                                        <p class="pDonDat">
+                                                            @it.HoTen
+                                                        </p>
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <p class="pDonDat">
+                                                    null
+                                                </p>
+                                            }
 
-                        <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                            Hủy Đơn Hàng
-                        </p>
+                                        </td>
 
-                    }
-                    else if (item.TTDH == "Đang Giao")
-                    {
-                        <p class="daNhanHang daNhanHangButton" data-id="@item.ID" id="daNhanHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                            Đã Nhận Hàng
-                        </p>
-                        <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                            Hủy Đơn Hàng
-                        </p>
-                    }
-                    else if (item.TTDH == "Đã Giao")
-                    {
 
-                    }
-                    else
-                    {
+                                        <td>
+                                            <p class="pDonDat">
+                                                @item.CreatedDate
+                                            </p>
+                                        </td>
+                                        <td>
 
-                    }
-                    <p class="xemChiTiet" data-id="@item.ID">Xem Chi Tiết</p>
-                </div>
-            </div>
-        </a>*@
-                                        <div style="display:flex; justify-content:center;">
-                                            <a class="button-detail button-option" href="/admin/hoa-don/details/@item.ID">
-                                                <img src="~/Data/Files/detail.png" />
-                                            </a>
-                                        </div>
+                                            <p class="pDonDat">
+                                                @{
+                                                    var a = item.TongTien;
+                                                    a = a / 1000;
+                                                }
+                                                @a.000 đ
+                                            </p>
+                                        </td>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade huyDonHangModal" id="exampleModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">
-                                                            Xác Nhận Xóa Hóa Đơn
-                                                            <strong>
-                                                                #@item.MaHoaDon
-                                                            </strong>
-                                                        </h5>
+                                        <td>
+                                            @*<a style="" class="optionsSelect" data-id="@item.ID" id="option_@item.ID">
+                                                    <img src="~/Data/Files/dots-option.png" />
+                                                    <div class="toggle-options-select" id="Toggle_@item.ID">
+                                                        <div class="wrap-options">
+                                                            @if (item.TTDH == "Chờ Xác Nhận")
+                                                            {
+                                                                <p class="dangGiao dangGiaoButton" data-id="@item.ID" id="dangGiaoButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                    Đang Giao
+                                                                </p>
+
+                                                                <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                    Hủy Đơn Hàng
+                                                                </p>
+
+                                                            }
+                                                            else if (item.TTDH == "Đang Giao")
+                                                            {
+                                                                <p class="daNhanHang daNhanHangButton" data-id="@item.ID" id="daNhanHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                    Đã Nhận Hàng
+                                                                </p>
+                                                                <p class="huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                                    Hủy Đơn Hàng
+                                                                </p>
+                                                            }
+                                                            else if (item.TTDH == "Đã Giao")
+                                                            {
+
+                                                            }
+                                                            else
+                                                            {
+
+                                                            }
+                                                            <p class="xemChiTiet" data-id="@item.ID">Xem Chi Tiết</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        Hóa Đơn #@item.MaHoaDon Sẽ Được Xóa Ngay Lập Tức. Bạn Có Muốn Xóa Hóa Đơn Này?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button id="closeButton_@item.ID" data-id="@item.ID" class="closeButton btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
-                                                        <a href="/admin/hoa-don/delete/@item.ID">
-                                                            <button class="xacNhanHuyButton" data-id="@item.ID" id="xacNhanHuyButton_@item.ID">Xác Nhận</button>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                                </a>*@
+                                            <div style="display:flex; justify-content:center;">
+                                                <a class="button-detail button-option" href="/admin/hoa-don/details/@item.ID">
+                                                    <img src="~/Data/Files/detail.png" />
+                                                </a>
                                             </div>
-                                        </div>
 
-                                    </td>
-                                </tr>
+
+
+                                        </td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
@@ -273,7 +243,6 @@
     .button-delete {
         margin-right: 0;
         margin-bottom: 0;
-            
     }
 
     .button-edit {
