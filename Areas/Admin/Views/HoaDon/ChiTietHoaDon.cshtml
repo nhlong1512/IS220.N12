@@ -1,0 +1,729 @@
+﻿
+@{
+    ViewBag.Title = "MoriiCoffee";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var hd = ViewBag.hd;
+    var dh = ViewBag.dh;
+    var listCTHD = ViewBag.listCTHD;
+    var listCTSP = ViewBag.listCTSP;
+}
+
+@model Model.EF.NguoiDung
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+@section breadcrumb {
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <!-- if breadcrumb is single-->
+                    <span>Hóa Đơn</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Chi Tiết Hóa Đơn</span></li>
+            </ol>
+        </nav>
+    </div>
+}
+
+
+<div class="w3-services py-5">
+    <div class="container" style="padding:24px 0;">
+        <div class="form-horizontal">
+            <div class="row" style="margin-bottom:60px;">
+                <div class="col-sm-12">
+                    <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px;">Chi Tiết Hóa Đơn</h3>
+                </div>
+                <div class="col-sm-8">
+                    <div>
+                        <div class="row wrap-deltail-order">
+                            <div class="col-sm-5" style="padding: 0;">
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Mã Hóa Đơn: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        #@hd.ID
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Ngày Mua: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @hd.CreatedDate
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Thanh Toán: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.PTTT
+                                    </span>
+                                </p>
+                                @if (dh.TTDH == "Đã Giao")
+                                {
+                                    <a>
+                                        <button class="finishedButton">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else if (dh.TTDH == "Chờ Xác Nhận")
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #1976D2;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else if (dh.TTDH == "Đang Giao")
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #FFC107;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #FF0000;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+
+
+
+                            </div>
+                            <div class="col-sm-7" style="padding: 0;">
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Họ Tên: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.HoTen
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    SĐT: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.SDT
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Địa Chỉ: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.DiaChiNhanHang
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="style-10" />
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Sản Phẩm</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in listCTHD)
+                                {
+
+                                    var sp = listCTSP[0];
+                                    //Get Ra Chi tiết sản phẩm ứng với các sản phẩm trong chi tiết đơn hàng
+                                    foreach (var it in listCTSP)
+                                    {
+                                        if (it.ID == item.MaSP)
+                                        {
+                                            sp = it;
+                                            break;
+                                        }
+                                    }
+                                    <tr>
+                                        <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
+                                            <div class="img-product-wrap">
+                                                <img class="img-product" src="@sp.UrlImage" />
+                                            </div>
+                                            <div class="product-details">
+                                                <div>
+                                                    <h3 class="product-title" style="margin:0;">
+                                                        @sp.TenSanPham
+                                                    </h3>
+                                                    <p class="product-note" style="margin-bottom: 0">
+                                                        Size: @item.Size
+                                                    </p>
+                                                    <p class="product-note" style="margin:0;">
+                                                        @item.Topping
+                                                    </p>
+
+                                                </div>
+                                                <p class="product-price" style="margin:0;">
+                                                    @{
+                                                        var a = item.Gia;
+                                                        a = a / 1000;
+                                                    }
+                                                    @a.000 đ
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                                                <p class="pDonDat" style="margin:0;">@item.SoLuong</p>
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <p class="total-price" style="margin:0;">
+                                                @{
+                                                    var b = item.ThanhTien;
+                                                    b = b / 1000;
+                                                }
+                                                @b.000 đ
+
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div class="col-sm-4">
+                    <div id="wrap-order-summary">
+                        <h3 class="order-summary-title" style="color: #146d4d;">@dh.TTDH</h3>
+                        <hr class="style-10" />
+                        <div style="margin-bottom: 100px;">
+                            <div class="wrap-sub-total">
+                                <p class="sub-total">TỔNG TIỀN HÀNG</p>
+                                <p class="sub-total" style="font-weight:600;">
+                                    @{
+                                        var c = hd.TongTien - 30000;
+                                        c = c / 1000;
+                                    }
+                                    @c.000 đ
+                                </p>
+                            </div>
+                            <div class="wrap-giamgia">
+                                <p class="sub-total">GIẢM GIÁ</p>
+                                <p class="sub-total" style="font-weight:600;">__</p>
+                            </div>
+                            <div class="wrap-phivanchuyen">
+                                <p class="sub-total">PHÍ VẬN CHUYỂN</p>
+                                <p class="sub-total" style="font-weight:600;">30.000 đ</p>
+                            </div>
+                        </div>
+
+                        <hr class="style-10" />
+                        <div>
+                            <div class="wrap-estimated-total">
+                                <p class="sub-total">TỔNG SỐ TIỀN </p>
+                                <p class="sub-total" style="color:#146d4d; font-weight: 600;">
+                                    @{
+                                        var d = hd.TongTien;
+                                        d = d / 1000;
+                                    }
+                                    @d.000 đ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                        <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+                            <a href="~/admin/hoa-don" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
+                                Danh Sách Hóa Đơn
+                            </a>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+
+
+    .xacNhanHuyButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanHuyButton:hover {
+            opacity: 0.7;
+        }
+
+    .xacNhanDaGiaoButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanDaGiaoButton:hover {
+            opacity: 0.7;
+        }
+
+    .xacNhanDangGiaoButton {
+        background-color: #146d4d;
+        color: white;
+        font-weight: 500;
+        outline: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+    }
+
+        .xacNhanDangGiaoButton:hover {
+            opacity: 0.7;
+        }
+
+    .closeButton {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButton:hover {
+            opacity: 0.7;
+        }
+
+    .closeButtonNhanHang {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButtonNhanHang:hover {
+            opacity: 0.7;
+        }
+
+    .closeButtonGiaoHang {
+        color: #fff;
+        font-weight: 500;
+        outline: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+        .closeButtonGiaoHang:hover {
+            opacity: 0.7;
+        }
+
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
+
+    .table tbody tr td {
+        vertical-align: middle;
+    }
+
+    .finishedButton {
+        background-color: #146d4d;
+        border-radius: 3px;
+        padding: 4px 30px;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: #FFFFFF;
+    }
+
+    .wrap-deltail-order {
+        margin: 0 0 36px 0;
+        padding: 14px 22px;
+        border: 1px solid #CFCFCF;
+        border-radius: 10px;
+    }
+
+    .pDonDat {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+    }
+
+    #wrap-order-summary {
+        padding: 24px;
+    }
+
+    .activeColor {
+        color: #009D34 !important;
+    }
+
+
+    .cancelledColor {
+        color: #FF0000 !important;
+    }
+
+    .inProgressColor {
+        color: #FFC107 !important;
+    }
+
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .wrap-phivanchuyen {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #146d4d;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 100px;
+        height: 100px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #146d4d;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #146d4d;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #146d4d;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+
+
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $('.optionsSelect').click(function (e) {
+            var idToggle = $(this).data("id");
+            var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
+            e.preventDefault();
+            e.stopPropagation();
+            $(".toggle-options-select").removeClass("show");
+            if (isHasClass == false) {
+                $("#Toggle_" + idToggle).addClass("show");
+            } else {
+                $("#Toggle_" + idToggle).removeClass("show");
+            }
+
+        })
+        $(window).click(function () {
+            $(".toggle-options-select").removeClass("show");
+        })
+
+        $('.xemChiTiet').click(function () {
+            var idXemChiTiet = $(this).data("id");
+            window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + idXemChiTiet);
+        })
+
+
+        //Handle xác nhận mở modal hủy đơn hàng
+        $('.huyDonHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#exampleModal_' + idHuy).modal('show')
+        })
+
+
+        //Handle đóng modal xác nhận Hủy đơn hàng
+        $('.closeButton').click(function (e) {
+            var idClose = $(this).data("id");
+            console.log("Hủy", idClose);
+            $('#exampleModal_' + idClose).modal('hide')
+        })
+
+
+        //Handle mở modal xác nhận Đã nhận hàng
+        $('.daNhanHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đã nhận hàng
+        $('.closeButtonNhanHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('hide')
+        })
+
+        //Handle mở modal xác nhận Đang giao hàng
+        $('.dangGiaoButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#dangGiaoHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đang giao hàng
+        $('.closeButtonGiaoHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#dangGiaoHang_' + idHuy).modal('hide')
+        })
+
+
+        //Handle Xác nhận Hủy đơn hàng
+        $(".xacNhanHuyButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhan", id);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DonDat/HuyDonHangAdminJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đã giao
+        $(".xacNhanDaGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhanDaGiao", id);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DonDat/DaNhanHangAdminJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đang giao
+        $(".xacNhanDangGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("xacNhanDangGiaoButton", id);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DonDat/DangGiaoHangAdminJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44309/admin/don-dat/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+    });
+</script>
