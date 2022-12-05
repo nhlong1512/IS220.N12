@@ -157,13 +157,15 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 ViewBag.ndd = nddd;
             }
             var nd = nddao.ViewDetail(id);
+            var nvs = nvdao.ViewAll();
+            ViewBag.nvs = nvs;
             return View(nd); 
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChinhSuaNhanVien(NguoiDung user)
+        public ActionResult ChinhSuaNhanVien(NguoiDung user, decimal Luong)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
@@ -180,6 +182,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             var isTrue = nddao.Update(user);
             if (isTrue)
             {
+                NhanVien nv = nvdao.ViewDetailNguoiDungID(user.ID);
+                nv.Luong = Luong;
+                var isTrueNhanVien = nvdao.Update(nv);
+
                 var msg = "Cập nhật thông tin thành công. ";
                 ViewBag.msg = msg;
                 return Redirect("~/admin/nhan-vien/chinh-sua/" + user.ID);

@@ -28,8 +28,10 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var sanpham = ViewBag.sanpham;
+    var nvs = ViewBag.nvs;
     var err = ViewBag.err;
     var msg = ViewBag.msg;
+    decimal luong = 0;
 }
 
 <script src="~/Scripts/ckfinder/ckfinder.js"></script>
@@ -92,11 +94,11 @@
                             </div>
                             <div class="form-detail" style="margin-top: 80px;">
                                 @*<div class="form-group row">
-                                    <div class="message-success" style="color: #155724 !important; font-size: 20px;" role="alert">@msg</div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="message-error" style="color: #dc3545 !important; font-size: 20px;" role="alert">@err</div>
-                                </div>*@
+            <div class="message-success" style="color: #155724 !important; font-size: 20px;" role="alert">@msg</div>
+        </div>
+        <div class="form-group row">
+            <div class="message-error" style="color: #dc3545 !important; font-size: 20px;" role="alert">@err</div>
+        </div>*@
                                 <div class="form-group row">
                                     <label for="hoTenLabel" class="col-sm-2 col-form-label col-form-label-lg">Họ Tên</label>
                                     <div class="col-sm-10">
@@ -115,6 +117,23 @@
                                     <label for="phoneLabel" class="col-sm-2 col-form-label col-form-label-lg">SĐT</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control form-control-lg" id="phoneLabel" value="@Model.SDT" name="SDT">
+                                    </div>
+                                </div>
+                                <hr class="style10">
+                                    @foreach (var it in nvs)
+                                    {
+
+                                        if (it.IDNguoiDung == Model.ID)
+                                        {
+                                            luong = it.Luong;
+                                        }
+                                    }
+
+
+                                <div class="form-group row">
+                                    <label for="phoneLabel" class="col-sm-2 col-form-label col-form-label-lg">Lương</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control form-control-lg" id="phoneLabel" placeholder="Lương" value="@luong" name="Luong">
                                     </div>
                                 </div>
                                 <hr class="style10">

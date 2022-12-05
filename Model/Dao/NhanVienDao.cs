@@ -36,6 +36,11 @@ namespace Model.Dao
             return db.NhanViens.Find(id);
         }
 
+        public NhanVien ViewDetailNguoiDungID(long id)
+        {
+            return db.NhanViens.SingleOrDefault(x => x.IDNguoiDung == id);
+        }
+
         public long Insert(NhanVien entity)
         {
             
@@ -53,6 +58,7 @@ namespace Model.Dao
             {
                 var nv = db.NhanViens.Find(entity.ID);
                 nv.Luong = entity.Luong;
+                nv.IDNguoiDung = entity.IDNguoiDung;
                 db.SaveChanges();
                 return true;
             }
