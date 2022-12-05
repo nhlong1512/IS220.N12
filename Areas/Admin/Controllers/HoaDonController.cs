@@ -56,17 +56,18 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 var nd = nddao.ViewDetailEmail(session.UserName);
                 ViewBag.ndd = nd;
             }
-            var dh = dhdao.ViewDetail(id);
-            var hd = hddao.ViewDetail(dh.MaHoaDon);
+            var hd = hddao.ViewDetail(id);
+            var dh = dhdao.ViewDetailByMaHD(id);
             var listCTHD = new List<ChiTietHoaDon>();
-            listCTHD = cthddao.ViewAllByID(dh.MaHoaDon);
+            listCTHD = cthddao.ViewAllByID(id);
             var listCTSP = ctspdao.ViewAll();
 
-
+            ViewBag.isOnline = hd.IsOnline;
             ViewBag.dh = dh;
             ViewBag.hd = hd;
             ViewBag.listCTHD = listCTHD;
             ViewBag.listCTSP = listCTSP;
+            ViewBag.listND = nddao.ViewAll();
             return View();
         }
 

@@ -6,6 +6,8 @@
     var dh = ViewBag.dh;
     var listCTHD = ViewBag.listCTHD;
     var listCTSP = ViewBag.listCTSP;
+    var isOnline = ViewBag.isOnline;
+    var listND = ViewBag.listND;
 }
 
 @model Model.EF.NguoiDung
@@ -53,41 +55,66 @@
                                         @hd.CreatedDate
                                     </span>
                                 </p>
-                                <p class="pDonDat" style="margin-bottom: 12px;">
-                                    Thanh Toán: &nbsp;
-                                    <span style="font-weight: 600;">
-                                        @dh.PTTT
-                                    </span>
-                                </p>
-                                @if (dh.TTDH == "Đã Giao")
+                                @if (isOnline)
                                 {
-                                    <a>
-                                        <button class="finishedButton">
-                                            @dh.TTDH
-                                        </button>
-                                    </a>
-                                }
-                                else if (dh.TTDH == "Chờ Xác Nhận")
-                                {
-                                    <a>
-                                        <button class="finishedButton" style="background-color: #1976D2;">
-                                            @dh.TTDH
-                                        </button>
-                                    </a>
-                                }
-                                else if (dh.TTDH == "Đang Giao")
-                                {
-                                    <a>
-                                        <button class="finishedButton" style="background-color: #FFC107;">
-                                            @dh.TTDH
-                                        </button>
-                                    </a>
+
+                                    <p class="pDonDat" style="margin-bottom: 12px;">
+                                        Thanh Toán: &nbsp;
+                                        <span style="font-weight: 600;">
+                                            @dh.PTTT
+                                        </span>
+                                    </p>
                                 }
                                 else
                                 {
+                                    <p class="pDonDat" style="margin-bottom: 12px;">
+                                        Thanh Toán: &nbsp;
+                                        <span style="font-weight: 600;">
+                                            Tại Quán
+                                        </span>
+                                    </p>
+                                }
+                                @if (isOnline)
+                                {
+                                    if (dh.TTDH == "Đã Giao")
+                                    {
+                                        <a>
+                                            <button class="finishedButton">
+                                                @dh.TTDH
+                                            </button>
+                                        </a>
+                                    }
+                                    else if (dh.TTDH == "Chờ Xác Nhận")
+                                    {
+                                        <a>
+                                            <button class="finishedButton" style="background-color: #1976D2;">
+                                                @dh.TTDH
+                                            </button>
+                                        </a>
+                                    }
+                                    else if (dh.TTDH == "Đang Giao")
+                                    {
+                                        <a>
+                                            <button class="finishedButton" style="background-color: #FFC107;">
+                                                @dh.TTDH
+                                            </button>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a>
+                                            <button class="finishedButton" style="background-color: #FF0000;">
+                                                @dh.TTDH
+                                            </button>
+                                        </a>
+                                    }
+                                }
+
+                                else
+                                {
                                     <a>
-                                        <button class="finishedButton" style="background-color: #FF0000;">
-                                            @dh.TTDH
+                                        <button class="finishedButton">
+                                            Đã Thanh Toán
                                         </button>
                                     </a>
                                 }
@@ -95,26 +122,49 @@
 
 
                             </div>
-                            <div class="col-sm-7" style="padding: 0;">
-                                <p class="pDonDat" style="margin-bottom: 12px;">
-                                    Họ Tên: &nbsp;
-                                    <span style="font-weight: 600;">
-                                        @dh.HoTen
-                                    </span>
-                                </p>
-                                <p class="pDonDat" style="margin-bottom: 12px;">
-                                    SĐT: &nbsp;
-                                    <span style="font-weight: 600;">
-                                        @dh.SDT
-                                    </span>
-                                </p>
-                                <p class="pDonDat" style="margin-bottom: 12px;">
-                                    Địa Chỉ: &nbsp;
-                                    <span style="font-weight: 600;">
-                                        @dh.DiaChiNhanHang
-                                    </span>
-                                </p>
-                            </div>
+                            @if (isOnline)
+                            {
+
+                                <div class="col-sm-7" style="padding: 0;">
+                                    <p class="pDonDat" style="margin-bottom: 12px;">
+                                        Họ Tên: &nbsp;
+                                        <span style="font-weight: 600;">
+                                            @dh.HoTen
+                                        </span>
+                                    </p>
+                                    <p class="pDonDat" style="margin-bottom: 12px;">
+                                        SĐT: &nbsp;
+                                        <span style="font-weight: 600;">
+                                            @dh.SDT
+                                        </span>
+                                    </p>
+                                    <p class="pDonDat" style="margin-bottom: 12px;">
+                                        Địa Chỉ: &nbsp;
+                                        <span style="font-weight: 600;">
+                                            @dh.DiaChiNhanHang
+                                        </span>
+                                    </p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-sm-7" style="padding: 0;">
+                                    <p class="pDonDat" style="margin-bottom: 12px;">
+                                        Nhân Viên: &nbsp;
+                                        @foreach (var itt in listND)
+                                        {
+                                            if (itt.ID == hd.MaNV)
+                                            {
+                                                <span style="font-weight: 600;">
+                                                    @itt.HoTen
+                                                </span>
+                                                break;
+                                            }
+                                        }
+
+                                    </p>
+                                </div>
+                            }
                         </div>
 
                         <hr class="style-10" />
@@ -196,11 +246,22 @@
 
                 <div class="col-sm-4">
                     <div id="wrap-order-summary">
-                        <h3 class="order-summary-title" style="color: #146d4d;">@dh.TTDH</h3>
+                        @if (isOnline)
+                        {
+
+                            <h3 class="order-summary-title" style="color: #146d4d;">@dh.TTDH</h3>
+                        }
+                        else
+                        {
+                            <h3 class="order-summary-title" style="color: #146d4d;">Hóa Đơn Thanh Toán</h3>
+
+                        }
                         <hr class="style-10" />
                         <div style="margin-bottom: 100px;">
                             <div class="wrap-sub-total">
                                 <p class="sub-total">TỔNG TIỀN HÀNG</p>
+                                @if (isOnline) { 
+                                
                                 <p class="sub-total" style="font-weight:600;">
                                     @{
                                         var c = hd.TongTien - 30000;
@@ -208,15 +269,28 @@
                                     }
                                     @c.000 đ
                                 </p>
+                                }else
+            {
+                            <p class="sub-total" style="font-weight:600;">
+                                @{
+                                    var c = hd.TongTien;
+                                    c = c / 1000;
+                                }
+                                @c.000 đ
+                            </p>
+            }
                             </div>
                             <div class="wrap-giamgia">
                                 <p class="sub-total">GIẢM GIÁ</p>
                                 <p class="sub-total" style="font-weight:600;">__</p>
                             </div>
-                            <div class="wrap-phivanchuyen">
-                                <p class="sub-total">PHÍ VẬN CHUYỂN</p>
-                                <p class="sub-total" style="font-weight:600;">30.000 đ</p>
-                            </div>
+                            @if (isOnline)
+                            {
+                                <div class="wrap-phivanchuyen">
+                                    <p class="sub-total">PHÍ VẬN CHUYỂN</p>
+                                    <p class="sub-total" style="font-weight:600;">30.000 đ</p>
+                                </div>
+                            }
                         </div>
 
                         <hr class="style-10" />
@@ -233,11 +307,11 @@
                             </div>
                         </div>
                     </div>
-                        <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
-                            <a href="~/admin/hoa-don" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
-                                Danh Sách Hóa Đơn
-                            </a>
-                        </div>
+                    <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+                        <a href="~/admin/hoa-don" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
+                            Danh Sách Hóa Đơn
+                        </a>
+                    </div>
 
                 </div>
             </div>

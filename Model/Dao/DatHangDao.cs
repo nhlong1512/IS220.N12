@@ -23,6 +23,14 @@ namespace Model.Dao
             return db.DatHangs.Find(id);
         }
 
+
+        public DatHang ViewDetailByMaHD(long id)
+        {
+            DatHang dhh = new DatHang();
+            dhh = db.DatHangs.SingleOrDefault(p => p.MaHoaDon == id);
+            return dhh;
+        }
+
         //Xem tất cả DatHang
         public List<DatHang> ViewAll()
         {

@@ -194,8 +194,9 @@ namespace MoriiCoffee.Controllers
                 //Thêm hóa đơn mới
                 HoaDon hd = new HoaDon();
                 hd.TongTien = 0;
-                hd.IsOnline = true;
+                hd.IsOnline = false;
                 hd.MaNV = id;
+
                 idhd = hddao.Insert(hd);
                 //Kiểm tra nếu thêm được thì tiếp tục thêm dữ liệu cho bảng CTHD ngược lại thì không làm gì cả
                 if (idhd > 0)
