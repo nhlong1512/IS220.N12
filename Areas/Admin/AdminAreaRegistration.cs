@@ -195,6 +195,14 @@ namespace MoriiCoffee.Areas.Admin
 
 
 
+            //Config Route cho Hóa Đơn
+            context.MapRoute(
+             name: "AdminDanhSachHoaDon",
+             url: "admin/hoa-don",
+             defaults: new { controller = "HoaDon", action = "DanhSachHoaDon", id = UrlParameter.Optional }
+         );
+
+
 
 
 

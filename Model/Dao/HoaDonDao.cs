@@ -121,5 +121,28 @@ namespace Model.Dao
                 return false;
             }
         }
+
+        public IEnumerable<DatHang> ListAllPaging(string searchString)
+        {
+            IQueryable<DatHang> model = db.DatHangs;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => ("#" + (x.MaHoaDon).ToString()).Contains(searchString)
+                || (x.CreatedDate.ToString()).Contains(searchString) ||
+                //("#" + (x.MaNV).ToString()).Contains(searchString) || ("#" + (x.MaKM).ToString()).Contains(searchString)
+                //|| (x.TongTien).ToString().Contains(searchString) ||
+                ("Nguyễn Hữu Long").Contains(searchString));
+
+            }
+            return model;
+        }
+
+        public string ConvertIDKHToHoTen(long id)
+        {
+            NguoiDungDao nddao = new NguoiDungDao();
+            var nd = nddao.ViewDetail(id);
+            return nd.HoTen;
+        }
+
     }
 }
