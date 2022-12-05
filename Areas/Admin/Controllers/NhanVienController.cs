@@ -210,7 +210,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 var nd = nddao.ViewDetailEmail(session.UserName);
                 ViewBag.ndd = nd;
             }
-
+            //xóa nhân viên rồi xóa bảng người dùng
+            var nv = nvdao.ViewDetailNguoiDungID(id);
+            nvdao.Delete(nv.ID);
+            
             nddao.Delete(id);
             return Redirect("~/admin/nhan-vien");
         }

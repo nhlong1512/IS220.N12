@@ -68,5 +68,22 @@ namespace Model.Dao
             }
         }
 
+
+        public bool Delete(long id)
+        {
+            try
+            {
+                var nd = db.NhanViens.Find(id);
+                db.NhanViens.Remove(nd);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
     }
 }
