@@ -81,7 +81,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThemNhanVien(NguoiDung user)
+        public ActionResult ThemNhanVien(NguoiDung user, decimal Luong)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
@@ -94,6 +94,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 var nddd = nddao.ViewDetailEmail(session.UserName);
                 ViewBag.ndd = nddd;
             }
+            var luong = Luong;
 
             var err = "";
             if (ModelState.IsValid)
@@ -107,10 +108,14 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                     user.Status = true;
                     user.Role = "Nhân viên";
                     var id = nddao.Insert(user);
+
                     if (id >= 0)
                     {
+                        NhanVien nv = new NhanVien();
+                        nv.Luong = luong;
+                        nv.IDNguoiDung = id;
+                        var idnv = nvdao.Insert(nv);
                         return Redirect("/admin/nhan-vien");
-
                     }
                     else
                     {

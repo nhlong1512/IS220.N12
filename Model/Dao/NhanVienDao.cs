@@ -36,6 +36,15 @@ namespace Model.Dao
             return db.NhanViens.Find(id);
         }
 
+        public long Insert(NhanVien entity)
+        {
+            
+            db.NhanViens.Add(entity);
+            db.Configuration.ValidateOnSaveEnabled = false;
+            db.SaveChanges();
+            return entity.ID;
+        }
+
 
         //Update NhanVien
         public bool Update(NhanVien entity)

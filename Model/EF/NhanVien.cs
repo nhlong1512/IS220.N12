@@ -12,5 +12,7 @@ namespace Model.EF
         public long ID { get; set; }
 
         public decimal? Luong { get; set; }
+
+        public long? IDNguoiDung { get; set; }
     }
 }

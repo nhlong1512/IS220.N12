@@ -61,7 +61,7 @@
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">SĐT</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Ngày Sinh</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Giới Tính</th>
-                                    @*<th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Lương</th>*@
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Lương</th>
                                     <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
                                 </tr>
                             </thead>
@@ -148,26 +148,20 @@
 
 
                                         </td>
-                                        @*<td>
+                                        <td>
                                             @foreach (var it in nvs)
                                             {
-                                                decimal b, c;
-                                                if (it.ID == item.ID)
+                                                
+                                                if (it.IDNguoiDung == item.ID)
                                                 {
-                                                    var a = it.Luong;
-                                                    if (a > 1000000)
-                                                    {
-                                                        b = a / 1000;
-                                                        c = b / 1000;
                                                     <p class="pDonDat">
-                                                        @c.000.000 đ
+                                                        @it.Luong đ
                                                     </p>
-                                                    }
                                                 }
                                             }
 
 
-                                        </td>*@
+                                        </td>
                                         <td>
                                             <div style="display:flex;">
                                                 <a class="button-detail button-option" href="/admin/nhan-vien/details/@item.ID">

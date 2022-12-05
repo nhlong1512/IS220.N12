@@ -11,6 +11,9 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
+        [StringLength(50)]
+        public string TenKM { get; set; }
+
         public int? PhanTramKM { get; set; }
 
         public bool? Status { get; set; }
