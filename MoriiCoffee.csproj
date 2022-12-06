@@ -1577,6 +1577,7 @@
     <Content Include="Data\Files\cartEmpty3.png" />
     <Content Include="Data\Files\COD-png.png" />
     <Content Include="Data\Files\COD-svg.svg" />
+    <Content Include="Data\Files\coupon.png" />
     <Content Include="Data\Files\deleteIcon.png" />
     <Content Include="Data\Files\detail.png" />
     <Content Include="Data\Files\dots-option.png" />
@@ -2625,6 +2626,7 @@
     <Compile Include="Areas\Admin\Controllers\DonDatController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Common\CartItem.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -2733,6 +2735,7 @@
     <Content Include="Areas\Admin\Views\NhanVien\ChinhSuaNhanVien.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDon\DanhSachHoaDon.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDon\ChiTietHoaDon.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\DanhSachKhuyenMai.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -208,6 +208,14 @@ namespace MoriiCoffee.Areas.Admin
               defaults: new { controller = "HoaDon", action = "ChiTietHoaDon", id = UrlParameter.Optional }
           );
 
+            //Config Route cho Khuyến Mãi
+            context.MapRoute(
+             name: "AdminDanhSachKhuyenMai",
+             url: "admin/khuyen-mai",
+             defaults: new { controller = "KhuyenMai", action = "DanhSachKhuyenMai", id = UrlParameter.Optional }
+
+         );
+
 
 
 
