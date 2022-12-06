@@ -11,7 +11,7 @@ namespace Model.EF
     {
         public long ID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(250)]
         public string TenKM { get; set; }
 
         public int? PhanTramKM { get; set; }

@@ -25,4 +25,3 @@ D:\VS\IS220.N12\Model\bin\Release\System.Diagnostics.DiagnosticSource.xml
 D:\VS\IS220.N12\Model\obj\Release\Model.csproj.CopyComplete
 D:\VS\IS220.N12\Model\obj\Release\Model.dll
 D:\VS\IS220.N12\Model\obj\Release\Model.pdb
-D:\VS\IS220.N12\Model\obj\Release\Model.csproj.AssemblyReference.cache
