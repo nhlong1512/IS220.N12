@@ -8,6 +8,9 @@
     var listCTSP = ViewBag.listCTSP;
     var isOnline = ViewBag.isOnline;
     var listND = ViewBag.listND;
+    var km = ViewBag.km;
+    var isKM = ViewBag.isKM;
+    long e = 0;
 }
 
 @model Model.EF.NguoiDung
@@ -256,33 +259,53 @@
                             <h3 class="order-summary-title" style="color: #146d4d;">Hóa Đơn Thanh Toán</h3>
 
                         }
+
                         <hr class="style-10" />
                         <div style="margin-bottom: 100px;">
                             <div class="wrap-sub-total">
                                 <p class="sub-total">TỔNG TIỀN HÀNG</p>
-                                @if (isOnline) { 
-                                
-                                <p class="sub-total" style="font-weight:600;">
-                                    @{
-                                        var c = hd.TongTien - 30000;
-                                        c = c / 1000;
-                                    }
-                                    @c.000 đ
-                                </p>
-                                }else
-            {
-                            <p class="sub-total" style="font-weight:600;">
-                                @{
-                                    var c = hd.TongTien;
-                                    c = c / 1000;
+                                @if (isOnline)
+                                {
+                                    <p class="sub-total" style="font-weight:600;">
+                                        @{
+                                            var c = hd.TongTien + hd.TienKM - 30000;
+                                            c = c / 1000;
+                                        }
+                                        @c.000 đ
+                                    </p>
+                                    
                                 }
-                                @c.000 đ
-                            </p>
-            }
+                                else
+                                {
+                                    <p class="sub-total" style="font-weight:600;">
+                                        @{
+                                            var c = hd.TongTien + hd.TienKM;
+                                            c = c / 1000;
+                                        }
+                                        @c.000 đ
+                                    </p>
+                                }
                             </div>
                             <div class="wrap-giamgia">
-                                <p class="sub-total">GIẢM GIÁ</p>
-                                <p class="sub-total" style="font-weight:600;">__</p>
+                                @if (isKM == true)
+                                {
+                                    <div style="display:flex; flex-direction:column;">
+                                        <p class="sub-total">GIẢM GIÁ</p>
+                                        <p class="sub-total">(@km.TenKM)</p>
+                                    </div>
+                                    <p class="sub-total" style="font-weight:600;">
+                                        @{
+                                            var f = hd.TienKM;
+                                            f = f / 1000;
+                                        }
+                                        @f.000 đ
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="sub-total">GIẢM GIÁ</p>
+                                    <p class="sub-total" style="font-weight:600;">__</p>
+                                }
                             </div>
                             @if (isOnline)
                             {

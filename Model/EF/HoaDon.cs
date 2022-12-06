@@ -21,7 +21,9 @@ namespace Model.EF
 
         public bool? IsOnline { get; set; }
 
-        public long? MaKM { get; set; }
+        public long MaKM { get; set; }
+
+        public decimal? TienKM { get; set; }
 
         [StringLength(250)]
         public string MetaTitle { get; set; }

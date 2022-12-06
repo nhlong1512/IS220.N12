@@ -116,6 +116,10 @@ namespace Model.EF
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<HoaDon>()
+                .Property(e => e.TienKM)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<HoaDon>()
                 .Property(e => e.CreatedBy)
                 .IsUnicode(false);
 

@@ -20,6 +20,8 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private HoaDonDao hddao = new HoaDonDao();
         private ChiTietHoaDonDao cthddao = new ChiTietHoaDonDao();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
+        private KhuyenMaiDao kmdao = new KhuyenMaiDao();
+
         private const string CartSession = "CartSession";
 
         public ActionResult DanhSachHoaDon(string searchString)
@@ -45,6 +47,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult ChiTietHoaDon(long id)
         {
+            var isKM = true;
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (session == null)
             {
@@ -58,10 +61,17 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             }
             var hd = hddao.ViewDetail(id);
             var dh = dhdao.ViewDetailByMaHD(id);
+            var km = kmdao.ViewDetail(hd.MaKM);
+            if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
+            {
+                ViewBag.isKM = false;
+            }
             var listCTHD = new List<ChiTietHoaDon>();
             listCTHD = cthddao.ViewAllByID(id);
             var listCTSP = ctspdao.ViewAll();
 
+            ViewBag.km = km;
+            ViewBag.isKM = isKM;
             ViewBag.isOnline = hd.IsOnline;
             ViewBag.dh = dh;
             ViewBag.hd = hd;

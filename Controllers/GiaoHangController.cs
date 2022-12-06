@@ -136,11 +136,16 @@ namespace MoriiCoffee.Controllers
 
                     //Sau khi thêm tất cả các sản phẩm đặt vào chi tiết hóa đơn, ta tiến hành cập nhật tổng tiền
                     var km = kmdao.ViewDetailKhuyenMaiTrue();
-                    
+                    if (km != null)
+                    {
+                        hd.MaKM = km.ID;
+                    }
+
                     if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
                     {
                         if (hd.TongTien > 0)
                         {
+                            hd.TienKM = 0;
                             //Thêm 30 nghìn phí ship
                             hd.TongTien = hd.TongTien + 30000;
                             hddao.UpdateTongTien(hd);
@@ -154,6 +159,7 @@ namespace MoriiCoffee.Controllers
                             var ttkm = hd.TongTien / 1000;
                             ttkm = ttkm * km.PhanTramKM / 100;
                             ttkm = Math.Floor((decimal)ttkm);
+                            hd.TienKM = ttkm * 1000;
 
 
                             //Thêm 30 nghìn phí ship
@@ -255,11 +261,16 @@ namespace MoriiCoffee.Controllers
                         hd.TongTien += cthd.ThanhTien;
                     }
                     var km = kmdao.ViewDetailKhuyenMaiTrue();
+                    if(km != null)
+                    {
+                        hd.MaKM = km.ID;
+                    }
 
                     if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
                     {
                         if (hd.TongTien > 0)
                         {
+                            hd.TienKM = 0;
                             hddao.UpdateTongTien(hd);
 
                         }
@@ -271,7 +282,7 @@ namespace MoriiCoffee.Controllers
                             var ttkm = hd.TongTien / 1000;
                             ttkm = ttkm * km.PhanTramKM / 100;
                             ttkm = Math.Floor((decimal)ttkm);
-
+                            hd.TienKM = ttkm * 1000;
 
 
                             //Thêm 30 nghìn phí ship

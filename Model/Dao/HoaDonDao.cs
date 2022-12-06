@@ -73,6 +73,7 @@ namespace Model.Dao
                 hd.IsOnline = entity.IsOnline;
                 hd.MaKM = entity.MaKM;
                 hd.TongTien = entity.TongTien;
+                hd.TienKM = entity.TienKM;
                 hd.ModifiedBy = entity.ModifiedBy;
                 hd.ModifiedDate = DateTime.Now;
                 db.SaveChanges();

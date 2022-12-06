@@ -6,6 +6,9 @@
     var dh = ViewBag.dh;
     var listCTHD = ViewBag.listCTHD;
     var listCTSP = ViewBag.listCTSP;
+    var km = ViewBag.km;
+    var isKM = ViewBag.isKM;
+    long e = 0;
 }
 
 @model Model.EF.NguoiDung
@@ -204,15 +207,32 @@
                                 <p class="sub-total">TỔNG TIỀN HÀNG</p>
                                 <p class="sub-total" style="font-weight:600;">
                                     @{
-                                        var c = hd.TongTien - 30000;
+                                        var c = hd.TongTien + hd.TienKM - 30000;
                                         c = c / 1000;
                                     }
                                     @c.000 đ
                                 </p>
                             </div>
                             <div class="wrap-giamgia">
-                                <p class="sub-total">GIẢM GIÁ</p>
-                                <p class="sub-total" style="font-weight:600;">__</p>
+                                @if (isKM == true)
+                                {
+                                    <div style="display:flex; flex-direction:column;">
+                                        <p class="sub-total">GIẢM GIÁ</p>
+                                        <p class="sub-total">(@km.TenKM)</p>
+                                    </div>
+                                    <p class="sub-total" style="font-weight:600;">
+                                        @{
+                                            var f = hd.TienKM;
+                                            f = f / 1000;
+                                        }
+                                        @f.000 đ
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="sub-total">GIẢM GIÁ</p>
+                                    <p class="sub-total" style="font-weight:600;">__</p>
+                                }
                             </div>
                             <div class="wrap-phivanchuyen">
                                 <p class="sub-total">PHÍ VẬN CHUYỂN</p>
