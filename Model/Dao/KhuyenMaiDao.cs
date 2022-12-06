@@ -83,6 +83,16 @@ namespace Model.Dao
             }
         }
 
+
+        //Get khuyến mãi status True
+        public KhuyenMai ViewDetailKhuyenMaiTrue()
+        {
+            KhuyenMai km = new KhuyenMai();
+            km = db.KhuyenMais.SingleOrDefault(p => p.Status == true);
+            return km;
+        }
+
+
         //
     }
 }

@@ -23,6 +23,7 @@ namespace MoriiCoffee.Controllers
         //private DatHang dh = new DatHang();
 
         private const string CartSession = "CartSession";
+        private KhuyenMaiDao kmdao = new KhuyenMaiDao();
         //ViewAction Giao diện Giao Hàng
         public ActionResult GiaoHang()
         {
@@ -47,6 +48,20 @@ namespace MoriiCoffee.Controllers
                 var cartQtySession = list.Count();
                 ViewBag.cartQtySession = cartQtySession;
             }
+            //Khuyến mãi
+            var km = kmdao.ViewDetailKhuyenMaiTrue();
+            //Nếu là không khuyến mãi thì không thay đồi gì trong giao diện giỏ hàng ngược lại thì sẽ thêm tên khuyến mãi và handle trừ tiền khuyến mãi
+            if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
+            {
+                ViewBag.isKM = false;
+                ViewBag.km = km;
+            }
+            else
+            {
+                ViewBag.isKM = true;
+                ViewBag.km = km;
+            }
+
             return View(list);
         }
 
@@ -120,13 +135,33 @@ namespace MoriiCoffee.Controllers
                     }
 
                     //Sau khi thêm tất cả các sản phẩm đặt vào chi tiết hóa đơn, ta tiến hành cập nhật tổng tiền
-                    if(hd.TongTien > 0)
+                    var km = kmdao.ViewDetailKhuyenMaiTrue();
+                    
+                    if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
                     {
-                        //Thêm 30 nghìn phí ship
-                        hd.TongTien = hd.TongTien + 30000;
-                        hddao.UpdateTongTien(hd);
+                        if (hd.TongTien > 0)
+                        {
+                            //Thêm 30 nghìn phí ship
+                            hd.TongTien = hd.TongTien + 30000;
+                            hddao.UpdateTongTien(hd);
 
+                        }
+                    }else
+                    {
+                        if (hd.TongTien > 0)
+                        {
+                            //Thêm 30 nghìn phí ship
+                            var ttkm = hd.TongTien / 1000;
+                            ttkm = ttkm * km.PhanTramKM / 100;
+                            ttkm = Math.Floor((decimal)ttkm);
+
+
+                            //Thêm 30 nghìn phí ship
+                            hd.TongTien = hd.TongTien - ttkm * 1000 + 30000;
+                            hddao.UpdateTongTien(hd);
+                        }
                     }
+                    
                     //Sau khi cập nhật tổng tiền cho phần Hóa đơn, ta tiến hành thêm thông tin cho Đặt hàng
                     DatHang dh = new DatHang();
                     dh.MaKH = id;
@@ -219,13 +254,30 @@ namespace MoriiCoffee.Controllers
                         }
                         hd.TongTien += cthd.ThanhTien;
                     }
+                    var km = kmdao.ViewDetailKhuyenMaiTrue();
 
-                    //Sau khi thêm tất cả các sản phẩm đặt vào chi tiết hóa đơn, ta tiến hành cập nhật tổng tiền
-                    if (hd.TongTien > 0)
+                    if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
                     {
-                        //Thêm 30 nghìn phí ship
-                        hddao.UpdateTongTien(hd);
+                        if (hd.TongTien > 0)
+                        {
+                            hddao.UpdateTongTien(hd);
 
+                        }
+                    }
+                    else
+                    {
+                        if (hd.TongTien > 0)
+                        {
+                            var ttkm = hd.TongTien / 1000;
+                            ttkm = ttkm * km.PhanTramKM / 100;
+                            ttkm = Math.Floor((decimal)ttkm);
+
+
+
+                            //Thêm 30 nghìn phí ship
+                            hd.TongTien = hd.TongTien - ttkm * 1000;
+                            hddao.UpdateTongTien(hd);
+                        }
                     }
 
                 }

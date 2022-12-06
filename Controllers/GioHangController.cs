@@ -17,7 +17,8 @@ namespace MoriiCoffee.Controllers
         // GET: GioHang
         private MoriiCoffeeDBContext db = new MoriiCoffeeDBContext();
         private NguoiDungDao nddao = new NguoiDungDao();
-        private const string CartSession = "CartSession"; 
+        private const string CartSession = "CartSession";
+        private KhuyenMaiDao kmdao = new KhuyenMaiDao();
 
         public ActionResult GioHang()
         {
@@ -44,6 +45,20 @@ namespace MoriiCoffee.Controllers
                 var cartQtySession = list.Count();
                 ViewBag.cartQtySession = cartQtySession;
             }
+
+            //Khuyến mãi
+            var km = kmdao.ViewDetailKhuyenMaiTrue();
+            //Nếu là không khuyến mãi thì không thay đồi gì trong giao diện giỏ hàng ngược lại thì sẽ thêm tên khuyến mãi và handle trừ tiền khuyến mãi
+            if(km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
+            {
+                ViewBag.isKM = false;
+                ViewBag.km = km;
+            }else
+            {
+                ViewBag.isKM = true;
+                ViewBag.km = km;
+            }
+
             return View(list);
         }
 

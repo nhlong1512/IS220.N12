@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     long TongGia = 0;
     var nd = ViewBag.ndd;
+    var km = ViewBag.km;
+    var isKM = ViewBag.isKM;
+    long e = 0;
 }
 
 @model List<MoriiCoffee.Common.CartItem>
@@ -133,9 +136,27 @@
                                     @a.000 đ
                                 </p>
                             </div>
+                            
                             <div class="wrap-giamgia">
-                                <p class="sub-total">GIẢM GIÁ</p>
-                                <p class="sub-total" style="font-weight:600;">__</p>
+                                @if (isKM == true)
+                                {
+                                    <div style="display:flex; flex-direction:column;">
+                                        <p class="sub-total">GIẢM GIÁ</p>
+                                        <p class="sub-total">(@km.TenKM)</p>
+                                    </div>
+                                    <p class="sub-total" style="font-weight:600;">
+                                        @{
+                                            e = (TongGia * km.PhanTramKM / 100);
+                                            e = e / 1000;
+                                        }
+                                        @e.000đ
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="sub-total">GIẢM GIÁ</p>
+                                    <p class="sub-total" style="font-weight:600;">__</p>
+                                }
                             </div>
                             <div class="wrap-phivanchuyen">
                                 <p class="sub-total">PHÍ VẬN CHUYỂN</p>
@@ -149,7 +170,7 @@
                                 <p class="sub-total">TỔNG SỐ TIỀN </p>
                                 <p class="sub-total" style="color:#146d4d; font-weight: 600;">
                                     @{
-                                        var b = TongGia + 30000;
+                                        var b = TongGia - e*1000 + 30000;
                                         b = b / 1000;
                                     }
                                     @b.000 đ
