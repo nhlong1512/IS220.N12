@@ -84,10 +84,6 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhuyenMai>()
-                .Property(e => e.TenKM)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KhuyenMai>()
                 .Property(e => e.CreatedBy)
                 .IsUnicode(false);
 

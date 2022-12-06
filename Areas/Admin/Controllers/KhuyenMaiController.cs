@@ -38,6 +38,8 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
         }
 
+
+        //Handle áp dụng khuyến mãi json
         [HttpPost]
         public JsonResult ApDungKhuyenMaiJson(long selectVal)
         {
@@ -67,11 +69,44 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 isValid = false;
             }
 
-
             return Json(new
             {
                 isValid = isValid,
-                errMsg = "Áp Dụng Thất Bại. ",
+
+            });
+        }
+
+
+        //Handle thêm khuyến mãi
+        [HttpPost]
+        public JsonResult ThemKhuyenMaiJson(string tenKhuyenMai, int ptKhuyenMai)
+        {
+            var isValid = true;
+            KhuyenMai km = new KhuyenMai();
+            km.TenKM = tenKhuyenMai;
+            km.PhanTramKM = ptKhuyenMai;
+            if(km.TenKM != null && km.PhanTramKM != null)
+            {
+                var idkm = kmdao.Insert(km);
+                if(idkm > 0)
+                {
+                    
+                }
+                else
+                {
+                    isValid = false;
+                }
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            return Json(new
+            {
+                tenKhuyenMai = tenKhuyenMai,
+                ptKhuyenMai = ptKhuyenMai,
+                isValid = isValid,
 
             });
         }
