@@ -139,9 +139,9 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             var dh = dhdao.ViewDetail(id);
             var hd = hddao.ViewDetail(dh.MaHoaDon);
             var km = kmdao.ViewDetail(hd.MaKM);
-            if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
+            if (km.TenKM == "Không Khuyến Mãi" || km.ID == 1)
             {
-                ViewBag.isKM = false;
+                isKM = false;
             }
             var listCTHD = new List<ChiTietHoaDon>();
             listCTHD = cthddao.ViewAllByID(dh.MaHoaDon);

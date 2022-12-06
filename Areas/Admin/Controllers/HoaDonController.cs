@@ -64,7 +64,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             var km = kmdao.ViewDetail(hd.MaKM);
             if (km.TenKM == "Không Khuyến Mãi" && km.ID == 1)
             {
-                ViewBag.isKM = false;
+                isKM = false;
             }
             var listCTHD = new List<ChiTietHoaDon>();
             listCTHD = cthddao.ViewAllByID(id);
