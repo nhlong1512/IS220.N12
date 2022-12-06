@@ -63,10 +63,12 @@
                     </div>
 
                     <div style="text-decoration: none; margin-bottom: 80px; margin-top: 40px; display: flex; justify-content: end; align-items: center;">
+                        <button type="submit" class="xoaKhuyenMaiButton" style="margin-right:16px;"> 
+                            Xóa
+                        </button>
                         <button type="submit" class="apDungButton">
                             Áp Dụng
                         </button>
-
                     </div>
 
                     <hr class="style10" style="margin-bottom:80px;">
@@ -74,6 +76,12 @@
 
 
                     <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:80px; ">Thêm Mới Khuyến Mãi</h3>
+                    <div class="form-group row">
+                        <div class="message-success-2" style="color: #155724 !important; font-size: 20px; padding: 0;" role="alert"></div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="message-error-2" style="color: #dc3545 !important; font-size: 20px; padding: 0;" role="alert"></div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label col-form-label-lg" style="padding-right:0; padding-left:0;" for="tieude">Tên Khuyến Mãi</label>
                         <div class="col-sm-9">
@@ -519,6 +527,18 @@
         border-radius: 8px;
     }
 
+    .xoaKhuyenMaiButton {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        background-color: #146d4d;
+        padding: 20px 40px;
+        text-align: center;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 8px;
+    }
+
     hr.style10 {
         border-top: 1px dotted #8c8b8b;
         border-bottom: 1px dotted #fff;
@@ -533,6 +553,8 @@
         $(".apDungButton").on('click',
             function handleClickApDungButton(e) {
                 e.preventDefault();
+                $(".message-error").empty();
+                $('.message-success').empty();
                 var id = $(this).data("id");
                 var selectVal = +$('.form-select').val();
                 console.log(id, selectVal);
@@ -563,9 +585,46 @@
             }
         )
 
+        $(".xoaKhuyenMaiButton").on('click',
+            function handleClickXoaKhuyenmaiButton(e) {
+                e.preventDefault();
+                $(".message-error").empty();
+                $('.message-success').empty();
+                var id = $(this).data("id");
+                var selectVal = +$('.form-select').val();
+                console.log(id, selectVal);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/KhuyenMai/XoaKhuyenMaiJson",
+                    data: {
+                        selectVal: selectVal,
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.isValid) {
+                            window.location.replace("https://localhost:44309/admin/khuyen-mai");
+                            //$('.message-success').append("Xóa khuyến mãi thành công. ");
+                            topFunction();
+                        }
+                        else {
+                            $(".message-error").append("Xóa khuyến mãi thất bại. ");
+                            topFunction();
+                        }
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
+            }
+        )
+
         $(".themKhuyenMaiButton").on('click',
             function handleClickThemKhuyenMaiButton(e) {
                 e.preventDefault();
+                $(".message-error-2").empty();
+                $(".message-success-2").empty();
                 var tenKhuyenMai = $(".tenKhuyenMai").val();
                 var ptKhuyenMai = + $(".ptKhuyenMai").val();
                 console.log(tenKhuyenMai, ptKhuyenMai);
@@ -580,13 +639,13 @@
                     dataType: "json",
                     success: function (res) {
                         if (res.isValid) {
-                            $('.message-success').append("Thêm khuyến mãi thành công. ");
                             console.log(res.tenKhuyenMai, res.ptKhuyenMai, res.isValid)
-                            //window.location.replace("https://localhost:44309/profile/don-dat");
+                            window.location.replace("https://localhost:44309/admin/khuyen-mai");
+                            //$('.message-success-2').append("Thêm khuyến mãi thành công. ");
                             topFunction();
                         }
                         else {
-                            $(".message-error").append("Thêm khuyến mãi thất bại. ");
+                            $(".message-error-2").append("Thêm khuyến mãi thất bại. ");
                             topFunction();
                         }
                     },
@@ -598,6 +657,7 @@
             }
         )
 
+        
         function topFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;

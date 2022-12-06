@@ -77,6 +77,53 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         }
 
 
+        //Handle Xóa khuyến mãi
+        [HttpPost]
+        public JsonResult XoaKhuyenMaiJson(long selectVal)
+        {
+            var km = kmdao.ViewDetail(selectVal);
+            var isGanLai = false;
+            
+            var kms = kmdao.ViewAll();
+            var isValid = true;
+            if(km.Status == true)
+            {
+                isGanLai = true;
+            }
+
+            if (selectVal > 0)
+            {
+                foreach (var item in kms)
+                {
+                    if (item.ID == selectVal)
+                    {
+                        kmdao.Delete(item.ID);
+                    }
+                }
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            if(isGanLai == true)
+            {
+                foreach (var item in kms)
+                {
+                    item.Status = true;
+                    kmdao.Update(item);
+                    break;
+                }
+            }
+
+            return Json(new
+            {
+                isValid = isValid,
+
+            });
+        }
+
+
         //Handle thêm khuyến mãi
         [HttpPost]
         public JsonResult ThemKhuyenMaiJson(string tenKhuyenMai, int ptKhuyenMai)
@@ -85,6 +132,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             KhuyenMai km = new KhuyenMai();
             km.TenKM = tenKhuyenMai;
             km.PhanTramKM = ptKhuyenMai;
+            km.Status = false;
             if(km.TenKM != null && km.PhanTramKM != null)
             {
                 var idkm = kmdao.Insert(km);
