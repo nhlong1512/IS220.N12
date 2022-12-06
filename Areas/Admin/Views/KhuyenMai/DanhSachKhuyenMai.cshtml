@@ -38,17 +38,17 @@
                     <div class="form-group row">
                         <label for="loaiSanPhamLabel" class="col-sm-3 col-form-label col-form-label-lg" style=" padding-right: 0; padding-left: 0;">Khuyến Mãi Đang Áp Dụng</label>
                         <div class="col-sm-9">
-                            <select class="form-select form-select-lg" aria-label="Default select example" name="MaPhanLoai" style="padding:8px 16px;">
+                            <select class="form-select form-select-lg" aria-label="Default select example" style="padding:8px 16px;">
                                 @{
                                     foreach (var km in kms)
                                     {
                                         if (km.Status == true)
                                         {
-                                            <option selected class="selectedPhanLoai" value="@km.TenKM">@km.TenKM</option>
+                                            <option selected class="selectedPhanLoai" value="@km.ID">@km.TenKM</option>
                                         }
                                         else
                                         {
-                                            <option class="selectedPhanLoai" value="@km.TenKM">@km.TenKM</option>
+                                            <option class="selectedPhanLoai" value="@km.ID">@km.TenKM</option>
                                         }
                                     }
                                 }
@@ -57,11 +57,12 @@
                         </div>
                     </div>
 
-                    <a class="button-profile-save" style="text-decoration:none; padding-right:12px; margin-bottom:80px;">
-                        <button type="submit" value="Create">
+                    <div style="text-decoration: none; margin-bottom: 80px; margin-top: 40px; display: flex; justify-content: end; align-items: center;">
+                        <button type="submit" class="apDungButton">
                             Áp Dụng
                         </button>
-                    </a>
+
+                    </div>
 
                     <hr class="style10" style="margin-bottom:80px;">
 
@@ -488,34 +489,65 @@
             border-radius: 8px;
         }
 
+    .apDungButton {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        background-color: #146d4d;
+        padding: 20px 40px;
+        text-align: center;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 8px;
+    }
+
     hr.style10 {
         border-top: 1px dotted #8c8b8b;
         border-bottom: 1px dotted #fff;
     }
 </style>
 
-<script>
-    //Handle thêm CKEDITOR
-    CKEDITOR.replace("ckeditor");
 
-    //Handle thêm CKFINDER
-    function BrowserSever() {
-        var finder = new CKFinder();
-        finder.selectActionFunction = GanUrl;
-        finder.popup();
-    }
 
-    function GanUrl(url) {
-        console.log(url);
-        $("#urlAnh").val(url);
-
-    }
-
-</script>
 
 <script>
     $(document).ready(function () {
-        console.log($('.form-select').val())
+        $(".apDungButton").on('click',
+            function handleClickApDungButton(e) {
+                e.preventDefault();
+                var id = $(this).data("id");
+                var selectVal = +$('.form-select').val();
+                console.log(id, selectVal);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/KhuyenMai/ApDungKhuyenMaiJson",
+                    data: {
+                        selectVal: selectVal,
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.isValid) {
+                            $('.message-success').append("Áp dụng thành công. ");
+                            topFunction();
+                            //window.location.replace("https://localhost:44309/profile/don-dat");
+                        }
+                        if (res.errMsg) {
+                            $(".message-error").append(res.errMsg);
+                            topFunction();
+                        }
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
+            }
+        )
 
-    });
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    })
 </script>

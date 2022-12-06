@@ -34,7 +34,7 @@ namespace Model.Dao
         }
 
         //Xem chi tiết KhuyenMai
-        public KhuyenMai ViewDetail(int id)
+        public KhuyenMai ViewDetail(long id)
         {
             return db.KhuyenMais.Find(id);
         }
@@ -54,7 +54,8 @@ namespace Model.Dao
             try
             {
                 var km = db.KhuyenMais.Find(entity.ID);
-                km.PhanTramKM = entity.PhanTramKM; 
+                km.PhanTramKM = entity.PhanTramKM;
+                km.Status = entity.Status;
                 km.ModifiedBy = entity.ModifiedBy;
                 km.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
@@ -67,7 +68,7 @@ namespace Model.Dao
         }
 
         //Xóa KhuyenMai
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {

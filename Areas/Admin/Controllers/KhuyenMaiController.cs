@@ -22,9 +22,58 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
         public ActionResult DanhSachKhuyenMai()
         {
+            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                return Redirect("/dang-nhap");
+            }
+            else
+            {
+                ViewBag.session = session;
+                var nd = nddao.ViewDetailEmail(session.UserName);
+                ViewBag.ndd = nd;
+            }
             var kms = kmdao.ViewAll();
             ViewBag.kms = kms;
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult ApDungKhuyenMaiJson(long selectVal)
+        {
+            var km = kmdao.ViewDetail(selectVal);
+            var kms = kmdao.ViewAll();
+            var isValid = true;
+            
+            
+            if(selectVal > 0)
+            {
+                foreach (var item in kms)
+                {
+                    if (item.ID == selectVal)
+                    {
+                        item.Status = true;
+                        kmdao.Update(item);
+                    }
+                    else
+                    {
+                        item.Status = false;
+                        kmdao.Update(item);
+                    }
+                }
+            }
+            else
+            {
+                isValid = false;
+            }
+
+
+            return Json(new
+            {
+                isValid = isValid,
+                errMsg = "Áp Dụng Thất Bại. ",
+
+            });
         }
     }
 }
