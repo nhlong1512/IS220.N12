@@ -17,6 +17,8 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         private Blog bl = new Blog();
         private BlogDao bldao = new BlogDao();
         private NguoiDungDao nddao = new NguoiDungDao();
+        private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
+        private HoaDonDao hddao = new HoaDonDao();
 
         // GET: Admin/Admin
         public ActionResult Dashboard()
@@ -31,9 +33,14 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 var nd = nddao.ViewDetailEmail(session.UserName);
                 ViewBag.ndd = nd;
             }
-
-            var blogs = bldao.ViewAll();
-            ViewBag.blogs = blogs;
+            var nds = nddao.ViewAll();
+            ViewBag.nds = nds;
+            ViewBag.ndsQty = nds.Count();
+            ViewBag.ctspsQty = ctspdao.ViewAll().Count();
+            var hds = hddao.ViewAll();
+            ViewBag.tongTienHD = hds.Sum(p => p.TongTien);
+            ViewBag.hdsQty = hds.Count();
+            
             return View();
         }
 

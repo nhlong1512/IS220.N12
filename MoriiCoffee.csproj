@@ -2621,6 +2621,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaoCaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonDatController.cs" />
@@ -2736,6 +2737,7 @@
     <Content Include="Areas\Admin\Views\HoaDon\DanhSachHoaDon.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDon\ChiTietHoaDon.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\DanhSachKhuyenMai.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoCao\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
