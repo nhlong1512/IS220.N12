@@ -123,6 +123,7 @@ namespace Model.Dao
             }
         }
 
+
         public IEnumerable<HoaDon> ListAllPaging(string searchString)
         {
             IQueryable<HoaDon> model = db.HoaDons;

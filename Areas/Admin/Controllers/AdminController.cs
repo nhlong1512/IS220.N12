@@ -40,6 +40,23 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             var hds = hddao.ViewAll();
             ViewBag.tongTienHD = hds.Sum(p => p.TongTien);
             ViewBag.hdsQty = hds.Count();
+
+            decimal doanhThuOnline = 0;
+            decimal doanhThuTrucTiep = 0;
+            foreach(var item in hds)
+            {
+                if(item.IsOnline == true)
+                {
+                    doanhThuOnline += item.TongTien.GetValueOrDefault();
+                }else
+                {
+                    doanhThuTrucTiep += item.TongTien.GetValueOrDefault();
+                }
+            }
+
+            ViewBag.doanhThuOnline = doanhThuOnline;
+            ViewBag.doanhThuTrucTiep = doanhThuTrucTiep;
+            
             
             return View();
         }

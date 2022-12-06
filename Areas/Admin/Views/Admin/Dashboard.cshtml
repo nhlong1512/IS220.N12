@@ -21,11 +21,12 @@
     var ctspsQty = ViewBag.ctspsQty;
     var tongTienHD = ViewBag.tongTienHD;
     var hdsQty = ViewBag.hdsQty;
+    var doanhThuOnline = ViewBag.doanhThuOnline;
+    var doanhThuTrucTiep = ViewBag.doanhThuTrucTiep;
 }
 
 
 <div class="body flex-grow-1 px-3">
-
 
     <div class="container-lg">
         <div class="row">
@@ -153,23 +154,20 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h4 class="card-title mb-0">Traffic</h4>
-                        <div class="small text-medium-emphasis">January - July 2022</div>
+                        <h4 class="card-title mb-0">Biểu Đồ Doanh Thu</h4>
+                        <div class="small text-medium-emphasis">Thắng 7 - Tháng 12 2022</div>
                     </div>
                     <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
                         <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
                             <input class="btn-check" id="option1" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Day</label>
+                            <label class="btn btn-outline-secondary"> Line </label>
                             <input class="btn-check" id="option2" type="radio" name="options" autocomplete="off" checked="">
-                            <label class="btn btn-outline-secondary active"> Month</label>
+                            <label class="btn btn-outline-secondary active"> Bar </label>
                             <input class="btn-check" id="option3" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Year</label>
+                            <label class="btn btn-outline-secondary"> Pie </label>
                         </div>
                     </div>
                 </div>
-                @*<div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
-                    <canvas class="chart" id="main-chart" height="300"></canvas>
-                </div>*@
                 <div>
                     <canvas id="myChart"></canvas>
                 </div>
@@ -182,25 +180,29 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h4 class="card-title mb-0">Traffic</h4>
-                        <div class="small text-medium-emphasis">January - July 2022</div>
+                        <h4 class="card-title mb-0">Biểu Đồ Doanh Thu</h4>
+                        <div class="small text-medium-emphasis">Mua Hàng Online - Mua Hàng Trực Tiếp</div>
                     </div>
                     <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
                         <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
                             <input class="btn-check" id="option1" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Day</label>
+                            <label class="btn btn-outline-secondary"> Bar</label>
                             <input class="btn-check" id="option2" type="radio" name="options" autocomplete="off" checked="">
-                            <label class="btn btn-outline-secondary active"> Month</label>
+                            <label class="btn btn-outline-secondary active"> Pie</label>
                             <input class="btn-check" id="option3" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Year</label>
+                            <label class="btn btn-outline-secondary"> Doughnut</label>
                         </div>
                     </div>
                 </div>
                 @*<div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
             <canvas class="chart" id="main-chart" height="300"></canvas>
+
         </div>*@
-                <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
-                    <canvas class="chart" id="main-chart" height="300"></canvas>
+                <p style="margin: 0; padding: 0; display:none;" id="online">@doanhThuOnline</p>
+                <p style="margin: 0; padding: 0; display:none;" id="tructiep">@doanhThuTrucTiep</p>
+
+                <div class="c-chart-wrapper onlineTrucTiepChart" data-doanhThuOnline="@doanhThuOnline" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                    <canvas id="onlineTrucTiepChart"></canvas>
                 </div>
 
             </div>
@@ -216,12 +218,13 @@
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
-    type: 'bar',
+      type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+          label: 'Doanh Thu',
+
+        data: [120000, 150000, 200000, 100000, 300000, 500000],
         borderWidth: 1
       }]
     },
@@ -233,6 +236,34 @@
       }
     }
   });
+
+    const online = document.getElementById('online');
+    var tienOnline = online.textContent;
+    const tructiep = document.getElementById('tructiep');
+    var tienTrucTiep = tructiep.textContent;
+
+
+    const onlineTrucTiepChart = document.getElementById('onlineTrucTiepChart');
+    new Chart(onlineTrucTiepChart, {
+        type: 'pie',
+        data: {
+            labels: ['Mua Hàng Online', 'Mua Hàng Trực Tiếp'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [tienOnline, tienTrucTiep],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
 </script>
 
 
