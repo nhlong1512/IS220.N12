@@ -44,6 +44,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             return View();
         }
 
+
         [ValidateInput(false)]
         public ActionResult ChiTietHoaDon(long id)
         {
@@ -157,6 +158,8 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             });
         }
+
+        
 
     }
 }

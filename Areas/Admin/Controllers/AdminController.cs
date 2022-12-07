@@ -56,11 +56,51 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             ViewBag.doanhThuOnline = doanhThuOnline;
             ViewBag.doanhThuTrucTiep = doanhThuTrucTiep;
-            
-            
+
+            ViewBag.doanhThuThang7 = doanhThuThang(7);
+            ViewBag.doanhThuThang8 = doanhThuThang(8);
+            ViewBag.doanhThuThang9 = doanhThuThang(9);
+            ViewBag.doanhThuThang10 = doanhThuThang(10);
+            ViewBag.doanhThuThang11 = doanhThuThang(11);
+            ViewBag.doanhThuThang12 = doanhThuThang(12);
+
+
             return View();
         }
 
+
+        public int getThang(HoaDon hd)
+        {
+            var ngayThang = hd.CreatedDate;
+            var thang = ngayThang.Value.ToString();
+
+            var thangStr = "";
+            foreach (var item in thang)
+            {
+                if (item == '/')
+                {
+                    break;
+                }
+                thangStr = thangStr + item;
+            }
+            return int.Parse(thangStr);
+        }
+
+        public decimal doanhThuThang(int t)
+        {
+            decimal doanhThu = 0;
+            var thang = t;
+            var hds = hddao.ViewAll();
+            foreach (var item in hds)
+            {
+                if (getThang(item) == thang)
+                {
+                    doanhThu += item.TongTien.GetValueOrDefault();
+                }
+            }
+            return doanhThu;
+
+        }
 
     }
 }

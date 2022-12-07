@@ -37,6 +37,20 @@ namespace Model.Dao
             return hoadons;
         }
 
+        //public decimal doanhThuThang(int t)
+        //{
+        //    decimal doanhThu = 0;
+        //    var list = db.HoaDons.Where(p => p.CreatedDate.);
+        //    List<HoaDon> hoadons = new List<HoaDon>(list);
+        //    foreach (var item in hoadons)
+        //    {
+        //        if(item.CreatedDate.Value ==  )
+        //    }
+
+        //    return doanhThu;
+
+        //}
+
         //Xem tất cả HoaDon có id 
         public List<HoaDon> ViewAllByID(long id)
         {

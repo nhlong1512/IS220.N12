@@ -23,6 +23,16 @@
     var hdsQty = ViewBag.hdsQty;
     var doanhThuOnline = ViewBag.doanhThuOnline;
     var doanhThuTrucTiep = ViewBag.doanhThuTrucTiep;
+
+    //Doanh thu tháng
+    var doanhThuThang7 = ViewBag.doanhThuThang7;
+    var doanhThuThang8 = ViewBag.doanhThuThang8;
+    var doanhThuThang9 = ViewBag.doanhThuThang9;
+    var doanhThuThang10 = ViewBag.doanhThuThang10;
+    var doanhThuThang11 = ViewBag.doanhThuThang11;
+    var doanhThuThang12 = ViewBag.doanhThuThang12;
+
+
 }
 
 
@@ -30,6 +40,12 @@
 
     <div class="container-lg">
         <div class="row">
+            <h3 id="doanhThuThang7" style="margin:0; padding:0; display:none;">@doanhThuThang7</h3>
+            <h3 id="doanhThuThang8" style="margin:0; padding:0; display:none;">@doanhThuThang8</h3>
+            <h3 id="doanhThuThang9" style="margin:0; padding:0; display:none;">@doanhThuThang9</h3>
+            <h3 id="doanhThuThang10" style="margin:0; padding:0; display:none;">@doanhThuThang10</h3>
+            <h3 id="doanhThuThang11" style="margin:0; padding:0; display:none;">@doanhThuThang11</h3>
+            <h3 id="doanhThuThang12" style="margin:0; padding:0; display:none;">@doanhThuThang12</h3>
             <div class="col-sm-6 col-lg-3">
                 <div class="card mb-4 text-white bg-primary">
                     <div class="card-body pb-0 d-flex justify-content-between align-items-start">
@@ -48,7 +64,6 @@
                                     <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
                                 </svg>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                         </div>
                     </div>
                     <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
@@ -74,7 +89,6 @@
                                     <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
                                 </svg>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                         </div>
                     </div>
                     <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
@@ -102,7 +116,6 @@
                                     <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
                                 </svg>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                         </div>
                     </div>
                     <div class="c-chart-wrapper mt-3" style="height:70px;">
@@ -139,7 +152,6 @@
                                     <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
                                 </svg>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                         </div>
                     </div>
                     <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
@@ -215,7 +227,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('myChart');
+    var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
+    var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
+    var doanhThuThang9 = + document.getElementById('doanhThuThang9').textContent;
+    var doanhThuThang10 = + document.getElementById('doanhThuThang10').textContent;
+    var doanhThuThang11 = + document.getElementById('doanhThuThang11').textContent;
+    var doanhThuThang12 = + document.getElementById('doanhThuThang12').textContent;
 
   new Chart(ctx, {
       type: 'bar',
@@ -224,7 +242,7 @@
       datasets: [{
           label: 'Doanh Thu',
 
-        data: [120000, 150000, 200000, 100000, 300000, 500000],
+          data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
         borderWidth: 1
       }]
     },
