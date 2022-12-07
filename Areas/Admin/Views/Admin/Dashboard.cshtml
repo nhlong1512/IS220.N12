@@ -171,18 +171,28 @@
                     </div>
                     <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
                         <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
-                            <input class="btn-check" id="option1" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Line </label>
-                            <input class="btn-check" id="option2" type="radio" name="options" autocomplete="off" checked="">
-                            <label class="btn btn-outline-secondary active"> Bar </label>
-                            <input class="btn-check" id="option3" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Pie </label>
+                            <input class="btn-check typeChart" id="line1" type="radio" onclick="handleClickSize(this);" name="typeChart" value="line">
+                            <label for="line1" id="line1Label" class="btn btn-outline-secondary"> Line </label>
+                            <input class="btn-check typeChart" id="bar1" type="radio" onclick="handleClickSize(this);" name="typeChart" value="bar" checked="checked">
+                            <label for="bar1" id="bar1Label" class="btn btn-outline-secondary active"> Bar </label>
+                            <input class="btn-check typeChart" id="pie1" type="radio" onclick="handleClickSize(this);" name="typeChart" value="pie" autocomplete="off">
+                            <label for="pie1" id="pie1Label" class="btn btn-outline-secondary"> Pie </label>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <canvas id="myChart"></canvas>
+
+
+
+                <div class="myChart1 hide">
+                    <canvas id="myChart1"></canvas>
                 </div>
+                <div class="myChart2">
+                    <canvas id="myChart2"></canvas>
+                </div>
+                <div class="myChart3 hide" style="display:flex; justify-content: center; align-items: center; height: 700px;">
+                    <canvas id="myChart3"></canvas>
+                </div>
+
 
             </div>
 
@@ -197,24 +207,28 @@
                     </div>
                     <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
                         <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
-                            <input class="btn-check" id="option1" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Bar</label>
-                            <input class="btn-check" id="option2" type="radio" name="options" autocomplete="off" checked="">
-                            <label class="btn btn-outline-secondary active"> Pie</label>
-                            <input class="btn-check" id="option3" type="radio" name="options" autocomplete="off">
-                            <label class="btn btn-outline-secondary"> Doughnut</label>
+                            <input class="btn-check typeChart2" id="bar2" type="radio" onclick="handleClickType(this);" name="typeChart2" value="bar">
+                            <label for="bar2" id="bar2Label" class="btn btn-outline-secondary"> Bar </label>
+                            <input class="btn-check typeChart2" id="pie2" type="radio" onclick="handleClickType(this);" name="typeChart2" value="pie" checked="checked">
+                            <label for="pie2" id="pie2Label" class="btn btn-outline-secondary active"> Pie </label>
+                            <input class="btn-check typeChart2" id="doughnut2" type="radio" onclick="handleClickType(this);" name="typeChart2" value="doughnut" autocomplete="off">
+                            <label for="doughnut2" id="doughnut2Label" class="btn btn-outline-secondary"> Doughnut </label>
                         </div>
                     </div>
                 </div>
-                @*<div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
-            <canvas class="chart" id="main-chart" height="300"></canvas>
-
-        </div>*@
                 <p style="margin: 0; padding: 0; display:none;" id="online">@doanhThuOnline</p>
                 <p style="margin: 0; padding: 0; display:none;" id="tructiep">@doanhThuTrucTiep</p>
 
-                <div class="c-chart-wrapper onlineTrucTiepChart" data-doanhThuOnline="@doanhThuOnline" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
-                    <canvas id="onlineTrucTiepChart"></canvas>
+                <div class="chart1 c-chart-wrapper onlineTrucTiepChart hide" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                    <canvas id="onlineTrucTiepChart1"></canvas>
+                </div>
+
+                <div class="chart2 c-chart-wrapper onlineTrucTiepChart" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                    <canvas id="onlineTrucTiepChart2"></canvas>
+                </div>
+
+                <div class="chart3 c-chart-wrapper onlineTrucTiepChart hide" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                    <canvas id="onlineTrucTiepChart3"></canvas>
                 </div>
 
             </div>
@@ -222,12 +236,61 @@
         </div>
 
         <!-- /.row-->
+
+
+
+
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script>
-    const ctx = document.getElementById('myChart');
+    //var typeValue = "bar";
+    function handleClickSize(myRadio) {
+        var line1Label = document.querySelector("#line1Label");
+        var bar1Label = document.querySelector("#bar1Label");
+        var pie1Label = document.querySelector("#pie1Label");
+        var myChart1 = document.querySelector(".myChart1");
+        var myChart2 = document.querySelector(".myChart2");
+        var myChart3 = document.querySelector(".myChart3");
+
+        console.log("Long")
+
+        typeValue = myRadio.value;
+        console.log(typeValue);
+        if (typeValue == "line") {
+            line1Label.classList.add("active");
+            bar1Label.classList.remove("active");
+            pie1Label.classList.remove("active");
+            myChart1.classList.remove("hide");
+            myChart2.classList.add("hide");
+            myChart3.classList.add("hide");
+
+        }
+        if (typeValue == "bar") {
+            line1Label.classList.remove("active");
+            bar1Label.classList.add("active");
+            pie1Label.classList.remove("active");
+            myChart1.classList.add("hide");
+            myChart2.classList.remove("hide");
+            myChart3.classList.add("hide");
+
+        }
+        if (typeValue == "pie") {
+            line1Label.classList.remove("active");
+            bar1Label.classList.remove("active");
+            pie1Label.classList.add("active");
+            myChart3.classList.remove("hide");
+            myChart1.classList.add("hide");
+            myChart2.classList.add("hide");
+        }
+
+    }
+
+    
+    var ctx = document.getElementById('myChart1');
     var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
     var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
     var doanhThuThang9 = + document.getElementById('doanhThuThang9').textContent;
@@ -235,40 +298,193 @@
     var doanhThuThang11 = + document.getElementById('doanhThuThang11').textContent;
     var doanhThuThang12 = + document.getElementById('doanhThuThang12').textContent;
 
-  new Chart(ctx, {
-      type: 'bar',
-    data: {
-      labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-      datasets: [{
-          label: 'Doanh Thu',
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh Thu',
 
-          data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
-        borderWidth: 1
-      }]
-    },
-      options: {
-      scales: {
-        y: {
-          beginAtZero: true
+                data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
-    }
-  });
+    });
 
-    
+    var ctx = document.getElementById('myChart2');
+    var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
+    var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
+    var doanhThuThang9 = + document.getElementById('doanhThuThang9').textContent;
+    var doanhThuThang10 = + document.getElementById('doanhThuThang10').textContent;
+    var doanhThuThang11 = + document.getElementById('doanhThuThang11').textContent;
+    var doanhThuThang12 = + document.getElementById('doanhThuThang12').textContent;
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+
+    var ctx = document.getElementById('myChart3');
+    var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
+    var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
+    var doanhThuThang9 = + document.getElementById('doanhThuThang9').textContent;
+    var doanhThuThang10 = + document.getElementById('doanhThuThang10').textContent;
+    var doanhThuThang11 = + document.getElementById('doanhThuThang11').textContent;
+    var doanhThuThang12 = + document.getElementById('doanhThuThang12').textContent;
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
 
 </script>
 
 <script>
-    const online = document.getElementById('online');
+    function handleClickType(myRadio) {
+        var bar2Label = document.querySelector("#bar2Label");
+        var pie2Label = document.querySelector("#pie2Label");
+        var doughnut2Label = document.querySelector("#doughnut2Label");
+        var myChart1 = document.querySelector(".chart1");
+        var myChart2 = document.querySelector(".chart2");
+        var myChart3 = document.querySelector(".chart3");
+
+        console.log("Long")
+
+        typeValue = myRadio.value;
+        console.log(typeValue);
+        if (typeValue == "bar") {
+            bar2Label.classList.add("active");
+            pie2Label.classList.remove("active");
+            doughnut2Label.classList.remove("active");
+            myChart1.classList.remove("hide");
+            myChart2.classList.add("hide");
+            myChart3.classList.add("hide");
+
+        }
+        if (typeValue == "pie") {
+            bar2Label.classList.remove("active");
+            pie2Label.classList.add("active");
+            doughnut2Label.classList.remove("active");
+            myChart1.classList.add("hide");
+            myChart2.classList.remove("hide");
+            myChart3.classList.add("hide");
+
+        }
+        if (typeValue == "doughnut") {
+            bar2Label.classList.remove("active");
+            pie2Label.classList.remove("active");
+            doughnut2Label.classList.add("active");
+            myChart3.classList.remove("hide");
+            myChart1.classList.add("hide");
+            myChart2.classList.add("hide");
+        }
+
+    }
+
+    var online = document.getElementById('online');
     var tienOnline = online.textContent;
-    const tructiep = document.getElementById('tructiep');
+    var tructiep = document.getElementById('tructiep');
     var tienTrucTiep = tructiep.textContent;
 
 
-    const onlineTrucTiepChart = document.getElementById('onlineTrucTiepChart');
-    new Chart(onlineTrucTiepChart, {
+    var onlineTrucTiepChar1 = document.getElementById('onlineTrucTiepChart1');
+    new Chart(onlineTrucTiepChart1, {
+        type: 'bar',
+        data: {
+            labels: ['Mua Hàng Online', 'Mua Hàng Trực Tiếp'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [tienOnline, tienTrucTiep],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    var online = document.getElementById('online');
+    var tienOnline = online.textContent;
+    var tructiep = document.getElementById('tructiep');
+    var tienTrucTiep = tructiep.textContent;
+
+
+    var onlineTrucTiepChart2 = document.getElementById('onlineTrucTiepChart2');
+    new Chart(onlineTrucTiepChart2, {
         type: 'pie',
+        data: {
+            labels: ['Mua Hàng Online', 'Mua Hàng Trực Tiếp'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [tienOnline, tienTrucTiep],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    var online = document.getElementById('online');
+    var tienOnline = online.textContent;
+    var tructiep = document.getElementById('tructiep');
+    var tienTrucTiep = tructiep.textContent;
+
+
+    var onlineTrucTiepChart3 = document.getElementById('onlineTrucTiepChart3');
+    new Chart(onlineTrucTiepChart3, {
+        type: 'doughnut',
         data: {
             labels: ['Mua Hàng Online', 'Mua Hàng Trực Tiếp'],
             datasets: [{
@@ -289,3 +505,12 @@
 </script>
 
 
+<style>
+    .hide{
+        display:none !important;
+    }
+
+    .show {
+        display:flex;
+    }
+</style>

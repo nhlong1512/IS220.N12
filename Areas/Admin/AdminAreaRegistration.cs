@@ -216,14 +216,6 @@ namespace MoriiCoffee.Areas.Admin
 
          );
 
-            //ConfigRoute cho Báo Cáo
-            context.MapRoute(
-             name: "AdminBaoCao",
-             url: "admin/bao-cao",
-             defaults: new { controller = "BaoCao", action = "Index", id = UrlParameter.Optional }
-
-         );
-
 
 
 
