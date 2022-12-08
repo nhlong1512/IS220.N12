@@ -139,7 +139,7 @@ namespace MoriiCoffee
             routes.MapRoute(
                name: "BlogTrangChu",
                url: "blog",
-               defaults: new { controller = "BlogTrangChu", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "BlogTrangChu", action = "DanhSachBlog", id = UrlParameter.Optional }
            );
 
             //Config Route cho Cửa hàng
