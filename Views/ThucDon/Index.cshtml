@@ -37,8 +37,9 @@
 <!--/services-sec-->
 <div class="w3-services py-5">
     <div class="container py-lg-4">
-        <div class="title-content text-left mb-lg-5 mb-4">
+        <div class="title-content text-center mb-lg-5 mt-4">
             <h3 class="hny-title text-morii">Tất cả sản phẩm</h3>
+            <p class="fea-para" style="font-size:18px;">Chọn sản phẩm mà bạn muốn</p>
         </div>
         <div class="row w3-services-grids">
             @{
@@ -55,11 +56,11 @@
                                     </h4>
                                 </a>
                                 <p class="card-text mb-0" style="font-size: 20px">
-                                    @{ 
+                                    @{
                                         var t = sp.Gia;
                                         t = t / 1000;
 
-                                     }
+                                    }
                                     @t.000 đ
                                 </p>
 

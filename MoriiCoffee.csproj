@@ -2781,6 +2781,7 @@
     <Content Include="Views\Profile\DonDatDaGiao.cshtml" />
     <Content Include="Views\Profile\DonDatDaHuy.cshtml" />
     <Content Include="Views\BlogTrangChu\DanhSachBlog.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2795,7 +2796,6 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\LayoutClient\" />
-    <Folder Include="Views\LienHe\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Model\Model.csproj">

@@ -2,16 +2,17 @@
 @{
     ViewBag.Title = "DanhSachBlog";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var blogs = ViewBag.blogs;
 }
 
 <!-- about breadcrumb -->
 <section class="w3l-about-breadcrumb position-relative text-center">
     <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
         <div class="container py-lg-5 py-3">
-            <h2 class="title text-morii">Thực Đơn</h2>
+            <h2 class="title text-morii">Blog</h2>
             <ul class="breadcrumbs-custom-path mt-2">
                 <li><a href="Index">Trang Chủ</a></li>
-                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Thực Đơn </li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Blog </li>
             </ul>
         </div>
     </div>
@@ -22,105 +23,31 @@
     <div class="container py-lg-4">
         <div class="title-content text-center mb-lg-5 mt-4">
             <h3 class="hny-title text-morii">Morii Blog</h3>
-            <p class="fea-para">Mỗi tách cà phê, mỗi câu chuyện</p>
+            <p class="fea-para" style="font-size:18px;">Mỗi tách cà phê, mỗi câu chuyện</p>
         </div>
         <div class="row features4-grids text-left mt-lg-4">
-            <div class="col-xl-4 col-md-6 mb-20">
-                <div class="blog-info">
-                    <a href="#">
-                        <img class="img-fluid" src="~/Assets/Images/MoriiBlog1.jpeg" />
-                    </a>
-                    <div class="blog-content">
-                        <p class="date-post">15/09/2022</p>
-                        <h3 class="blog-content-title">
-                            CÁCH NHẬN BIẾT HƯƠNG VỊ CÀ PHÊ ROBUSTA NGUYÊN CHẤT DỄ DÀNG NHẤT
-                        </h3>
-                        <p class="blog-content-detail">
-                            Cùng Arabica, Robusta cũng là loại cà phê nổi tiếng được sử dụng phổ biến ở Việt Nam và nhiều nước khác trên thế giới. Với nhiều đặc điểm riêng, không quá khó để có thể nhận ra hương vị của loại cà phê trứ danh này.
-                        </p>
+            @foreach (var item in blogs)
+            {
+                <a href="">
+
+                <div class="col-xl-4 col-md-6 mb-20">
+                    <div class="blog-info">
+                        <a href="">
+                            <img class="img-fluid" src="@item.UrlImage" alt="@item.TieuDe"/>
+                        </a>
+                        <div class="blog-content">
+                            <p class="date-post">@item.CreatedDate</p>
+                            <h3 class="blog-content-title">
+                                @item.TieuDe
+                            </h3>
+                            <p class="blog-content-detail">
+                                @item.MoTa
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-20">
-                <div class="blog-info">
-                    <a href="#">
-                        <img class="img-fluid" src="~/Assets/Images/MoriiBlog2.jpeg" />
-                    </a>
-                    <div class="blog-content">
-                        <p class="date-post">14/02/2022</p>
-                        <h3 class="blog-content-title">
-                            LỄ TÌNH NHÂN, CÙNG CRUSH ĐI ĐÂU?
-                        </h3>
-                        <p class="blog-content-detail">
-                            Tadaaaa, hết Tết thì Valentine đầy yêu thương lại đang đến rồi nè. Lễ tình nhân, dẫn crush đi quán nào? Nhất định phải cùng người ấy đến Nhà hẹn hò để giữ nhiệt, vun đắp tình cảm nha!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-20">
-                <div class="blog-info">
-                    <a href="#">
-                        <img class="img-fluid" src="~/Assets/Images/MoriiBlog3.jpg" />
-                    </a>
-                    <div class="blog-content">
-                        <p class="date-post">15/09/2022</p>
-                        <h3 class="blog-content-title">
-                            8 LỢI ÍCH BẤT NGỜ CỦA CÀ PHÊ COLD BREW
-                        </h3>
-                        <p class="blog-content-detail">
-                            Cold brew là thức uống rất được yêu thích trong thời gian gần đây. Không chỉ có hương thơm đặc trưng và vị lôi cuốn, nó còn có nhiều lợi ích cho sức khỏe. Cùng The Coffee House tìm hiểu 8 lợi ích nổi bật của loại cà phê lạnh siêu hot này.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-20">
-                <div class="blog-info">
-                    <a href="#">
-                        <img class="img-fluid" src="~/Assets/Images/MoriiBlog4.jpg" />
-                    </a>
-                    <div class="blog-content">
-                        <p class="date-post">15/09/2022</p>
-                        <h3 class="blog-content-title">
-                            CÁCH PHA CÀ PHÊ PHIN THƠM NGON TRÒN VỊ
-                        </h3>
-                        <p class="blog-content-detail">
-                            Có nhiều cách để pha một ly cà phê ngon, nhưng đối với nhiều người Việt giây phút đợi chờ những giọt cà phê rơi từ chiếc phin đã trở thành nét văn hóa ăn sâu trong tiềm thức. Để tạo nên một ly cà phê phin chuẩn vị, không chỉ cần sự tinh tế trong cách chọn loại cà phê mà còn cả sự tỉ mỉ trong từng bước pha.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-20">
-                <div class="blog-info">
-                    <a href="#">
-                        <img class="img-fluid" src="~/Assets/Images/MoriiBlog5.jpg" />
-                    </a>
-                    <div class="blog-content">
-                        <p class="date-post">15/09/2022</p>
-                        <h3 class="blog-content-title">
-                            TẠI SAO CÀ PHÊ CÓ VỊ CHUA?
-                        </h3>
-                        <p class="blog-content-detail">
-                            Nhiều người khi uống cà phê cảm thấy có vị chua thường e ngại rằng cà phê hỏng, kém chất lượng hay gặp các vấn đề trong quá trình pha chế và bảo quản. Tuy nhiên, điều này chưa chính xác. Cả hương vị của Arabica hay Robusta nguyên chất, trải qua quá trình chế biến, rang xay đều có vị chua nhẹ. Vậy nên, cà phê có vị chua chua, vẫn giữ được hương thơm đặc trưng vốn có của nó thì bạn có thể yên tâm đó không phải là cà phê hỏng. The Coffee House sẽ chỉ ra những lý do khiến cà phê có vị chua tự nhiên.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-20">
-                <div class="blog-info">
-                    <a href="#">
-                        <img class="img-fluid" src="~/Assets/Images/MoriiBlog6.jpg" />
-                    </a>
-                    <div class="blog-content">
-                        <p class="date-post">15/09/2022</p>
-                        <h3 class="blog-content-title">
-                            MẸO CHỐNG VÀ CHỮA SAY CÀ PHÊ
-                        </h3>
-                        <p class="blog-content-detail">
-                            Các triệu chứng thường gặp khi bị say cà phê đó là xót ruột, người cảm thấy nôn nao, dạ dày cồn cào, choáng váng, mệt mỏi, khát nước... đây được xem là các dấu hiệu nhẹ. Trong trường hợp say cà phê nặng sẽ có các biểu hiện như: cơ thể nóng lên, tim đập nhanh, tức ngực, buồn nôn, tay run, lòng bàn tay tiết nhiều mồ hôi, đau đầu, khó tập trung và suy nghĩ,...
-                        </p>
-                    </div>
-                </div>
-            </div>
+                </a>
+            }
         </div>
     </div>
 </div>
@@ -171,3 +98,10 @@
     });
 </script>
 <!--//MENU-JS-->
+
+
+<style>
+    .blog-content-title:hover {
+        color: #146d4d!important;
+    }
+</style>
