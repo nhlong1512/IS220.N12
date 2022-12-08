@@ -2764,7 +2764,6 @@
     <Content Include="Views\ThucDon\Index.cshtml" />
     <Content Include="Views\ThucDon\Details.cshtml" />
     <Content Include="Views\CuaHang\Index.cshtml" />
-    <Content Include="Views\BlogTrangChu\Index.cshtml" />
     <Content Include="Views\Shared\_UserDropdown.cshtml" />
     <Content Include="Views\User\DangXuat.cshtml" />
     <Content Include="Views\User\ValidationCode.cshtml" />
@@ -2782,6 +2781,7 @@
     <Content Include="Views\Profile\DonDatDaHuy.cshtml" />
     <Content Include="Views\BlogTrangChu\DanhSachBlog.cshtml" />
     <Content Include="Views\LienHe\Index.cshtml" />
+    <Content Include="Views\BlogTrangChu\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2794,7 +2794,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Assets\Login_Register\js\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Base\" />
     <Folder Include="Views\LayoutClient\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "DanhSachBlog";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-    var blogs = ViewBag.blogs;
 }
+
+@model Model.EF.Blog
+
 
 <!-- about breadcrumb -->
 <section class="w3l-about-breadcrumb position-relative text-center">
@@ -19,43 +21,63 @@
 </section>
 <!-- //about breadcrumb -->
 
-<div class="w3-services py-5">
-    <div class="container py-lg-4">
-        <div class="title-content text-center mb-lg-5 mt-4">
-            <h3 class="hny-title text-morii">Morii Blog</h3>
-            <p class="fea-para" style="font-size:18px;">Mỗi tách cà phê, mỗi câu chuyện</p>
-        </div>
-        <div class="row features4-grids text-left mt-lg-4">
-            @foreach (var item in blogs)
-            {
-                <a href="~/blog/details/@item.ID" style="cursor:pointer;">
-                    <div class="col-xl-4 col-md-6 mb-20" style="cursor:pointer;">
-                        <div class="blog-info">
-                            <a href="~/blog/details/@item.ID">
-                                <img class="img-fluid" src="@item.UrlImage" alt="@item.TieuDe" />
-                            </a>
-                            <div class="blog-content">
-                                <p class="date-post">@item.CreatedDate</p>
-                                <a href="~/blog/details/@item.ID">
-                                <h3 class="blog-content-title">
-                                    @item.TieuDe
-                                </h3>
+<style>
+    .cauchuyen{
+        padding:0;
+    }
 
-                                </a>
-                                <a href="~/blog/details/@item.ID" style="cursor:pointer;">
-                                <p class="blog-content-detail">
-                                    @item.MoTa
-                                </p>
+    p {
+        color: #787e92;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 400;
+    }
 
-                                </a>
-                            </div>
+    span {
+        color: #787e92;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 400;
+    }
+
+    ._tieude {
+        margin-top: 60px;
+        color: #146D4B;
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    ._mota {
+        font-size: 20px;
+        line-height: 34px !important;
+        margin-bottom: 24px;
+    }
+</style>
+
+
+<div class="w3-services" style="margin-bottom: 48px; padding: 0;">
+            @*<h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px; color:#146d4d;">Chi Tiết Blog</h3>*@
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <section class="w3l-content-6">
+                        @*<img src=@Model.UrlImage style="width: 100%; height: 500px; object-fit: cover;" />*@
+                        <style>
+                            .w3l-about-breadcrumb{
+                                background:url(@Model.UrlImage)!important;
+                            }
+                        </style>
+                        <div class="container py-lg-4 cauchuyen">
+                            <h2 class="text-uppercase font-weight-bold _tieude">@Model.TieuDe</h2>
+                            <h3 class="_mota" style="font-size:20px; line-height:20px">@Model.MoTa</h3>
+                            @Html.Raw(Model.NoiDung)
                         </div>
-                    </div>
-                </a>
-            }
-        </div>
-    </div>
+                    </section>
+                </div>
+
 </div>
+
 
 <!--//services-sec-->
 <!-- Template JavaScript -->

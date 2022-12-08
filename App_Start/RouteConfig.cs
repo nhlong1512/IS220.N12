@@ -142,6 +142,12 @@ namespace MoriiCoffee
                defaults: new { controller = "BlogTrangChu", action = "DanhSachBlog", id = UrlParameter.Optional }
            );
 
+            routes.MapRoute(
+               name: "BlogTrangChuDetails",
+               url: "blog/details/{id}",
+               defaults: new { controller = "BlogTrangChu", action = "Details", id = UrlParameter.Optional }
+           );
+
             //Config Route cho Cửa hàng
             routes.MapRoute(
                name: "CuaHang",
