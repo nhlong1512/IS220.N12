@@ -100,13 +100,49 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             converter.Options.MarginTop = 20;
             converter.Options.MarginBottom = 20;
 
+            var kms = kmdao.ViewAll();
+
+            var isOnline = true;
+            long maKM = 1;
+            string tenKM = "";
+            decimal tienKM = 0;
+            var hd = hddao.ViewDetail(id);
+            decimal tongTien = 0;
+            //Kiểm tra xem mua hàng online hay offline
+            if(hd.IsOnline != null)
+            {
+                isOnline = hd.IsOnline.GetValueOrDefault();
+            }
+            if(hd.MaKM != null)
+            {
+                maKM = hd.MaKM;
+                foreach(var it in kms)
+                {
+                    if(it.ID == maKM)
+                    {
+                        tenKM = it.TenKM;
+                    }
+                }
+            }
+
+            if(hd.TongTien != null)
+            {
+                tongTien = hd.TongTien.GetValueOrDefault();
+            }
+
+            if (hd.TienKM != null)
+            {
+                tienKM = hd.TienKM.GetValueOrDefault();
+            }
+
             //Truyền Moel cho CTHD
             var modelCTHD = cthddao.ViewAllByID(id);
+            
 
             List<InvoiceExport> ies = new List<InvoiceExport>();
-            InvoiceExport ie = new InvoiceExport();
             foreach(var entity in modelCTHD)
             {
+                InvoiceExport ie = new InvoiceExport();
                 ie.ID = entity.ID;
                 var ctsp = ctspdao.ViewDetail(entity.MaSP.GetValueOrDefault());
                 ie.TenSP = ctsp.TenSanPham;
@@ -117,6 +153,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
                 ie.ThanhTien = entity.ThanhTien;
                 ie.IDHoaDon = entity.IDHoaDon;
                 ie.CreatedDate = entity.CreatedDate;
+                ie.TienKM = tienKM;
+                ie.TenKM = tenKM;
+                ie.isOnline = isOnline;
+                ie.TongTien = tongTien;
                 ies.Add(ie);
             }
 

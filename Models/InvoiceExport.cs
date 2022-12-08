@@ -25,5 +25,10 @@ namespace MoriiCoffee.Models
 
         public DateTime? CreatedDate { get; set; }
 
+        public string TenKM { get; set; }
+        public decimal TienKM { get; set; }
+        public bool isOnline { get; set; }
+        public decimal TongTien { get; set; }
+
     }
 }
