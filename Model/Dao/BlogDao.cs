@@ -28,7 +28,7 @@ namespace Model.Dao
             {
                 return blogs;
             }
-            var list = db.Blogs.Where(p => p.ID > 0);
+            var list = db.Blogs.Where(p => p.ID > 0).OrderByDescending(x => x.CreatedDate);
             //Convert từ IqueryTable sang list
             blogs = new List<Blog>(list);
             return blogs;

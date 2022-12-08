@@ -19,6 +19,7 @@ namespace MoriiCoffee.Controllers
         private NguoiDungDao nguoidungdao = new NguoiDungDao();
         private ChiTietSanPham ctsp = new ChiTietSanPham();
         private ChiTietSanPhamDao ctspdao = new ChiTietSanPhamDao();
+        private BlogDao blogdao = new BlogDao();
         private const string CartSession = "CartSession";
 
         // GET: TrangChu
@@ -49,6 +50,9 @@ namespace MoriiCoffee.Controllers
 
                 ViewBag.sanphams = spdao.ViewAll();
                 ViewBag.ctsps = ctspdao.ViewAll();
+                ViewBag.blogs = blogdao.ViewAll();
+
+                
             }
 
                 
