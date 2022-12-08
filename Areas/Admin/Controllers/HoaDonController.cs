@@ -108,7 +108,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             foreach(var entity in modelCTHD)
             {
                 ie.ID = entity.ID;
-                var ctsp = ctspdao.ViewDetail(entity.ID);
+                var ctsp = ctspdao.ViewDetail(entity.MaSP.GetValueOrDefault());
                 ie.TenSP = ctsp.TenSanPham;
                 ie.Size = entity.Size;
                 ie.Topping = entity.Topping;
