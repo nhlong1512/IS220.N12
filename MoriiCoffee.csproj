@@ -2782,6 +2782,9 @@
     <Content Include="Views\BlogTrangChu\DanhSachBlog.cshtml" />
     <Content Include="Views\LienHe\Index.cshtml" />
     <Content Include="Views\BlogTrangChu\Details.cshtml" />
+    <Content Include="Views\ThucDon\DanhSachCaPhe.cshtml" />
+    <Content Include="Views\ThucDon\DanhSachTraSua.cshtml" />
+    <Content Include="Views\ThucDon\DanhSachKhac.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

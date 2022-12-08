@@ -32,6 +32,61 @@ namespace Model.Dao
             return chitietsps;
         }
 
+        public List<ChiTietSanPham> ViewAllTatCaClient()
+        {
+            List<ChiTietSanPham> chitietsps = new List<ChiTietSanPham>();
+            if (db.ChiTietSanPhams.Count() == 0)
+            {
+                return chitietsps;
+            }
+            var list = db.ChiTietSanPhams.Where(p => (p.MaPhanLoai == 1) || (p.MaPhanLoai == 2) || (p.MaPhanLoai == 4));
+            //Convert từ IqueryTable sang list
+            chitietsps = new List<ChiTietSanPham>(list);
+            return chitietsps;
+        }
+
+        //Xem tất cả ChiTietSanPham Cà Phê
+        public List<ChiTietSanPham> ViewAllCaPhe()
+        {
+            List<ChiTietSanPham> chitietsps = new List<ChiTietSanPham>();
+            if (db.ChiTietSanPhams.Count() == 0)
+            {
+                return chitietsps;
+            }
+            var list = db.ChiTietSanPhams.Where(p => p.MaPhanLoai == 1);
+            //Convert từ IqueryTable sang list
+            chitietsps = new List<ChiTietSanPham>(list);
+            return chitietsps;
+        }
+
+        //Xem tất cả ChiTietSanPham Trà Sữa
+        public List<ChiTietSanPham> ViewAllTraSua()
+        {
+            List<ChiTietSanPham> chitietsps = new List<ChiTietSanPham>();
+            if (db.ChiTietSanPhams.Count() == 0)
+            {
+                return chitietsps;
+            }
+            var list = db.ChiTietSanPhams.Where(p => p.MaPhanLoai == 2);
+            //Convert từ IqueryTable sang list
+            chitietsps = new List<ChiTietSanPham>(list);
+            return chitietsps;
+        }
+
+        //Xem tất cả ChiTietSanPham Trà Sữa
+        public List<ChiTietSanPham> ViewAllKhac()
+        {
+            List<ChiTietSanPham> chitietsps = new List<ChiTietSanPham>();
+            if (db.ChiTietSanPhams.Count() == 0)
+            {
+                return chitietsps;
+            }
+            var list = db.ChiTietSanPhams.Where(p => p.MaPhanLoai == 4);
+            //Convert từ IqueryTable sang list
+            chitietsps = new List<ChiTietSanPham>(list);
+            return chitietsps;
+        }
+
         //Xem danh sách các món Topping
         public List<ChiTietSanPham> ViewListTopping()
         {

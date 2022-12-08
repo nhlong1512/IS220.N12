@@ -124,9 +124,27 @@ namespace MoriiCoffee
 
             //Config Route cho thực đơn
             routes.MapRoute(
-               name: "ThucDon",
+               name: "ThucDonTatCaClient",
                url: "thuc-don",
                defaults: new { controller = "ThucDon", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "ThucDonCaPhe",
+               url: "thuc-don/ca-phe",
+               defaults: new { controller = "ThucDon", action = "DanhSachCaPhe", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "ThucDonTraSua",
+               url: "thuc-don/tra-sua",
+               defaults: new { controller = "ThucDon", action = "DanhSachTraSua", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "ThucDonKhac",
+               url: "thuc-don/khac",
+               defaults: new { controller = "ThucDon", action = "DanhSachKhac", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
