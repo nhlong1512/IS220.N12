@@ -1632,6 +1632,7 @@
     <Content Include="Data\Files\noAvt.png" />
     <Content Include="Data\Files\noAvt2.png" />
     <Content Include="Data\Files\Paypal-svg.svg" />
+    <Content Include="Data\Files\printer.png" />
     <Content Include="Data\Files\suongSao.jpg" />
     <Content Include="Data\Files\tranChauDen.png" />
     <Content Include="Data\Files\tranChauTrang.jpg" />

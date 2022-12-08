@@ -174,7 +174,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             // close pdf document
             doc.Close();
-            return Json(fileName, JsonRequestBehavior.AllowGet);
+            return Redirect("~/admin/hoa-don");
 
         }
 

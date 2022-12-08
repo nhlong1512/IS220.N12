@@ -55,13 +55,19 @@
                                 @item.Size
                             </td>
                             <td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
-                                @item.Gia
+                                @{ 
+                                    var c = item.Gia/1000;
+                                }
+                                @c.000 đ
                             </td>
                             <td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
                                 @item.SoLuong
                             </td>
                             <td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
-                                @item.ThanhTien
+                                @{
+                                    var d = item.Gia / 1000;
+                                }
+                                @d.000 đ
                             </td>
                         </tr>
                     }

@@ -56,13 +56,13 @@
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Hóa Đơn</th>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Nhân Viên</th>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Mã Khuyến Mãi</th>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Người Đặt</th>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Ngày Mua</th>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Tổng Tiền</th>
-                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thao Tác</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-align:center;">Mã Hóa Đơn</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-align: center;">Mã Nhân Viên</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-align: center;">Mã Khuyến Mãi</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-align: center;">Người Đặt</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-align: center;">Ngày Mua</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-align: center;">Tổng Tiền</th>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB; text-align: center;">Thao Tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,7 +71,7 @@
                                 {
                                     <tr>
                                         <th>
-                                            <p class="maDonDat">
+                                            <p class="maDonDat" style="text-align: center;">
                                                 #@item.ID
                                             </p>
                                         </th>
@@ -149,6 +149,9 @@
                                             <div style="display:flex; justify-content:center;">
                                                 <a class="button-detail button-option" href="/admin/hoa-don/details/@item.ID">
                                                     <img src="~/Data/Files/detail.png" />
+                                                </a>
+                                                <a class="button-detail button-option" href="/admin/hoa-don/exportpdf/@item.ID">
+                                                    <img src="~/Data/Files/printer.png" />
                                                 </a>
                                             </div>
                                         </td>
@@ -379,6 +382,7 @@
         font-size: 18px;
         line-height: 22px;
         color: #000000;
+         text-align:center;
     }
 
     .activeColor {
