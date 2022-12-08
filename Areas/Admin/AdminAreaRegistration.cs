@@ -202,6 +202,12 @@ namespace MoriiCoffee.Areas.Admin
               defaults: new { controller = "HoaDon", action = "ChiTietHoaDon", id = UrlParameter.Optional }
           );
 
+            context.MapRoute(
+              name: "AdminExportPdf",
+              url: "admin/hoa-don/exportpdf",
+              defaults: new { controller = "HoaDon", action = "ExportPdf", id = UrlParameter.Optional }
+          );
+
             //Config Route cho Khuyến Mãi
             context.MapRoute(
              name: "AdminDanhSachKhuyenMai",

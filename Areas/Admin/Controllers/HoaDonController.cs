@@ -8,6 +8,10 @@ using System.Web.Mvc;
 using PagedList;
 using MoriiCoffee.Controllers;
 using MoriiCoffee.Common;
+using SelectPdf;
+using System.Text;
+using System.IO;
+using System.Web.UI;
 
 namespace MoriiCoffee.Areas.Admin.Controllers
 {
@@ -80,6 +84,55 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             ViewBag.listCTSP = listCTSP;
             ViewBag.listND = nddao.ViewAll();
             return View();
+        }
+
+
+        public ActionResult ExportPdf()
+        {
+            HtmlToPdf converter = new HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = PdfPageSize.A4;
+            converter.Options.PdfPageOrientation = PdfPageOrientation.Portrait;
+            converter.Options.MarginLeft = 10;
+            converter.Options.MarginRight = 10;
+            converter.Options.MarginTop = 20;
+            converter.Options.MarginBottom = 20;
+
+            var htmlPdf = RenderPartialToString("~/Areas/Admin/Views/HoaDon/ParticalViewPdfResult.cshtml", null, ControllerContext);
+            // create a new pdf document converting an url
+            PdfDocument doc = converter.ConvertHtmlString(htmlPdf);
+
+            string fileName = string.Format("{0}.pdf", DateTime.Now.Ticks);
+            string pathFile = string.Format("{0}/{1}", Server.MapPath("~/Resource/Pdf"), fileName);
+
+
+            // save pdf document
+            doc.Save(pathFile);
+
+            // close pdf document
+            doc.Close();
+            return Json(fileName, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public static string RenderPartialToString(string viewName, object model, ControllerContext ControllerContext)
+        {
+            if (string.IsNullOrEmpty(viewName))
+                viewName = ControllerContext.RouteData.GetRequiredString("action");
+            ViewDataDictionary ViewData = new ViewDataDictionary();
+            TempDataDictionary TempData = new TempDataDictionary();
+            ViewData.Model = model;
+
+            using (StringWriter sw = new StringWriter())
+            {
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+
+                return sw.GetStringBuilder().ToString();
+            }
+
         }
 
 

@@ -26,8 +26,8 @@
         color: #146d4d !important;
     }
 
-    .cauchuyen{
-        padding:0;
+    .cauchuyen {
+        padding: 0;
     }
 
     p {
@@ -61,25 +61,24 @@
 </style>
 
 
-<div class="w3-services" style="margin-bottom: 48px; padding: 0;">
-            @*<h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:60px; color:#146d4d;">Chi Tiết Blog</h3>*@
-                <div class="form-horizontal">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <section class="w3l-content-6">
-                        @*<img src=@Model.UrlImage style="width: 100%; height: 500px; object-fit: cover;" />*@
-                        <style>
-                            .w3l-about-breadcrumb{
-                                background:url(@Model.UrlImage)!important;
-                            }
-                        </style>
-                        <div class="container py-lg-4 cauchuyen">
-                            <h2 class="text-uppercase font-weight-bold _tieude">@Model.TieuDe</h2>
-                            <h3 class="_mota" style="font-size:20px; line-height:20px">@Model.MoTa</h3>
-                            @Html.Raw(Model.NoiDung)
-                        </div>
-                    </section>
-                </div>
-
+<div class="w3-services" style="margin-bottom: 80px; padding: 0;">
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <section class="w3l-content-6">
+            <div class="container py-lg-4 cauchuyen">
+                <h2 class="text-uppercase font-weight-bold _tieude">@Model.TieuDe</h2>
+                <h3 class="_mota" style="font-size:20px; line-height:20px">@Model.MoTa</h3>
+                @Html.Raw(Model.NoiDung)
+            </div>
+        </section>
+    </div>
+    <div class="container">
+    <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none; padding-right: 12px;">
+        <a href="~/blog" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration:none;">
+            Danh Sách Blog
+        </a>
+    </div>
+    </div>
 </div>
 
 
@@ -128,10 +127,10 @@
         });
     });
 </script>
-<!--//MENU-JS-->
-
-
 <style>
+    .w3l-about-breadcrumb{
+        background:url(@Model.UrlImage)!important;
+    }
     .blog-content-title:hover {
         color: #146d4d !important;
     }

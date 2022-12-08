@@ -273,7 +273,7 @@
                                         }
                                         @c.000 đ
                                     </p>
-                                    
+
                                 }
                                 else
                                 {
@@ -330,7 +330,12 @@
                             </div>
                         </div>
                     </div>
-                    <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+                    <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
+
+                        <a href="/admin/hoa-don/exportpdf" @*class="huyDonHangButton" data-id="@hd.ID" id="huyDonHangButton_@hd.ID" data-toggle="modal"*@ data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; cursor:pointer; margin-bottom:0;">
+                            In Hóa Đơn
+                        </a>
+                        
                         <a href="~/admin/hoa-don" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #146d4d; text-decoration: none;">
                             Danh Sách Hóa Đơn
                         </a>
