@@ -1,4 +1,5 @@
-﻿@section breadcrumb {
+﻿
+@section breadcrumb {
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb my-0 ms-2">
@@ -36,9 +37,8 @@
 }
 
 
-<div class="body flex-grow-1 px-3">
-
-    <div class="container-lg">
+<div class="w3-services py-5" style="margin-bottom:40px;">
+    <div class="container">
         <div class="row">
             <h3 id="doanhThuThang7" style="margin:0; padding:0; display:none;">@doanhThuThang7</h3>
             <h3 id="doanhThuThang8" style="margin:0; padding:0; display:none;">@doanhThuThang8</h3>
@@ -183,13 +183,13 @@
 
 
 
-                <div class="myChart1 hide">
+                <div class="myChart1 hide1">
                     <canvas id="myChart1"></canvas>
                 </div>
                 <div class="myChart2">
                     <canvas id="myChart2"></canvas>
                 </div>
-                <div class="myChart3 hide" style="display:flex; justify-content: center; align-items: center; height: 700px;">
+                <div class="myChart3 hide1" style="display:flex; justify-content: center; align-items: center; height: 700px;">
                     <canvas id="myChart3"></canvas>
                 </div>
 
@@ -219,7 +219,7 @@
                 <p style="margin: 0; padding: 0; display:none;" id="online">@doanhThuOnline</p>
                 <p style="margin: 0; padding: 0; display:none;" id="tructiep">@doanhThuTrucTiep</p>
 
-                <div class="chart1 c-chart-wrapper onlineTrucTiepChart hide" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                <div class="chart1 c-chart-wrapper onlineTrucTiepChart hide1" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
                     <canvas id="onlineTrucTiepChart1"></canvas>
                 </div>
 
@@ -227,7 +227,7 @@
                     <canvas id="onlineTrucTiepChart2"></canvas>
                 </div>
 
-                <div class="chart3 c-chart-wrapper onlineTrucTiepChart hide" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                <div class="chart3 c-chart-wrapper onlineTrucTiepChart hide1" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
                     <canvas id="onlineTrucTiepChart3"></canvas>
                 </div>
 
@@ -264,32 +264,32 @@
             line1Label.classList.add("active");
             bar1Label.classList.remove("active");
             pie1Label.classList.remove("active");
-            myChart1.classList.remove("hide");
-            myChart2.classList.add("hide");
-            myChart3.classList.add("hide");
+            myChart1.classList.remove("hide1");
+            myChart2.classList.add("hide1");
+            myChart3.classList.add("hide1");
 
         }
         if (typeValue == "bar") {
             line1Label.classList.remove("active");
             bar1Label.classList.add("active");
             pie1Label.classList.remove("active");
-            myChart1.classList.add("hide");
-            myChart2.classList.remove("hide");
-            myChart3.classList.add("hide");
+            myChart1.classList.add("hide1");
+            myChart2.classList.remove("hide1");
+            myChart3.classList.add("hide1");
 
         }
         if (typeValue == "pie") {
             line1Label.classList.remove("active");
             bar1Label.classList.remove("active");
             pie1Label.classList.add("active");
-            myChart3.classList.remove("hide");
-            myChart1.classList.add("hide");
-            myChart2.classList.add("hide");
+            myChart3.classList.remove("hide1");
+            myChart1.classList.add("hide1");
+            myChart2.classList.add("hide1");
         }
 
     }
 
-    
+
     var ctx = document.getElementById('myChart1');
     var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
     var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
@@ -397,27 +397,27 @@
             bar2Label.classList.add("active");
             pie2Label.classList.remove("active");
             doughnut2Label.classList.remove("active");
-            myChart1.classList.remove("hide");
-            myChart2.classList.add("hide");
-            myChart3.classList.add("hide");
+            myChart1.classList.remove("hide1");
+            myChart2.classList.add("hide1");
+            myChart3.classList.add("hide1");
 
         }
         if (typeValue == "pie") {
             bar2Label.classList.remove("active");
             pie2Label.classList.add("active");
             doughnut2Label.classList.remove("active");
-            myChart1.classList.add("hide");
-            myChart2.classList.remove("hide");
-            myChart3.classList.add("hide");
+            myChart1.classList.add("hide1");
+            myChart2.classList.remove("hide1");
+            myChart3.classList.add("hide1");
 
         }
         if (typeValue == "doughnut") {
             bar2Label.classList.remove("active");
             pie2Label.classList.remove("active");
             doughnut2Label.classList.add("active");
-            myChart3.classList.remove("hide");
-            myChart1.classList.add("hide");
-            myChart2.classList.add("hide");
+            myChart3.classList.remove("hide1");
+            myChart1.classList.add("hide1");
+            myChart2.classList.add("hide1");
         }
 
     }
@@ -506,11 +506,11 @@
 
 
 <style>
-    .hide{
-        display:none !important;
+    .hide1 {
+        display: none !important;
     }
 
-    .show {
-        display:flex;
+    .show1 {
+        display: flex;
     }
 </style>

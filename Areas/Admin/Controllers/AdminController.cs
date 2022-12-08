@@ -64,7 +64,6 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             ViewBag.doanhThuThang11 = doanhThuThang(11);
             ViewBag.doanhThuThang12 = doanhThuThang(12);
 
-
             return View();
         }
 

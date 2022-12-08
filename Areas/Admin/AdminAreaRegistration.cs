@@ -14,13 +14,7 @@ namespace MoriiCoffee.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
-
-
-            context.MapRoute(
-               name: "Dashboard",
-               url: "admin/dashboard",
-               defaults: new { controller = "Admin", action = "Dashboard", id = UrlParameter.Optional }
-           );
+            
 
             //Config Route cho Blog
             context.MapRoute(
@@ -216,6 +210,11 @@ namespace MoriiCoffee.Areas.Admin
 
          );
 
+            context.MapRoute(
+               name: "Dashboard",
+               url: "admin/dashboard",
+               defaults: new { controller = "Admin", action = "Dashboard", id = UrlParameter.Optional }
+           );
 
 
 
