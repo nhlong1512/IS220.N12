@@ -161,20 +161,23 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <a href="~/cau-chuyen">
-                        <li class="nav-link">CÂU CHUYỆN</li>
+                        <a href="~/" class="trang-chu-item">
+                        <li class="nav-link trang-chu-item">TRANG CHỦ</li>
                         </a>
-                        <a href="~/thuc-don">
-                        <li class="nav-link">THỰC ĐƠN</li>
+                        <a href="~/cau-chuyen" class="cau-chuyen-item">
+                        <li class="nav-link cau-chuyen-item">CÂU CHUYỆN</li>
                         </a>
-                        <a href="~/blog">
-                        <li class="nav-link">BLOG</li>
+                        <a href="~/thuc-don" class="thuc-don-item">
+                        <li class="nav-link thuc-don-item">THỰC ĐƠN</li>
                         </a>
-                        <a href="~/cua-hang">
-                        <li class="nav-link">CỬA HÀNG</li>
+                        <a href="~/blog" class="blog-item">
+                        <li class="nav-link blog-item">BLOG</li>
                         </a>
-                        <a href="~/lien-he">
-                        <li class="nav-link">LIÊN HỆ</li>
+                        @*<a href="~/" class="cua-hang-item">
+        <li class="nav-link cua-hang-item">CỬA HÀNG</li>
+        </a>*@
+                        <a href="~/lien-he" class="lien-he-item">
+                        <li class="nav-link lien-he-item">LIÊN HỆ</li>
                         </a>
                     </ul>
                     @*@RenderSection("isLogin", required:false)*@
@@ -300,29 +303,14 @@
     <div>
         @RenderBody()
     </div>
-    
+
     <!-- footer-66 -->
     <footer class="w3l-footer-66">
         <section class="footer-inner-main">
             <div class="footer-hny-grids py-5">
                 <div class="container py-lg-4">
                     <div class="text-txt">
-                        <div class="row newsletter-grids-footer">
-                            <div class="col-lg-6 newsletter-text pr-lg-5">
-                                <h3 class="hny-title text-morii">Morii Coffee</h3>
-                                <h4>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </h4>
-                            </div>
-                            <div class="col-lg-6 newsletter-right">
-                                <form action="#" method="post" class="footer-newsletter">
 
-                                    <input type="email" name="email" class="form-input" placeholder="Enter your email..">
-
-                                    <button type="submit" class="btn">Subscribe</button>
-                                </form>
-                            </div>
-                        </div>
                         <div class="right-side">
                             <div class="row sub-columns">
                                 <div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
@@ -378,7 +366,7 @@
                                                 <a href="/lien-he"><span class="fa fa-angle-double-right mr-2"></span> Liên Hệ</a>
                                             </li>
                                         </ul>
-                                       
+
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 sub-one-left">
@@ -458,6 +446,12 @@
 </script>
 
 <style>
+    .right-side {
+        margin-top: 0 !important;
+        border-top: none !important;
+        padding-top: 0 !important;
+    }
+
     .cart-fff {
         color: #fff;
     }
