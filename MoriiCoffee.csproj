@@ -2664,6 +2664,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\InvoiceExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2815,7 +2816,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Assets\Login_Register\js\" />
-    <Folder Include="Models\" />
     <Folder Include="Resource\Pdf\" />
     <Folder Include="Views\LayoutClient\" />
   </ItemGroup>

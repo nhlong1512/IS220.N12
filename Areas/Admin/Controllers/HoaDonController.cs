@@ -12,6 +12,7 @@ using SelectPdf;
 using System.Text;
 using System.IO;
 using System.Web.UI;
+using MoriiCoffee.Models;
 
 namespace MoriiCoffee.Areas.Admin.Controllers
 {
@@ -87,7 +88,7 @@ namespace MoriiCoffee.Areas.Admin.Controllers
         }
 
 
-        public ActionResult ExportPdf()
+        public ActionResult ExportPdf(long id)
         {
             HtmlToPdf converter = new HtmlToPdf();
 
@@ -99,7 +100,28 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             converter.Options.MarginTop = 20;
             converter.Options.MarginBottom = 20;
 
-            var htmlPdf = RenderPartialToString("~/Areas/Admin/Views/HoaDon/ParticalViewPdfResult.cshtml", null, ControllerContext);
+            //Truyền Moel cho CTHD
+            var modelCTHD = cthddao.ViewAllByID(id);
+
+            List<InvoiceExport> ies = new List<InvoiceExport>();
+            InvoiceExport ie = new InvoiceExport();
+            foreach(var entity in modelCTHD)
+            {
+                ie.ID = entity.ID;
+                var ctsp = ctspdao.ViewDetail(entity.ID);
+                ie.TenSP = ctsp.TenSanPham;
+                ie.Size = entity.Size;
+                ie.Topping = entity.Topping;
+                ie.Gia = entity.Gia;
+                ie.SoLuong = entity.SoLuong;
+                ie.ThanhTien = entity.ThanhTien;
+                ie.IDHoaDon = entity.IDHoaDon;
+                ie.CreatedDate = entity.CreatedDate;
+                ies.Add(ie);
+            }
+
+            var modelIes = ies;
+            var htmlPdf = RenderPartialToString("~/Areas/Admin/Views/HoaDon/ParticalViewPdfResult.cshtml", modelIes, ControllerContext);
             // create a new pdf document converting an url
             PdfDocument doc = converter.ConvertHtmlString(htmlPdf);
 

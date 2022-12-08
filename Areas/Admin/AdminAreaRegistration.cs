@@ -204,7 +204,7 @@ namespace MoriiCoffee.Areas.Admin
 
             context.MapRoute(
               name: "AdminExportPdf",
-              url: "admin/hoa-don/exportpdf",
+              url: "admin/hoa-don/exportpdf/{id}",
               defaults: new { controller = "HoaDon", action = "ExportPdf", id = UrlParameter.Optional }
           );
 

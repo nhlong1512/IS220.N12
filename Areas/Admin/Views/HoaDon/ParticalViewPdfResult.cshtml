@@ -1,14 +1,60 @@
-﻿
-<h3>Long</h3>
+﻿@model List<MoriiCoffee.Models.InvoiceExport>
 
-<div class="container-fluid">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb my-0 ms-2">
-            <li class="breadcrumb-item">
-                <!-- if breadcrumb is single-->
-                <span>Hóa Đơn</span>
-            </li>
-            <li class="breadcrumb-item active"><span>Chi Tiết Hóa Đơn</span></li>
-        </ol>
-    </nav>
-</div>
+
+
+<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">ID</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Tên Sản Phẩm</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Size</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Topping</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Đơn Giá</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Thành Tiền</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">IDHoaDon</th>
+            <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Ngày Tạo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <th>
+            <p class="maDonDat">
+                #@item.ID
+            </p>
+        </th>
+        <td>
+            <p class="pDonDat">
+                @item.TenSP
+            </p>
+        </td>
+        <td>
+            <p class="pDonDat">
+                @item.Size
+            </p>
+        </td>
+        <td>
+            @item.Topping
+        </td>
+        <td>
+            @item.Gia
+        </td>
+        <td>
+            @item.SoLuong
+        </td>
+        <td>
+            @item.ThanhTien
+        </td>
+        <td>
+            @item.IDHoaDon
+        </td>
+        <td>
+            @item.CreatedDate
+        </td>
+    }
+
+
+        </tbody>
+    </table>
+
