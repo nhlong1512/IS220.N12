@@ -140,7 +140,7 @@ namespace MoriiCoffee.Controllers
                     userSession.UserName = nd.Email;
                     userSession.UserID = nd.ID;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
-                    if(nd.Role == "ADMIN")
+                    if(nd.Role == "ADMIN" || nd.Role == "Nhân viên")
                     {
                         return Redirect("/admin");
                     }

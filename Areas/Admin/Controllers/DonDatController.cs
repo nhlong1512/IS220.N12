@@ -33,6 +33,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = dhdao.ListAllPaging(searchString);
@@ -53,6 +57,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = dhdao.ListAllPagingChoXacNhan(searchString);
@@ -73,6 +81,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = dhdao.ListAllPagingDangGiao(searchString);
@@ -93,6 +105,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = dhdao.ListAllPagingDaGiao(searchString);
@@ -112,6 +128,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = dhdao.ListAllPagingDaHuy(searchString);
@@ -134,6 +154,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var dh = dhdao.ViewDetail(id);

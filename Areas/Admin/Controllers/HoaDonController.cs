@@ -40,6 +40,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = hddao.ListAllPaging(searchString);
@@ -63,6 +67,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var hd = hddao.ViewDetail(id);

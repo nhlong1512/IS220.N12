@@ -33,6 +33,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPaging(searchString, page, pageSize);
@@ -57,6 +61,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPagingCaPhe(searchString, page, pageSize);
@@ -81,6 +89,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPagingTraSua(searchString, page, pageSize);
@@ -105,6 +117,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPagingTopping(searchString, page, pageSize);
@@ -129,6 +145,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = ctspdao.ListAllPagingKhac(searchString, page, pageSize);
@@ -154,6 +174,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -188,6 +212,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -207,6 +235,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -227,6 +259,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -249,6 +285,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 

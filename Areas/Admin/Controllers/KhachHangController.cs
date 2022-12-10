@@ -30,6 +30,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -49,6 +53,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nddd = nddao.ViewDetailEmail(session.UserName);
+                if (nddd.Role != "Nhân viên" && nddd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nddd;
             }
 
@@ -71,6 +79,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nddd = nddao.ViewDetailEmail(session.UserName);
+                if (nddd.Role != "Nhân viên" && nddd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nddd;
             }
             return View();
@@ -89,6 +101,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nddd = nddao.ViewDetailEmail(session.UserName);
+                if (nddd.Role != "Nhân viên" && nddd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nddd;
             }
 

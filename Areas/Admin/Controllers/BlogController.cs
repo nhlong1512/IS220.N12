@@ -29,6 +29,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var model = bldao.ListAllPaging(searchString, page, pageSize);
@@ -52,6 +56,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -84,6 +92,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -103,6 +115,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -123,6 +139,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 
@@ -144,6 +164,10 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
 

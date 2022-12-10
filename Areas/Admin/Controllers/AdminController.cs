@@ -27,10 +27,15 @@ namespace MoriiCoffee.Areas.Admin.Controllers
             if (session == null)
             {
                 return Redirect("/dang-nhap");
-            }else
+            }
+            else
             {
                 ViewBag.session = session;
                 var nd = nddao.ViewDetailEmail(session.UserName);
+                if (nd.Role != "Nhân viên" && nd.Role != "ADMIN")
+                {
+                    return Redirect("/");
+                }
                 ViewBag.ndd = nd;
             }
             var nds = nddao.ViewAll();
@@ -43,12 +48,13 @@ namespace MoriiCoffee.Areas.Admin.Controllers
 
             decimal doanhThuOnline = 0;
             decimal doanhThuTrucTiep = 0;
-            foreach(var item in hds)
+            foreach (var item in hds)
             {
-                if(item.IsOnline == true)
+                if (item.IsOnline == true)
                 {
                     doanhThuOnline += item.TongTien.GetValueOrDefault();
-                }else
+                }
+                else
                 {
                     doanhThuTrucTiep += item.TongTien.GetValueOrDefault();
                 }
