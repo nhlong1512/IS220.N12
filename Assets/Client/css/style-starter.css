@@ -17702,6 +17702,7 @@ ul.breadcrumbs-custom-path li a {
     }
 
 .w3l-footer-66 #movetop {
+    background: #146d4d;
     display: none;
     position: fixed;
     bottom: 7px;
@@ -17714,7 +17715,6 @@ ul.breadcrumbs-custom-path li a {
     color: #fff;
     width: 42px;
     height: 42px;
-    background: var(--moriiColor);
     padding: 0;
     line-height: 42px;
     transition: 0.5s ease-out;

@@ -26,6 +26,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var ctsps = ViewBag.ctsps;
     var sps = ViewBag.sps;
+    var nd = ViewBag.ndd;
 }
 <div class="w3-services py-5" style="margin-bottom: 48px;">
     <div class="container">
@@ -157,12 +158,15 @@
                                                 <a class="button-detail button-option" href="/admin/san-pham/details/@item.ID">
                                                     <img src="~/Data/Files/detail.png" />
                                                 </a>
-                                                <a class="button-edit button-option" href="/admin/san-pham/update/@item.ID">
-                                                    <img src="~/Data/Files/edit.png" />
-                                                </a>
-                                                <a class="button-delete button-option huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
-                                                    <img src="~/Data/Files/deleteIcon.png" />
-                                                </a>
+                                                @if (nd.Role == "ADMIN")
+                                                {
+                                                    <a class="button-edit button-option" href="/admin/san-pham/update/@item.ID">
+                                                        <img src="~/Data/Files/edit.png" />
+                                                    </a>
+                                                    <a class="button-delete button-option huyDonHang huyDonHangButton" data-id="@item.ID" id="huyDonHangButton_@item.ID" data-toggle="modal" data-target="#exampleModal">
+                                                        <img src="~/Data/Files/deleteIcon.png" />
+                                                    </a>
+                                                }
                                             </div>
 
                                         </td>
