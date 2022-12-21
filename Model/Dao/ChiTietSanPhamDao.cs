@@ -171,7 +171,7 @@ namespace Model.Dao
                 (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) ||
                 (x.MaPhanLoai == 1 ? "Cà Phê" : (x.MaPhanLoai == 2 ? "Trà Sữa" : (x.MaPhanLoai == 3 ? "Topping" : "Khác"))).Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
         public IEnumerable<ChiTietSanPham> ListAllPagingCaPhe(string searchString, int page, int pageSize)
@@ -185,7 +185,7 @@ namespace Model.Dao
                 || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
                 (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) || ("Cà Phê").Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
         public IEnumerable<ChiTietSanPham> ListAllPagingTraSua(string searchString, int page, int pageSize)
@@ -198,7 +198,7 @@ namespace Model.Dao
                 || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
                 (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) || ("Trà Sữa").Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
         public IEnumerable<ChiTietSanPham> ListAllPagingTopping(string searchString, int page, int pageSize)
@@ -211,7 +211,7 @@ namespace Model.Dao
                 || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
                 (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) ||("Topping").Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
         public IEnumerable<ChiTietSanPham> ListAllPagingKhac(string searchString, int page, int pageSize)
@@ -224,7 +224,7 @@ namespace Model.Dao
                 || (x.Gia).ToString().Contains(searchString) || (x.CreatedDate.ToString()).Contains(searchString) ||
                 (x.Status == true ? "Đang Mở Bán" : "Chưa Mở Bán").Contains(searchString) || ("Khác").Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
     }

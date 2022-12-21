@@ -145,15 +145,35 @@
                                         <p class="sub-total">TỔNG TIỀN HÀNG</p>
                                         <p class="sub-total" style="font-weight:600;">
                                             @{
-                                                var d = TongGia;
-                                                d = d / 1000;
+                                                var g = TongGia;
+                                                g = g / 1000;
                                             }
-                                            @d.000 đ
+                                            @g.000 đ
                                         </p>
                                     </div>
                                     <div class="wrap-giamgia">
-                                        <p class="sub-total">GIẢM GIÁ</p>
-                                        <p class="sub-total" style="font-weight:600;">__</p>
+                                        @if (isKM == true)
+                                        {
+                                            <div style="display:flex; flex-direction:column;">
+                                                <p class="sub-total">GIẢM GIÁ</p>
+                                                <p class="sub-total">(@km.TenKM)</p>
+                                            </div>
+                                            <p class="sub-total" style="font-weight:600;">
+                                                @{
+                                                    e = (TongGia * km.PhanTramKM / 100);
+                                                    e = e / 1000;
+                                                }
+                                                @e.000đ
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <p class="sub-total">GIẢM GIÁ</p>
+                                                <p class="sub-total"></p>
+                                            </div>
+                                            <p class="sub-total" style="font-weight:600;">__</p>
+                                        }
                                     </div>
                                 </div>
 
@@ -162,18 +182,18 @@
                                     <div class="wrap-estimated-total">
                                         <p class="sub-total">TỔNG SỐ TIỀN </p>
                                         <p class="sub-total" style="color:#146d4d; font-weight: 600;">
-                                            @d.000 đ
+                                            @(g-e).000 đ
                                         </p>
                                     </div>
                                 </div>
-                                <a href="/giao-hang">
-                                    <button class="button-checkout">
-                                        THANH TOÁN
-                                    </button>
-
-                                </a>
+                                    <a href="/giao-hang">
+                                        <button class="button-checkout">
+                                            THANH TOÁN
+                                        </button>
+                                    </a>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
